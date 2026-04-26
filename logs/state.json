@@ -1,0 +1,73 @@
+{
+  "running": true,
+  "cycle": 66,
+  "last_update": "2026-04-26T23:42:23.754311",
+  "prices": {
+    "BTC/USDT": 78014.13,
+    "ETH/USDT": 2358.32,
+    "SOL/USDT": 86.41
+  },
+  "portfolio": {
+    "total_value": 999.7810123760048,
+    "pnl_pct": -0.00021898762399519001,
+    "drawdown": 0.00021898762399300012,
+    "free_capital": 992.0513374777969,
+    "open_positions": 2,
+    "total_trades": 2,
+    "longs": 0,
+    "shorts": 2
+  },
+  "positions": {
+    "ETH/USDT": {
+      "direction": -1,
+      "size": 0.01778578865148887,
+      "entry_price": 2364.83,
+      "stop_loss": 2383.0372635726667,
+      "take_profit": 2337.519104641,
+      "current_price": 2358.32,
+      "pnl_pct": 0.002752840584735378
+    },
+    "BTC/USDT": {
+      "direction": -1,
+      "size": 0.0004226316575474957,
+      "entry_price": 78252.31,
+      "stop_loss": 78703.4254750157,
+      "take_profit": 77575.63678747645,
+      "current_price": 78014.13,
+      "pnl_pct": 0.0030437440121575073
+    }
+  },
+  "regimes": {
+    "BTC/USDT": {
+      "regime": "ranging",
+      "strength": 0.14434190492322618,
+      "description": "Zijwaartse markt — ADX=21"
+    },
+    "ETH/USDT": {
+      "regime": "bull_trend",
+      "strength": 0.5265350146646994,
+      "description": "Bullish trend — ADX=26, EMA stack bullish"
+    },
+    "SOL/USDT": {
+      "regime": "ranging",
+      "strength": 0.465849433975257,
+      "description": "Zijwaartse markt — ADX=13"
+    }
+  },
+  "sentiment": {
+    "score": -0.22100000000000003,
+    "signal": -1,
+    "fear_greed": -0.34,
+    "news": 0.0,
+    "label": "Angst"
+  },
+  "summary": {
+    "total_trades": 8,
+    "closed_trades": 2,
+    "win_rate": 0.0,
+    "avg_pnl": -0.0035863044760420185,
+    "best_trade": -0.0024663291941711993,
+    "worst_trade": -0.004706279757912838,
+    "total_pnl": -0.007172608952084037
+  }
+}

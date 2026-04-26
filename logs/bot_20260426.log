@@ -1,0 +1,257 @@
+2026-04-26 17:27:20,115 | INFO | generated new fontManager
+2026-04-26 17:27:20,395 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 17:27:20,395 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 17:27:26,370 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:27:26,929 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:27:27,499 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:28:28,858 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:28:29,159 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:28:29,454 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:29:30,546 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:29:30,847 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:29:31,144 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:30:32,230 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:30:32,525 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:30:32,826 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:31:33,952 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:31:34,247 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:31:34,561 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:32:35,647 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:32:36,200 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:32:36,753 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:33:38,108 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:33:38,407 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:33:38,701 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:34:39,793 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:34:40,095 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:34:40,394 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:35:41,472 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:35:41,765 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:35:42,064 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:36:43,151 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:36:43,442 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:36:43,737 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:37:45,193 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:37:45,751 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:37:46,337 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:38:47,717 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:38:48,017 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:38:48,307 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:39:49,390 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:39:49,684 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:39:49,979 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:40:51,104 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:40:51,400 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:40:51,695 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:41:52,803 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:41:53,102 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:41:53,653 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:42:54,734 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:42:55,434 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:42:55,990 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:43:37,910 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 17:43:37,911 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 17:43:44,908 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:43:45,488 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:43:46,044 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:44:55,113 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 17:44:55,114 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 17:45:02,479 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:45:03,034 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:45:03,593 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:46:04,955 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:46:05,250 | WARNING | ANOMALIE | ETH/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:46:05,791 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 17:47:05,020 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 17:47:05,020 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 17:47:05,434 | INFO | LSTM hertraining gestart...
+2026-04-26 17:48:50,504 | INFO | LSTM hertraining klaar — validatie accuraatheid: 61.0%
+2026-04-26 17:48:50,518 | INFO | RL hertraining gestart...
+2026-04-26 17:54:49,804 | INFO | RL model opgeslagen naar models\crypto_ppo
+2026-04-26 18:33:00,895 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 18:33:00,895 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 18:34:57,013 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 18:34:57,014 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 21:56:04,733 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 21:56:04,733 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 21:56:05,170 | INFO | LSTM hertraining gestart...
+2026-04-26 21:58:02,442 | INFO | LSTM hertraining klaar — validatie accuraatheid: 61.1%
+2026-04-26 21:58:02,445 | INFO | RL hertraining gestart...
+2026-04-26 21:58:10,225 | ERROR | FOUT | RL hertraining | ValueError: Observation spaces do not match: Box(-inf, inf, (586,), float32) != Box(-inf, inf, (646,), float32)
+2026-04-26 22:01:18,482 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 22:01:18,484 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 22:01:18,895 | INFO | LSTM hertraining gestart...
+2026-04-26 22:03:09,229 | INFO | LSTM hertraining klaar — validatie accuraatheid: 61.2%
+2026-04-26 22:03:09,234 | INFO | RL hertraining gestart...
+2026-04-26 22:09:12,529 | INFO | RL model opgeslagen naar models\crypto_ppo
+2026-04-26 22:11:06,768 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 22:11:06,769 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 22:11:12,226 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 22:11:12,227 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 22:11:24,888 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:11:34,289 | INFO | TRADE | ETH/USDT | BUY @ 2366.7200 | PnL: +0.00%
+2026-04-26 22:11:36,928 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:12:45,314 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:12:46,631 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:13:48,590 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:13:50,161 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:14:51,633 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:14:52,947 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:15:54,451 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:15:55,790 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:16:57,547 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:17:03,483 | INFO | TRADE | BTC/USDT | SHORT @ 78205.6500 | PnL: +0.00%
+2026-04-26 22:17:11,380 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:18:16,276 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:18:17,547 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:19:18,983 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:19:20,488 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:20:22,025 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:20:23,270 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:21:24,743 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:21:26,233 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:22:28,251 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:22:33,844 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:23:37,145 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:23:38,423 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:24:39,841 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:24:41,150 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:32:55,496 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-26 22:32:55,497 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-26 22:33:02,495 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:33:06,681 | INFO | TRADE | ETH/USDT | BUY @ 2370.3300 | PnL: +0.00%
+2026-04-26 22:33:08,132 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:34:11,246 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:34:11,264 | INFO | TRADE | BTC/USDT | BUY @ 78288.9600 | PnL: +0.00%
+2026-04-26 22:34:13,023 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:35:14,649 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:35:15,903 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:36:17,483 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:36:18,741 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:37:20,183 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:37:22,162 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:38:23,649 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:38:28,285 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:39:31,345 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:39:32,916 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:40:34,414 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:40:35,689 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:41:37,128 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:41:38,450 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:42:40,120 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:42:41,428 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:43:43,505 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:43:48,177 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:44:51,368 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:44:52,884 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:45:54,335 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:45:55,649 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:46:57,109 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:46:58,424 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:47:59,846 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:48:01,140 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:49:02,572 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:49:06,953 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:50:10,519 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:50:11,835 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:51:13,231 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:51:14,484 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:52:15,966 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:52:17,306 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:53:18,771 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:53:20,061 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:54:21,883 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:54:26,221 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:55:29,212 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:55:30,486 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:56:31,969 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:56:33,288 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:57:34,753 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:57:36,181 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:58:37,680 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:58:39,032 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:59:40,510 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 22:59:44,996 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:00:48,166 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:00:48,830 | INFO | TRADE | ETH/USDT | SELL @ 2363.9000 | PnL: -0.47%
+2026-04-26 23:00:50,066 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:01:51,510 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:01:52,193 | INFO | TRADE | ETH/USDT | SHORT @ 2364.8300 | PnL: +0.00%
+2026-04-26 23:01:53,357 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:02:54,842 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:02:56,142 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:03:57,571 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:03:58,837 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:05:01,531 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:05:06,464 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:06:09,643 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:06:10,910 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:07:12,357 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:07:13,623 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:08:15,051 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:08:16,303 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:09:17,775 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:09:19,362 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:10:20,836 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:10:25,791 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:11:29,325 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:11:31,326 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:12:32,782 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:12:34,050 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:13:35,504 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:13:36,766 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:14:38,223 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:14:39,516 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:15:41,361 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:15:45,864 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:16:49,426 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:16:51,269 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:17:52,723 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:17:54,013 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:18:55,451 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:18:56,737 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:19:58,161 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:19:59,519 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:21:00,994 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:21:03,176 | INFO | TRADE | BTC/USDT | SELL @ 78252.3000 | PnL: -0.25%
+2026-04-26 23:21:06,695 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:22:09,943 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:22:09,964 | INFO | TRADE | BTC/USDT | SHORT @ 78252.3100 | PnL: +0.00%
+2026-04-26 23:22:11,718 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:23:13,170 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:23:14,418 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:24:15,838 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:24:17,090 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:25:18,602 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:25:19,855 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:26:21,693 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:26:26,160 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:27:29,054 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:27:30,348 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:28:31,789 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:28:33,055 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:29:34,498 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:29:35,782 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:30:37,208 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:30:38,502 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:31:39,954 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:31:44,633 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:32:47,645 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:32:49,004 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:33:50,443 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:33:51,740 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:34:53,199 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:34:54,479 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:35:55,927 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:35:57,189 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:36:59,830 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:37:04,351 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:38:07,339 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:38:08,666 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:39:10,113 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:39:11,394 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:40:12,792 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:40:14,030 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:41:15,444 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:41:16,665 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-04-26 23:42:18,087 | WARNING | ANOMALIE | BTC/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging

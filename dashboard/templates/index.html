@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monster Bot Dashboard</title>
+<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --green: #3fb950;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --yellow: #d29922;
+    --purple: #bc8cff;
+    --cyan: #39d353;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; }
+
+  /* Top bar */
+  .topbar {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    padding: 10px 20px; position: sticky; top: 0; z-index: 100;
+  }
+  .topbar .logo { font-size: 18px; font-weight: 700; color: var(--blue); letter-spacing: -0.5px; }
+  .topbar .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .topbar .stat { display: flex; flex-direction: column; }
+  .topbar .stat .label { color: var(--text2); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .topbar .stat .value { font-size: 15px; font-weight: 600; }
+  .topbar .sep { width: 1px; height: 32px; background: var(--border); margin: 0 4px; }
+  .topbar .spacer { flex: 1; }
+  .topbar .update-time { color: var(--text2); font-size: 11px; }
+
+  /* Layout */
+  .layout { display: grid; grid-template-columns: 1fr 280px; grid-template-rows: auto auto; gap: 0; height: calc(100vh - 53px); }
+
+  /* Left column */
+  .left { display: flex; flex-direction: column; border-right: 1px solid var(--border); overflow: hidden; }
+
+  /* Symbol selector */
+  .symbol-bar {
+    display: flex; align-items: center; gap: 4px;
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+  }
+  .sym-btn {
+    padding: 4px 14px; border-radius: 20px; border: 1px solid var(--border);
+    background: transparent; color: var(--text2); cursor: pointer; font-size: 12px; font-weight: 600;
+    transition: all 0.15s;
+  }
+  .sym-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .sym-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .tf-sep { width: 1px; height: 20px; background: var(--border); margin: 0 8px; }
+  .tf-btn {
+    padding: 3px 10px; border-radius: 4px; border: 1px solid transparent;
+    background: transparent; color: var(--text2); cursor: pointer; font-size: 11px;
+    transition: all 0.15s;
+  }
+  .tf-btn:hover { color: var(--text); }
+  .tf-btn.active { background: var(--bg3); border-color: var(--border); color: var(--text); }
+  .current-price { margin-left: auto; font-size: 18px; font-weight: 700; }
+
+  /* Chart area */
+  #chart { flex: 1; min-height: 0; }
+
+  /* Order book */
+  .orderbook-section {
+    height: 180px; border-top: 1px solid var(--border); display: flex; flex-direction: column;
+  }
+  .section-title {
+    padding: 6px 16px; font-size: 11px; font-weight: 600; color: var(--text2);
+    text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .orderbook-grid { display: flex; flex: 1; overflow: hidden; }
+  .ob-side { flex: 1; overflow-y: auto; }
+  .ob-side::-webkit-scrollbar { width: 4px; }
+  .ob-side::-webkit-scrollbar-thumb { background: var(--border); }
+  .ob-row { display: flex; justify-content: space-between; padding: 2px 12px; font-size: 11px; font-family: monospace; position: relative; }
+  .ob-row.ask { color: var(--red); }
+  .ob-row.bid { color: var(--green); }
+  .ob-bar { position: absolute; right: 0; top: 0; height: 100%; opacity: 0.12; }
+  .ob-bar.ask { background: var(--red); }
+  .ob-bar.bid { background: var(--green); }
+  .ob-spread { text-align: center; padding: 3px; font-size: 11px; color: var(--text2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg3); }
+
+  /* Right sidebar */
+  .sidebar { overflow-y: auto; background: var(--bg2); }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); }
+
+  /* Cards */
+  .card { border-bottom: 1px solid var(--border); padding: 12px 16px; }
+  .card-title { font-size: 11px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+
+  /* Portfolio card */
+  .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pf-item .label { font-size: 10px; color: var(--text2); }
+  .pf-item .val { font-size: 14px; font-weight: 600; margin-top: 2px; }
+
+  /* Position cards */
+  .position-item { background: var(--bg3); border-radius: 6px; padding: 10px; margin-bottom: 6px; }
+  .position-item .pos-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .position-item .pos-symbol { font-weight: 700; font-size: 13px; }
+  .position-item .pos-dir { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+  .pos-dir.long { background: rgba(63,185,80,0.15); color: var(--green); }
+  .pos-dir.short { background: rgba(248,81,73,0.15); color: var(--red); }
+  .pos-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .pos-row .label { font-size: 10px; color: var(--text2); }
+  .pos-row .val { font-size: 12px; font-weight: 500; }
+
+  /* Signal table */
+  .signal-table { width: 100%; border-collapse: collapse; }
+  .signal-table td { padding: 4px 0; font-size: 11px; }
+  .signal-table td:first-child { color: var(--text2); width: 90px; }
+  .signal-table td:last-child { text-align: right; }
+  .sig-bar-wrap { display: flex; align-items: center; gap: 6px; }
+  .sig-bar { height: 4px; border-radius: 2px; flex: 1; background: var(--bg3); overflow: hidden; }
+  .sig-bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+
+  /* Regime */
+  .regime-badge { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-top: 4px; }
+
+  /* Bottom bar — trade history */
+  .bottom-bar {
+    grid-column: 1 / -1; border-top: 1px solid var(--border);
+    background: var(--bg2); max-height: 200px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .trade-table-wrap { overflow-y: auto; flex: 1; }
+  .trade-table-wrap::-webkit-scrollbar { height: 4px; width: 4px; }
+  .trade-table-wrap::-webkit-scrollbar-thumb { background: var(--border); }
+  .trade-table { width: 100%; border-collapse: collapse; }
+  .trade-table th { background: var(--bg3); padding: 5px 12px; text-align: left; font-size: 11px; color: var(--text2); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; position: sticky; top: 0; }
+  .trade-table td { padding: 4px 12px; font-size: 11px; border-bottom: 1px solid var(--border); }
+  .trade-table tr:hover { background: var(--bg3); }
+  .badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; }
+  .badge.buy  { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge.sell { background: rgba(248,81,73,0.15); color: var(--red); }
+  .badge.short { background: rgba(188,140,255,0.15); color: var(--purple); }
+  .badge.cover { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .pnl.pos { color: var(--green); }
+  .pnl.neg { color: var(--red); }
+
+  /* Equity canvas */
+  #equityCanvas { width: 100% !important; height: 80px !important; }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="logo">Monster Bot</div>
+  <div class="status-dot" id="statusDot"></div>
+  <div class="sep"></div>
+  <div class="stat">
+    <span class="label">Portfolio</span>
+    <span class="value" id="topPortfolio">$1,000.00</span>
+  </div>
+  <div class="sep"></div>
+  <div class="stat">
+    <span class="label">PnL</span>
+    <span class="value" id="topPnl" style="color:var(--text2)">+0.00%</span>
+  </div>
+  <div class="sep"></div>
+  <div class="stat">
+    <span class="label">Win Rate</span>
+    <span class="value" id="topWinRate">-</span>
+  </div>
+  <div class="sep"></div>
+  <div class="stat">
+    <span class="label">Trades</span>
+    <span class="value" id="topTrades">0</span>
+  </div>
+  <div class="sep"></div>
+  <div class="stat">
+    <span class="label">Posities</span>
+    <span class="value" id="topPositions">0</span>
+  </div>
+  <div class="spacer"></div>
+  <canvas id="equityCanvas" width="200" height="80"></canvas>
+  <div class="sep"></div>
+  <span class="update-time" id="updateTime">Verbinden...</span>
+</div>
+
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Left: chart + orderbook -->
+  <div class="left">
+    <!-- Symbol/timeframe bar -->
+    <div class="symbol-bar">
+      <button class="sym-btn active" onclick="selectSymbol('BTC/USDT',this)">BTC</button>
+      <button class="sym-btn" onclick="selectSymbol('ETH/USDT',this)">ETH</button>
+      <button class="sym-btn" onclick="selectSymbol('SOL/USDT',this)">SOL</button>
+      <div class="tf-sep"></div>
+      <button class="tf-btn active" onclick="selectTF('1m',this)">1m</button>
+      <button class="tf-btn" onclick="selectTF('5m',this)">5m</button>
+      <button class="tf-btn" onclick="selectTF('15m',this)">15m</button>
+      <button class="tf-btn" onclick="selectTF('1h',this)">1h</button>
+      <button class="tf-btn" onclick="selectTF('4h',this)">4h</button>
+      <button class="tf-btn" onclick="selectTF('1d',this)">1d</button>
+      <div style="flex:1"></div>
+      <span class="current-price" id="currentPrice">-</span>
+    </div>
+
+    <!-- Candlestick chart -->
+    <div id="chart"></div>
+
+    <!-- Order book -->
+    <div class="orderbook-section">
+      <div class="section-title">Order Book</div>
+      <div class="orderbook-grid">
+        <div class="ob-side" id="obAsks"></div>
+        <div class="ob-side" id="obBids"></div>
+      </div>
+      <div class="ob-spread" id="obSpread">Spread: -</div>
+    </div>
+  </div>
+
+  <!-- Right sidebar -->
+  <div class="sidebar">
+
+    <!-- Portfolio -->
+    <div class="card">
+      <div class="card-title">Portfolio</div>
+      <div class="portfolio-grid">
+        <div class="pf-item"><div class="label">Totaal</div><div class="val" id="pfTotal">$1,000</div></div>
+        <div class="pf-item"><div class="label">Vrij kapitaal</div><div class="val" id="pfFree">$1,000</div></div>
+        <div class="pf-item"><div class="label">Drawdown</div><div class="val" id="pfDD" style="color:var(--yellow)">0.00%</div></div>
+        <div class="pf-item"><div class="label">Gem. PnL</div><div class="val" id="pfAvgPnl">-</div></div>
+      </div>
+    </div>
+
+    <!-- Open posities -->
+    <div class="card">
+      <div class="card-title">Open Posities</div>
+      <div id="positionsContainer"><div style="color:var(--text2);font-size:11px">Geen open posities</div></div>
+    </div>
+
+    <!-- Regime -->
+    <div class="card">
+      <div class="card-title">Markt Regime</div>
+      <div id="regimeContainer"></div>
+    </div>
+
+    <!-- Sentiment -->
+    <div class="card">
+      <div class="card-title">Sentiment</div>
+      <div id="sentimentContainer">
+        <table class="signal-table">
+          <tr><td>Fear & Greed</td><td><span id="ssFG" style="font-weight:600">-</span></td></tr>
+          <tr><td>Nieuws</td><td><span id="ssNews" style="font-weight:600">-</span></td></tr>
+          <tr><td>Score</td><td><span id="ssScore" style="font-weight:600">-</span></td></tr>
+          <tr><td>Label</td><td><span id="ssLabel" style="font-weight:600">-</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Signalen -->
+    <div class="card">
+      <div class="card-title">Strategie Signalen</div>
+      <div id="signalsContainer"><div style="color:var(--text2);font-size:11px">Wachten op data...</div></div>
+    </div>
+
+  </div>
+
+  <!-- Bottom: trade history -->
+  <div class="bottom-bar">
+    <div class="section-title">Trade Geschiedenis — <span id="tradeCount">0</span> trades</div>
+    <div class="trade-table-wrap">
+      <table class="trade-table">
+        <thead>
+          <tr>
+            <th>Tijd</th>
+            <th>Symbool</th>
+            <th>Type</th>
+            <th>Prijs</th>
+            <th>PnL</th>
+            <th>Reden</th>
+          </tr>
+        </thead>
+        <tbody id="tradeBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────
+let currentSymbol = 'BTC/USDT';
+let currentTF = '1m';
+let chart, candleSeries, volumeSeries;
+let equityChart;
+let tradeMarkers = [];
+let allTrades = [];
+
+// ── Chart initialiseren ────────────────────────────────────────────
+function initChart() {
+  const container = document.getElementById('chart');
+  chart = LightweightCharts.createChart(container, {
+    layout: { background: { color: '#0d1117' }, textColor: '#8b949e' },
+    grid: { vertLines: { color: '#21262d' }, horzLines: { color: '#21262d' } },
+    crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+    rightPriceScale: { borderColor: '#30363d' },
+    timeScale: { borderColor: '#30363d', timeVisible: true, secondsVisible: false },
+    width: container.clientWidth,
+    height: container.clientHeight,
+  });
+
+  candleSeries = chart.addCandlestickSeries({
+    upColor: '#3fb950', downColor: '#f85149',
+    borderUpColor: '#3fb950', borderDownColor: '#f85149',
+    wickUpColor: '#3fb950', wickDownColor: '#f85149',
+  });
+
+  volumeSeries = chart.addHistogramSeries({
+    color: '#58a6ff',
+    priceFormat: { type: 'volume' },
+    priceScaleId: 'vol',
+    scaleMargins: { top: 0.8, bottom: 0 },
+  });
+
+  window.addEventListener('resize', () => {
+    chart.applyOptions({ width: container.clientWidth, height: container.clientHeight });
+  });
+
+  const ro = new ResizeObserver(() => {
+    chart.applyOptions({ width: container.clientWidth, height: container.clientHeight });
+  });
+  ro.observe(container);
+}
+
+// ── Equity mini-chart ──────────────────────────────────────────────
+function initEquityChart() {
+  const ctx = document.getElementById('equityCanvas').getContext('2d');
+  equityChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        data: [], borderColor: '#58a6ff', borderWidth: 1.5,
+        fill: true, backgroundColor: 'rgba(88,166,255,0.1)',
+        pointRadius: 0, tension: 0.3,
+      }]
+    },
+    options: {
+      responsive: false, animation: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: {
+        x: { display: false },
+        y: { display: false },
+      },
+    }
+  });
+}
+
+// ── OHLCV laden ────────────────────────────────────────────────────
+async function loadChart() {
+  try {
+    const sym = encodeURIComponent(currentSymbol);
+    const resp = await fetch(`/api/ohlcv?symbol=${sym}&timeframe=${currentTF}&limit=500`);
+    const candles = await resp.json();
+    if (!candles.length) return;
+
+    candleSeries.setData(candles.map(c => ({
+      time: c.time, open: c.open, high: c.high, low: c.low, close: c.close
+    })));
+    volumeSeries.setData(candles.map(c => ({
+      time: c.time, value: c.volume,
+      color: c.close >= c.open ? 'rgba(63,185,80,0.4)' : 'rgba(248,81,73,0.4)'
+    })));
+
+    // Huidige prijs
+    const last = candles[candles.length - 1];
+    document.getElementById('currentPrice').textContent = '$' + last.close.toLocaleString('nl-NL', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    // Trade markers voor dit symbool
+    addTradeMarkers();
+  } catch(e) { console.error('Chart load fout:', e); }
+}
+
+// ── Trade markers op chart ─────────────────────────────────────────
+function addTradeMarkers() {
+  const symTrades = allTrades.filter(t => t.symbol === currentSymbol);
+  const markers = [];
+  for (const t of symTrades) {
+    if (!t.timestamp || !t.price) continue;
+    const ts = Math.floor(new Date(t.timestamp).getTime() / 1000);
+    const type = t.type || '';
+    if (type === 'buy' || type === 'pyramid') {
+      markers.push({ time: ts, position: 'belowBar', color: '#3fb950', shape: 'arrowUp', text: 'LONG' });
+    } else if (type === 'sell' || type === 'cover') {
+      const pnl = t.pnl_pct ? (t.pnl_pct * 100).toFixed(1) + '%' : '';
+      const color = (t.pnl_pct || 0) >= 0 ? '#3fb950' : '#f85149';
+      markers.push({ time: ts, position: 'aboveBar', color, shape: 'arrowDown', text: pnl });
+    } else if (type === 'short') {
+      markers.push({ time: ts, position: 'aboveBar', color: '#bc8cff', shape: 'arrowDown', text: 'SHORT' });
+    }
+  }
+  markers.sort((a, b) => a.time - b.time);
+  candleSeries.setMarkers(markers);
+}
+
+// ── Order book laden ───────────────────────────────────────────────
+async function loadOrderBook() {
+  try {
+    const sym = encodeURIComponent(currentSymbol);
+    const resp = await fetch(`/api/orderbook?symbol=${sym}&limit=12`);
+    const data = await resp.json();
+
+    const maxVol = Math.max(
+      ...data.bids.map(b => b[1]),
+      ...data.asks.map(a => a[1])
+    );
+
+    // Asks (van laag naar hoog getoond, bovenaan)
+    const asksEl = document.getElementById('obAsks');
+    asksEl.innerHTML = '<div style="font-size:10px;color:var(--text2);padding:3px 12px;display:flex;justify-content:space-between"><span>Prijs (USDT)</span><span>Hoeveelheid</span></div>';
+    [...data.asks].reverse().forEach(([p, q]) => {
+      const pct = (q / maxVol * 100).toFixed(0);
+      asksEl.innerHTML += `<div class="ob-row ask"><span>${parseFloat(p).toLocaleString('nl-NL',{minimumFractionDigits:2})}</span><span>${parseFloat(q).toFixed(4)}</span><div class="ob-bar ask" style="width:${pct}%"></div></div>`;
+    });
+
+    // Spread
+    const bestAsk = parseFloat(data.asks[0][0]);
+    const bestBid = parseFloat(data.bids[0][0]);
+    const spread = ((bestAsk - bestBid) / bestBid * 100).toFixed(3);
+    document.getElementById('obSpread').textContent = `Spread: ${spread}% | Best Bid: ${bestBid.toLocaleString('nl-NL',{minimumFractionDigits:2})} | Best Ask: ${bestAsk.toLocaleString('nl-NL',{minimumFractionDigits:2})}`;
+
+    // Bids
+    const bidsEl = document.getElementById('obBids');
+    bidsEl.innerHTML = '<div style="font-size:10px;color:var(--text2);padding:3px 12px;display:flex;justify-content:space-between"><span>Prijs (USDT)</span><span>Hoeveelheid</span></div>';
+    data.bids.forEach(([p, q]) => {
+      const pct = (q / maxVol * 100).toFixed(0);
+      bidsEl.innerHTML += `<div class="ob-row bid"><span>${parseFloat(p).toLocaleString('nl-NL',{minimumFractionDigits:2})}</span><span>${parseFloat(q).toFixed(4)}</span><div class="ob-bar bid" style="width:${pct}%"></div></div>`;
+    });
+  } catch(e) {}
+}
+
+// ── Bot state laden ────────────────────────────────────────────────
+async function loadState() {
+  try {
+    const resp = await fetch('/api/state');
+    const state = await resp.json();
+
+    // Status dot
+    const dot = document.getElementById('statusDot');
+    dot.style.background = state.running ? 'var(--green)' : 'var(--red)';
+
+    // Portfolio topbar
+    const pf = state.portfolio || {};
+    const total = pf.total_value || 1000;
+    const pnl = pf.pnl_pct || 0;
+    document.getElementById('topPortfolio').textContent = '$' + total.toLocaleString('nl-NL', {minimumFractionDigits:2, maximumFractionDigits:2});
+    const pnlEl = document.getElementById('topPnl');
+    pnlEl.textContent = (pnl >= 0 ? '+' : '') + (pnl * 100).toFixed(2) + '%';
+    pnlEl.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
+
+    document.getElementById('topPositions').textContent = Object.keys(state.positions || {}).length;
+
+    // Portfolio card
+    document.getElementById('pfTotal').textContent = '$' + total.toLocaleString('nl-NL', {minimumFractionDigits:2});
+    document.getElementById('pfFree').textContent = '$' + (pf.free_capital || 0).toLocaleString('nl-NL', {minimumFractionDigits:2});
+    const dd = pf.drawdown || 0;
+    document.getElementById('pfDD').textContent = (dd * 100).toFixed(2) + '%';
+    document.getElementById('pfDD').style.color = dd > 0.1 ? 'var(--red)' : 'var(--yellow)';
+
+    // Samenvatting
+    const sum = state.summary || {};
+    document.getElementById('topWinRate').textContent = sum.win_rate ? (sum.win_rate * 100).toFixed(1) + '%' : '-';
+    document.getElementById('topTrades').textContent = sum.closed_trades || 0;
+    const avgPnl = sum.avg_pnl || 0;
+    const avgEl = document.getElementById('pfAvgPnl');
+    avgEl.textContent = (avgPnl >= 0 ? '+' : '') + (avgPnl * 100).toFixed(2) + '%';
+    avgEl.style.color = avgPnl >= 0 ? 'var(--green)' : 'var(--red)';
+
+    // Posities
+    renderPositions(state.positions || {});
+
+    // Regime
+    renderRegimes(state.regimes || {});
+
+    // Sentiment
+    const sent = state.sentiment || {};
+    document.getElementById('ssFG').textContent = sent.fear_greed !== undefined ? (sent.fear_greed >= 0 ? '+' : '') + sent.fear_greed?.toFixed(2) : '-';
+    document.getElementById('ssNews').textContent = sent.news !== undefined ? (sent.news >= 0 ? '+' : '') + sent.news?.toFixed(2) : '-';
+    document.getElementById('ssScore').textContent = sent.score !== undefined ? (sent.score >= 0 ? '+' : '') + sent.score?.toFixed(2) : '-';
+    document.getElementById('ssLabel').textContent = sent.label || '-';
+
+    // Update time
+    document.getElementById('updateTime').textContent = state.last_update ? 'Bijgewerkt: ' + new Date(state.last_update).toLocaleTimeString('nl-NL') : 'Bot offline';
+
+    // Huidige prijs uit state
+    const prices = state.prices || {};
+    if (prices[currentSymbol]) {
+      document.getElementById('currentPrice').textContent = '$' + prices[currentSymbol].toLocaleString('nl-NL', {minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+  } catch(e) {}
+}
+
+// ── Posities renderen ──────────────────────────────────────────────
+function renderPositions(positions) {
+  const el = document.getElementById('positionsContainer');
+  if (!Object.keys(positions).length) {
+    el.innerHTML = '<div style="color:var(--text2);font-size:11px">Geen open posities</div>';
+    return;
+  }
+  let html = '';
+  for (const [sym, pos] of Object.entries(positions)) {
+    const isLong = pos.direction === 1;
+    const pnlColor = pos.pnl_pct >= 0 ? 'var(--green)' : 'var(--red)';
+    html += `
+      <div class="position-item">
+        <div class="pos-header">
+          <span class="pos-symbol">${sym}</span>
+          <span class="pos-dir ${isLong ? 'long' : 'short'}">${isLong ? 'LONG' : 'SHORT'}</span>
+        </div>
+        <div class="pos-rows">
+          <div class="pos-row"><div class="label">Entry</div><div class="val">$${pos.entry_price.toLocaleString('nl-NL',{maximumFractionDigits:2})}</div></div>
+          <div class="pos-row"><div class="label">Nu</div><div class="val">$${pos.current_price.toLocaleString('nl-NL',{maximumFractionDigits:2})}</div></div>
+          <div class="pos-row"><div class="label">Stop Loss</div><div class="val" style="color:var(--red)">$${pos.stop_loss.toLocaleString('nl-NL',{maximumFractionDigits:2})}</div></div>
+          <div class="pos-row"><div class="label">PnL</div><div class="val" style="color:${pnlColor}">${(pos.pnl_pct * 100).toFixed(2)}%</div></div>
+        </div>
+      </div>`;
+  }
+  el.innerHTML = html;
+}
+
+// ── Regime renderen ────────────────────────────────────────────────
+function renderRegimes(regimes) {
+  const el = document.getElementById('regimeContainer');
+  if (!Object.keys(regimes).length) {
+    el.innerHTML = '<div style="color:var(--text2);font-size:11px">Wachten...</div>';
+    return;
+  }
+  const colors = { bull_trend:'var(--green)', bear_trend:'var(--red)', ranging:'var(--yellow)', high_vol:'var(--purple)', accumulation:'var(--cyan)' };
+  const bgs = { bull_trend:'rgba(63,185,80,0.15)', bear_trend:'rgba(248,81,73,0.15)', ranging:'rgba(210,153,34,0.15)', high_vol:'rgba(188,140,255,0.15)', accumulation:'rgba(57,211,83,0.15)' };
+  let html = '';
+  for (const [sym, reg] of Object.entries(regimes)) {
+    const col = colors[reg.regime] || 'var(--text2)';
+    const bg  = bgs[reg.regime] || 'var(--bg3)';
+    html += `<div style="margin-bottom:8px">
+      <div style="font-weight:600;font-size:12px">${sym}</div>
+      <span class="regime-badge" style="color:${col};background:${bg}">${reg.regime.toUpperCase().replace('_',' ')}</span>
+      <div style="font-size:10px;color:var(--text2);margin-top:4px">${reg.description || ''}</div>
+    </div>`;
+  }
+  el.innerHTML = html;
+}
+
+// ── Trades laden ───────────────────────────────────────────────────
+async function loadTrades() {
+  try {
+    const resp = await fetch('/api/trades?limit=200');
+    allTrades = await resp.json();
+
+    document.getElementById('tradeCount').textContent = allTrades.length;
+
+    // Tabel
+    const tbody = document.getElementById('tradeBody');
+    const recent = [...allTrades].reverse().slice(0, 100);
+    tbody.innerHTML = recent.map(t => {
+      const type = t.type || '';
+      const pnl = t.pnl_pct;
+      const pnlStr = pnl !== undefined ? `<span class="pnl ${pnl >= 0 ? 'pos' : 'neg'}">${(pnl >= 0 ? '+' : '') + (pnl * 100).toFixed(2)}%</span>` : '<span style="color:var(--text2)">-</span>';
+      const badgeClass = ['sell','cover'].includes(type) ? (pnl >= 0 ? 'sell' : 'sell') : type;
+      const time = t.timestamp ? new Date(t.timestamp).toLocaleString('nl-NL', {dateStyle:'short', timeStyle:'short'}) : '-';
+      return `<tr>
+        <td style="color:var(--text2)">${time}</td>
+        <td style="font-weight:600">${t.symbol || '-'}</td>
+        <td><span class="badge ${badgeClass}">${type.toUpperCase()}</span></td>
+        <td>$${t.price ? t.price.toLocaleString('nl-NL',{minimumFractionDigits:2,maximumFractionDigits:4}) : '-'}</td>
+        <td>${pnlStr}</td>
+        <td style="color:var(--text2)">${t.reason || '-'}</td>
+      </tr>`;
+    }).join('');
+
+    // Markers opnieuw zetten
+    addTradeMarkers();
+  } catch(e) {}
+}
+
+// ── Equity curve laden ─────────────────────────────────────────────
+async function loadEquity() {
+  try {
+    const resp = await fetch('/api/equity');
+    const data = await resp.json();
+    if (!data.length) return;
+    const values = data.map(d => d.total_value || d.portfolio_value || 1000);
+    equityChart.data.labels = values.map((_, i) => i);
+    equityChart.data.datasets[0].data = values;
+    const isUp = values[values.length-1] >= values[0];
+    equityChart.data.datasets[0].borderColor = isUp ? '#3fb950' : '#f85149';
+    equityChart.data.datasets[0].backgroundColor = isUp ? 'rgba(63,185,80,0.1)' : 'rgba(248,81,73,0.1)';
+    equityChart.update('none');
+  } catch(e) {}
+}
+
+// ── Stats laden ────────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const resp = await fetch('/api/stats');
+    const stats = await resp.json();
+    document.getElementById('topWinRate').textContent = stats.win_rate ? (stats.win_rate * 100).toFixed(1) + '%' : '-';
+    document.getElementById('topTrades').textContent = stats.closed_trades || 0;
+  } catch(e) {}
+}
+
+// ── Symbool / timeframe wisselen ───────────────────────────────────
+function selectSymbol(sym, btn) {
+  currentSymbol = sym;
+  document.querySelectorAll('.sym-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadChart();
+}
+
+function selectTF(tf, btn) {
+  currentTF = tf;
+  document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  loadChart();
+}
+
+// ── Refresh loop ───────────────────────────────────────────────────
+async function refreshAll() {
+  await Promise.all([loadState(), loadOrderBook()]);
+}
+
+async function refreshSlow() {
+  await Promise.all([loadChart(), loadTrades(), loadEquity(), loadStats()]);
+}
+
+// ── Init ───────────────────────────────────────────────────────────
+initChart();
+initEquityChart();
+loadChart();
+loadTrades();
+loadEquity();
+loadStats();
+loadState();
+loadOrderBook();
+
+// Snel: state + orderbook elke 5s
+setInterval(refreshAll, 5000);
+// Langzaam: chart + trades elke 30s
+setInterval(refreshSlow, 30000);
+</script>
+</body>
+</html>

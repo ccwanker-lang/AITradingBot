@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile bot.py)",
+      "Bash(python -c \"import bot\")",
+      "Bash(/c/Users/alexc/AppData/Local/Programs/Python/Python311/python)",
+      "Bash(mkdir -p models)",
+      "Bash(python bot.py --backtest)",
+      "Bash(timeout 12 python bot.py)",
+      "Bash(pip install *)",
+      "Bash(timeout 8 python dashboard/app.py)",
+      "Bash(python -c ' *)",
+      "PowerShell(Get-Process python | Where-Object {$_.MainWindowTitle -eq ''} | Select-Object Id, CPU, StartTime | Format-Table)"
+    ]
+  }
+}
