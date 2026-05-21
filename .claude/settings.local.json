@@ -10,7 +10,29 @@
       "Bash(pip install *)",
       "Bash(timeout 8 python dashboard/app.py)",
       "Bash(python -c ' *)",
-      "PowerShell(Get-Process python | Where-Object {$_.MainWindowTitle -eq ''} | Select-Object Id, CPU, StartTime | Format-Table)"
+      "PowerShell(Get-Process python | Where-Object {$_.MainWindowTitle -eq ''} | Select-Object Id, CPU, StartTime | Format-Table)",
+      "Bash(venv/bin/python tools/check_report.py)",
+      "Bash(venv/bin/python tools/config_tracker.py *)",
+      "Bash(venv/bin/python -c *)",
+      "Bash(grep *)",
+      "Bash(pgrep *)",
+      "Bash(cat logs/*)",
+      "Bash(ls logs/*)",
+      "Bash(ls *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /home/pi/crypto_bot && venv/bin/python tools/check_report.py 2>&1 | head -80 | python3 -c \"import sys,json; o=sys.stdin.read(); print(json.dumps({'hookSpecificOutput':{'hookEventName':'SessionStart','additionalContext':'=== BOT STATUS (auto-check bij sessiestart) ===\\n'+o}}))\"",
+            "timeout": 30,
+            "statusMessage": "Bot status laden..."
+          }
+        ]
+      }
     ]
   }
 }

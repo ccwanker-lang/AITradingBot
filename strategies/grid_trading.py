@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Grid Trading — verdient geld in zijwaartse markten.
 Koopt automatisch bij dips en verkoopt bij stijgingen binnen een range.
@@ -24,7 +25,6 @@ class GridTradingStrategy:
     def __init__(self, grid_levels: int = 6, lookback: int = 50):
         self.grid_levels = grid_levels
         self.lookback = lookback
-        self._last_buy_level: float | None = None
 
     def signal(self, df: pd.DataFrame) -> GridSignal:
         if len(df) < self.lookback:
@@ -61,15 +61,13 @@ class GridTradingStrategy:
         # Onderin de range = kopen
         if level_idx <= self.grid_levels // 3:
             conf = 0.55 + (1 - level_idx / self.grid_levels) * 0.25
-            self._last_buy_level = nearest
             return GridSignal(1, conf, nearest,
                 f"Grid BUY op niveau {level_idx+1}/{self.grid_levels} @ {nearest:.2f}")
 
-        # Boverin de range = verkopen (als we eerder gekocht hebben)
+        # Boverin de range = verkopen (symmetrisch aan de koopzijde)
         if level_idx >= self.grid_levels * 2 // 3:
-            if self._last_buy_level and nearest > self._last_buy_level * 1.005:
-                conf = 0.55 + (level_idx / self.grid_levels) * 0.25
-                return GridSignal(-1, conf, nearest,
-                    f"Grid SELL op niveau {level_idx+1}/{self.grid_levels} @ {nearest:.2f}")
+            conf = 0.55 + (level_idx / self.grid_levels) * 0.25
+            return GridSignal(-1, conf, nearest,
+                f"Grid SELL op niveau {level_idx+1}/{self.grid_levels} @ {nearest:.2f}")
 
         return GridSignal(0, 0.1, nearest, f"Grid neutraal @ niveau {level_idx+1}")

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(venv/bin/python tools/check_report.py)",
+      "Bash(venv/bin/python tools/config_tracker.py *)",
+      "Bash(venv/bin/python3 tools/check_report.py)",
+      "Bash(venv/bin/python3 tools/config_tracker.py *)",
+      "Bash(systemctl status *)",
+      "Bash(systemctl is-active *)",
+      "Bash(sudo systemctl status *)",
+      "Bash(crontab -l)",
+      "Bash(ss -tlnp)",
+      "Bash(tail -f logs/*)",
+      "Bash(tail -n * logs/*)"
+    ]
+  }
+}

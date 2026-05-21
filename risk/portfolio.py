@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Portfolio manager — spreidt kapitaal over meerdere assets met correlatie-bewaking.
 """

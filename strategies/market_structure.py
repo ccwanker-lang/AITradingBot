@@ -32,7 +32,7 @@ class MarketStructureSignal:
 
 
 class MarketStructureStrategy:
-    def __init__(self, swing_lookback: int = 5, structure_lookback: int = 30):
+    def __init__(self, swing_lookback: int = 5, structure_lookback: int = 150):
         self.swing_lookback = swing_lookback
         self.structure_lookback = structure_lookback
 

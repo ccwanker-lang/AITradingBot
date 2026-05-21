@@ -23,7 +23,7 @@ class VolumeProfileSignal:
 
 
 class VolumeProfileStrategy:
-    def __init__(self, bins: int = 50, lookback: int = 100, value_area_pct: float = 0.70):
+    def __init__(self, bins: int = 50, lookback: int = 500, value_area_pct: float = 0.70):
         self.bins = bins
         self.lookback = lookback
         self.value_area_pct = value_area_pct
@@ -72,7 +72,7 @@ class VolumeProfileStrategy:
             f"POC={poc:.2f} VAH={vah:.2f} VAL={val:.2f}")
 
     def _compute_profile(self, df: pd.DataFrame) -> tuple[float, float, float]:
-        prices = df["close"].values
+        prices = ((df["high"] + df["low"] + df["close"]) / 3).values
         volumes = df["volume"].values
         price_min, price_max = prices.min(), prices.max()
 
@@ -82,10 +82,11 @@ class VolumeProfileStrategy:
         edges = np.linspace(price_min, price_max, self.bins + 1)
         vol_at_price = np.zeros(self.bins)
 
-        for i in range(len(prices)):
-            idx = min(int((prices[i] - price_min) / (price_max - price_min) * self.bins),
-                      self.bins - 1)
-            vol_at_price[idx] += volumes[i]
+        indices = np.clip(
+            ((prices - price_min) / (price_max - price_min) * self.bins).astype(int),
+            0, self.bins - 1,
+        )
+        np.add.at(vol_at_price, indices, volumes)
 
         # POC = midden van bin met meest volume
         poc_idx = vol_at_price.argmax()

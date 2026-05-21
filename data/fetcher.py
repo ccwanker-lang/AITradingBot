@@ -17,7 +17,7 @@ class DataFetcher:
         self._cache_ttl = 50  # seconden
 
     def fetch_ohlcv(self, symbol: str, timeframe: str = "1h", limit: int = 500) -> pd.DataFrame:
-        cache_key = f"{symbol}:{timeframe}"
+        cache_key = f"{symbol}:{timeframe}:{limit}"
         cached_df, cached_at = self._cache.get(cache_key, (None, 0))
         if cached_df is not None and (time.time() - cached_at) < self._cache_ttl:
             return cached_df

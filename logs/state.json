@@ -1,73 +1,642 @@
 {
   "running": true,
-  "cycle": 66,
-  "last_update": "2026-04-26T23:42:23.754311",
+  "cycle": 569,
+  "last_update": "2026-05-21T10:37:44.175603",
   "prices": {
-    "BTC/USDT": 78014.13,
-    "ETH/USDT": 2358.32,
-    "SOL/USDT": 86.41
+    "BTC/USDT": 77928.12,
+    "ETH/USDT": 2137.19,
+    "SOL/USDT": 86.82
   },
   "portfolio": {
-    "total_value": 999.7810123760048,
-    "pnl_pct": -0.00021898762399519001,
-    "drawdown": 0.00021898762399300012,
-    "free_capital": 992.0513374777969,
-    "open_positions": 2,
-    "total_trades": 2,
+    "total_value": 981.265386709368,
+    "pnl_pct": -0.018734613290631957,
+    "drawdown": 0.020137991201258473,
+    "free_capital": 979.1526164652325,
+    "open_positions": 1,
+    "total_trades": 54,
     "longs": 0,
-    "shorts": 2
+    "shorts": 1
   },
   "positions": {
     "ETH/USDT": {
       "direction": -1,
-      "size": 0.01778578865148887,
-      "entry_price": 2364.83,
-      "stop_loss": 2383.0372635726667,
-      "take_profit": 2337.519104641,
-      "current_price": 2358.32,
-      "pnl_pct": 0.002752840584735378
-    },
-    "BTC/USDT": {
-      "direction": -1,
-      "size": 0.0004226316575474957,
-      "entry_price": 78252.31,
-      "stop_loss": 78703.4254750157,
-      "take_profit": 77575.63678747645,
-      "current_price": 78014.13,
-      "pnl_pct": 0.0030437440121575073
+      "size": 0.009099840084925507,
+      "entry_price": 2153.773674,
+      "stop_loss": 2153.773674,
+      "take_profit": 2130.776355747843,
+      "take_profit_2": 2121.8329542053375,
+      "capital_invested": 19.61861462714963,
+      "partial_closed": true,
+      "pyramid_count": 0,
+      "current_price": 2137.19,
+      "pnl_pct": 0.007699822038032754,
+      "pnl_dollar": 0.15090878142053668,
+      "entry_reasons": [
+        {
+          "naam": "SMC",
+          "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+          "bijdrage": -0.0843,
+          "actie": -1
+        },
+        {
+          "naam": "VolumeProfile",
+          "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+          "bijdrage": -0.0596,
+          "actie": -1
+        },
+        {
+          "naam": "Grid",
+          "reden": "Grid SELL op niveau 7/6 @ 2154.42",
+          "bijdrage": -0.0508,
+          "actie": -1
+        },
+        {
+          "naam": "StatArb",
+          "reden": "StatArb SOL/ETH z=1.70: ETH goedkoop",
+          "bijdrage": 0.0488,
+          "actie": 1
+        },
+        {
+          "naam": "Sentiment",
+          "reden": "Fear & Greed + nieuws: -0.27",
+          "bijdrage": -0.041,
+          "actie": -1
+        },
+        {
+          "naam": "RL_Agent",
+          "reden": "Reinforcement Learning (gewicht 10%)",
+          "bijdrage": -0.0375,
+          "actie": -1
+        }
+      ]
     }
   },
   "regimes": {
     "BTC/USDT": {
       "regime": "ranging",
-      "strength": 0.14434190492322618,
-      "description": "Zijwaartse markt — ADX=21"
+      "strength": 0.41487206963403234,
+      "description": "Zijwaartse markt — ADX=15"
     },
     "ETH/USDT": {
-      "regime": "bull_trend",
-      "strength": 0.5265350146646994,
-      "description": "Bullish trend — ADX=26, EMA stack bullish"
+      "regime": "ranging",
+      "strength": 0.3320306014571893,
+      "description": "Zijwaartse markt — ADX=17"
     },
     "SOL/USDT": {
       "regime": "ranging",
-      "strength": 0.465849433975257,
-      "description": "Zijwaartse markt — ADX=13"
+      "strength": 0.13155523949741943,
+      "description": "Zijwaartse markt — ADX=22"
     }
   },
   "sentiment": {
-    "score": -0.22100000000000003,
+    "score": -0.273,
     "signal": -1,
-    "fear_greed": -0.34,
+    "fear_greed": -0.42,
     "news": 0.0,
-    "label": "Angst"
+    "label": "neutraal"
   },
   "summary": {
-    "total_trades": 8,
-    "closed_trades": 2,
-    "win_rate": 0.0,
-    "avg_pnl": -0.0035863044760420185,
-    "best_trade": -0.0024663291941711993,
-    "worst_trade": -0.004706279757912838,
-    "total_pnl": -0.007172608952084037
+    "total_trades": 112,
+    "closed_trades": 56,
+    "full_closed": 44,
+    "win_rate": 0.38636363636363635,
+    "win_rate_with_partials": 0.5178571428571429,
+    "avg_pnl": 0.005093174662125445,
+    "avg_pnl_final": 0.0013888062250852577,
+    "best_trade": 0.03119426333337448,
+    "worst_trade": -0.018375169579503425,
+    "total_pnl": 0.28521778107902496,
+    "regime_stats": {
+      "ranging": {
+        "win_rate": 0.457,
+        "trades": 46,
+        "avg_pnl": 0.0041
+      },
+      "bull_trend": {
+        "win_rate": 1.0,
+        "trades": 2,
+        "avg_pnl": 0.0276
+      },
+      "bear_trend": {
+        "win_rate": 0.714,
+        "trades": 7,
+        "avg_pnl": 0.0056
+      },
+      "accumulation": {
+        "win_rate": 1.0,
+        "trades": 1,
+        "avg_pnl": 0.0001
+      }
+    },
+    "grade_stats": {
+      "?": {
+        "win_rate": 0.464,
+        "trades": 28
+      },
+      "C": {
+        "win_rate": 0.0,
+        "trades": 4
+      },
+      "B": {
+        "win_rate": 0.625,
+        "trades": 16
+      },
+      "A": {
+        "win_rate": 0.714,
+        "trades": 7
+      },
+      "A+": {
+        "win_rate": 1.0,
+        "trades": 1
+      }
+    }
+  },
+  "current_signals": {
+    "BTC/USDT": [
+      {
+        "naam": "EMA_Cross",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Bollinger",
+        "actie": 0,
+        "confidence": 0.2,
+        "bijdrage": 0.0,
+        "reden": "Neutrale zone",
+        "gewicht_mult": 0.67
+      },
+      {
+        "naam": "RSI",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "RSI neutraal: 58",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "MACD",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "Breakout",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "SMC",
+        "actie": -1,
+        "confidence": 0.025569196013156357,
+        "bijdrage": -0.003365042960726062,
+        "reden": "Bearish liquidity sweep boven 78180.01",
+        "gewicht_mult": 1.33
+      },
+      {
+        "naam": "SR",
+        "actie": 1,
+        "confidence": 0.803237922726347,
+        "bijdrage": 0.07378610030717035,
+        "reden": "Prijs bij support 77885.25 (0.1% weg)",
+        "gewicht_mult": 0.91
+      },
+      {
+        "naam": "Ichimoku",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.43
+      },
+      {
+        "naam": "Wyckoff",
+        "actie": 1,
+        "confidence": 0.65,
+        "bijdrage": 0.06318,
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "VolumeProfile",
+        "actie": 1,
+        "confidence": 0.3846049257386777,
+        "bijdrage": 0.03821138361483206,
+        "reden": "Prijs bij VAL 78440.13 — institutionele koopzone",
+        "gewicht_mult": 1.06
+      },
+      {
+        "naam": "MarketStructure",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Grid",
+        "actie": -1,
+        "confidence": 0.7583333333333334,
+        "bijdrage": -0.06170737859243183,
+        "reden": "Grid SELL op niveau 6/6 @ 77857.45",
+        "gewicht_mult": 1.21
+      },
+      {
+        "naam": "RL_Agent",
+        "actie": -1,
+        "confidence": 0.43430086970329285,
+        "bijdrage": -0.04343008697032929,
+        "reden": "Reinforcement Learning (gewicht 10%)"
+      },
+      {
+        "naam": "LSTM",
+        "actie": 1,
+        "confidence": 0.4455145299434662,
+        "bijdrage": 0.0,
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)"
+      },
+      {
+        "naam": "Sentiment",
+        "actie": -1,
+        "confidence": 0.273,
+        "bijdrage": -0.04095,
+        "reden": "Fear & Greed + nieuws: -0.27"
+      },
+      {
+        "naam": "OrderBook",
+        "actie": 0,
+        "confidence": 1.0,
+        "bijdrage": 0.0,
+        "reden": "Bid/Ask onbalans: +0"
+      }
+    ],
+    "ETH/USDT": [
+      {
+        "naam": "EMA_Cross",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Bollinger",
+        "actie": 0,
+        "confidence": 0.2,
+        "bijdrage": 0.0,
+        "reden": "Neutrale zone",
+        "gewicht_mult": 0.67
+      },
+      {
+        "naam": "RSI",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "RSI neutraal: 53",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "MACD",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "Breakout",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "SMC",
+        "actie": 1,
+        "confidence": 0.2098227068537403,
+        "bijdrage": 0.027613790528860194,
+        "reden": "Bullish FVG 2130.37-2139.31 wordt gevuld",
+        "gewicht_mult": 1.33
+      },
+      {
+        "naam": "SR",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "S=2126.89 R=2142.52",
+        "gewicht_mult": 0.91
+      },
+      {
+        "naam": "Ichimoku",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.43
+      },
+      {
+        "naam": "Wyckoff",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "Geen duidelijke Wyckoff fase",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "VolumeProfile",
+        "actie": -1,
+        "confidence": 0.6,
+        "bijdrage": -0.059611379456114964,
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "gewicht_mult": 1.06
+      },
+      {
+        "naam": "MarketStructure",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Grid",
+        "actie": -1,
+        "confidence": 0.7166666666666667,
+        "bijdrage": -0.05831686328515536,
+        "reden": "Grid SELL op niveau 5/6 @ 2136.49",
+        "gewicht_mult": 1.21
+      },
+      {
+        "naam": "RL_Agent",
+        "actie": -1,
+        "confidence": 0.357075572013855,
+        "bijdrage": -0.0357075572013855,
+        "reden": "Reinforcement Learning (gewicht 10%)"
+      },
+      {
+        "naam": "LSTM",
+        "actie": 1,
+        "confidence": 0.4572996497154236,
+        "bijdrage": 0.0,
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)"
+      },
+      {
+        "naam": "Sentiment",
+        "actie": -1,
+        "confidence": 0.273,
+        "bijdrage": -0.04095,
+        "reden": "Fear & Greed + nieuws: -0.27"
+      },
+      {
+        "naam": "OrderBook",
+        "actie": 0,
+        "confidence": 0.2842722744722293,
+        "bijdrage": 0.0,
+        "reden": "Bid/Ask onbalans: +0"
+      },
+      {
+        "naam": "StatArb",
+        "actie": 1,
+        "confidence": 0.55,
+        "bijdrage": 0.0825,
+        "reden": "StatArb SOL/ETH z=1.95: ETH goedkoop"
+      }
+    ],
+    "SOL/USDT": [
+      {
+        "naam": "EMA_Cross",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Bollinger",
+        "actie": 0,
+        "confidence": 0.2,
+        "bijdrage": 0.0,
+        "reden": "Neutrale zone",
+        "gewicht_mult": 0.67
+      },
+      {
+        "naam": "RSI",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "RSI neutraal: 62",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "MACD",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "Breakout",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "SMC",
+        "actie": -1,
+        "confidence": 0.057326301307036406,
+        "bijdrage": -0.007544447880897258,
+        "reden": "Bearish liquidity sweep boven 87.22",
+        "gewicht_mult": 1.33
+      },
+      {
+        "naam": "SR",
+        "actie": -1,
+        "confidence": 0.8483682715196067,
+        "bijdrage": -0.0779318114952756,
+        "reden": "Prijs bij resistance 86.82 (0.0% weg)",
+        "gewicht_mult": 0.91
+      },
+      {
+        "naam": "Ichimoku",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.43
+      },
+      {
+        "naam": "Wyckoff",
+        "actie": 0,
+        "confidence": 0.1,
+        "bijdrage": 0.0,
+        "reden": "Geen duidelijke Wyckoff fase",
+        "gewicht_mult": 1.0
+      },
+      {
+        "naam": "VolumeProfile",
+        "actie": 0,
+        "confidence": 0.2,
+        "bijdrage": 0.0,
+        "reden": "POC=84.24 VAH=91.74 VAL=83.04",
+        "gewicht_mult": 1.06
+      },
+      {
+        "naam": "MarketStructure",
+        "actie": 0,
+        "confidence": 0.0,
+        "bijdrage": 0.0,
+        "reden": "inactief in dit regime",
+        "gewicht_mult": 0.3
+      },
+      {
+        "naam": "Grid",
+        "actie": -1,
+        "confidence": 0.7583333333333334,
+        "bijdrage": -0.06170737859243183,
+        "reden": "Grid SELL op niveau 6/6 @ 86.67",
+        "gewicht_mult": 1.21
+      },
+      {
+        "naam": "RL_Agent",
+        "actie": -1,
+        "confidence": 0.4577011168003082,
+        "bijdrage": -0.045770111680030826,
+        "reden": "Reinforcement Learning (gewicht 10%)"
+      },
+      {
+        "naam": "LSTM",
+        "actie": 1,
+        "confidence": 0.44170841574668884,
+        "bijdrage": 0.0,
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)"
+      },
+      {
+        "naam": "Sentiment",
+        "actie": -1,
+        "confidence": 0.273,
+        "bijdrage": -0.04095,
+        "reden": "Fear & Greed + nieuws: -0.27"
+      },
+      {
+        "naam": "StatArb",
+        "actie": -1,
+        "confidence": 0.55,
+        "bijdrage": -0.0825,
+        "reden": "StatArb SOL/ETH z=1.95: SOL duur"
+      }
+    ]
+  },
+  "no_trade_reasons": {
+    "BTC/USDT": "Score +0.026 vs drempel 0.09 (ranging — strikte drempel)",
+    "ETH/USDT": "Short geblokkeerd — prijs 2136.99 binnen 1.5% van lokaal dieptepunt 2122.59",
+    "SOL/USDT": "SL cooldown — nog 3.5u wachten"
+  },
+  "strategy_stats": [
+    {
+      "naam": "EMA_Cross",
+      "base_weight": 0.11,
+      "gewicht_mult": 0.3,
+      "accuracy": 0.333,
+      "samples": 9
+    },
+    {
+      "naam": "Bollinger",
+      "base_weight": 0.09,
+      "gewicht_mult": 0.67,
+      "accuracy": 0.444,
+      "samples": 9
+    },
+    {
+      "naam": "RSI",
+      "base_weight": 0.09,
+      "gewicht_mult": 1.0,
+      "accuracy": null,
+      "samples": 0
+    },
+    {
+      "naam": "MACD",
+      "base_weight": 0.08,
+      "gewicht_mult": 1.0,
+      "accuracy": null,
+      "samples": 0
+    },
+    {
+      "naam": "Breakout",
+      "base_weight": 0.08,
+      "gewicht_mult": 1.0,
+      "accuracy": null,
+      "samples": 0
+    },
+    {
+      "naam": "SMC",
+      "base_weight": 0.11,
+      "gewicht_mult": 1.33,
+      "accuracy": 0.538,
+      "samples": 13
+    },
+    {
+      "naam": "SR",
+      "base_weight": 0.08,
+      "gewicht_mult": 0.91,
+      "accuracy": 0.462,
+      "samples": 13
+    },
+    {
+      "naam": "Ichimoku",
+      "base_weight": 0.07,
+      "gewicht_mult": 0.43,
+      "accuracy": 0.4,
+      "samples": 15
+    },
+    {
+      "naam": "Wyckoff",
+      "base_weight": 0.09,
+      "gewicht_mult": 1.0,
+      "accuracy": 0.0,
+      "samples": 2
+    },
+    {
+      "naam": "VolumeProfile",
+      "base_weight": 0.08,
+      "gewicht_mult": 1.06,
+      "accuracy": 0.462,
+      "samples": 13
+    },
+    {
+      "naam": "MarketStructure",
+      "base_weight": 0.07,
+      "gewicht_mult": 0.3,
+      "accuracy": 0.333,
+      "samples": 12
+    },
+    {
+      "naam": "Grid",
+      "base_weight": 0.05,
+      "gewicht_mult": 1.21,
+      "accuracy": 0.5,
+      "samples": 14
+    }
+  ],
+  "profile": "balanced",
+  "meta": {
+    "throttle": 0.25,
+    "reason": "WR5d=46%<48% | streak=-4",
+    "win_rate_5d": 0.462,
+    "streak": -4,
+    "session": "europees",
+    "is_weekend": false,
+    "hour_multiplier": 1.0
   }
 }

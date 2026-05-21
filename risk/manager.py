@@ -31,7 +31,7 @@ class RiskManager:
         price: float,
         atr: float,
         confidence: float,
-        win_rate: float = 0.55,
+        win_rate: float = 0.35,
         avg_win_r: float = 2.0,   # Gemiddelde win in R veelvouden
         avg_loss_r: float = 1.0,  # Gemiddelde loss in R veelvouden
     ) -> float:

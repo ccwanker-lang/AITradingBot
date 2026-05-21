@@ -17,7 +17,7 @@ class SRSignal:
 
 
 class SupportResistanceStrategy:
-    def __init__(self, lookback: int = 100, zone_pct: float = 0.005, min_touches: int = 2):
+    def __init__(self, lookback: int = 500, zone_pct: float = 0.005, min_touches: int = 3):
         self.lookback = lookback
         self.zone_pct = zone_pct          # Levels binnen 0.5% worden samengevoegd
         self.min_touches = min_touches    # Minimaal 2 aanrakingen voor een geldig level

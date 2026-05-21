@@ -1,0 +1,31 @@
+2026-05-07 21:56:12,354 | INFO | Adaptieve gewichten hersteld — 34 samples geladen
+2026-05-07 21:56:12,362 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-07 21:56:12,363 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-07 21:56:12,371 | INFO | Equity curve hersteld — 1440 punten
+2026-05-07 21:56:12,373 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+LSTM trainen...
+2026-05-07 21:56:12,660 | INFO | LSTM hertraining gestart...
+2026-05-07 21:56:20,129 | INFO | LSTM data geladen: BTC/USDT (1952 kaarsen)
+2026-05-07 21:56:22,520 | INFO | LSTM data geladen: ETH/USDT (1952 kaarsen)
+2026-05-07 21:56:25,219 | INFO | LSTM data geladen: SOL/USDT (1952 kaarsen)
+LSTM [░░░░░░░░░░░░░░░░░░░░]   4.0% epoch   1/25 | loss=1.0977 | val_acc=33.1%
+LSTM [████░░░░░░░░░░░░░░░░]  20.0% epoch   5/25 | loss=1.0849 | val_acc=35.6%
+LSTM [████████░░░░░░░░░░░░]  40.0% epoch  10/25 | loss=1.0725 | val_acc=32.4%
+LSTM [████████████░░░░░░░░]  60.0% epoch  15/25 | loss=1.0629 | val_acc=31.6%
+LSTM [████████████████░░░░]  80.0% epoch  20/25 | loss=1.0540 | val_acc=31.0%
+LSTM [████████████████████] 100.0% epoch  25/25 | loss=1.0499 | val_acc=30.2%
+2026-05-07 22:37:50,186 | INFO | LSTM hertraining klaar — validatie accuraatheid: 35.6% (5856 samples, 3 symbolen)
+LSTM klaar - accuraatheid: 35.6%
+RL model trainen...
+2026-05-07 22:37:50,206 | INFO | RL hertraining gestart...
+2026-05-07 22:37:57,632 | INFO | Bestaand RL model geladen voor hertraining
+2026-05-08 00:50:54,520 | INFO | RL model opgeslagen naar models/crypto_ppo
+Training klaar!
+Training klaar: Fri May  8 12:50:57 AM CEST 2026

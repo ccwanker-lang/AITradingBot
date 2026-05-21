@@ -1,0 +1,22 @@
+{
+  "last_sl_hit": {
+    "ETH/USDT": [
+      1779287538.3785887,
+      -1
+    ],
+    "BTC/USDT": [
+      1778114668.8044813,
+      1
+    ],
+    "SOL/USDT": [
+      1779350924.9649358,
+      -1
+    ]
+  },
+  "circuit_breaker_until": 0.0,
+  "daily_start_value": 981.755001403534,
+  "last_daily_reset": 21,
+  "daily_sl_count": 2,
+  "daily_sl_pause_until": 0.0,
+  "saved_at": "2026-05-21T10:37:44.239822"
+}

@@ -1,6 +1,6 @@
 """
 Telegram bot — trade alerts + interactieve commando's.
-Commando's: /bal /stats /posities /stop /help
+Commando's: /bal /stats /posities /log /regime /health /signalen /stop /help
 """
 import time
 import threading
@@ -33,8 +33,38 @@ class TelegramBot:
         if not self.enabled:
             return
         self._running = True
+        self._register_telegram_commands()
         t = threading.Thread(target=self._poll_loop, daemon=True)
         t.start()
+
+    def _register_telegram_commands(self):
+        commands = [
+            {"command": "bal",      "description": "Portfolio waarde, PnL, drawdown"},
+            {"command": "stats",    "description": "Win rate, best/slechtste trade"},
+            {"command": "posities", "description": "Alle open posities + SL/TP"},
+            {"command": "trades",   "description": "Laatste 8 gesloten trades"},
+            {"command": "rolling",  "description": "Rolling WR laatste 10/20 trades"},
+            {"command": "equity",   "description": "Equity curve grafiek"},
+            {"command": "regime",   "description": "Marktregime per munt (bull/bear/ranging)"},
+            {"command": "signalen", "description": "Laatste signaalscores per strategie"},
+            {"command": "check",    "description": "Volledige bot diagnose"},
+            {"command": "status",   "description": "Bot status, circuit breaker, pauze staat"},
+            {"command": "config",   "description": "Huidige parameters (MIN_CONF, ATR, RL...)"},
+            {"command": "health",   "description": "Pi CPU temp, RAM, schijfruimte"},
+            {"command": "log",      "description": "Laatste 5 foutmeldingen"},
+            {"command": "pauze",    "description": "Nieuwe entries pauzeren"},
+            {"command": "hervat",   "description": "Trading hervatten na pauze"},
+            {"command": "stop",     "description": "Bot veilig stoppen"},
+            {"command": "help",     "description": "Overzicht van alle commando's"},
+        ]
+        try:
+            requests.post(
+                f"{self.base_url}/setMyCommands",
+                json={"commands": commands},
+                timeout=10,
+            )
+        except Exception:
+            pass
 
     def stop_polling(self):
         self._running = False
@@ -123,11 +153,50 @@ class TelegramBot:
         lines.append(f"<i>{datetime.now().strftime('%H:%M:%S')}</i>")
         self.send("\n".join(lines))
 
-    def anomaly_alert(self, symbol: str, anomaly_type: str, details: str):
+    def anomaly_alert(self, symbol: str, anomaly_type, details: str):
+        type_str = anomaly_type.value if hasattr(anomaly_type, "value") else str(anomaly_type)
         self.send(
             f"⚠️ <b>ANOMALIE — {symbol}</b>\n"
-            f"Type: <b>{anomaly_type}</b>\n"
+            f"Type: <b>{type_str}</b>\n"
             f"{details}"
+        )
+
+    def drawdown_alert(self, drawdown_pct: float, portfolio_value: float):
+        self.send(
+            f"🔴 <b>Drawdown waarschuwing</b>\n\n"
+            f"Huidig drawdown: <b>{drawdown_pct:.1%}</b>\n"
+            f"Portfolio: <b>${portfolio_value:,.2f}</b>\n\n"
+            f"<i>Controleer bot status via /bal en /posities</i>"
+        )
+
+    def inactivity_alert(self, hours: float, reasons: dict = None):
+        lines = [
+            f"😴 <b>Bot handelt niet</b>\n",
+            f"Laatste trade: <b>{hours:.0f} uur geleden</b>\n",
+        ]
+        if reasons:
+            lines.append("<b>Waarom geen trades:</b>")
+            for sym, reason in reasons.items():
+                short_sym = sym.split("/")[0]
+                lines.append(f"• <b>{short_sym}</b> — {reason}")
+        else:
+            lines.append("<i>Stuur /signalen voor actuele scores</i>")
+        lines.append(f"\n<i>{datetime.now().strftime('%H:%M:%S')}</i>")
+        self.send("\n".join(lines))
+
+    def heartbeat(self, status: dict):
+        pnl = status.get("pnl_pct", 0)
+        sign = "+" if pnl >= 0 else ""
+        dd = status.get("drawdown", 0)
+        regime_str = status.get("regime", "onbekend")
+        last_trade = status.get("last_trade_hours", 0)
+        self.send(
+            f"💓 <b>Bot leeft</b> — {datetime.now().strftime('%H:%M')}\n\n"
+            f"Portfolio: <b>${status.get('total_value', 0):,.2f}</b>\n"
+            f"PnL: <b>{sign}{pnl:.2%}</b>  |  DD: {dd:.1%}\n"
+            f"Regime: <b>{regime_str}</b>\n"
+            f"Laatste trade: {last_trade:.0f}u geleden\n"
+            f"Open posities: {status.get('open_positions', 0)}"
         )
 
     def error_alert(self, error: str):
@@ -196,9 +265,29 @@ class TelegramBot:
     def _cmd_help(self) -> str:
         return (
             "🤖 <b>Monster Bot commando's</b>\n\n"
-            "/bal — Portfolio waarde &amp; PnL\n"
-            "/stats — Trade statistieken\n"
-            "/posities — Open posities\n"
+            "<b>📊 Portfolio</b>\n"
+            "/bal — Portfolio waarde, PnL, drawdown\n"
+            "/stats — Win rate, best/slechtste trade\n"
+            "/posities — Alle open posities + SL/TP\n"
+            "/trades — Laatste 8 gesloten trades\n"
+            "/rolling — Rolling WR laatste 10/20 trades\n"
+            "/equity — Equity curve grafiek\n\n"
+            "<b>🔍 Analyse</b>\n"
+            "/regime — Marktregime per munt (bull/bear/ranging)\n"
+            "/signalen — Laatste signaalscores per strategie\n"
+            "/check — Volledige bot diagnose (zoals Claude check)\n\n"
+            "<b>🖥 Systeem</b>\n"
+            "/status — Bot status, circuit breaker, pauze staat\n"
+            "/config — Huidige parameters (MIN_CONF, ATR, RL...)\n"
+            "/health — Pi CPU temp, RAM, schijfruimte\n"
+            "/log — Laatste 5 foutmeldingen\n\n"
+            "<b>⚙️ Beheer</b>\n"
+            "/pauze — Nieuwe entries pauzeren\n"
+            "/hervat — Trading hervatten na pauze\n"
             "/stop — Bot veilig stoppen\n"
-            "/help — Dit overzicht"
+            "/help — Dit overzicht\n\n"
+            "<i>Automatische alerts:\n"
+            "💓 Heartbeat elke 2 uur\n"
+            "🔴 Drawdown &gt; 8% waarschuwing\n"
+            "😴 Geen trade in 12+ uur melding</i>"
         )

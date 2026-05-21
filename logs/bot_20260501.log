@@ -1,0 +1,2196 @@
+2026-05-01 14:13:41,486 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 14:13:41,487 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 14:13:41,742 | INFO | LSTM hertraining gestart...
+2026-05-01 15:02:23,576 | INFO | LSTM hertraining klaar — validatie accuraatheid: 39.7%
+2026-05-01 15:02:23,597 | INFO | RL hertraining gestart...
+2026-05-01 15:02:31,553 | INFO | Bestaand RL model geladen voor hertraining
+2026-05-01 17:17:58,909 | INFO | RL model opgeslagen naar models/crypto_ppo
+2026-05-01 20:42:37,520 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 20:42:37,521 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 20:42:44,389 | INFO | TRADE | BTC/USDT | COVER @ 78442.0000 | PnL: -1.59%
+2026-05-01 20:42:52,364 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:43:58,040 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:45:03,822 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:46:10,108 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:47:14,826 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:48:31,787 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 20:48:31,788 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 20:48:46,530 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:49:53,248 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:50:58,579 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:52:03,594 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:53:08,065 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:54:15,497 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:55:21,876 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:56:26,705 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:57:31,599 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:58:36,353 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 20:59:44,325 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:00:50,073 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:01:55,923 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:03:01,192 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:04:06,042 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:05:09,700 | INFO | TRADE | BTC/USDT | BUY @ 78473.2900 | PnL: +0.00%
+2026-05-01 21:05:13,848 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:06:20,360 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:07:25,249 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:08:29,606 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:09:34,798 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:10:30,854 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 21:10:30,860 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 21:10:46,915 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:11:54,066 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:13:00,710 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:14:07,094 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:15:13,220 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:16:21,716 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:17:29,239 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:18:35,164 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:19:35,829 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 21:19:35,835 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 21:19:52,603 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:21:00,796 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:22:07,878 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:23:14,012 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:24:20,857 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:25:28,759 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:26:36,119 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:27:41,969 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:28:48,269 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:29:54,064 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:31:02,614 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:32:09,472 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:33:16,071 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:34:22,047 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:35:28,075 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:36:36,412 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:37:43,368 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:38:48,913 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:39:54,998 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:41:01,059 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:42:09,919 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:43:17,653 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:44:23,845 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:45:29,667 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:46:35,733 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:47:44,220 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:48:50,952 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:49:56,554 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:51:02,897 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:52:08,769 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:53:18,580 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:54:25,313 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:55:31,099 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:56:37,166 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:57:42,989 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:58:50,955 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 21:59:59,058 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:01:05,680 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:02:20,617 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:03:26,541 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:04:35,287 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:05:53,666 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:07:13,704 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:08:19,591 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:09:25,937 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:10:34,895 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:11:12,439 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 22:11:12,439 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 22:11:12,443 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 22:11:12,443 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+2026-05-01 22:11:25,383 | INFO | TRADE | ETH/USDT | COVER @ 2303.9500 | PnL: -0.51%
+2026-05-01 22:11:25,383 | INFO | TRADE | ETH/USDT | COVER @ 2303.9500 | PnL: -0.51%
+REGIME-EXIT ETH/USDT @ 2,303.9500 | bull_trend | PnL: -0.51%
+2026-05-01 22:11:28,396 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:11:28,396 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:11:28,403 | INFO | TRADE | SOL/USDT | COVER @ 83.8400 | PnL: +0.38%
+2026-05-01 22:11:28,403 | INFO | TRADE | SOL/USDT | COVER @ 83.8400 | PnL: +0.38%
+REGIME-EXIT SOL/USDT @ 83.8400 | accumulation | PnL: +0.38%
+───────────────────────────── Cyclus #1 — 22:11:30 ─────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 95% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:11:55,503 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 22:11:55,503 | INFO | Auto-hertraining gepland elke 24 uur
+2026-05-01 22:11:55,507 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-01 22:11:55,507 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+2026-05-01 22:12:16,172 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:12:16,172 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #1 — 22:12:17 ─────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 95% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:13:24,298 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:13:24,298 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #2 — 22:13:24 ─────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 95% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:14:30,568 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:14:30,568 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #3 — 22:14:30 ─────────────────────────────
+Portfolio: $993.47  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 95% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:15:37,752 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:15:37,752 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #4 — 22:15:38 ─────────────────────────────
+Portfolio: $993.47  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 95% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:16:44,443 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:16:44,443 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #5 — 22:16:44 ─────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 94% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:17:52,500 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:17:52,500 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #6 — 22:17:53 ─────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 94% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 69% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:18:59,277 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:18:59,277 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #7 — 22:18:59 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 93% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 68% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:20:05,982 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:20:05,982 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #8 — 22:20:06 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 93% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 68% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:21:12,405 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:21:12,405 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #9 — 22:21:12 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 93% | Bullish trend — ADX=47, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 68% | Bullish trend — ADX=34, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:22:18,097 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:22:18,097 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #10 — 22:22:18 ─────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:23:26,152 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:23:26,152 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #11 — 22:23:27 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:24:33,490 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:24:33,490 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #12 — 22:24:33 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:25:39,470 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:25:39,470 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #13 — 22:25:39 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:26:45,469 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:26:45,469 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #14 — 22:26:45 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:27:51,491 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:27:51,491 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #15 — 22:27:51 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:29:00,117 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:29:00,117 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #16 — 22:29:01 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:30:08,679 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:30:08,679 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #17 — 22:30:08 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:31:14,725 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:31:14,725 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #18 — 22:31:14 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:32:20,524 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:32:20,524 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #19 — 22:32:20 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:33:26,070 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:33:26,070 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #20 — 22:33:26 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 51% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:34:35,971 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:34:35,971 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #21 — 22:34:37 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 67% | Bullish trend — ADX=33, EMA stack 
+bullish
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:35:43,817 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:35:43,817 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #22 — 22:35:44 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:36:50,079 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:36:50,079 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #23 — 22:36:50 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:37:56,098 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:37:56,098 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #24 — 22:37:56 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: accumulation | Kracht: 50% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-01 22:39:02,169 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:39:02,169 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #25 — 22:39:02 ─────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -34% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:40:10,240 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:40:10,240 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #26 — 22:40:11 ─────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 92% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -33% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+
+2026-05-01 22:41:17,919 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:41:17,919 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #27 — 22:41:18 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -32% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:42:24,013 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:42:24,013 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #28 — 22:42:24 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=46, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:43:30,053 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:43:30,053 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #29 — 22:43:30 ─────────────────────────────
+Portfolio: $993.32  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:44:35,875 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:44:35,875 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #30 — 22:44:36 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:45:46,095 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:45:46,095 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #31 — 22:45:47 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:46:53,604 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:46:53,604 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #32 — 22:46:53 ─────────────────────────────
+Portfolio: $993.33  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:47:59,403 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:47:59,403 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #33 — 22:47:59 ─────────────────────────────
+Portfolio: $993.33  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:49:05,045 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:49:05,045 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #34 — 22:49:05 ─────────────────────────────
+Portfolio: $993.33  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:50:11,233 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:50:11,233 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #35 — 22:50:11 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:51:20,195 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:51:20,195 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #36 — 22:51:21 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 91% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -31% | Zijwaartse markt — ADX=33
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:52:26,857 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:52:26,857 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #37 — 22:52:27 ─────────────────────────────
+Portfolio: $993.25  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 90% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -29% | Zijwaartse markt — ADX=32
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:53:32,490 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:53:32,490 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #38 — 22:53:32 ─────────────────────────────
+Portfolio: $993.20  PnL: -0.68%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:54:38,522 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:54:38,522 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #39 — 22:54:38 ─────────────────────────────
+Portfolio: $993.23  PnL: -0.68%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:55:45,205 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:55:45,205 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #40 — 22:55:45 ─────────────────────────────
+Portfolio: $993.26  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:56:53,637 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:56:53,637 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #41 — 22:56:54 ─────────────────────────────
+Portfolio: $993.25  PnL: -0.68%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -5% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:58:00,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:58:00,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #42 — 22:58:01 ─────────────────────────────
+Portfolio: $993.25  PnL: -0.68%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+
+2026-05-01 22:59:06,712 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 22:59:06,712 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #43 — 22:59:06 ─────────────────────────────
+Portfolio: $993.26  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 89% | Bullish trend — ADX=45, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -25% | Zijwaartse markt — ADX=31
+[SOL/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+
+2026-05-01 23:00:12,998 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:00:12,998 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #44 — 23:00:13 ─────────────────────────────
+Portfolio: $993.26  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:01:19,549 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:01:19,549 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #45 — 23:01:19 ─────────────────────────────
+Portfolio: $993.26  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:02:42,135 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:02:42,135 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #46 — 23:02:43 ─────────────────────────────
+Portfolio: $993.29  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:03:49,787 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:03:49,787 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #47 — 23:03:49 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:04:56,272 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:04:56,272 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #48 — 23:04:56 ─────────────────────────────
+Portfolio: $993.28  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:06:03,215 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:06:03,215 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #49 — 23:06:03 ─────────────────────────────
+Portfolio: $993.28  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:07:09,313 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:07:09,313 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #50 — 23:07:09 ─────────────────────────────
+Portfolio: $993.28  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:08:18,434 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:08:18,434 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #51 — 23:08:19 ─────────────────────────────
+Portfolio: $993.27  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:09:26,081 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:09:26,081 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #52 — 23:09:26 ─────────────────────────────
+Portfolio: $993.29  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:10:32,100 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:10:32,100 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #53 — 23:10:32 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:11:37,925 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:11:37,925 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #54 — 23:11:38 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:12:44,271 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:12:44,271 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #55 — 23:12:44 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:13:52,898 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:13:52,898 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #56 — 23:13:54 ─────────────────────────────
+Portfolio: $993.29  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:15:02,114 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:15:02,114 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #57 — 23:15:02 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:16:08,961 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:16:08,961 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #58 — 23:16:09 ─────────────────────────────
+Portfolio: $993.28  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:17:15,615 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:17:15,615 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #59 — 23:17:15 ─────────────────────────────
+Portfolio: $993.29  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:18:22,636 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:18:22,636 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #60 — 23:18:22 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:19:33,424 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:19:33,424 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #61 — 23:19:34 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:20:40,391 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:20:40,391 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #62 — 23:20:40 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:21:46,566 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:21:46,566 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #63 — 23:21:46 ─────────────────────────────
+Portfolio: $993.31  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:22:53,046 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:22:53,046 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #64 — 23:22:53 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:23:58,645 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:23:58,645 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #65 — 23:23:58 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:25:07,769 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:25:07,769 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #66 — 23:25:09 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:26:15,492 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:26:15,492 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #67 — 23:26:15 ─────────────────────────────
+Portfolio: $993.30  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:27:21,635 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:27:21,635 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #68 — 23:27:21 ─────────────────────────────
+Portfolio: $993.32  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:28:27,205 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:28:27,205 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #69 — 23:28:27 ─────────────────────────────
+Portfolio: $993.35  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:29:33,802 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:29:33,802 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #70 — 23:29:33 ─────────────────────────────
+Portfolio: $993.32  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:30:42,562 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:30:42,562 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #71 — 23:30:43 ─────────────────────────────
+Portfolio: $993.33  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:31:50,012 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:31:50,012 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #72 — 23:31:50 ─────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:32:55,633 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:32:55,633 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #73 — 23:32:55 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:34:01,904 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:34:01,904 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #74 — 23:34:02 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:35:08,627 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:35:08,627 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #75 — 23:35:08 ─────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:36:16,956 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:36:16,956 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #76 — 23:36:18 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:37:24,588 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:37:24,588 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #77 — 23:37:24 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:38:30,766 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:38:30,766 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #78 — 23:38:30 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:39:36,582 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:39:36,582 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #79 — 23:39:36 ─────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:40:42,072 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:40:42,072 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #80 — 23:40:42 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:41:50,612 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:41:50,612 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #81 — 23:41:51 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:42:57,224 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:42:57,224 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #82 — 23:42:57 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:44:02,975 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:44:02,975 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #83 — 23:44:03 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:45:09,430 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:45:09,430 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #84 — 23:45:09 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:46:15,407 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:46:15,407 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #85 — 23:46:15 ─────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:47:23,494 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:47:23,494 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #86 — 23:47:24 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:48:30,400 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:48:30,400 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #87 — 23:48:30 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:49:36,404 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:49:36,404 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #88 — 23:49:36 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:50:42,833 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:50:42,833 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #89 — 23:50:43 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:51:48,595 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:51:48,595 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #90 — 23:51:48 ─────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:52:57,886 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:52:57,886 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #91 — 23:52:59 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:54:04,751 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:54:04,751 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #92 — 23:54:04 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:55:10,831 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:55:10,831 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #93 — 23:55:11 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:56:16,777 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:56:16,777 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #94 — 23:56:16 ─────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:57:22,756 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:57:22,756 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #95 — 23:57:22 ─────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:58:30,639 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:58:30,639 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #96 — 23:58:31 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-01 23:59:37,337 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-01 23:59:37,337 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #97 — 23:59:37 ─────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 87% | Bullish trend — ADX=43, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -17% | Zijwaartse markt — ADX=29
+[SOL/USDT] Regime: ranging | Kracht: 1% | Zijwaartse markt — ADX=25
+
+2026-05-02 00:00:42,960 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:00:42,960 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #98 — 00:00:43 ─────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:01:48,942 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:01:48,942 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #99 — 00:01:49 ─────────────────────────────
+Portfolio: $993.45  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:02:54,740 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:02:54,740 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #100 — 00:02:54 ────────────────────────────
+Portfolio: $993.45  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:04:06,077 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:04:06,077 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #101 — 00:04:07 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:05:12,860 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:05:12,860 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #102 — 00:05:13 ────────────────────────────
+Portfolio: $993.45  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:06:18,641 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:06:18,641 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #103 — 00:06:18 ────────────────────────────
+Portfolio: $993.45  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -10% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:07:24,506 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:07:24,506 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #104 — 00:07:24 ────────────────────────────
+Portfolio: $993.47  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:08:30,229 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:08:30,229 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #105 — 00:08:30 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:09:38,947 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:09:38,947 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #106 — 00:09:40 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:10:46,288 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:10:46,288 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #107 — 00:10:46 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:11:51,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:11:51,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #108 — 00:11:52 ────────────────────────────
+Portfolio: $993.47  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:12:58,082 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:12:58,082 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #109 — 00:12:58 ────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:14:03,880 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:14:03,880 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #110 — 00:14:04 ────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 84% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:15:12,216 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:15:12,216 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #111 — 00:15:13 ────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:16:19,378 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:16:19,378 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #112 — 00:16:19 ────────────────────────────
+Portfolio: $993.49  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:17:24,921 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:17:24,921 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #113 — 00:17:25 ────────────────────────────
+Portfolio: $993.48  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:18:31,189 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:18:31,189 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #114 — 00:18:31 ────────────────────────────
+Portfolio: $993.49  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:19:36,765 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:19:36,765 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #115 — 00:19:36 ────────────────────────────
+Portfolio: $993.49  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -11% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 6% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:20:44,583 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:20:44,583 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #116 — 00:20:45 ────────────────────────────
+Portfolio: $993.52  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 7% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:21:51,781 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:21:51,781 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #117 — 00:21:51 ────────────────────────────
+Portfolio: $993.53  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 7% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:22:57,335 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:22:57,335 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #118 — 00:22:57 ────────────────────────────
+Portfolio: $993.53  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 7% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:24:03,350 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:24:03,350 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #119 — 00:24:03 ────────────────────────────
+Portfolio: $993.53  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 7% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:25:08,905 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:25:08,905 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #120 — 00:25:09 ────────────────────────────
+Portfolio: $993.54  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:26:19,521 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:26:19,521 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #121 — 00:26:20 ────────────────────────────
+Portfolio: $993.53  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:27:26,249 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:27:26,249 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #122 — 00:27:26 ────────────────────────────
+Portfolio: $993.53  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: bull_trend | Kracht: 56% | Bullish trend — ADX=28, EMA stack 
+bullish
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:28:31,978 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:28:31,978 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #123 — 00:28:32 ────────────────────────────
+Portfolio: $993.51  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:29:37,579 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:29:37,579 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #124 — 00:29:37 ────────────────────────────
+Portfolio: $993.50  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:30:43,120 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:30:43,120 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #125 — 00:30:43 ────────────────────────────
+Portfolio: $993.51  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:31:51,054 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:31:51,054 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #126 — 00:31:52 ────────────────────────────
+Portfolio: $993.50  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:32:57,734 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:32:57,734 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #127 — 00:32:57 ────────────────────────────
+Portfolio: $993.50  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:34:04,002 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:34:04,002 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #128 — 00:34:04 ────────────────────────────
+Portfolio: $993.49  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:35:09,615 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:35:09,615 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #129 — 00:35:09 ────────────────────────────
+Portfolio: $993.47  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:36:15,466 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:36:15,466 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #130 — 00:36:15 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:37:24,069 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:37:24,069 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #131 — 00:37:25 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:38:30,881 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:38:30,881 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #132 — 00:38:31 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:39:36,620 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:39:36,620 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #133 — 00:39:36 ────────────────────────────
+Portfolio: $993.45  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:40:42,386 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:40:42,386 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #134 — 00:40:42 ────────────────────────────
+Portfolio: $993.46  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:41:48,664 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:41:48,664 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #135 — 00:41:48 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:42:56,489 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:42:56,489 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #136 — 00:42:57 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:44:03,895 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:44:03,895 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #137 — 00:44:04 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:45:09,519 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:45:09,519 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #138 — 00:45:09 ────────────────────────────
+Portfolio: $993.45  PnL: -0.65%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:46:15,247 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:46:15,247 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #139 — 00:46:15 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:47:21,060 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:47:21,060 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #140 — 00:47:21 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:48:29,280 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:48:29,280 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #141 — 00:48:30 ────────────────────────────
+Portfolio: $993.44  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:49:37,136 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:49:37,136 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #142 — 00:49:37 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:50:42,953 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:50:42,953 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #143 — 00:50:43 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:51:48,868 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:51:48,868 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #144 — 00:51:49 ────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:52:54,668 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:52:54,668 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #145 — 00:52:54 ────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:54:02,517 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:54:02,517 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #146 — 00:54:03 ────────────────────────────
+Portfolio: $993.42  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:55:09,467 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:55:09,467 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #147 — 00:55:09 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:56:15,711 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:56:15,711 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #148 — 00:56:15 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:57:21,533 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:57:21,533 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #149 — 00:57:21 ────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:58:27,112 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:58:27,112 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #150 — 00:58:27 ────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 00:59:37,376 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 00:59:37,376 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #151 — 00:59:38 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 85% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -12% | Zijwaartse markt — ADX=28
+[SOL/USDT] Regime: ranging | Kracht: 8% | Zijwaartse markt — ADX=23
+
+2026-05-02 01:00:44,108 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:00:44,108 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #152 — 01:00:44 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:01:49,680 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:01:49,680 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #153 — 01:01:49 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:02:55,330 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:02:55,330 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #154 — 01:02:55 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:04:01,351 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:04:01,351 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #155 — 01:04:01 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:05:09,320 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:05:09,320 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #156 — 01:05:10 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:06:16,091 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:06:16,091 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #157 — 01:06:16 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:07:22,195 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:07:22,195 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #158 — 01:07:22 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:08:27,768 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:08:27,768 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #159 — 01:08:27 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:09:33,331 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:09:33,331 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #160 — 01:09:33 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:10:41,333 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:10:41,333 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #161 — 01:10:42 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:11:48,201 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:11:48,201 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #162 — 01:11:48 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:12:54,365 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:12:54,365 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #163 — 01:12:54 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:14:00,256 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:14:00,256 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #164 — 01:14:00 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:15:06,806 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:15:06,806 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #165 — 01:15:06 ────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:16:14,584 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:16:14,584 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #166 — 01:16:15 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:17:21,584 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:17:21,584 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #167 — 01:17:21 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=42, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=22
+
+2026-05-02 01:18:27,867 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:18:27,867 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #168 — 01:18:28 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:19:33,693 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:19:33,693 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #169 — 01:19:33 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:20:39,257 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:20:39,257 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #170 — 01:20:39 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:21:47,351 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:21:47,351 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #171 — 01:21:48 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:22:54,190 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:22:54,190 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #172 — 01:22:54 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:23:59,764 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:23:59,764 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #173 — 01:23:59 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:25:06,339 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:25:06,339 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #174 — 01:25:06 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:26:12,595 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:26:12,595 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #175 — 01:26:12 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:27:20,995 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:27:20,995 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #176 — 01:27:22 ────────────────────────────
+Portfolio: $993.37  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -7% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:28:27,967 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:28:27,967 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #177 — 01:28:28 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:29:33,613 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:29:33,613 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #178 — 01:29:33 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=27
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:30:40,384 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:30:40,384 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #179 — 01:30:40 ────────────────────────────
+Portfolio: $993.34  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:31:45,951 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:31:45,951 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #180 — 01:31:46 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:32:55,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:32:55,810 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #181 — 01:32:57 ────────────────────────────
+Portfolio: $993.34  PnL: -0.67%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:34:02,886 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:34:02,886 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #182 — 01:34:03 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:35:08,717 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:35:08,717 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #183 — 01:35:08 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:36:14,546 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:36:14,546 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #184 — 01:36:14 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:37:20,688 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:37:20,688 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #185 — 01:37:20 ────────────────────────────
+Portfolio: $993.36  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:38:29,240 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:38:29,240 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #186 — 01:38:30 ────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:39:35,881 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:39:35,881 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #187 — 01:39:36 ────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:40:42,096 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:40:42,096 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #188 — 01:40:42 ────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:41:48,354 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:41:48,354 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #189 — 01:41:48 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:42:54,027 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:42:54,027 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #190 — 01:42:54 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: Angst (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:44:02,450 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:44:02,450 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #191 — 01:44:03 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:45:09,806 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:45:09,806 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #192 — 01:45:10 ────────────────────────────
+Portfolio: $993.38  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:46:16,083 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:46:16,083 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #193 — 01:46:16 ────────────────────────────
+Portfolio: $993.39  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:47:22,225 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:47:22,225 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #194 — 01:47:22 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:48:28,705 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:48:28,705 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #195 — 01:48:28 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:49:36,832 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:49:36,832 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #196 — 01:49:38 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:50:44,046 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:50:44,046 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #197 — 01:50:44 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:51:50,299 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:51:50,299 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #198 — 01:51:50 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:52:57,012 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:52:57,012 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #199 — 01:52:57 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:54:03,282 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:54:03,282 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #200 — 01:54:03 ────────────────────────────
+Portfolio: $993.41  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+
+2026-05-02 01:55:12,333 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-02 01:55:12,333 | WARNING | ANOMALIE | SOL/USDT | AnomalyType.SQUEEZE | Bollinger squeeze — grote move op komst, wacht op bevestiging
+──────────────────────────── Cyclus #201 — 01:55:13 ────────────────────────────
+Portfolio: $993.40  PnL: -0.66%  DD: 0.8%  Posities: 1  Trades: 13  Win%: 23.1%
+Sentiment: neutraal (-0.31) | F&G: -0.48 | Nieuws: +0.00
+[BTC/USDT] Regime: bull_trend | Kracht: 83% | Bullish trend — ADX=41, EMA stack 
+bullish
+[ETH/USDT] Regime: ranging | Kracht: -6% | Zijwaartse markt — ADX=26
+[SOL/USDT] Regime: ranging | Kracht: 14% | Zijwaartse markt — ADX=21
+

@@ -41,6 +41,23 @@ async def dashboard():
         return HTMLResponse(html_file.read_text(encoding="utf-8"))
     return HTMLResponse("<h1>index.html niet gevonden</h1>")
 
+@app.get("/analytics", response_class=HTMLResponse)
+async def analytics():
+    html_file = Path(__file__).parent / "analytics.html"
+    if html_file.exists():
+        return HTMLResponse(html_file.read_text(encoding="utf-8"))
+    return HTMLResponse("<h1>analytics.html niet gevonden</h1>")
+
+@app.get("/api/trades")
+async def get_trades():
+    trades_file = LOG_DIR / "trades.json"
+    if trades_file.exists():
+        try:
+            return JSONResponse(json.loads(trades_file.read_text(encoding="utf-8")))
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+    return JSONResponse([])
+
 
 # ── Bot state ──────────────────────────────────────────────────────
 @app.get("/api/state")
@@ -88,9 +105,9 @@ async def get_equity():
         return JSONResponse([])
 
 
-# ── OHLCV proxy van Binance ────────────────────────────────────────
+# ── OHLCV proxy van Binance — gepagineerd voor volledige geschiedenis ─
 @app.get("/api/ohlcv")
-async def get_ohlcv(symbol: str = "BTC/USDT", timeframe: str = "1h", limit: int = 500):
+async def get_ohlcv(symbol: str = "BTC/USDT", timeframe: str = "1h", limit: int = 1000):
     try:
         binance_sym = symbol.replace("/", "")
         interval_map = {
@@ -98,20 +115,40 @@ async def get_ohlcv(symbol: str = "BTC/USDT", timeframe: str = "1h", limit: int 
             "1h": "1h", "4h": "4h", "1d": "1d", "1w": "1w",
         }
         interval = interval_map.get(timeframe, "1h")
-        url = f"https://api.binance.com/api/v3/klines"
-        params = {"symbol": binance_sym, "interval": interval, "limit": limit}
-        resp = requests.get(url, params=params, timeout=10)
-        resp.raise_for_status()
-        candles = []
-        for c in resp.json():
-            candles.append({
-                "time":  c[0] // 1000,
-                "open":  float(c[1]),
-                "high":  float(c[2]),
-                "low":   float(c[3]),
-                "close": float(c[4]),
+        url = "https://api.binance.com/api/v3/klines"
+
+        # Binance max = 1000 per request; pagineer voor grotere limieten
+        all_raw = []
+        remaining = min(limit, 5000)
+        end_time = None
+
+        while remaining > 0:
+            fetch_n = min(remaining, 1000)
+            params = {"symbol": binance_sym, "interval": interval, "limit": fetch_n}
+            if end_time is not None:
+                params["endTime"] = end_time
+            resp = requests.get(url, params=params, timeout=10)
+            resp.raise_for_status()
+            batch = resp.json()
+            if not batch:
+                break
+            all_raw = batch + all_raw          # prepend zodat volgorde klopt
+            remaining -= len(batch)
+            end_time = batch[0][0] - 1         # volgende pagina eindigt vóór deze batch
+            if len(batch) < fetch_n:
+                break                          # geen oudere data meer
+
+        candles = [
+            {
+                "time":   c[0] // 1000,
+                "open":   float(c[1]),
+                "high":   float(c[2]),
+                "low":    float(c[3]),
+                "close":  float(c[4]),
                 "volume": float(c[5]),
-            })
+            }
+            for c in all_raw
+        ]
         return JSONResponse(candles)
     except Exception as e:
         raise HTTPException(500, str(e))
@@ -142,22 +179,94 @@ async def get_stats():
         return JSONResponse({"total_trades": 0, "win_rate": 0, "total_pnl": 0})
     try:
         trades = json.loads(trade_file.read_text(encoding="utf-8"))
-        sells = [t for t in trades if t.get("type") in ("sell", "cover") and "pnl_pct" in t]
-        if not sells:
+        # Alleen finale exits tellen (sell/cover) — één telling per trade-entry.
+        # partial_tp1/tp2 zijn dezelfde trade en tellen niet apart mee voor win rate.
+        all_closed = [t for t in trades if t.get("type") in ("sell", "cover", "partial_tp1", "partial_tp2") and "pnl_pct" in t]
+        closed = [t for t in trades if t.get("type") in ("sell", "cover") and "pnl_pct" in t]
+        if not closed:
             return JSONResponse({"total_trades": len(trades), "closed_trades": 0, "win_rate": 0})
-        pnls = [t["pnl_pct"] for t in sells]
+        pnls = [t["pnl_pct"] for t in closed]
         wins = [p for p in pnls if p > 0]
+        all_pnls = [t["pnl_pct"] for t in all_closed]
         return JSONResponse({
             "total_trades": len(trades),
-            "closed_trades": len(sells),
+            "closed_trades": len(closed),
             "win_rate": len(wins) / len(pnls) if pnls else 0,
             "avg_pnl": sum(pnls) / len(pnls) if pnls else 0,
-            "best_trade": max(pnls) if pnls else 0,
-            "worst_trade": min(pnls) if pnls else 0,
-            "total_pnl": sum(pnls),
+            "best_trade": max(all_pnls) if all_pnls else 0,
+            "worst_trade": min(all_pnls) if all_pnls else 0,
+            "total_pnl": sum(all_pnls),
         })
     except Exception:
         return JSONResponse({"total_trades": 0, "win_rate": 0, "total_pnl": 0})
+
+
+# ── Stats per regime ──────────────────────────────────────────────────
+@app.get("/api/regime_stats")
+async def get_regime_stats():
+    trade_file = LOG_DIR / "trades.json"
+    if not trade_file.exists():
+        return JSONResponse({})
+    try:
+        trades = json.loads(trade_file.read_text(encoding="utf-8"))
+        closed = [
+            t for t in trades
+            if t.get("type") in ("sell", "cover", "partial_tp1", "partial_tp2")
+            and "pnl_pct" in t
+        ]
+        if not closed:
+            return JSONResponse({})
+
+        from collections import defaultdict
+        by_regime: dict = defaultdict(list)
+        by_type:   dict = defaultdict(list)
+
+        for t in closed:
+            regime = t.get("regime") or "onbekend"
+            trade_type = "long" if t.get("direction", 1) == 1 else "short"
+            by_regime[regime].append(t["pnl_pct"])
+            by_type[trade_type].append(t["pnl_pct"])
+
+        def stats_for(pnls: list) -> dict:
+            wins   = [p for p in pnls if p > 0]
+            losses = [p for p in pnls if p < 0]
+            wr     = len(wins) / len(pnls) if pnls else 0
+            avg_w  = sum(wins)   / len(wins)   if wins   else 0
+            avg_l  = sum(losses) / len(losses) if losses else 0
+            exp    = wr * avg_w + (1 - wr) * avg_l
+            return {
+                "n":          len(pnls),
+                "win_rate":   round(wr,  4),
+                "avg_pnl":    round(sum(pnls) / len(pnls), 4),
+                "expectancy": round(exp, 6),
+                "avg_win":    round(avg_w, 4),
+                "avg_loss":   round(avg_l, 4),
+                "total_pnl":  round(sum(pnls), 4),
+            }
+
+        return JSONResponse({
+            "by_regime": {r: stats_for(p) for r, p in by_regime.items()},
+            "by_type":   {t: stats_for(p) for t, p in by_type.items()},
+            "overall":   stats_for([t["pnl_pct"] for t in closed]),
+        })
+    except Exception as e:
+        raise HTTPException(500, str(e))
+
+
+# ── Monte Carlo simulatie ──────────────────────────────────────────────
+@app.get("/api/monte_carlo")
+async def get_monte_carlo(n_simulations: int = 2000, n_trades: int = 100):
+    try:
+        import sys
+        sys.path.insert(0, str(BASE_DIR))
+        from analytics.monte_carlo import MonteCarloSimulator
+        mc = MonteCarloSimulator(str(LOG_DIR / "trades.json"))
+        result = mc.run(n_simulations=n_simulations, n_trades=n_trades)
+        if result is None:
+            return JSONResponse({"error": "Onvoldoende trades (min 10 nodig)"})
+        return JSONResponse(result.to_dict())
+    except Exception as e:
+        raise HTTPException(500, str(e))
 
 
 if __name__ == "__main__":

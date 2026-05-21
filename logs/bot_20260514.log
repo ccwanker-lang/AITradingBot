@@ -1,0 +1,422 @@
+2026-05-14 00:37:05,328 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 00:37:05,333 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 00:37:05,334 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 00:37:05,343 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 00:37:05,344 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 00:37:18,327 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 00:37:18,333 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 00:37:18,336 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 00:37:18,345 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 00:37:18,347 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 09:12:43,535 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 09:18:29,087 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 09:19:18,176 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:00:40,201 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:00:43,537 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:00:57,868 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:01:00,065 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:06:23,755 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:06:27,144 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:06:41,004 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:06:43,293 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:12:06,372 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:12:09,687 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:12:25,674 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:12:27,763 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:17:49,655 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:18:08,774 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:20:11,192 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:20:26,798 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:23:34,784 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:23:54,144 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:25:56,044 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:26:13,405 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:29:17,957 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:29:39,120 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:31:39,067 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:31:57,517 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:35:01,689 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:35:23,979 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:40:45,664 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:41:07,913 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:45:43,517 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:46:29,782 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:46:32,989 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:46:51,775 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:51:26,086 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:52:14,920 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:52:18,229 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:52:34,262 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:57:11,503 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:58:00,284 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:58:03,508 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 10:58:19,551 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:03:45,586 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:03:48,926 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:04:05,396 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:04:07,736 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:09:31,561 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:09:34,737 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:09:50,013 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:11:00,907 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:15:18,592 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:15:22,198 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:15:36,882 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:16:47,074 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:21:07,486 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:21:11,098 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:21:20,773 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:22:31,173 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:26:53,926 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:26:57,780 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:27:04,312 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:28:14,355 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:32:44,132 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:32:48,050 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:32:50,820 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:34:00,888 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:38:35,219 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:38:36,355 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:38:39,160 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:39:48,142 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:44:24,347 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:44:25,946 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:44:30,889 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:45:35,015 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:50:09,701 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:50:15,411 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:50:18,970 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:51:20,137 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:55:53,269 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:56:01,301 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:56:04,876 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 11:57:03,139 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:00:33,369 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:00:43,093 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:01:38,552 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:01:47,289 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:01:50,627 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:02:48,574 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:06:20,145 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:06:30,016 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:07:24,901 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:07:36,497 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:07:41,350 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:08:36,724 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:13:11,885 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:13:16,700 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:13:25,178 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:13:29,600 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:13:33,038 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:14:23,956 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:18:58,058 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:19:13,999 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:19:17,437 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:20:08,757 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:22:28,796 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:23:56,359 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:24:45,628 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:24:59,913 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:25:04,214 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:25:56,748 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:28:15,899 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:29:43,308 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:30:33,710 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:30:47,301 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:30:50,465 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:31:44,159 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:34:03,566 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:35:30,069 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:36:19,540 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:36:34,193 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:36:37,700 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:37:30,340 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:39:49,388 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:41:17,626 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:42:06,832 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:42:22,759 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:42:27,223 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:43:16,801 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:45:39,638 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:47:06,082 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:47:55,808 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:48:09,723 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:48:13,782 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:49:07,737 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:51:27,116 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:52:51,644 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:53:43,285 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:53:56,116 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:53:59,554 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:54:54,898 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:59:29,240 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:59:44,583 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 12:59:47,862 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:00:39,765 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:00:41,792 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:01:02,694 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:05:13,970 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:05:31,442 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:05:35,261 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:06:25,656 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:06:28,134 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:06:49,605 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:11:02,300 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:11:22,713 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:11:25,982 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:12:14,106 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:12:16,174 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:12:39,694 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:16:51,040 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:17:11,958 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:17:15,293 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:18:03,558 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:18:06,067 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:18:28,509 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:22:40,753 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:22:58,252 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:23:01,478 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:23:51,928 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:23:54,413 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:24:14,456 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:28:31,073 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:28:45,067 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:28:48,739 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:29:41,901 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:29:44,136 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:30:03,612 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:34:17,970 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:34:35,825 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:34:39,480 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:35:30,252 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:35:33,201 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:35:52,993 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:40:07,935 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:40:23,086 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:40:26,614 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:41:19,188 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:41:22,099 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:41:41,971 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:45:58,310 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:46:15,311 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:46:18,741 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:47:09,887 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:47:12,219 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:47:34,094 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:51:49,741 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:52:07,262 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:52:10,637 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:53:01,006 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:53:03,945 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:53:25,432 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:57:40,858 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:57:58,682 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:58:02,345 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:58:51,558 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:58:53,972 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 13:59:16,441 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:03:28,540 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:03:49,280 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:03:53,558 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:04:38,465 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:04:40,703 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:05:08,637 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:09:11,949 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:09:41,898 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:09:45,526 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:10:23,217 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:10:25,270 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:10:59,170 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:14:59,997 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:15:36,140 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:15:40,613 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:16:14,471 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:16:16,635 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:22,764 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:17:22,779 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:17:22,781 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:17:22,794 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:17:22,799 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 14:17:33,388 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:17:33,395 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:17:33,396 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:17:33,406 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:17:33,412 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+2026-05-14 14:17:35,771 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:44,762 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:45,028 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:48,168 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:48,385 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:17:51,756 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #1 — 14:17:53 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Angst (-0.21) | F&G: -0.32 | Nieuws: +0.00
+[BTC/USDT] Regime: accumulation | Kracht: 55% | Bollinger squeeze — grote move 
+verwacht
+[ETH/USDT] Regime: accumulation | Kracht: 62% | Bollinger squeeze — grote move 
+verwacht
+[SOL/USDT] Regime: accumulation | Kracht: 67% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-14 14:18:27,615 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:18:27,624 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:18:27,625 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:18:27,635 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:18:27,638 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 14:18:51,543 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:18:51,550 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:18:51,551 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:18:51,560 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:18:51,563 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 14:18:51,896 | INFO | LSTM hertraining gestart...
+2026-05-14 14:18:55,769 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:18:59,859 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:19:00,000 | INFO | LSTM data geladen: BTC/USDT (1952 kaarsen)
+2026-05-14 14:19:02,171 | INFO | LSTM data geladen: ETH/USDT (1952 kaarsen)
+───────────────────────────── Cyclus #2 — 14:19:02 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Angst (-0.21) | F&G: -0.32 | Nieuws: +0.00
+[BTC/USDT] Regime: accumulation | Kracht: 54% | Bollinger squeeze — grote move 
+verwacht
+[ETH/USDT] Regime: accumulation | Kracht: 60% | Bollinger squeeze — grote move 
+verwacht
+[SOL/USDT] Regime: accumulation | Kracht: 67% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-14 14:19:03,341 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:19:04,575 | INFO | LSTM data geladen: SOL/USDT (1952 kaarsen)
+───────────────────────────── Cyclus #3 — 14:20:16 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Angst (-0.21) | F&G: -0.32 | Nieuws: +0.00
+[BTC/USDT] Regime: accumulation | Kracht: 54% | Bollinger squeeze — grote move 
+verwacht
+[ETH/USDT] Regime: accumulation | Kracht: 61% | Bollinger squeeze — grote move 
+verwacht
+[SOL/USDT] Regime: accumulation | Kracht: 67% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-14 14:21:08,213 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:21:08,261 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:21:08,263 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:21:08,272 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:21:08,276 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 14:21:23,445 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+───────────────────────────── Cyclus #4 — 14:21:28 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Angst (-0.21) | F&G: -0.32 | Nieuws: +0.00
+[BTC/USDT] Regime: accumulation | Kracht: 55% | Bollinger squeeze — grote move 
+verwacht
+[ETH/USDT] Regime: accumulation | Kracht: 62% | Bollinger squeeze — grote move 
+verwacht
+[SOL/USDT] Regime: accumulation | Kracht: 67% | Bollinger squeeze — grote move 
+verwacht
+
+───────────────────────────── Cyclus #5 — 14:22:42 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Angst (-0.21) | F&G: -0.32 | Nieuws: +0.00
+[BTC/USDT] Regime: accumulation | Kracht: 55% | Bollinger squeeze — grote move 
+verwacht
+[ETH/USDT] Regime: accumulation | Kracht: 62% | Bollinger squeeze — grote move 
+verwacht
+[SOL/USDT] Regime: accumulation | Kracht: 67% | Bollinger squeeze — grote move 
+verwacht
+
+2026-05-14 14:22:50,481 | INFO | Adaptieve gewichten hersteld — 63 samples geladen
+2026-05-14 14:22:50,488 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-14 14:22:50,489 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-14 14:22:50,500 | INFO | Equity curve hersteld — 1440 punten
+2026-05-14 14:22:50,502 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-14 14:23:04,022 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:23:08,998 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:23:13,873 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:29:06,253 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:29:10,908 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:29:15,318 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:35:04,516 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:35:08,644 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:35:12,659 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:41:01,405 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:41:05,818 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:41:10,501 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:46:58,757 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:47:03,122 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:47:08,487 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:52:59,882 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:53:05,961 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:53:10,867 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:59:10,994 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:59:15,513 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 14:59:20,503 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:01:06,167 | INFO | LSTM hertraining klaar — validatie accuraatheid: 39.5% (5856 samples, 3 symbolen)
+2026-05-14 15:01:06,181 | INFO | RL hertraining gestart...
+2026-05-14 15:01:13,394 | INFO | Bestaand RL model geladen voor hertraining
+2026-05-14 15:05:09,001 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:05:13,199 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:05:17,334 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:11:03,531 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:11:08,074 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:16:56,892 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:17:00,590 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:18:16,124 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:22:51,236 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:22:55,373 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:28:48,818 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:28:52,686 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:28:57,088 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:34:47,487 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:34:51,623 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:34:55,344 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:40:41,605 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:40:46,107 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:40:49,797 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:46:37,089 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:46:41,975 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:46:46,116 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:52:31,422 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:52:35,140 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:52:38,750 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:58:28,076 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:58:32,390 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 15:58:36,312 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:04:20,337 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:04:24,167 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:04:27,877 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:10:13,425 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:10:17,564 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:10:21,277 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:16:04,720 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:16:08,561 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:16:12,267 | WARNING | ANOMALIE | SOL/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:21:55,153 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:21:59,738 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:27:45,956 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:27:49,605 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:33:37,103 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:33:41,289 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:39:27,951 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:39:31,551 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:45:20,480 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:45:24,127 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 16:52:25,971 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-14 17:12:38,334 | INFO | RL model opgeslagen naar models/crypto_ppo

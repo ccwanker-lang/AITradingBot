@@ -20,7 +20,7 @@ class SMCSignal:
 
 
 class SmartMoneyStrategy:
-    def __init__(self, lookback: int = 50, fvg_min_size: float = 0.002):
+    def __init__(self, lookback: int = 200, fvg_min_size: float = 0.002):
         self.lookback = lookback
         self.fvg_min_size = fvg_min_size  # Minimale FVG grootte (0.2%)
 
@@ -92,7 +92,7 @@ class SmartMoneyStrategy:
         """
         current = df["close"].iloc[-1]
 
-        for i in range(len(df) - 4, max(len(df) - 20, 2), -1):
+        for i in range(len(df) - 4, max(len(df) - min(self.lookback, 100), 2), -1):
             h1 = df["high"].iloc[i - 1]
             l3 = df["low"].iloc[i + 1]
             h3 = df["high"].iloc[i + 1]

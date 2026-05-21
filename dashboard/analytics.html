@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster Bot — Trade Analytics</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/recharts@2.10.3/umd/Recharts.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --card: #101010;
+      --border: #242424;
+      --green: #00ff88;
+      --red: #ff4455;
+      --yellow: #ffcc00;
+      --blue: #4488ff;
+      --purple: #aa66ff;
+      --orange: #ff8844;
+      --teal: #00ccbb;
+      --text: #c8c8c8;
+      --dim: #505050;
+      --font: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 13px; line-height: 1.5; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+    #root { min-height: 100vh; }
+
+    /* ── Responsive layout classes ───────────────────────────────── */
+
+    .rsp-card  { padding: 16px; }
+
+    .rsp-wrap  { max-width: 1200px; margin: 0 auto; padding: 16px; }
+
+    .rsp-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #1c1c1c; padding-bottom: 12px;
+      margin-bottom: 16px; gap: 10px;
+    }
+    .rsp-header-right {
+      display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+    }
+
+    /* touch-friendly button base */
+    .rsp-btn {
+      background: #1a1a1a; border: 1px solid #333; cursor: pointer;
+      border-radius: 3px; font-family: inherit; min-height: 36px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    .rsp-mb    { margin-bottom: 14px; }
+
+    .rsp-grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .rsp-grid-2 { display: grid; grid-template-columns: 1fr 1fr;        gap: 12px; }
+    .rsp-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr;    gap: 12px; }
+
+    /* exit panel: pie + legend side-by-side */
+    .rsp-exit-flex { display: flex; gap: 12px; align-items: center; }
+    .rsp-pie-wrap  { width: 150px; flex-shrink: 0; }
+
+    /* symbol & direction panels */
+    .rsp-sym-flex { display: flex; gap: 10px; height: 150px; align-items: stretch; }
+    .rsp-dir-flex { display: flex; gap: 12px; height: 150px; align-items: stretch; }
+
+    /* scrollable table wrappers */
+    .rsp-tscroll  { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rsp-tscroll  table { min-width: 500px; }
+    .rsp-stscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rsp-stscroll table { min-width: 380px; }
+
+    /* ── Tablet  (≤ 768 px) ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .rsp-wrap   { padding: 12px; }
+      .rsp-grid-6 { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .rsp-grid-2 { grid-template-columns: 1fr; }
+      .rsp-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ── Phone  (≤ 480 px) ───────────────────────────────────────── */
+    @media (max-width: 480px) {
+      body         { font-size: 12px; }
+      .rsp-wrap    { padding: 10px; }
+      .rsp-card    { padding: 12px; }
+
+      .rsp-grid-6  { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+      /* header: wrap & hide timestamp to save space */
+      .rsp-header  { flex-wrap: wrap; }
+      .rsp-header-ts { display: none; }
+
+      /* bigger tap targets for buttons */
+      .rsp-btn     { min-height: 44px; padding: 10px 14px; font-size: 12px; }
+
+      /* exit panel stacks vertically */
+      .rsp-exit-flex { flex-direction: column; }
+      .rsp-pie-wrap  { width: 100%; max-width: 180px; margin: 0 auto; }
+
+      /* symbol cards stack vertically */
+      .rsp-sym-flex { flex-direction: column; height: auto; }
+      .rsp-sym-flex > div { flex: none !important; width: 100%; height: auto !important; min-height: 72px; }
+
+      /* direction cards: keep side-by-side but auto height */
+      .rsp-dir-flex { height: auto; min-height: 90px; }
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useCallback, useMemo, useRef } = React;
+const {
+  BarChart, Bar, LineChart, Line, PieChart, Pie,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  ReferenceLine, Cell
+} = Recharts;
+
+// ── COLOURS ──────────────────────────────────────────────────────────────────
+const C = {
+  green: '#00ff88', red: '#ff4455', yellow: '#ffcc00',
+  blue: '#4488ff', purple: '#aa66ff', orange: '#ff8844',
+  teal: '#00ccbb', dim: '#505050', text: '#c8c8c8',
+};
+
+const REGIME_COLOR = {
+  bull_trend: C.green, bear_trend: C.red, ranging: C.yellow,
+  high_vol: C.orange, accumulation: C.teal, unknown: C.dim, '?': C.dim,
+};
+
+const GRADE_COLOR = { 'A+': C.green, A: C.green, B: C.yellow, C: C.orange, '?': C.dim };
+
+// ── DATA NORMALISATION ────────────────────────────────────────────────────────
+function normalizeTrades(rawData) {
+  if (!Array.isArray(rawData)) return [];
+
+  // Build entry lookup: symbol_timestamp → entry record
+  const entryMap = {};
+  rawData.forEach(t => {
+    if (t.type === 'buy' || t.type === 'short') {
+      entryMap[`${t.symbol}_${t.timestamp}`] = t;
+    }
+  });
+
+  const closed = [];
+  rawData.forEach(t => {
+    if ((t.type !== 'sell' && t.type !== 'cover') || t.pnl === undefined) return;
+
+    const entry = entryMap[`${t.symbol}_${t.entry_timestamp}`] || {};
+    const pnl_pct = (t.pnl_pct || 0) * 100;
+
+    const direction = t.direction === 1 ? 'long'
+      : t.direction === -1 ? 'short'
+      : (entry.type === 'buy' ? 'long' : 'short');
+
+    const grade = (t.setup_grade && t.setup_grade !== '?') ? t.setup_grade
+      : (entry.setup_grade && entry.setup_grade !== '?') ? entry.setup_grade : '?';
+
+    const reasons = t.entry_reasons || entry.entry_reasons || [];
+    const dirNum = direction === 'long' ? 1 : -1;
+    const agreeingNames = reasons.filter(r => r.actie === dirNum).map(r => r.naam);
+
+    closed.push({
+      symbol: t.symbol,
+      direction,
+      regime: t.regime || entry.regime || '?',
+      regime_strength: entry.regime_strength || 0,
+      setup_grade: grade,
+      pnl: t.pnl || 0,
+      pnl_pct,
+      result: pnl_pct > 0 ? 'win' : 'loss',
+      exit_reason: t.reason || 'unknown',
+      confidence: t.confidence || entry.confidence || 0,
+      agreeing_strategies: entry.agreeing_strategies || t.agreeing_strategies || agreeingNames.length || 0,
+      agreeing_names: agreeingNames,
+      entry_reasons: reasons,
+      close_time: t.timestamp,
+      entry_time: t.entry_timestamp || entry.timestamp,
+      partial: !!t.partial,
+      score: t.score || entry.score,
+      score_margin: t.score_margin || entry.score_margin,
+      lstm_conf: t.lstm_conf || entry.lstm_conf,
+    });
+  });
+
+  return closed.sort((a, b) => new Date(a.close_time) - new Date(b.close_time));
+}
+
+// ── SAMPLE DATA ───────────────────────────────────────────────────────────────
+function generateSample() {
+  const regimes = ['bull_trend', 'bear_trend', 'ranging', 'high_vol', 'accumulation'];
+  const grades = ['A+', 'A', 'B', 'C', '?'];
+  const reasons = ['TAKE-PROFIT-2', 'STOP-LOSS', 'omgekeerd_signaal', 'regime_exit', 'TIME-EXIT'];
+  const symbols = ['BTC/USDT', 'ETH/USDT', 'SOL/USDT'];
+  const strats = ['EMA_Cross', 'MACD', 'Bollinger', 'RSI', 'Breakout', 'SMC', 'SR', 'Ichimoku', 'Wyckoff', 'MarketStructure', 'VolumeProfile', 'Grid'];
+  const now = new Date();
+
+  const trades = [];
+  for (let i = 0; i < 60; i++) {
+    const regime = regimes[Math.floor(Math.random() * regimes.length)];
+    const grade = grades[Math.floor(Math.random() * grades.length)];
+    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+    const direction = Math.random() > 0.45 ? 'long' : 'short';
+    const dirNum = direction === 'long' ? 1 : -1;
+    const isWin = Math.random() < (grade === 'A+' ? 0.70 : grade === 'A' ? 0.60 : grade === 'B' ? 0.50 : 0.38);
+    const pnl_pct = isWin ? Math.random() * 3 + 0.5 : -(Math.random() * 1.8 + 0.3);
+    const closeTime = new Date(now - (60 - i) * 3600000 * 4);
+    const agreeing = Math.floor(Math.random() * 5) + 1;
+    const shuffled = [...strats].sort(() => Math.random() - 0.5).slice(0, agreeing);
+
+    trades.push({
+      symbol, direction, regime,
+      setup_grade: grade,
+      pnl: pnl_pct * 10,
+      pnl_pct,
+      result: isWin ? 'win' : 'loss',
+      exit_reason: isWin ? (Math.random() > 0.3 ? 'TAKE-PROFIT-2' : 'omgekeerd_signaal') : (Math.random() > 0.4 ? 'STOP-LOSS' : reasons[Math.floor(Math.random() * reasons.length)]),
+      confidence: 0.4 + Math.random() * 0.5,
+      agreeing_strategies: agreeing,
+      agreeing_names: shuffled,
+      entry_reasons: shuffled.map(n => ({ naam: n, actie: dirNum, bijdrage: Math.random() * 0.1 })),
+      close_time: closeTime.toISOString(),
+      entry_time: new Date(closeTime - 3600000 * (1 + Math.random() * 6)).toISOString(),
+      partial: false,
+      score: 0.1 + Math.random() * 0.3,
+      score_margin: Math.random() * 0.15,
+      lstm_conf: 0.3 + Math.random() * 0.4,
+    });
+  }
+  return trades;
+}
+
+// ── STAT HELPERS ──────────────────────────────────────────────────────────────
+function calcStats(trades) {
+  const full = trades.filter(t => !t.partial);
+  if (!full.length) return null;
+
+  const wins = full.filter(t => t.pnl_pct > 0);
+  const losses = full.filter(t => t.pnl_pct <= 0);
+  const totalWin = wins.reduce((s, t) => s + t.pnl_pct, 0);
+  const totalLoss = Math.abs(losses.reduce((s, t) => s + t.pnl_pct, 0));
+  const pf = totalLoss > 0 ? totalWin / totalLoss : totalWin > 0 ? 99 : 0;
+
+  let peak = 0, equity = 0, maxDD = 0;
+  const equityCurve = full.map(t => {
+    equity += t.pnl_pct;
+    if (equity > peak) peak = equity;
+    const dd = peak > 0 ? (peak - equity) / peak * 100 : 0;
+    if (dd > maxDD) maxDD = dd;
+    return { date: (t.close_time || '').slice(5, 10), equity: +equity.toFixed(2) };
+  });
+
+  return {
+    total: full.length, wins: wins.length, losses: losses.length,
+    wr: full.length ? wins.length / full.length * 100 : 0,
+    avgWin: wins.length ? totalWin / wins.length : 0,
+    avgLoss: losses.length ? totalLoss / losses.length : 0,
+    pf, maxDD, equityCurve, totalPnl: equity,
+  };
+}
+
+function groupWr(arr, keyFn) {
+  const groups = {};
+  arr.forEach(t => {
+    const k = keyFn(t);
+    if (!groups[k]) groups[k] = { wins: 0, n: 0, sum: 0 };
+    groups[k].n++;
+    groups[k].sum += t.pnl_pct;
+    if (t.pnl_pct > 0) groups[k].wins++;
+  });
+  return groups;
+}
+
+// ── SHARED COMPONENTS ─────────────────────────────────────────────────────────
+function Card({ title, children, style }) {
+  return (
+    <div className="rsp-card" style={{ background: '#101010', border: '1px solid #242424', borderRadius: 4, ...style }}>
+      {title && <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1.5, color: '#505050', marginBottom: 10 }}>{title}</div>}
+      {children}
+    </div>
+  );
+}
+
+function BigStat({ label, value, sub, color = C.green }) {
+  return (
+    <div>
+      <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 1, color: '#505050', marginBottom: 4 }}>{label}</div>
+      <div style={{ fontSize: 26, fontWeight: 600, color, lineHeight: 1 }}>{value}</div>
+      {sub && <div style={{ fontSize: 11, color: '#606060', marginTop: 5 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function TipBox({ active, payload, label, extra }) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontFamily: 'inherit', fontSize: 12 }}>
+      <div style={{ color: C.green, marginBottom: 3 }}>{label}</div>
+      {payload.map((p, i) => (
+        <div key={i} style={{ color: p.color || C.text }}>{p.name}: {typeof p.value === 'number' ? p.value.toFixed(1) : p.value}</div>
+      ))}
+      {extra && <div style={{ color: '#606060', marginTop: 3 }}>{extra}</div>}
+    </div>
+  );
+}
+
+// ── PANELS ────────────────────────────────────────────────────────────────────
+function EquityPanel({ trades }) {
+  const stats = calcStats(trades);
+  if (!stats) return <Card title="Equity Curve"><span style={{ color: C.dim }}>Geen data</span></Card>;
+  const pos = stats.totalPnl >= 0;
+  return (
+    <Card title="Equity Curve — cumulatieve PnL %">
+      <ResponsiveContainer width="100%" height={160}>
+        <LineChart data={stats.equityCurve} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1c1c1c" />
+          <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} />
+          <YAxis tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} tickFormatter={v => v.toFixed(1) + '%'} />
+          <ReferenceLine y={0} stroke="#333" />
+          <Tooltip content={({ active, payload, label }) => {
+            if (!active || !payload?.length) return null;
+            const v = payload[0].value;
+            return (
+              <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                <div style={{ color: C.green }}>{label}</div>
+                <div style={{ color: v >= 0 ? C.green : C.red }}>{v >= 0 ? '+' : ''}{v.toFixed(2)}%</div>
+              </div>
+            );
+          }} />
+          <Line type="monotone" dataKey="equity" stroke={pos ? C.green : C.red} strokeWidth={2} dot={false} name="PnL %" />
+        </LineChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+}
+
+function RegimePanel({ trades }) {
+  const full = trades.filter(t => !t.partial);
+  const g = groupWr(full, t => t.regime || '?');
+  const data = Object.entries(g)
+    .map(([k, v]) => ({ name: k.replace('_', ' '), wr: +(v.wins / v.n * 100).toFixed(1), n: v.n, color: REGIME_COLOR[k] || C.dim }))
+    .sort((a, b) => b.n - a.n);
+
+  return (
+    <Card title="Win Rate per Regime">
+      <ResponsiveContainer width="100%" height={170}>
+        <BarChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 20 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1c1c1c" vertical={false} />
+          <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#808080' }} angle={-20} textAnchor="end" tickLine={false} />
+          <YAxis tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} domain={[0, 100]} tickFormatter={v => v + '%'} />
+          <ReferenceLine y={50} stroke="#333" strokeDasharray="4 4" />
+          <Tooltip content={({ active, payload, label }) => {
+            if (!active || !payload?.length) return null;
+            const d = data.find(x => x.name === label);
+            return (
+              <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                <div style={{ color: d?.color || C.green }}>{label}</div>
+                <div>WR: {payload[0].value}%</div>
+                <div style={{ color: '#606060' }}>n={d?.n}</div>
+              </div>
+            );
+          }} />
+          <Bar dataKey="wr" name="WR %" radius={[2, 2, 0, 0]}>
+            {data.map((d, i) => <Cell key={i} fill={d.color} fillOpacity={0.85} />)}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+}
+
+function ExitPanel({ trades }) {
+  const COLORS = {
+    'TAKE-PROFIT-2': C.green, 'STOP-LOSS': C.red, 'omgekeerd_signaal': C.yellow,
+    'regime_exit': C.blue, 'TIME-EXIT': C.purple, 'trailing_stop': C.teal, 'unknown': C.dim,
+  };
+  const counts = {};
+  trades.forEach(t => { const r = t.exit_reason || 'unknown'; counts[r] = (counts[r] || 0) + 1; });
+  const data = Object.entries(counts)
+    .map(([name, value]) => ({ name, value, color: COLORS[name] || C.dim }))
+    .sort((a, b) => b.value - a.value);
+  const total = trades.length;
+  const slPct = (counts['STOP-LOSS'] || 0) / total;
+
+  return (
+    <Card title="Exit Redenen">
+      <div className="rsp-exit-flex">
+        <div className="rsp-pie-wrap">
+        <ResponsiveContainer width="100%" height={150}>
+          <PieChart>
+            <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={68} innerRadius={36}>
+              {data.map((d, i) => <Cell key={i} fill={d.color} fillOpacity={0.9} />)}
+            </Pie>
+            <Tooltip content={({ active, payload }) => {
+              if (!active || !payload?.length) return null;
+              const d = payload[0].payload;
+              return (
+                <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                  <div style={{ color: d.color }}>{d.name}</div>
+                  <div>{d.value} ({(d.value / total * 100).toFixed(0)}%)</div>
+                </div>
+              );
+            }} />
+          </PieChart>
+        </ResponsiveContainer>
+        </div>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {data.map((d, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 5, paddingBottom: 4, borderBottom: '1px solid #1c1c1c' }}>
+              <span style={{ color: d.color }}>■ {d.name.replace('-', '‑')}</span>
+              <span style={{ color: '#808080' }}>{d.value} <span style={{ color: '#404040' }}>({(d.value / total * 100).toFixed(0)}%)</span></span>
+            </div>
+          ))}
+          {slPct > 0.6 && (
+            <div style={{ marginTop: 8, fontSize: 10, color: C.red }}>⚠ &gt;60% SL — ATR_SL te krap</div>
+          )}
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+function GradePanel({ trades }) {
+  const full = trades.filter(t => !t.partial);
+  const order = ['A+', 'A', 'B', 'C', '?'];
+  const g = groupWr(full, t => t.setup_grade || '?');
+  const data = order.filter(k => g[k]).map(k => ({
+    name: k, wr: +(g[k].wins / g[k].n * 100).toFixed(1),
+    avg: +(g[k].sum / g[k].n).toFixed(2), n: g[k].n, color: GRADE_COLOR[k] || C.dim,
+  }));
+
+  return (
+    <Card title="Setup Grade vs WR">
+      <ResponsiveContainer width="100%" height={170}>
+        <BarChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1c1c1c" vertical={false} />
+          <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#808080' }} tickLine={false} />
+          <YAxis tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} domain={[0, 100]} tickFormatter={v => v + '%'} />
+          <ReferenceLine y={50} stroke="#333" strokeDasharray="4 4" />
+          <Tooltip content={({ active, payload, label }) => {
+            if (!active || !payload?.length) return null;
+            const d = data.find(x => x.name === label);
+            return (
+              <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                <div style={{ color: d?.color || C.green }}>Grade {label}</div>
+                <div>WR: {payload[0].value}%</div>
+                <div>Gem: {d?.avg >= 0 ? '+' : ''}{d?.avg}%</div>
+                <div style={{ color: '#606060' }}>n={d?.n}</div>
+              </div>
+            );
+          }} />
+          <Bar dataKey="wr" name="WR %" radius={[2, 2, 0, 0]}>
+            {data.map((d, i) => <Cell key={i} fill={d.color} fillOpacity={0.85} />)}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+}
+
+function SymbolPanel({ trades }) {
+  const full = trades.filter(t => !t.partial);
+  const g = groupWr(full, t => t.symbol || '?');
+  const palette = [C.yellow, C.blue, C.purple, C.teal];
+  const data = Object.entries(g)
+    .map(([sym, v], i) => ({
+      name: sym.replace('/USDT', ''), wr: v.wins / v.n * 100,
+      avg: v.sum / v.n, n: v.n, color: palette[i] || C.dim,
+    }))
+    .sort((a, b) => b.n - a.n);
+
+  return (
+    <Card title="Symbool Prestaties">
+      <div className="rsp-sym-flex">
+        {data.map((d, i) => (
+          <div key={i} style={{ flex: 1, textAlign: 'center', background: '#161616', border: `1px solid ${d.color}22`, borderRadius: 4, padding: '12px 8px' }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: d.color }}>{d.name}</div>
+            <div style={{ fontSize: 28, fontWeight: 700, color: d.wr >= 50 ? C.green : d.wr >= 40 ? C.yellow : C.red, margin: '6px 0' }}>{d.wr.toFixed(0)}%</div>
+            <div style={{ fontSize: 10, color: '#606060' }}>WR · n={d.n}</div>
+            <div style={{ fontSize: 11, color: d.avg >= 0 ? C.green : C.red, marginTop: 4 }}>{d.avg >= 0 ? '+' : ''}{d.avg.toFixed(2)}%</div>
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+function DirectionPanel({ trades }) {
+  const full = trades.filter(t => !t.partial);
+  const g = groupWr(full, t => t.direction || '?');
+  const dirs = [
+    { key: 'long', label: 'Long ▲', color: C.green },
+    { key: 'short', label: 'Short ▼', color: C.red },
+  ];
+  return (
+    <Card title="Long vs Short">
+      <div className="rsp-dir-flex">
+        {dirs.map(d => {
+          const v = g[d.key];
+          if (!v) return <div key={d.key} style={{ flex: 1, textAlign: 'center', color: C.dim }}>geen {d.key}</div>;
+          const wr = v.wins / v.n * 100;
+          return (
+            <div key={d.key} style={{ flex: 1, textAlign: 'center', background: '#161616', border: `1px solid ${d.color}22`, borderRadius: 4, padding: '16px 8px' }}>
+              <div style={{ fontSize: 12, color: d.color }}>{d.label}</div>
+              <div style={{ fontSize: 32, fontWeight: 700, color: wr >= 50 ? C.green : wr >= 40 ? C.yellow : C.red, margin: '8px 0' }}>{wr.toFixed(0)}%</div>
+              <div style={{ fontSize: 10, color: '#606060' }}>{v.n} trades</div>
+            </div>
+          );
+        })}
+      </div>
+    </Card>
+  );
+}
+
+function StrategyPanel({ trades }) {
+  const full = trades.filter(t => !t.partial);
+  const stats = {};
+  full.forEach(t => {
+    (t.agreeing_names || []).forEach(name => {
+      if (!stats[name]) stats[name] = { wins: 0, n: 0 };
+      stats[name].n++;
+      if (t.pnl_pct > 0) stats[name].wins++;
+    });
+  });
+  const rows = Object.entries(stats)
+    .map(([name, s]) => ({ name, n: s.n, wins: s.wins, wr: s.n ? s.wins / s.n * 100 : 0 }))
+    .sort((a, b) => b.n - a.n);
+
+  if (!rows.length) return (
+    <Card title="Strategie Bijdrage">
+      <div style={{ color: C.dim, fontSize: 12 }}>Geen strategy data — entry_reasons ontbreekt in oudere trades</div>
+    </Card>
+  );
+
+  return (
+    <Card title="Strategie Bijdrage (actief bij entry → WR)">
+      <div className="rsp-stscroll">
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+          <thead>
+            <tr style={{ color: '#505050', borderBottom: '1px solid #222' }}>
+              {['Strategie', 'Actief', 'Wins', 'WR%', ''].map((h, i) => (
+                <th key={i} style={{ textAlign: i === 0 ? 'left' : 'right', padding: '4px 8px', fontWeight: 400, ...(i === 4 ? { textAlign: 'left', minWidth: 100 } : {}) }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r, i) => {
+              const c = r.wr >= 55 ? C.green : r.wr >= 45 ? C.yellow : r.wr >= 35 ? C.orange : C.red;
+              return (
+                <tr key={i} style={{ borderBottom: '1px solid #181818' }}>
+                  <td style={{ padding: '5px 8px', color: C.text }}>{r.name}</td>
+                  <td style={{ padding: '5px 8px', textAlign: 'right', color: '#808080' }}>{r.n}</td>
+                  <td style={{ padding: '5px 8px', textAlign: 'right', color: C.green }}>{r.wins}</td>
+                  <td style={{ padding: '5px 8px', textAlign: 'right', color: c, fontWeight: 600 }}>{r.wr.toFixed(0)}%</td>
+                  <td style={{ padding: '5px 8px' }}>
+                    {r.n >= 3
+                      ? <div style={{ background: '#222', borderRadius: 2, height: 8 }}><div style={{ background: c, width: `${r.wr}%`, height: '100%', opacity: 0.85 }} /></div>
+                      : <span style={{ color: '#404040', fontSize: 10 }}>n&lt;3</span>}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </Card>
+  );
+}
+
+function AgreeingPanel({ trades }) {
+  const full = trades.filter(t => !t.partial && t.agreeing_strategies != null);
+  if (!full.length) return (
+    <Card title="Agreeing Strategieën vs WR">
+      <div style={{ color: C.dim, fontSize: 12 }}>Geen agreeing_strategies data in oudere trades</div>
+    </Card>
+  );
+
+  const buckets = {};
+  full.forEach(t => {
+    const k = String(Math.min(t.agreeing_strategies, 5));
+    if (!buckets[k]) buckets[k] = { wins: 0, n: 0 };
+    buckets[k].n++;
+    if (t.pnl_pct > 0) buckets[k].wins++;
+  });
+  const data = Object.entries(buckets)
+    .map(([k, v]) => ({ name: k === '5' ? '5+' : k, wr: +(v.wins / v.n * 100).toFixed(1), n: v.n }))
+    .sort((a, b) => parseInt(a.name) - parseInt(b.name));
+
+  return (
+    <Card title="# Agreeing Strategieën vs Win Rate">
+      <ResponsiveContainer width="100%" height={170}>
+        <BarChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1c1c1c" vertical={false} />
+          <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#808080' }} tickLine={false} />
+          <YAxis tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} domain={[0, 100]} tickFormatter={v => v + '%'} />
+          <ReferenceLine y={50} stroke="#333" strokeDasharray="4 4" />
+          <Tooltip content={({ active, payload, label }) => {
+            if (!active || !payload?.length) return null;
+            const d = data.find(x => x.name === label);
+            return (
+              <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                <div style={{ color: C.green }}>{label} strats eens</div>
+                <div>WR: {payload[0].value}%</div>
+                <div style={{ color: '#606060' }}>n={d?.n}</div>
+              </div>
+            );
+          }} />
+          <Bar dataKey="wr" name="WR %" radius={[2, 2, 0, 0]}>
+            {data.map((d, i) => {
+              const c = d.wr >= 55 ? C.green : d.wr >= 45 ? C.yellow : C.red;
+              return <Cell key={i} fill={c} fillOpacity={0.85} />;
+            })}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+}
+
+function ConfidencePanel({ trades }) {
+  const full = trades.filter(t => !t.partial && t.confidence);
+  if (!full.length) return (
+    <Card title="Confidence vs Win Rate">
+      <div style={{ color: C.dim, fontSize: 12 }}>Geen confidence data</div>
+    </Card>
+  );
+
+  const buckets = {};
+  full.forEach(t => {
+    const b = (Math.floor(t.confidence * 10) / 10).toFixed(1);
+    if (!buckets[b]) buckets[b] = { wins: 0, n: 0 };
+    buckets[b].n++;
+    if (t.pnl_pct > 0) buckets[b].wins++;
+  });
+  const data = Object.entries(buckets)
+    .map(([k, v]) => ({ name: k, wr: +(v.wins / v.n * 100).toFixed(1), n: v.n }))
+    .sort((a, b) => parseFloat(a.name) - parseFloat(b.name));
+
+  return (
+    <Card title="Confidence Bins vs Win Rate">
+      <ResponsiveContainer width="100%" height={170}>
+        <BarChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#1c1c1c" vertical={false} />
+          <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#808080' }} tickLine={false} />
+          <YAxis tick={{ fontSize: 10, fill: '#505050' }} tickLine={false} domain={[0, 100]} tickFormatter={v => v + '%'} />
+          <ReferenceLine y={50} stroke="#333" strokeDasharray="4 4" />
+          <Tooltip content={({ active, payload, label }) => {
+            if (!active || !payload?.length) return null;
+            const d = data.find(x => x.name === label);
+            return (
+              <div style={{ background: '#1a1a1a', border: '1px solid #333', padding: '8px 12px', fontSize: 12 }}>
+                <div style={{ color: C.green }}>conf ≥ {label}</div>
+                <div>WR: {payload[0].value}%</div>
+                <div style={{ color: '#606060' }}>n={d?.n}</div>
+              </div>
+            );
+          }} />
+          <Bar dataKey="wr" name="WR %" radius={[2, 2, 0, 0]}>
+            {data.map((d, i) => {
+              const c = d.wr >= 55 ? C.green : d.wr >= 45 ? C.yellow : C.red;
+              return <Cell key={i} fill={c} fillOpacity={0.85} />;
+            })}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
+  );
+}
+
+function RecentTable({ trades }) {
+  const recent = [...trades]
+    .sort((a, b) => new Date(b.close_time) - new Date(a.close_time))
+    .slice(0, 15);
+
+  return (
+    <Card title="Recente Afgesloten Trades (laatste 15)">
+      <div className="rsp-tscroll">
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+          <thead>
+            <tr style={{ color: '#505050', borderBottom: '1px solid #222' }}>
+              {['Datum', 'Sym', 'Dir', 'Regime', 'Grade', 'Exit reden', 'PnL%'].map(h => (
+                <th key={h} style={{ textAlign: 'left', padding: '4px 8px', fontWeight: 400 }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {recent.map((t, i) => {
+              const date = (t.close_time || '').slice(5, 16).replace('T', ' ');
+              const pnlC = t.pnl_pct > 0 ? C.green : C.red;
+              return (
+                <tr key={i} style={{ borderBottom: '1px solid #161616' }}>
+                  <td style={{ padding: '4px 8px', color: '#606060' }}>{date}</td>
+                  <td style={{ padding: '4px 8px', color: C.yellow }}>{(t.symbol || '').replace('/USDT', '')}</td>
+                  <td style={{ padding: '4px 8px', color: t.direction === 'long' ? C.green : C.red }}>{t.direction}</td>
+                  <td style={{ padding: '4px 8px', color: REGIME_COLOR[t.regime] || C.dim, fontSize: 10 }}>{(t.regime || '?').replace('_', ' ')}</td>
+                  <td style={{ padding: '4px 8px', color: GRADE_COLOR[t.setup_grade] || C.dim }}>{t.setup_grade}</td>
+                  <td style={{ padding: '4px 8px', color: '#808080', fontSize: 10 }}>{t.exit_reason}</td>
+                  <td style={{ padding: '4px 8px', color: pnlC, fontWeight: 600 }}>{t.pnl_pct >= 0 ? '+' : ''}{t.pnl_pct.toFixed(2)}%</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </Card>
+  );
+}
+
+// ── FILE DROP ZONE ────────────────────────────────────────────────────────────
+function DropZone({ onLoad }) {
+  const [drag, setDrag] = useState(false);
+  const ref = useRef();
+
+  const readFile = useCallback(file => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try { onLoad(JSON.parse(e.target.result), file.name); }
+      catch (err) { alert('Ongeldig JSON: ' + err.message); }
+    };
+    reader.readAsText(file);
+  }, [onLoad]);
+
+  return (
+    <div
+      onClick={() => ref.current?.click()}
+      onDragOver={e => { e.preventDefault(); setDrag(true); }}
+      onDragLeave={() => setDrag(false)}
+      onDrop={e => { e.preventDefault(); setDrag(false); readFile(e.dataTransfer.files[0]); }}
+      style={{
+        border: `2px dashed ${drag ? C.green : '#2a2a2a'}`,
+        borderRadius: 6, padding: '28px 20px', textAlign: 'center', cursor: 'pointer',
+        background: drag ? '#001a0d' : 'transparent', transition: 'all 0.15s',
+      }}
+    >
+      <div style={{ fontSize: 24, marginBottom: 8 }}>📂</div>
+      <div style={{ color: C.green, fontSize: 13 }}>Sleep trades.json hierheen</div>
+      <div style={{ color: '#505050', fontSize: 11, marginTop: 4 }}>of klik om bestand te kiezen</div>
+      <input ref={ref} type="file" accept=".json" style={{ display: 'none' }}
+        onChange={e => readFile(e.target.files[0])} />
+    </div>
+  );
+}
+
+// ── MAIN ──────────────────────────────────────────────────────────────────────
+function TradingDashboard() {
+  const [trades, setTrades] = useState(null);
+  const [meta, setMeta] = useState({ file: '', time: '' });
+
+  const handleLoad = useCallback((data, name) => {
+    setTrades(normalizeTrades(data));
+    setMeta({ file: name, time: new Date().toLocaleTimeString('nl-NL') });
+  }, []);
+
+  const handleSample = useCallback(() => {
+    setTrades(generateSample());
+    setMeta({ file: 'sample-data (60 trades)', time: new Date().toLocaleTimeString('nl-NL') });
+  }, []);
+
+  const stats = useMemo(() => trades ? calcStats(trades) : null, [trades]);
+  const full = trades ? trades.filter(t => !t.partial) : [];
+
+  return (
+    <div className="rsp-wrap">
+      {/* Header */}
+      <div className="rsp-header">
+        <div>
+          <span style={{ color: C.green, fontSize: 16, fontWeight: 600 }}>◆ MONSTER BOT</span>
+          <span style={{ color: '#505050', fontSize: 13, marginLeft: 10 }}>Trade Analytics</span>
+          {meta.file && <span style={{ color: '#383838', fontSize: 11, marginLeft: 10 }}>— {meta.file}</span>}
+        </div>
+        <div className="rsp-header-right">
+          {meta.time && <span className="rsp-header-ts" style={{ color: '#383838', fontSize: 11 }}>geladen {meta.time}</span>}
+          <button className="rsp-btn" style={{ color: '#808080', padding: '5px 12px', fontSize: 11 }} onClick={handleSample}>Sample data</button>
+          {trades && <button className="rsp-btn" style={{ color: '#808080', padding: '5px 12px', fontSize: 11 }} onClick={() => { setTrades(null); setMeta({ file: '', time: '' }); }}>Reset</button>}
+        </div>
+      </div>
+
+      {!trades ? (
+        /* Upload screen */
+        <div style={{ maxWidth: 460, margin: '80px auto', textAlign: 'center' }}>
+          <div style={{ color: '#505050', marginBottom: 8, fontSize: 12 }}>Laad het logbestand van de bot:</div>
+          <div style={{ color: C.text, marginBottom: 24, fontSize: 13 }}>
+            <code style={{ background: '#1a1a1a', padding: '2px 8px', borderRadius: 3, color: C.green }}>logs/trades.json</code>
+          </div>
+          <DropZone onLoad={handleLoad} />
+          <div style={{ margin: '20px 0', color: '#303030', fontSize: 11 }}>— of —</div>
+          <button className="rsp-btn" onClick={handleSample} style={{ color: C.green, padding: '10px 24px', fontSize: 12, width: '100%' }}>
+            Genereer sample data (60 trades)
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* Statistical warning */}
+          {full.length < 50 && (
+            <div style={{ background: '#1a1000', border: '1px solid #443300', borderRadius: 4, padding: '8px 14px', marginBottom: 16, fontSize: 11 }}>
+              <span style={{ color: C.yellow }}>⚠ Statistisch waarschuwing</span>
+              <span style={{ color: '#808080', marginLeft: 8 }}>
+                {full.length} afgesloten trades — min. 50 nodig voor betrouwbare conclusies.
+                {full.length < 30 ? ' Cijfers zijn nog bijna willekeurig.' : ''}
+              </span>
+            </div>
+          )}
+
+          {/* Overview stats row */}
+          <div className="rsp-grid-6 rsp-mb">
+            {[
+              { label: 'Win Rate', value: stats ? stats.wr.toFixed(1) + '%' : '—', color: stats?.wr >= 50 ? C.green : stats?.wr >= 40 ? C.yellow : C.red, sub: `${stats?.wins}W / ${stats?.losses}L` },
+              { label: 'Profit Factor', value: stats ? (stats.pf >= 99 ? '∞' : stats.pf.toFixed(2)) : '—', color: stats?.pf >= 1.5 ? C.green : stats?.pf >= 1.0 ? C.yellow : C.red, sub: 'win / verlies ratio' },
+              { label: 'Totaal PnL', value: stats ? (stats.totalPnl >= 0 ? '+' : '') + stats.totalPnl.toFixed(2) + '%' : '—', color: stats?.totalPnl >= 0 ? C.green : C.red, sub: `${full.length} trades` },
+              { label: 'Max Drawdown', value: stats ? stats.maxDD.toFixed(1) + '%' : '—', color: stats?.maxDD < 8 ? C.green : stats?.maxDD < 15 ? C.yellow : C.red, sub: 'van equity peak' },
+              { label: 'Gem Win', value: stats ? '+' + stats.avgWin.toFixed(2) + '%' : '—', color: C.green, sub: 'per winnende trade' },
+              { label: 'Gem Verlies', value: stats ? '-' + stats.avgLoss.toFixed(2) + '%' : '—', color: C.red, sub: 'per verliezende trade' },
+            ].map((s, i) => (
+              <Card key={i}><BigStat {...s} /></Card>
+            ))}
+          </div>
+
+          {/* Equity curve */}
+          <div className="rsp-mb">
+            <EquityPanel trades={trades} />
+          </div>
+
+          {/* Regime + Exit */}
+          <div className="rsp-grid-2 rsp-mb">
+            <RegimePanel trades={trades} />
+            <ExitPanel trades={trades} />
+          </div>
+
+          {/* Grade + Symbol + Direction */}
+          <div className="rsp-grid-3 rsp-mb">
+            <GradePanel trades={trades} />
+            <SymbolPanel trades={trades} />
+            <DirectionPanel trades={trades} />
+          </div>
+
+          {/* Strategy table */}
+          <div className="rsp-mb">
+            <StrategyPanel trades={trades} />
+          </div>
+
+          {/* Agreeing + Confidence */}
+          <div className="rsp-grid-2 rsp-mb">
+            <AgreeingPanel trades={trades} />
+            <ConfidencePanel trades={trades} />
+          </div>
+
+          {/* Recent trades */}
+          <div className="rsp-mb">
+            <RecentTable trades={trades} />
+          </div>
+
+          {/* Re-upload footer */}
+          <div style={{ borderTop: '1px solid #1c1c1c', paddingTop: 16, maxWidth: 400 }}>
+            <div style={{ color: '#404040', fontSize: 11, marginBottom: 8 }}>Nieuw bestand laden:</div>
+            <DropZone onLoad={handleLoad} />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<TradingDashboard />);
+</script>
+</body>
+</html>

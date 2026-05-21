@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Live trading engine via ccxt.
 WAARSCHUWING: Test altijd eerst met paper trading!

@@ -1,0 +1,119 @@
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+───────────────────────────── Cyclus #1 — 20:23:21 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #2 — 20:24:29 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #3 — 20:25:39 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #4 — 20:26:49 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #5 — 20:27:57 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #6 — 20:29:10 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #7 — 20:30:19 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #8 — 20:31:28 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+
+───────────────────────────── Cyclus #9 — 20:32:37 ─────────────────────────────
+Portfolio: $979.06  PnL: -2.09%  DD: 2.2%  Posities: 0  Trades: 39  WR: 
+35.5%(51.2%+TP)
+⚠ Throttle: 75% — streak=-2
+Sentiment: Neutraal (-0.09) | F&G: -0.14 | Nieuws: +0.00
+[BTC/USDT] Regime: bear_trend | Kracht: 55% | Bearish trend — ADX=27, EMA stack 
+bearish
+[ETH/USDT] Regime: bear_trend | Kracht: 64% | Bearish trend — ADX=32, EMA stack 
+bearish
+[SOL/USDT] Regime: bear_trend | Kracht: 60% | Bearish trend — ADX=30, EMA stack 
+bearish
+

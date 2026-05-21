@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Momentum Rotatie — switcht automatisch naar de best presterende coin.
 Professionele fondsen doen dit ook: "ride the winners, cut the losers."

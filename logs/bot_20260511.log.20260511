@@ -1,0 +1,150 @@
+2026-05-11 18:42:52,370 | INFO | Adaptieve gewichten hersteld — 44 samples geladen
+2026-05-11 18:42:52,376 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-11 18:42:52,377 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-11 18:42:52,386 | INFO | Equity curve hersteld — 1440 punten
+2026-05-11 18:42:52,388 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+2026-05-11 18:43:14,232 | INFO | TRADE | SOL/USDT | SELL @ 97.0904 | PnL: +2.65%
+v SELL SOL/USDT @ 97.0904 PnL: +2.65%
+───────────────────────────── Cyclus #1 — 18:43:14 ─────────────────────────────
+Portfolio: $996.02  PnL: -0.40%  DD: 0.5%  Posities: 1  Trades: 32  Win%: 50.0%
+⚠ Throttle: 75% — WR5d=43%<48%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+2026-05-11 18:44:23,500 | INFO | TRADE | SOL/USDT | SHORT @ 97.2004 | PnL: +0.00%
+v SHORT SOL/USDT @ 97.2004 | Regime: ranging [A] Edge:+0.001 | SL=98.6882 
+TP=94.9687
+───────────────────────────── Cyclus #2 — 18:44:23 ─────────────────────────────
+Portfolio: $995.99  PnL: -0.40%  DD: 0.5%  Posities: 2  Trades: 32  Win%: 50.0%
+⚠ Throttle: 75% — WR5d=43%<48%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #3 — 18:45:32 ─────────────────────────────
+Portfolio: $995.90  PnL: -0.41%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+⚠ Throttle: 75% — WR5d=43%<48%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #4 — 18:46:42 ─────────────────────────────
+Portfolio: $995.86  PnL: -0.41%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+⚠ Throttle: 75% — WR5d=43%<48%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #5 — 18:47:50 ─────────────────────────────
+Portfolio: $995.82  PnL: -0.42%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+⚠ Throttle: 75% — WR5d=43%<48%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #6 — 18:49:02 ─────────────────────────────
+Portfolio: $995.68  PnL: -0.43%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #7 — 18:50:11 ─────────────────────────────
+Portfolio: $995.70  PnL: -0.43%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #8 — 18:51:19 ─────────────────────────────
+Portfolio: $995.67  PnL: -0.43%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+───────────────────────────── Cyclus #9 — 18:52:27 ─────────────────────────────
+Portfolio: $995.75  PnL: -0.42%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+──────────────────────────── Cyclus #10 — 18:53:36 ─────────────────────────────
+Portfolio: $995.80  PnL: -0.42%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+2026-05-11 18:54:56,019 | INFO | Adaptieve gewichten hersteld — 47 samples geladen
+2026-05-11 18:54:56,027 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-11 18:54:56,028 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-11 18:54:56,037 | INFO | Equity curve hersteld — 1440 punten
+2026-05-11 18:54:56,040 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+───────────────────────────── Cyclus #1 — 18:55:19 ─────────────────────────────
+Portfolio: $995.86  PnL: -0.41%  DD: 0.6%  Posities: 2  Trades: 32  Win%: 50.0%
+Sentiment: Neutraal (-0.03) | F&G: -0.04 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 37% | Zijwaartse markt — ADX=16
+[ETH/USDT] Regime: ranging | Kracht: 31% | Zijwaartse markt — ADX=17
+[SOL/USDT] Regime: ranging | Kracht: 48% | Zijwaartse markt — ADX=13
+
+2026-05-11 18:56:09,810 | INFO | Adaptieve gewichten hersteld — 47 samples geladen
+2026-05-11 18:56:09,816 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-11 18:56:09,817 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-11 18:56:09,826 | INFO | Equity curve hersteld — 1440 punten
+2026-05-11 18:56:09,829 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-11 19:45:41,307 | INFO | Adaptieve gewichten hersteld — 47 samples geladen
+2026-05-11 19:45:41,317 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-11 19:45:41,318 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief
+2026-05-11 19:45:41,327 | INFO | Equity curve hersteld — 1440 punten
+2026-05-11 19:45:41,328 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-11 22:01:03,687 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:06:51,792 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:12:35,253 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:18:17,926 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:24:00,451 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:29:43,955 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:35:25,801 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:41:10,030 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:46:52,330 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:52:37,543 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 22:58:21,202 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:04:05,219 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:09:48,081 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:15:33,844 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:21:15,029 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:26:56,706 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:32:39,834 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:38:22,643 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:44:04,385 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:49:47,816 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 23:55:31,023 | WARNING | ANOMALIE | ETH/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging

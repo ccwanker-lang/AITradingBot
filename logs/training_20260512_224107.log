@@ -1,0 +1,17 @@
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+LSTM trainen...
+LSTM [░░░░░░░░░░░░░░░░░░░░]   4.0% epoch   1/25 | loss=1.0965 | val_acc=33.4%
+LSTM [████░░░░░░░░░░░░░░░░]  20.0% epoch   5/25 | loss=1.0668 | val_acc=37.1%
+LSTM [████████░░░░░░░░░░░░]  40.0% epoch  10/25 | loss=1.0507 | val_acc=35.7%
+LSTM [████████████░░░░░░░░]  60.0% epoch  15/25 | loss=1.0325 | val_acc=37.4%
+LSTM [████████████████░░░░]  80.0% epoch  20/25 | loss=1.0245 | val_acc=36.2%
+LSTM [████████████████████] 100.0% epoch  25/25 | loss=1.0185 | val_acc=36.4%
+LSTM klaar - accuraatheid: 38.3%
+RL model trainen...
+Training klaar!

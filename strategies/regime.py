@@ -33,7 +33,7 @@ class RegimeResult:
 
 _REGIME_PARAMS = {
     Regime.BULL_TREND:   {"position_mult": 1.20, "sl_mult": 1.0},
-    Regime.BEAR_TREND:   {"position_mult": 0.50, "sl_mult": 0.8},
+    Regime.BEAR_TREND:   {"position_mult": 0.80, "sl_mult": 0.8},
     Regime.RANGING:      {"position_mult": 0.80, "sl_mult": 0.9},
     Regime.HIGH_VOL:     {"position_mult": 0.40, "sl_mult": 1.5},
     Regime.ACCUMULATION: {"position_mult": 0.70, "sl_mult": 0.8},
@@ -58,8 +58,12 @@ class RegimeDetector:
         ema200 = df["ema_200"].iloc[-1] if "ema_200" in df.columns else close.iloc[-1]
         price  = close.iloc[-1]
 
-        bull_stack = ema9 > ema21 > ema50 and price > ema200
-        bear_stack = ema9 < ema21 < ema50 and price < ema200
+        # EMA200 check losgekoppeld van bull_stack: BTC kan BULL_TREND tonen
+        # ook als het historisch lager staat dan EMA200 (bijv. na een correctie).
+        # Bear_stack: EMA-stack bearish is voldoende — eis op ema200 blokkeerde bear_trend
+        # tijdens 10-15% correcties in een bull markt (price bleef boven ema200).
+        bull_stack = ema9 > ema21 > ema50
+        bear_stack = ema9 < ema21 < ema50
 
         # ── Volatiliteit ───────────────────────────────────────────
         atr = df["atr_14"].iloc[-1] if "atr_14" in df.columns else price * 0.02

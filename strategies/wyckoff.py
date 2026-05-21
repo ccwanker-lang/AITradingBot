@@ -34,7 +34,7 @@ class WyckoffSignal:
 
 
 class WyckoffStrategy:
-    def __init__(self, lookback: int = 60):
+    def __init__(self, lookback: int = 200):
         self.lookback = lookback
 
     def signal(self, df: pd.DataFrame) -> WyckoffSignal:
@@ -69,19 +69,23 @@ class WyckoffStrategy:
                 f"Upthrust gedetecteerd — prijs testte {resistance:.2f} en keert terug")
 
         # ── Accumulatie detectie ───────────────────────────────────
-        # Lage volatiliteit + afnemend volume + prijs boven steun
+        # Lage volatiliteit + afnemend volume + prijs in ONDERSTE helft van range
         price_vol = close.pct_change().std()
         recent_vol_trend = volume.iloc[-10:].mean() / volume.iloc[-30:-10].mean()
         in_trading_range = price_range / current < 0.08
+        range_midpoint = (close.max() + close.min()) / 2
 
         if (in_trading_range and price_vol < 0.015 and
-                recent_vol_trend < 0.85 and current > close.min() * 1.01):
+                recent_vol_trend < 0.85 and current > close.min() * 1.01
+                and current <= range_midpoint):  # Prijs in onderste helft — échte accumulatie
             return WyckoffSignal(1, 0.65, WyckoffPhase.ACCUMULATION,
                 "Accumulatie — lage vol, prijs consolideert boven steun")
 
         # ── Distributie detectie ───────────────────────────────────
+        # Prijs moet in BOVENSTE helft van range zijn — anders is het geen distributie
         if (in_trading_range and price_vol < 0.015 and
-                recent_vol_trend < 0.85 and current < close.max() * 0.99):
+                recent_vol_trend < 0.85 and current < close.max() * 0.99
+                and current >= range_midpoint):  # Prijs in bovenste helft — échte distributie
             return WyckoffSignal(-1, 0.65, WyckoffPhase.DISTRIBUTION,
                 "Distributie — lage vol, prijs consolideert onder weerstand")
 

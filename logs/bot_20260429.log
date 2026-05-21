@@ -1,0 +1,60 @@
+2026-04-29 17:21:28,959 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 17:21:28,959 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-29 17:21:36,856 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 17:21:36,891 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 17:21:36,937 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 17:22:39,738 | INFO | TRADE | BTC/USDT | SHORT @ 76244.2700 | PnL: +0.00%
+2026-04-29 17:53:29,527 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 17:53:29,562 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 17:53:29,589 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:25:19,523 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:25:19,550 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:25:19,578 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:57:08,777 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:57:08,806 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 18:57:08,835 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 19:29:03,966 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 19:29:03,994 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 19:29:04,025 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:00:55,296 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:00:55,325 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:00:55,354 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:09:23,370 | INFO | TRADE | ETH/USDT | PARTIAL_TP1 @ 2243.9500 | PnL: +2.10%
+2026-04-29 20:09:23,768 | INFO | TRADE | SOL/USDT | PARTIAL_TP1 @ 82.1400 | PnL: +1.95%
+2026-04-29 20:10:26,771 | INFO | TRADE | ETH/USDT | COVER @ 2233.8000 | PnL: +2.54%
+2026-04-29 20:10:27,185 | INFO | TRADE | SOL/USDT | COVER @ 81.7400 | PnL: +2.42%
+2026-04-29 20:10:28,842 | INFO | TRADE | ETH/USDT | SHORT @ 2233.3900 | PnL: +0.00%
+2026-04-29 20:10:30,396 | INFO | TRADE | SOL/USDT | SHORT @ 81.7100 | PnL: +0.00%
+2026-04-29 20:32:49,225 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:32:49,255 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 20:32:49,286 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:04:54,874 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:04:54,910 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:04:54,945 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:37:00,184 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:37:00,223 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:37:00,260 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 21:57:55,508 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 21:57:55,510 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-29 22:04:23,956 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 22:04:23,956 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-29 22:04:24,374 | INFO | LSTM hertraining gestart...
+2026-04-29 22:06:12,922 | INFO | LSTM hertraining klaar — validatie accuraatheid: 62.4%
+2026-04-29 22:06:12,924 | INFO | RL hertraining gestart...
+2026-04-29 22:06:19,600 | INFO | Bestaand RL model geladen voor hertraining
+2026-04-29 22:09:04,053 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 22:09:04,099 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 22:09:04,132 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 22:12:07,856 | INFO | RL model opgeslagen naar models\crypto_ppo
+2026-04-29 23:11:24,819 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 23:11:24,820 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-29 23:11:33,479 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:11:33,642 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:11:33,806 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:15:33,610 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 23:15:33,611 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-04-29 23:15:41,855 | ERROR | FOUT | Analyse BTC/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:15:42,020 | ERROR | FOUT | Analyse ETH/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:15:42,214 | ERROR | FOUT | Analyse SOL/USDT | IndexError: single positional indexer is out-of-bounds
+2026-04-29 23:40:51,197 | INFO | Auto-hertraining gepland elke 24 uur
+2026-04-29 23:40:51,198 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']

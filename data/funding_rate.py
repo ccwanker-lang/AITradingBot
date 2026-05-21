@@ -65,15 +65,18 @@ class FundingRateAnalyzer:
             return FundingSignal(0, 0.0, 0.0, 0.0, "futures data niet beschikbaar")
 
     def _interpret(self, funding: float, oi: float, symbol: str) -> FundingSignal:
+        # Drempelwaarden aangepast naar realistische Binance funding rates:
+        # Typische BTC funding is 0.01-0.03% per 8u — oude drempel (0.1%) was nooit actief
+
         # Hoog positieve funding = iedereen long = short kans
-        if funding > 0.001:  # >0.1%
-            conf = min(funding / 0.003, 0.90)
+        if funding > 0.0003:  # >0.03% (was 0.1% — nooit bereikt)
+            conf = min(funding / 0.001, 0.90)
             return FundingSignal(-1, conf, funding, oi,
                 f"Hoge funding {funding:.4%} — markt overlonged, short kans")
 
         # Hoog negatieve funding = iedereen short = long kans
-        if funding < -0.0005:  # <-0.05%
-            conf = min(abs(funding) / 0.002, 0.85)
+        if funding < -0.0001:  # <-0.01% (was -0.05% — zelden bereikt)
+            conf = min(abs(funding) / 0.0005, 0.85)
             return FundingSignal(1, conf, funding, oi,
                 f"Negatieve funding {funding:.4%} — markt overshorted, long kans")
 

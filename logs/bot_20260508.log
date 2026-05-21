@@ -1,0 +1,11 @@
+2026-05-11 00:00:36,861 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:06:19,895 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:12:01,831 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:17:44,999 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:23:27,763 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:29:09,619 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging
+2026-05-11 00:50:56,541 | INFO | TRADE | ETH/USDT | SHORT @ 2371.8919 | PnL: +0.00%
+2026-05-11 05:13:40,737 | INFO | TRADE | ETH/USDT | PARTIAL_TP1 @ 2331.9200 | PnL: +1.68%
+2026-05-11 05:22:50,975 | INFO | TRADE | ETH/USDT | COVER @ 2324.0700 | PnL: +2.01%
+2026-05-11 15:37:16,067 | INFO | TRADE | ETH/USDT | BUY @ 2316.5548 | PnL: +0.00%
+2026-05-11 18:08:06,229 | INFO | TRADE | SOL/USDT | PARTIAL_TP1 @ 97.2000 | PnL: +2.87%

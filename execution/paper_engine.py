@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Paper trading engine met:
 - LONGS en SHORTS
@@ -5,10 +6,12 @@ Paper trading engine met:
 - Partieel winst nemen (50% op TP1)
 - Pyramiding (bijkopen op winnende positie)
 """
+import json
+import time as _time
 from datetime import datetime
-from dataclasses import dataclass, field
+from dataclasses import dataclass, asdict, field
+from pathlib import Path
 from risk.manager import RiskManager
-from risk.portfolio import PortfolioManager
 
 
 @dataclass
@@ -24,17 +27,21 @@ class Position:
     capital_invested: float
     partial_closed: bool = False
     pyramid_count: int = 0
+    entry_reasons: list = field(default_factory=list)
+    opened_at: float = 0.0   # Unix timestamp — voor time-based exit
+    regime: str = "ranging"
+    setup_grade: str = "?"
 
 
 class PaperEngine:
-    def __init__(self, initial_capital: float, risk_manager: RiskManager):
+    def __init__(self, initial_capital: float, risk_manager: RiskManager, fee_rate: float = 0.001):
         self.risk = risk_manager
         self.initial_capital = initial_capital
         self.capital = initial_capital
         self.positions: dict[str, Position] = {}
         self.trade_history: list[dict] = []
         self.peak_value = initial_capital
-        self.fee_rate = 0.001
+        self.fee_rate = fee_rate
 
     # ── Tick update — elke cyclus aanroepen ───────────────────────
     def check_stops(self, prices: dict) -> list[dict]:
@@ -50,6 +57,25 @@ class PaperEngine:
                 pos.peak_price = price
             elif pos.direction == -1 and price < pos.peak_price:
                 pos.peak_price = price
+
+            # ── Breakeven stop: SL naar entry zodra prijs halverwege TP1 ──
+            if not pos.partial_closed and pos.opened_at > 0:
+                halfway = (pos.entry_price + pos.take_profit) / 2
+                if pos.direction == 1 and price >= halfway:
+                    pos.stop_loss = max(pos.stop_loss, pos.entry_price)
+                elif pos.direction == -1 and price <= halfway:
+                    pos.stop_loss = min(pos.stop_loss, pos.entry_price)
+
+            # ── Time-based exit: sluit stale trades na 24 uur ─────
+            if pos.opened_at > 0:
+                hours_open = (_time.time() - pos.opened_at) / 3600
+                if hours_open > 24:
+                    pnl_pct = ((price - pos.entry_price) / pos.entry_price) * pos.direction
+                    if abs(pnl_pct) < 0.005:  # Minder dan 0.5% beweging → dood kapitaal
+                        record = self._close_position(symbol, price, "TIME-EXIT")
+                        if record:
+                            closed.append(record)
+                        continue
 
             # ── Partieel sluiten op TP1 (50%) ─────────────────────
             if not pos.partial_closed:
@@ -91,9 +117,12 @@ class PaperEngine:
 
     # ── Long kopen ─────────────────────────────────────────────────
     def buy(self, symbol: str, price: float, atr: float,
-            confidence: float, prices: dict) -> dict | None:
+            confidence: float, prices: dict,
+            entry_reasons: list = None, position_pct: float = 0.10,
+            sl_mult: float = None, tp_mult: float = None,
+            regime: str = "ranging", setup_grade: str = "?") -> dict | None:
         if symbol in self.positions:
-            return self._try_pyramid(symbol, price, confidence)
+            return self._try_pyramid(symbol, price, confidence, atr)
 
         total = self.total_value(prices)
         drawdown = self._drawdown(total)
@@ -101,32 +130,46 @@ class PaperEngine:
         if not may:
             return None
 
-        invest = min(
-            self.risk.position_size(total, price, atr, confidence) * price,
-            total * 0.40,
-            self.capital * 0.95,
-        )
+        invest = min(total * position_pct, self.capital * 0.95)
         if invest < price * 0.0001:
             return None
 
-        sl  = self.risk.stop_loss_price(price, atr)
-        tp1 = price + (price - sl) * 1.5   # TP1 op 1.5R
-        tp2 = self.risk.take_profit_price(price, atr)  # TP2 op 4R
+        _sl_m = sl_mult if sl_mult is not None else self.risk.atr_sl_mult
+        _tp_m = tp_mult if tp_mult is not None else self.risk.atr_tp_mult
+
+        # Fee-check: verwachte move moet minimaal 3× round-trip fee zijn
+        # (2× fee = breakeven, 3× = minimale marge om de moeite waard te zijn)
+        expected_move_pct = (atr * _tp_m) / price
+        if expected_move_pct < self.fee_rate * 3:
+            return None
+
+        sl  = price - atr * _sl_m
+        tp1 = price + (price - sl) * 1.2   # TP1 op 1.2R (vaker bereikt dan 1.5R)
+        tp2 = price + atr * _tp_m
+        if tp1 >= tp2:  # Fix: TP1 moet altijd VOOR TP2 liggen (bug in ranging met lage sl_m)
+            tp1 = price + atr * (_tp_m * 0.45)
 
         self.capital -= invest
         self.positions[symbol] = Position(
             symbol=symbol, direction=1, size=(invest * (1 - self.fee_rate)) / price,
             entry_price=price, stop_loss=sl, take_profit=tp1, take_profit_2=tp2,
             peak_price=price, capital_invested=invest,
+            entry_reasons=entry_reasons or [],
+            opened_at=_time.time(),
+            regime=regime, setup_grade=setup_grade,
         )
         return {"type": "buy", "symbol": symbol, "price": price,
                 "invest": invest, "stop_loss": sl,
                 "take_profit": tp1, "confidence": confidence,
+                "entry_reasons": entry_reasons or [],
                 "timestamp": datetime.now().isoformat()}
 
     # ── Short openen ────────────────────────────────────────────────
     def short(self, symbol: str, price: float, atr: float,
-               confidence: float, prices: dict) -> dict | None:
+               confidence: float, prices: dict,
+               entry_reasons: list = None, position_pct: float = 0.10,
+               sl_mult: float = None, tp_mult: float = None,
+               regime: str = "ranging", setup_grade: str = "?") -> dict | None:
         if symbol in self.positions:
             return None
 
@@ -136,27 +179,37 @@ class PaperEngine:
         if not may:
             return None
 
-        invest = min(
-            self.risk.position_size(total, price, atr, confidence) * price,
-            total * 0.40,
-            self.capital * 0.95,
-        )
+        invest = min(total * position_pct, self.capital * 0.95)
         if invest < price * 0.0001:
             return None
 
-        sl  = price + atr * self.risk.atr_sl_mult   # SL boven entry voor short
-        tp1 = price - (sl - price) * 1.5             # TP1 op 1.5R omlaag
-        tp2 = price - atr * self.risk.atr_tp_mult    # TP2 op 4R omlaag
+        _sl_m = sl_mult if sl_mult is not None else self.risk.atr_sl_mult
+        _tp_m = tp_mult if tp_mult is not None else self.risk.atr_tp_mult
+
+        # Fee-check: zelfde drempel als long
+        expected_move_pct = (atr * _tp_m) / price
+        if expected_move_pct < self.fee_rate * 3:
+            return None
+
+        sl  = price + atr * _sl_m                    # SL boven entry voor short
+        tp1 = price - (sl - price) * 1.2             # TP1 op 1.2R omlaag (vaker bereikt dan 1.5R)
+        tp2 = price - atr * _tp_m                    # TP2 omlaag
+        if tp1 <= tp2:  # Fix: voor short moet TP1 > TP2 (TP1 dichter bij entry)
+            tp1 = price - atr * (_tp_m * 0.45)
 
         self.capital -= invest * 0.10  # Margin (10%)
         self.positions[symbol] = Position(
-            symbol=symbol, direction=-1, size=invest / price,
+            symbol=symbol, direction=-1, size=(invest * (1 - self.fee_rate)) / price,
             entry_price=price, stop_loss=sl, take_profit=tp1, take_profit_2=tp2,
             peak_price=price, capital_invested=invest,
+            entry_reasons=entry_reasons or [],
+            opened_at=_time.time(),
+            regime=regime, setup_grade=setup_grade,
         )
         return {"type": "short", "symbol": symbol, "price": price,
                 "invest": invest, "stop_loss": sl,
                 "take_profit": tp1, "confidence": confidence,
+                "entry_reasons": entry_reasons or [],
                 "timestamp": datetime.now().isoformat()}
 
     # ── Positie sluiten ─────────────────────────────────────────────
@@ -182,6 +235,12 @@ class PaperEngine:
             "symbol": symbol, "price": price,
             "pnl": pnl, "pnl_pct": pnl_pct,
             "reason": reason, "direction": pos.direction,
+            "entry_reasons": pos.entry_reasons,
+            "entry_price": pos.entry_price,
+            "entry_timestamp": datetime.fromtimestamp(pos.opened_at).isoformat() if pos.opened_at else None,
+            "invest": pos.capital_invested,
+            "regime": pos.regime,
+            "setup_grade": pos.setup_grade,
             "timestamp": datetime.now().isoformat(),
         }
         self.trade_history.append(record)
@@ -198,10 +257,12 @@ class PaperEngine:
             proceeds = close_size * price * (1 - self.fee_rate)
             pnl = proceeds - (close_size * pos.entry_price)
         else:
-            pnl = (pos.entry_price - price) * close_size
-            proceeds = pnl
+            margin_return = pos.capital_invested * 0.10 * pct
+            pnl = (pos.entry_price - price) * close_size * (1 - self.fee_rate)
+            proceeds = margin_return + pnl
 
         pnl_pct = pnl / ((close_size * pos.entry_price) + 1e-8)
+        original_invest = pos.capital_invested
         self.capital += proceeds
         pos.size -= close_size
         pos.capital_invested *= (1 - pct)
@@ -212,19 +273,26 @@ class PaperEngine:
             "symbol": symbol, "price": price,
             "pnl": pnl, "pnl_pct": pnl_pct,
             "reason": reason, "partial": True,
+            "entry_price": pos.entry_price,
+            "entry_timestamp": datetime.fromtimestamp(pos.opened_at).isoformat() if pos.opened_at else None,
+            "invest": original_invest,
+            "regime": pos.regime,
+            "setup_grade": pos.setup_grade,
             "timestamp": datetime.now().isoformat(),
         }
         self.trade_history.append(record)
         return record
 
-    def _try_pyramid(self, symbol: str, price: float, confidence: float) -> dict | None:
-        """Bijkopen op winnende positie (max 2x)."""
+    def _try_pyramid(self, symbol: str, price: float, confidence: float,
+                     atr: float = 0.0) -> dict | None:
+        """Bijkopen op winnende positie (max 2x). Vereist 2× ATR winst."""
         pos = self.positions.get(symbol)
         if not pos or pos.pyramid_count >= 2:
             return None
-        if pos.direction == 1 and price < pos.entry_price * 1.015:
-            return None  # Minimaal 1.5% winst voor pyramid
-        if pos.direction == -1 and price > pos.entry_price * 0.985:
+        min_move = atr * 2.0 if atr > 0 else pos.entry_price * 0.02
+        if pos.direction == 1 and price < pos.entry_price + min_move:
+            return None  # Minimaal 2× ATR in winst voor pyramid
+        if pos.direction == -1 and price > pos.entry_price - min_move:
             return None
 
         add_invest = pos.capital_invested * 0.25
@@ -268,3 +336,29 @@ class PaperEngine:
             "longs": sum(1 for p in self.positions.values() if p.direction == 1),
             "shorts": sum(1 for p in self.positions.values() if p.direction == -1),
         }
+
+    # ── State opslaan / herstellen ─────────────────────────────────
+    def save_state(self, path: Path):
+        state = {
+            "capital": self.capital,
+            "peak_value": self.peak_value,
+            "initial_capital": self.initial_capital,
+            "trade_history": self.trade_history,
+            "positions": {sym: asdict(pos) for sym, pos in self.positions.items()},
+        }
+        path.write_text(json.dumps(state, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+
+    def load_state(self, path: Path):
+        if not path.exists():
+            return
+        try:
+            state = json.loads(path.read_text(encoding="utf-8"))
+            self.capital = state.get("capital", self.capital)
+            self.peak_value = state.get("peak_value", self.capital)
+            self.initial_capital = state.get("initial_capital", self.initial_capital)
+            self.trade_history = state.get("trade_history", [])
+            known = {f.name for f in Position.__dataclass_fields__.values()}
+            for sym, p in state.get("positions", {}).items():
+                self.positions[sym] = Position(**{k: v for k, v in p.items() if k in known})
+        except Exception:
+            pass

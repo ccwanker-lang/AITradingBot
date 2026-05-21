@@ -7,7 +7,8 @@
     "stop_loss": 2348.518771097568,
     "take_profit": 2394.0218433536475,
     "confidence": 0.4633185047317381,
-    "timestamp": "2026-04-26T22:11:34.288408"
+    "timestamp": "2026-04-26T22:11:34.288408",
+    "regime": "ranging"
   },
   {
     "type": "short",
@@ -17,7 +18,8 @@
     "stop_loss": 78654.78095111578,
     "take_profit": 77531.95357332632,
     "confidence": 0.4984414641872454,
-    "timestamp": "2026-04-26T22:17:03.481858"
+    "timestamp": "2026-04-26T22:17:03.481858",
+    "regime": "ranging"
   },
   {
     "type": "buy",
@@ -27,7 +29,8 @@
     "stop_loss": 2351.570199668997,
     "take_profit": 2398.4697004965046,
     "confidence": 0.9626128029608387,
-    "timestamp": "2026-04-26T22:33:06.680695"
+    "timestamp": "2026-04-26T22:33:06.680695",
+    "regime": "ranging"
   },
   {
     "type": "buy",
@@ -37,7 +40,8 @@
     "stop_loss": 77827.32904888422,
     "take_profit": 78981.4064266737,
     "confidence": 0.33610518829258035,
-    "timestamp": "2026-04-26T22:34:11.263519"
+    "timestamp": "2026-04-26T22:34:11.263519",
+    "regime": "ranging"
   },
   {
     "type": "sell",
@@ -47,7 +51,8 @@
     "pnl_pct": -0.004706279757912838,
     "reason": "omgekeerd_signaal",
     "direction": 1,
-    "timestamp": "2026-04-26T23:00:48.829721"
+    "timestamp": "2026-04-26T23:00:48.829721",
+    "regime": "ranging"
   },
   {
     "type": "short",
@@ -57,7 +62,8 @@
     "stop_loss": 2383.0372635726667,
     "take_profit": 2337.519104641,
     "confidence": 0.5178708138756638,
-    "timestamp": "2026-04-26T23:01:52.192704"
+    "timestamp": "2026-04-26T23:01:52.192704",
+    "regime": "ranging"
   },
   {
     "type": "sell",
@@ -67,7 +73,8 @@
     "pnl_pct": -0.0024663291941711993,
     "reason": "omgekeerd_signaal",
     "direction": 1,
-    "timestamp": "2026-04-26T23:21:03.175240"
+    "timestamp": "2026-04-26T23:21:03.175240",
+    "regime": "ranging"
   },
   {
     "type": "short",
@@ -77,6 +84,4859 @@
     "stop_loss": 78703.4254750157,
     "take_profit": 77575.63678747645,
     "confidence": 0.40721612845401073,
-    "timestamp": "2026-04-26T23:22:09.963377"
+    "timestamp": "2026-04-26T23:22:09.963377",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2274.81,
+    "invest": 55.39385206283529,
+    "stop_loss": 2302.5862706002476,
+    "take_profit": 2233.1455940996284,
+    "confidence": 0.6817704869272034,
+    "timestamp": "2026-04-28T17:45:46.287296",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 83.34,
+    "invest": 35.06467090070751,
+    "stop_loss": 84.33852107590316,
+    "take_profit": 81.84221838614528,
+    "confidence": 0.43156518031640007,
+    "timestamp": "2026-04-28T17:45:48.585932",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "BTC/USDT",
+    "price": 75954.37,
+    "invest": 27.2911835285179,
+    "stop_loss": 75234.47035281936,
+    "take_profit": 77034.21947077094,
+    "confidence": 0.33589148958175874,
+    "timestamp": "2026-04-28T18:33:16.749760",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2291.98,
+    "invest": 56.534622194841816,
+    "stop_loss": 2318.7146169464195,
+    "take_profit": 2251.8780745803706,
+    "confidence": 0.6958107347057453,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.22",
+        "bijdrage": -0.0332,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2288.24 (0.2% weg)",
+        "bijdrage": 0.0284,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2291.98",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "LH+LL structuur — rally naar LH zone 2310.88",
+        "bijdrage": -0.0273,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-28T21:24:18.403473",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 83.77,
+    "invest": 36.03355705974885,
+    "stop_loss": 84.66141772454218,
+    "take_profit": 82.43287341318673,
+    "confidence": 0.4434899330430627,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.22",
+        "bijdrage": -0.0332,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 83.88 (0.1% weg)",
+        "bijdrage": -0.0293,
+        "actie": -1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Distributie — lage vol, prijs consolideert onder weerstand",
+        "bijdrage": -0.0292,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=83.77",
+        "bijdrage": -0.028,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-28T21:24:21.400779",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "BTC/USDT",
+    "price": 76244.27,
+    "invest": 33.82772368758903,
+    "stop_loss": 77070.00084395228,
+    "take_profit": 75005.67373407159,
+    "confidence": 0.4163412146164803,
+    "entry_reasons": [
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Sign of Weakness — daling met hoog volume",
+        "bijdrage": -0.0337,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 76389.63 (0.2% weg)",
+        "bijdrage": -0.0275,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bearish (3 signalen)",
+        "bijdrage": -0.021,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 2/6 @ 76099.72",
+        "bijdrage": 0.019,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-04-29T17:22:39.738990",
+    "regime": "ranging"
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "ETH/USDT",
+    "price": 2243.95,
+    "pnl": 0.5923607326456304,
+    "pnl_pct": 0.020955680234124575,
+    "reason": "TP1",
+    "partial": true,
+    "timestamp": "2026-04-29T20:09:23.370347",
+    "regime": "ranging"
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "SOL/USDT",
+    "price": 82.14,
+    "pnl": 0.3505711949826338,
+    "pnl_pct": 0.019458039860275556,
+    "reason": "TP1",
+    "partial": true,
+    "timestamp": "2026-04-29T20:09:23.370347",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2233.8,
+    "pnl": 0.7168245654361276,
+    "pnl_pct": 0.025358781481268744,
+    "reason": "TAKE-PROFIT-2",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.22",
+        "bijdrage": -0.0332,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2288.24 (0.2% weg)",
+        "bijdrage": 0.0284,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2291.98",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "LH+LL structuur — rally naar LH zone 2310.88",
+        "bijdrage": -0.0273,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2291.98,
+    "timestamp": "2026-04-29T20:10:26.771808",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 81.74,
+    "pnl": 0.4361643351465854,
+    "pnl_pct": 0.02420878594812463,
+    "reason": "TAKE-PROFIT-2",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.22",
+        "bijdrage": -0.0332,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 83.88 (0.1% weg)",
+        "bijdrage": -0.0293,
+        "actie": -1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Distributie — lage vol, prijs consolideert onder weerstand",
+        "bijdrage": -0.0292,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=83.77",
+        "bijdrage": -0.028,
+        "actie": -1
+      }
+    ],
+    "entry_price": 83.77,
+    "timestamp": "2026-04-29T20:10:26.771808",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2233.39,
+    "invest": 31.979775799951778,
+    "stop_loss": 2273.996857200747,
+    "take_profit": 2172.4797141988793,
+    "confidence": 0.39459655169989294,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.17 RSI=29",
+        "bijdrage": 0.0375,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2233.34 (0.0% weg)",
+        "bijdrage": 0.0339,
+        "actie": 1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "Breakout",
+        "reden": "Uitbraak onder 2258.24 Vol=1.7x",
+        "bijdrage": -0.0244,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-29T20:10:28.840581",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 81.71,
+    "invest": 40.31901831854728,
+    "stop_loss": 83.10176981137302,
+    "take_profit": 79.62234528294046,
+    "confidence": 0.49749396918684974,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.25 RSI=25",
+        "bijdrage": 0.0421,
+        "actie": 1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 82.98",
+        "bijdrage": -0.0297,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 81.84 (0.2% weg)",
+        "bijdrage": -0.0288,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-29T20:10:30.395804",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 83.11,
+    "pnl": -0.6901257988045583,
+    "pnl_pct": -0.017116631986943118,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.25 RSI=25",
+        "bijdrage": 0.0421,
+        "actie": 1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 82.98",
+        "bijdrage": -0.0297,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 81.84 (0.2% weg)",
+        "bijdrage": -0.0288,
+        "actie": -1
+      }
+    ],
+    "entry_price": 81.71,
+    "timestamp": "2026-04-30T00:51:21.233693",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 83.07,
+    "invest": 29.49761866775491,
+    "stop_loss": 84.03820357164507,
+    "take_profit": 81.61769464253237,
+    "confidence": 0.3642213591993377,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAL 83.04 — institutionele koopzone",
+        "bijdrage": 0.033,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 83.03 (0.0% weg)",
+        "bijdrage": 0.0325,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 83.20",
+        "bijdrage": -0.0297,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=83.07",
+        "bijdrage": -0.028,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-30T01:00:08.604385",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2274.47,
+    "pnl": -0.5876338036223654,
+    "pnl_pct": -0.018375169579503425,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.17 RSI=29",
+        "bijdrage": 0.0375,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2233.34 (0.0% weg)",
+        "bijdrage": 0.0339,
+        "actie": 1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "Breakout",
+        "reden": "Uitbraak onder 2258.24 Vol=1.7x",
+        "bijdrage": -0.0244,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2233.39,
+    "timestamp": "2026-04-30T02:48:49.471735",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2239.22,
+    "invest": 34.743988496885784,
+    "stop_loss": 2268.538146148984,
+    "take_profit": 2195.2427807765234,
+    "confidence": 0.42925388360023387,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2239.22",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2233.94 (0.2% weg)",
+        "bijdrage": 0.026,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2271.07 — bearish breakdown",
+        "bijdrage": -0.024,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-30T07:00:17.855043",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2270.66,
+    "pnl": -0.48733873730305594,
+    "pnl_pct": -0.014026562816945212,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2239.22",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2233.94 (0.2% weg)",
+        "bijdrage": 0.026,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2271.07 — bearish breakdown",
+        "bijdrage": -0.024,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2239.22,
+    "timestamp": "2026-04-30T11:31:38.212217",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2258.55,
+    "invest": 44.637116012761666,
+    "stop_loss": 2287.933655705614,
+    "take_profit": 2214.4745164415795,
+    "confidence": 0.5517510873981901,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2258.55",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 3/6 @ 2262.56",
+        "bijdrage": 0.0179,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2256.82-2267.06 wordt gevuld",
+        "bijdrage": -0.0124,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-04-30T14:00:48.181222",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "BTC/USDT",
+    "price": 77210.04,
+    "pnl": -0.42806011396078336,
+    "pnl_pct": -0.012654121151855454,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Sign of Weakness — daling met hoog volume",
+        "bijdrage": -0.0337,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram daalt",
+        "bijdrage": -0.032,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 76389.63 (0.2% weg)",
+        "bijdrage": -0.0275,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bearish (3 signalen)",
+        "bijdrage": -0.021,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 2/6 @ 76099.72",
+        "bijdrage": 0.019,
+        "actie": 1
+      }
+    ],
+    "entry_price": 76244.27,
+    "timestamp": "2026-05-01T05:20:26.925922",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "BTC/USDT",
+    "price": 77216.77,
+    "invest": 39.99381657337424,
+    "stop_loss": 77873.3350719165,
+    "take_profit": 76231.92239212526,
+    "confidence": 0.49456874570113263,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.32 RSI=68",
+        "bijdrage": -0.04,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=77216.77",
+        "bijdrage": 0.028,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-01T05:20:28.350845",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 84.16,
+    "pnl": -0.3866648843566282,
+    "pnl_pct": -0.013108342357419667,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAL 83.04 — institutionele koopzone",
+        "bijdrage": 0.033,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 83.03 (0.0% weg)",
+        "bijdrage": 0.0325,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 83.20",
+        "bijdrage": -0.0297,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=83.07",
+        "bijdrage": -0.028,
+        "actie": -1
+      }
+    ],
+    "entry_price": 83.07,
+    "timestamp": "2026-05-01T05:21:31.939142",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2289.0,
+    "pnl": -0.6012003198538868,
+    "pnl_pct": -0.013468619243844484,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2258.55",
+        "bijdrage": -0.028,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 3/6 @ 2262.56",
+        "bijdrage": 0.0179,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2256.82-2267.06 wordt gevuld",
+        "bijdrage": -0.0124,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2258.55,
+    "timestamp": "2026-05-01T05:21:31.939226",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 84.16,
+    "invest": 31.718692722696666,
+    "stop_loss": 85.00981563592515,
+    "take_profit": 82.88527654611227,
+    "confidence": 0.3926271905162287,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.31 RSI=66",
+        "bijdrage": -0.045,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 84.01",
+        "bijdrage": 0.0297,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-01T05:21:39.483846",
+    "regime": "ranging"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2292.17,
+    "invest": 31.849588600262035,
+    "stop_loss": 2316.7217087660424,
+    "take_profit": 2255.342436850937,
+    "confidence": 0.39424747421164946,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.46 RSI=66",
+        "bijdrage": -0.045,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2279.00",
+        "bijdrage": 0.0297,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-01T05:22:42.948507",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "BTC/USDT",
+    "price": 78442.0,
+    "pnl": -0.6339636099297465,
+    "pnl_pct": -0.015851540665245998,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.32 RSI=68",
+        "bijdrage": -0.04,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=77216.77",
+        "bijdrage": 0.028,
+        "actie": 1
+      }
+    ],
+    "entry_price": 77216.77,
+    "timestamp": "2026-05-01T20:42:44.384347",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "BTC/USDT",
+    "price": 78473.29,
+    "invest": 41.252021751132304,
+    "stop_loss": 77640.92279511626,
+    "take_profit": 79721.84080732559,
+    "confidence": 0.5109604999884153,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.1,
+        "actie": 1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling",
+        "bijdrage": 0.0749,
+        "actie": 1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAH 78359.53 — institutionele verkoopzone",
+        "bijdrage": -0.0389,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=78473.29",
+        "bijdrage": 0.0364,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0169,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-01T21:05:09.694335",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2303.95,
+    "pnl": -0.163518833924782,
+    "pnl_pct": -0.00513409563701855,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.46 RSI=66",
+        "bijdrage": -0.045,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2279.00",
+        "bijdrage": 0.0297,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2292.17,
+    "timestamp": "2026-05-01T22:11:25.371184",
+    "regime": "ranging"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 83.84,
+    "pnl": 0.12048279098849161,
+    "pnl_pct": 0.0037984790862548383,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning",
+        "bijdrage": -0.195,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.31 RSI=66",
+        "bijdrage": -0.045,
+        "actie": -1
+      },
+      {
+        "naam": "MACD",
+        "reden": "MACD histogram groeit",
+        "bijdrage": 0.032,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 84.01",
+        "bijdrage": 0.0297,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0292,
+        "actie": 1
+      }
+    ],
+    "entry_price": 84.16,
+    "timestamp": "2026-05-01T22:11:28.397270",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2328.1,
+    "invest": 99.35682365329633,
+    "stop_loss": 2304.7082224536875,
+    "take_profit": 2351.4917775463123,
+    "confidence": 0.6311820458042128,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2308.34",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=2328.10",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2325.95 (0.1% weg)",
+        "bijdrage": 0.0494,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0111,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-03T18:59:24.481583",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2327.21,
+    "pnl": -0.236521084148535,
+    "pnl_pct": -0.0023805217943567263,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2308.34",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=2328.10",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2325.95 (0.1% weg)",
+        "bijdrage": 0.0494,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0111,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2328.1,
+    "entry_timestamp": "2026-05-03T18:59:24.481551",
+    "invest": 99.35682365329633,
+    "timestamp": "2026-05-03T23:02:52.671865",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2334.10535452,
+    "invest": 39.73326861795259,
+    "stop_loss": 2305.8911736885793,
+    "take_profit": 2376.4266257671316,
+    "confidence": 0.5348775936158725,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2308.34",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=2333.40",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.95: ETH duur",
+        "bijdrage": -0.0488,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0342,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.008,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-04T03:34:46.059275",
+    "regime": "bull_trend",
+    "regime_strength": 0.76,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": -0.0009,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "BTC/USDT",
+    "price": 79745.81,
+    "pnl": 0.313196646166098,
+    "pnl_pct": 0.015199747448095217,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 78473.29,
+    "entry_timestamp": null,
+    "invest": 41.252021751132304,
+    "timestamp": "2026-05-04T03:59:51.629379",
+    "regime": "ranging"
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "ETH/USDT",
+    "price": 2377.32,
+    "pnl": 0.34723750137791143,
+    "pnl_pct": 0.01749592210152038,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 2334.10535452,
+    "entry_timestamp": "2026-05-04T03:34:46.059254",
+    "invest": 39.73326861795259,
+    "timestamp": "2026-05-04T04:38:46.446798",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "BTC/USDT",
+    "price": 80231.31,
+    "pnl": 0.41992492918410207,
+    "pnl_pct": 0.020358998718359098,
+    "reason": "TAKE-PROFIT-2",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.1,
+        "actie": 1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling",
+        "bijdrage": 0.0749,
+        "actie": 1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.31",
+        "bijdrage": -0.0468,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAH 78359.53 — institutionele verkoopzone",
+        "bijdrage": -0.0389,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=78473.29",
+        "bijdrage": 0.0364,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0169,
+        "actie": 1
+      }
+    ],
+    "entry_price": 78473.29,
+    "entry_timestamp": null,
+    "invest": 20.626010875566152,
+    "timestamp": "2026-05-04T04:41:02.137995",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "BTC/USDT",
+    "price": 79558.220308,
+    "invest": 111.86920881762755,
+    "stop_loss": 78678.30861135534,
+    "take_profit": 80878.087852967,
+    "confidence": 0.955,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/BTC z=-2.59: BTC duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 79199.48",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 78572.57-79540.05 wordt gevuld",
+        "bijdrage": 0.0596,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=79534.36",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 79468.49 (0.1% weg)",
+        "bijdrage": 0.0499,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0391,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-04T08:27:24.234665",
+    "regime": "bull_trend",
+    "regime_strength": 0.76,
+    "setup_grade": "A+",
+    "agreeing_strategies": 5,
+    "quality_score": 4,
+    "edge_score": 0.0018,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2323.68,
+    "pnl": -0.12827096391850645,
+    "pnl_pct": -0.00645660265644413,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2308.34",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=2333.40",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.95: ETH duur",
+        "bijdrage": -0.0488,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0342,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.008,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2334.10535452,
+    "entry_timestamp": "2026-05-04T03:34:46.059254",
+    "invest": 19.866634308976295,
+    "timestamp": "2026-05-04T12:07:12.867842",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "BTC/USDT",
+    "price": 78666.01,
+    "pnl": -1.4756824511051434,
+    "pnl_pct": -0.013191140498534612,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/BTC z=-2.59: BTC duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 79199.48",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 78572.57-79540.05 wordt gevuld",
+        "bijdrage": 0.0596,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=79534.36",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 79468.49 (0.1% weg)",
+        "bijdrage": 0.0499,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0391,
+        "actie": 1
+      }
+    ],
+    "entry_price": 79558.220308,
+    "entry_timestamp": "2026-05-04T08:27:24.234645",
+    "invest": 111.86920881762755,
+    "timestamp": "2026-05-04T12:08:21.930838",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "BTC/USDT",
+    "price": 79982.77232411,
+    "invest": 59.568532829225155,
+    "stop_loss": 78884.27935987087,
+    "take_profit": 81630.5117704687,
+    "confidence": 0.5748860284273695,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/BTC z=-2.02: BTC duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 78878.77",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bullish (3 signalen)",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0434,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 79476.37 (0.6% weg)",
+        "bijdrage": 0.0218,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "EMA9 kruist boven EMA21",
+        "bijdrage": 0.0066,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-04T16:48:19.762520",
+    "regime": "bull_trend",
+    "regime_strength": 0.58,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": -0.0031,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2365.95502021,
+    "invest": 59.564958717255394,
+    "stop_loss": 2327.354211727647,
+    "take_profit": 2423.856232933529,
+    "confidence": 0.9862773486938359,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2343.60",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0486,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2361.53 (0.1% weg)",
+        "bijdrage": 0.0464,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bullish (3 signalen)",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.0388,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2354.02-2371.74 wordt gevuld",
+        "bijdrage": 0.0364,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-04T16:48:22.010422",
+    "regime": "bull_trend",
+    "regime_strength": 0.59,
+    "setup_grade": "B",
+    "agreeing_strategies": 5,
+    "quality_score": 2,
+    "edge_score": -0.0031,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "BTC/USDT",
+    "price": 81641.47,
+    "pnl": 0.586682473754589,
+    "pnl_pct": 0.019717448639681535,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 79982.77232411,
+    "entry_timestamp": "2026-05-04T16:48:19.762497",
+    "invest": 59.568532829225155,
+    "timestamp": "2026-05-05T15:09:10.018129",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2376.21,
+    "pnl": 0.13859151284796667,
+    "pnl_pct": 0.0023267289327366016,
+    "reason": "TIME-EXIT",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 2343.60",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0486,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2361.53 (0.1% weg)",
+        "bijdrage": 0.0464,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bullish (3 signalen)",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.0388,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2354.02-2371.74 wordt gevuld",
+        "bijdrage": 0.0364,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2365.95502021,
+    "entry_timestamp": "2026-05-04T16:48:22.010401",
+    "invest": 59.564958717255394,
+    "timestamp": "2026-05-05T16:48:50.679784",
+    "regime": "ranging"
+  },
+  {
+    "type": "pyramid",
+    "symbol": "BTC/USDT",
+    "price": 81087.568975,
+    "add_invest": 7.446066603653144,
+    "pyramid_count": 1,
+    "timestamp": "2026-05-05T18:41:10.584955",
+    "regime": "bull_trend",
+    "regime_strength": 0.7,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": -0.0023,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "pyramid",
+    "symbol": "BTC/USDT",
+    "price": 81167.462936,
+    "add_invest": 9.307583254566431,
+    "pyramid_count": 2,
+    "timestamp": "2026-05-05T18:42:20.355208",
+    "regime": "bull_trend",
+    "regime_strength": 0.7,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": -0.0023,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "buy",
+    "symbol": "SOL/USDT",
+    "price": 86.31641718,
+    "invest": 59.59324612946095,
+    "stop_loss": 85.25972978801751,
+    "take_profit": 87.90144826797373,
+    "confidence": 0.6008831581572763,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.59: SOL duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 85.12",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=86.29",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 86.18 (0.1% weg)",
+        "bijdrage": 0.0474,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": -0.0373,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 85.88-86.42 wordt gevuld",
+        "bijdrage": 0.0304,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-06T02:47:27.893844",
+    "regime": "bull_trend",
+    "regime_strength": 0.55,
+    "setup_grade": "B",
+    "agreeing_strategies": 5,
+    "quality_score": 2,
+    "edge_score": -0.0023,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "SOL/USDT",
+    "price": 87.96,
+    "pnl": 0.5364675226854025,
+    "pnl_pct": 0.01802232843183664,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 86.31641718,
+    "entry_timestamp": "2026-05-06T02:47:27.893822",
+    "invest": 59.59324612946095,
+    "timestamp": "2026-05-06T10:08:21.086913",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "SOL/USDT",
+    "price": 89.12,
+    "pnl": 0.9063050628613247,
+    "pnl_pct": 0.03041636834443605,
+    "reason": "TAKE-PROFIT-2",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.59: SOL duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 85.12",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=86.29",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 86.18 (0.1% weg)",
+        "bijdrage": 0.0474,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": -0.0373,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 85.88-86.42 wordt gevuld",
+        "bijdrage": 0.0304,
+        "actie": 1
+      }
+    ],
+    "entry_price": 86.31641718,
+    "entry_timestamp": "2026-05-06T02:47:27.893822",
+    "invest": 29.796623064730476,
+    "timestamp": "2026-05-06T10:56:29.035375",
+    "regime": "ranging"
+  },
+  {
+    "type": "sell",
+    "symbol": "BTC/USDT",
+    "price": 82730.83,
+    "pnl": 1.25776638455838,
+    "pnl_pct": 0.02702670177397629,
+    "reason": "TAKE-PROFIT-2",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/BTC z=-2.02: BTC duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 78878.77",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Ichimoku bullish (3 signalen)",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0434,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 79476.37 (0.6% weg)",
+        "bijdrage": 0.0218,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "EMA9 kruist boven EMA21",
+        "bijdrage": 0.0066,
+        "actie": 1
+      }
+    ],
+    "entry_price": 79982.77232411,
+    "entry_timestamp": "2026-05-04T16:48:19.762497",
+    "invest": 46.537916272832156,
+    "timestamp": "2026-05-06T13:21:02.424949",
+    "regime": "ranging"
+  },
+  {
+    "type": "buy",
+    "symbol": "BTC/USDT",
+    "price": 81899.642524,
+    "invest": 79.69400900434515,
+    "stop_loss": 81029.86713790281,
+    "take_profit": 83204.30560314577,
+    "confidence": 0.7247038881732392,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.0658,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 81712.32",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=81875.08",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 81754.88 (0.1% weg)",
+        "bijdrage": 0.0464,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": -0.0414,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0164,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-06T15:43:44.706513",
+    "regime": "bull_trend",
+    "regime_strength": 0.57,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": 0.0042,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "buy",
+    "symbol": "SOL/USDT",
+    "price": 89.01731013,
+    "invest": 119.53145022543718,
+    "stop_loss": 87.52490485759152,
+    "take_profit": 91.25591803861272,
+    "confidence": 0.6506422136926479,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.38: SOL duur",
+        "bijdrage": -0.1013,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 85.12",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=88.98",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0399,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0316,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 88.32 (0.7% weg)",
+        "bijdrage": 0.0138,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-06T17:53:08.700229",
+    "regime": "bull_trend",
+    "regime_strength": 0.81,
+    "setup_grade": "A",
+    "agreeing_strategies": 4,
+    "quality_score": 3,
+    "edge_score": 0.0042,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "sell",
+    "symbol": "BTC/USDT",
+    "price": 81016.37,
+    "pnl": -1.017075386840375,
+    "pnl_pct": -0.012762256528684592,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.0658,
+        "actie": 1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 81712.32",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=81875.08",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 81754.88 (0.1% weg)",
+        "bijdrage": 0.0464,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": -0.0414,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0164,
+        "actie": 1
+      }
+    ],
+    "entry_price": 81899.642524,
+    "entry_timestamp": "2026-05-06T15:43:44.706489",
+    "invest": 79.69400900434515,
+    "regime": "ranging",
+    "setup_grade": "?",
+    "timestamp": "2026-05-07T02:44:28.780891"
+  },
+  {
+    "type": "sell",
+    "symbol": "SOL/USDT",
+    "price": 88.97,
+    "pnl": -0.30234389187830857,
+    "pnl_pct": -0.0025294087144662907,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.38: SOL duur",
+        "bijdrage": -0.1013,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 85.12",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=88.98",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0399,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0316,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 88.32 (0.7% weg)",
+        "bijdrage": 0.0138,
+        "actie": 1
+      }
+    ],
+    "entry_price": 89.01731013,
+    "entry_timestamp": "2026-05-06T17:53:08.700206",
+    "invest": 119.53145022543718,
+    "regime": "ranging",
+    "setup_grade": "?",
+    "timestamp": "2026-05-07T12:27:11.887063"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 92.37067891,
+    "invest": 37.30708849783483,
+    "stop_loss": 93.5503117052543,
+    "take_profit": 90.60122971711854,
+    "confidence": 0.36825198402178283,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=3.14: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.27 RSI=83",
+        "bijdrage": -0.1008,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0594,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Sign of Strength — stijging met hoog volume",
+        "bijdrage": 0.0567,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 86.89 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 92.56",
+        "bijdrage": -0.042,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-08T20:44:01.731171",
+    "regime": "ranging",
+    "regime_strength": 0.15,
+    "setup_grade": "C",
+    "agreeing_strategies": 2,
+    "quality_score": 1,
+    "edge_score": 0.0,
+    "last_signals": {
+      "Bollinger": -1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 1,
+      "VolumeProfile": 1,
+      "Grid": -1
+    }
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 92.46,
+    "pnl": -0.03603933129892011,
+    "pnl_pct": -0.0009660183289658617,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=3.14: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.27 RSI=83",
+        "bijdrage": -0.1008,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0594,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Sign of Strength — stijging met hoog volume",
+        "bijdrage": 0.0567,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 86.89 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 92.56",
+        "bijdrage": -0.042,
+        "actie": -1
+      }
+    ],
+    "entry_price": 92.37067891,
+    "entry_timestamp": "2026-05-08T20:44:01.731144",
+    "invest": 37.30708849783483,
+    "regime": "ranging",
+    "setup_grade": "C",
+    "timestamp": "2026-05-08T22:02:31.961437"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 95.72905764,
+    "invest": 24.87049134860742,
+    "stop_loss": 96.65732853324185,
+    "take_profit": 94.3366513001372,
+    "confidence": 0.47165394722087556,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.09: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.25 RSI=75",
+        "bijdrage": -0.0944,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0507,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 87.91 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 95.91",
+        "bijdrage": -0.042,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-10T19:22:55.737882",
+    "regime": "ranging",
+    "regime_strength": 0.07,
+    "setup_grade": "C",
+    "agreeing_strategies": 2,
+    "quality_score": 1,
+    "edge_score": -0.0004,
+    "last_signals": {
+      "Bollinger": -1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": -1
+    }
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 96.33,
+    "pnl": -0.15596921563539645,
+    "pnl_pct": -0.0062712558986663175,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.09: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.25 RSI=75",
+        "bijdrage": -0.0944,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0507,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 87.91 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 95.91",
+        "bijdrage": -0.042,
+        "actie": -1
+      }
+    ],
+    "entry_price": 95.72905764,
+    "entry_timestamp": "2026-05-10T19:22:55.737855",
+    "invest": 24.87049134860742,
+    "regime": "ranging",
+    "setup_grade": "C",
+    "timestamp": "2026-05-10T20:03:19.737986"
+  },
+  {
+    "type": "buy",
+    "symbol": "SOL/USDT",
+    "price": 94.39113293,
+    "invest": 29.83991054185984,
+    "stop_loss": 92.74581566169745,
+    "take_profit": 96.85910883245381,
+    "confidence": 0.618213197170094,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 93.65",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=94.35",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0541,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0311,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 93.70 (0.7% weg)",
+        "bijdrage": 0.0171,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish liquidity sweep boven 96.50",
+        "bijdrage": -0.01,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-10T22:48:32.761717",
+    "regime": "bull_trend",
+    "regime_strength": 0.53,
+    "setup_grade": "A",
+    "agreeing_strategies": 4,
+    "quality_score": 3,
+    "edge_score": 0.0026,
+    "last_signals": {
+      "EMA_Cross": 1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 1,
+      "Ichimoku": 1,
+      "Wyckoff": 0,
+      "MarketStructure": 1
+    }
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2371.89185832,
+    "invest": 19.892676896362392,
+    "stop_loss": 2395.536108608326,
+    "take_profit": 2336.425482887512,
+    "confidence": 0.612324066454306,
+    "entry_reasons": [
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.07 RSI=65",
+        "bijdrage": -0.0702,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb ETH/BTC z=2.00: ETH duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 2376.23",
+        "bijdrage": -0.042,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAH 2358.24 — institutionele verkoopzone",
+        "bijdrage": -0.0305,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-11T00:50:56.529970",
+    "regime": "ranging",
+    "regime_strength": 0.05,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": -0.0049,
+    "last_signals": {
+      "Bollinger": -1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "Grid": -1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "ETH/USDT",
+    "price": 2331.92,
+    "pnl": 0.16745116613517666,
+    "pnl_pct": 0.01683545827836197,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 2371.89185832,
+    "entry_timestamp": "2026-05-11T00:50:56.529948",
+    "invest": 19.892676896362392,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-11T05:13:40.710575"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2324.07,
+    "pnl": 0.20033659376873278,
+    "pnl_pct": 0.020141743075709356,
+    "reason": "TAKE-PROFIT-2",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.07 RSI=65",
+        "bijdrage": -0.0702,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb ETH/BTC z=2.00: ETH duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 2376.23",
+        "bijdrage": -0.042,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAH 2358.24 — institutionele verkoopzone",
+        "bijdrage": -0.0305,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2371.89185832,
+    "entry_timestamp": "2026-05-11T00:50:56.529948",
+    "invest": 9.946338448181196,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-11T05:22:50.947821"
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2316.554758,
+    "invest": 39.800065303120945,
+    "stop_loss": 2295.9825084936124,
+    "take_profit": 2347.413132259582,
+    "confidence": 0.6295663197311034,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb ETH/BTC z=-2.40: ETH goedkoop",
+        "bijdrage": 0.0675,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2313.45 (0.1% weg)",
+        "bijdrage": 0.0597,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0491,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 2/6 @ 2313.76",
+        "bijdrage": 0.0398,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-11T15:37:16.055918",
+    "regime": "ranging",
+    "regime_strength": 0.35,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0031,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Wyckoff": 1,
+      "VolumeProfile": 0,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "SOL/USDT",
+    "price": 97.2,
+    "pnl": 0.42819163398147886,
+    "pnl_pct": 0.028727985182587772,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 94.39113293,
+    "entry_timestamp": "2026-05-10T22:48:32.761693",
+    "invest": 29.83991054185984,
+    "regime": "bull_trend",
+    "setup_grade": "A",
+    "timestamp": "2026-05-11T18:08:06.217298"
+  },
+  {
+    "type": "sell",
+    "symbol": "SOL/USDT",
+    "price": 97.09040579,
+    "pnl": 0.39598327444823944,
+    "pnl_pct": 0.026540513492984065,
+    "reason": "omgekeerd_signaal",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "MarketStructure",
+        "reden": "Bullish BOS — prijs brak boven 93.65",
+        "bijdrage": 0.0619,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bullish TK cross boven wolk — prijs=94.35",
+        "bijdrage": 0.0582,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0541,
+        "actie": 1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bullish trend",
+        "bijdrage": 0.0311,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 93.70 (0.7% weg)",
+        "bijdrage": 0.0171,
+        "actie": 1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish liquidity sweep boven 96.50",
+        "bijdrage": -0.01,
+        "actie": -1
+      }
+    ],
+    "entry_price": 94.39113293,
+    "entry_timestamp": "2026-05-10T22:48:32.761693",
+    "invest": 14.91995527092992,
+    "regime": "bull_trend",
+    "setup_grade": "A",
+    "timestamp": "2026-05-11T18:43:14.216892"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 97.20040579,
+    "invest": 74.68506955323157,
+    "stop_loss": 98.68823203359568,
+    "take_profit": 94.96866642460648,
+    "confidence": 0.75,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=3.06: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0785,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.13 RSI=66",
+        "bijdrage": -0.0749,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 88.36 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 6/6 @ 97.06",
+        "bijdrage": -0.0398,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-11T18:44:23.488072",
+    "regime": "ranging",
+    "regime_strength": 0.48,
+    "setup_grade": "A",
+    "agreeing_strategies": 2,
+    "quality_score": 3,
+    "edge_score": 0.0013,
+    "last_signals": {
+      "Bollinger": -1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": -1
+    }
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2315.31,
+    "pnl": -0.10090341175147444,
+    "pnl_pct": -0.002535257441354235,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb ETH/BTC z=-2.40: ETH goedkoop",
+        "bijdrage": 0.0675,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2313.45 (0.1% weg)",
+        "bijdrage": 0.0597,
+        "actie": 1
+      },
+      {
+        "naam": "Wyckoff",
+        "reden": "Accumulatie — lage vol, prijs consolideert boven steun",
+        "bijdrage": 0.0491,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 2/6 @ 2313.76",
+        "bijdrage": 0.0398,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2316.554758,
+    "entry_timestamp": "2026-05-11T15:37:16.055896",
+    "invest": 39.800065303120945,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-12T03:35:34.093821"
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "SOL/USDT",
+    "price": 94.96,
+    "pnl": 0.8598602857301916,
+    "pnl_pct": 0.02302629670544969,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 97.20040579,
+    "entry_timestamp": "2026-05-11T18:44:23.488049",
+    "invest": 74.68506955323157,
+    "regime": "ranging",
+    "setup_grade": "A",
+    "timestamp": "2026-05-12T12:57:26.856711"
+  },
+  {
+    "type": "pyramid",
+    "symbol": "SOL/USDT",
+    "price": 94.92065748,
+    "add_invest": 9.335633694153946,
+    "pyramid_count": 1,
+    "timestamp": "2026-05-12T15:33:52.009468",
+    "regime": "ranging",
+    "regime_strength": 0.27,
+    "setup_grade": "C",
+    "agreeing_strategies": 4,
+    "quality_score": 1,
+    "edge_score": 0.0104,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "pyramid",
+    "symbol": "SOL/USDT",
+    "price": 94.95065748,
+    "add_invest": 11.669542117692433,
+    "pyramid_count": 2,
+    "timestamp": "2026-05-12T15:35:04.445589",
+    "regime": "ranging",
+    "regime_strength": 0.27,
+    "setup_grade": "C",
+    "agreeing_strategies": 4,
+    "quality_score": 1,
+    "edge_score": 0.0104,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 94.19,
+    "pnl": 1.8201138493079538,
+    "pnl_pct": 0.03119426333337448,
+    "reason": "TAKE-PROFIT-2",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=3.06: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0785,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.13 RSI=66",
+        "bijdrage": -0.0749,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 88.36 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 6/6 @ 97.06",
+        "bijdrage": -0.0398,
+        "actie": -1
+      }
+    ],
+    "entry_price": 97.20040579,
+    "entry_timestamp": "2026-05-11T18:44:23.488049",
+    "invest": 58.347710588462164,
+    "regime": "ranging",
+    "setup_grade": "A",
+    "timestamp": "2026-05-12T17:22:44.473661"
+  },
+  {
+    "type": "buy",
+    "symbol": "SOL/USDT",
+    "price": 93.66310226,
+    "invest": 78.36121119474792,
+    "stop_loss": 92.3700344327261,
+    "take_profit": 95.60270400091085,
+    "confidence": 0.3863436351470642,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0897,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.05 RSI=31",
+        "bijdrage": 0.0727,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 93.58 (0.0% weg)",
+        "bijdrage": 0.064,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 89.25 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 93.43",
+        "bijdrage": 0.042,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-12T17:25:11.215881",
+    "regime": "ranging",
+    "regime_strength": 0.21,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": 0.0112,
+    "last_signals": {
+      "Bollinger": 1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 1,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "SOL/USDT",
+    "price": 94.71,
+    "pnl": 0.39791533810017654,
+    "pnl_pct": 0.010166092268794905,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 93.66310226,
+    "entry_timestamp": "2026-05-12T17:25:11.215854",
+    "invest": 78.36121119474792,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-12T22:39:38.938702"
+  },
+  {
+    "type": "sell",
+    "symbol": "SOL/USDT",
+    "price": 95.41,
+    "pnl": 0.6509693247413537,
+    "pnl_pct": 0.016614580470365126,
+    "reason": "TAKE-PROFIT-2",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0897,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.05 RSI=31",
+        "bijdrage": 0.0727,
+        "actie": 1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 93.58 (0.0% weg)",
+        "bijdrage": 0.064,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 89.25 — bullish breakout",
+        "bijdrage": 0.0437,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 93.43",
+        "bijdrage": 0.042,
+        "actie": 1
+      }
+    ],
+    "entry_price": 93.66310226,
+    "entry_timestamp": "2026-05-12T17:25:11.215854",
+    "invest": 39.18060559737396,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-13T03:34:12.941161"
+  },
+  {
+    "type": "buy",
+    "symbol": "SOL/USDT",
+    "price": 93.41496326,
+    "invest": 98.05248439915931,
+    "stop_loss": 92.36606553476315,
+    "take_profit": 94.0443018951421,
+    "confidence": 0.5717515193630067,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-2.37: SOL goedkoop",
+        "bijdrage": 0.1013,
+        "actie": 1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.19 RSI=33",
+        "bijdrage": 0.0749,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0435,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 89.88 — bullish breakout",
+        "bijdrage": 0.0397,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 93.29",
+        "bijdrage": 0.0239,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-13T14:32:27.531107",
+    "regime": "ranging",
+    "regime_strength": 0.41,
+    "setup_grade": "A",
+    "agreeing_strategies": 3,
+    "quality_score": 3,
+    "edge_score": 0.0119,
+    "last_signals": {
+      "Bollinger": 1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "sell",
+    "symbol": "SOL/USDT",
+    "price": 92.33,
+    "pnl": -1.3325559135704168,
+    "pnl_pct": -0.013590231003325192,
+    "reason": "STOP-LOSS",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-2.37: SOL goedkoop",
+        "bijdrage": 0.1013,
+        "actie": 1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.19 RSI=33",
+        "bijdrage": 0.0749,
+        "actie": 1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0435,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs boven VAH 89.88 — bullish breakout",
+        "bijdrage": 0.0397,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 93.29",
+        "bijdrage": 0.0239,
+        "actie": 1
+      }
+    ],
+    "entry_price": 93.41496326,
+    "entry_timestamp": "2026-05-13T14:32:27.531081",
+    "invest": 98.05248439915931,
+    "regime": "ranging",
+    "setup_grade": "A",
+    "timestamp": "2026-05-13T15:46:48.169871"
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2256.86694446,
+    "invest": 78.33538304624182,
+    "stop_loss": 2235.0586105611947,
+    "take_profit": 2269.9519447992834,
+    "confidence": 0.5286921439407564,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.1,
+        "actie": 1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 20%)",
+        "bijdrage": 0.085,
+        "actie": 1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-3.04: ETH duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.06 RSI=33",
+        "bijdrage": 0.0371,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAL 2271.61 — institutionele koopzone",
+        "bijdrage": 0.0143,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 2251.05",
+        "bijdrage": 0.0126,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-13T16:01:47.335484",
+    "regime": "ranging",
+    "regime_strength": 0.01,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0061,
+    "last_signals": {
+      "Bollinger": 1,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": 1,
+      "Grid": 1
+    }
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2257.52,
+    "pnl": -0.13397032068770898,
+    "pnl_pct": -0.0017102146624026005,
+    "reason": "regime_exit",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: +1",
+        "bijdrage": 0.1,
+        "actie": 1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 20%)",
+        "bijdrage": 0.085,
+        "actie": 1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-3.04: ETH duur",
+        "bijdrage": -0.0675,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Oversold: BB=-0.06 RSI=33",
+        "bijdrage": 0.0371,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs bij VAL 2271.61 — institutionele koopzone",
+        "bijdrage": 0.0143,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid BUY op niveau 1/6 @ 2251.05",
+        "bijdrage": 0.0126,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2256.86694446,
+    "entry_timestamp": "2026-05-13T16:01:47.335455",
+    "invest": 78.33538304624182,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-13T16:02:55.077905"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 86.544029,
+    "invest": 58.74349906544009,
+    "stop_loss": 87.73452519074405,
+    "take_profit": 84.75828471388391,
+    "confidence": 0.3334043572281417,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 86.15-87.33 wordt gevuld",
+        "bijdrage": -0.0654,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0572,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=86.57",
+        "bijdrage": -0.0413,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.25",
+        "bijdrage": -0.037,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 88.55",
+        "bijdrage": -0.0258,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0081,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-17T00:14:04.477350",
+    "regime": "bear_trend",
+    "regime_strength": 0.99,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": 0.005,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 1,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": -1
+    },
+    "score": -0.1205,
+    "score_margin": 0.0205,
+    "lstm_conf": 0.476,
+    "lstm_actie": 1,
+    "num_agreeing": 4
+  },
+  {
+    "type": "short",
+    "symbol": "BTC/USDT",
+    "price": 78247.91858,
+    "invest": 58.74349906544009,
+    "stop_loss": 78868.88045296627,
+    "take_profit": 77316.47577055058,
+    "confidence": 0.3518858251914455,
+    "entry_reasons": [
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=78271.40",
+        "bijdrage": -0.0413,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.25",
+        "bijdrage": -0.037,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0351,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0341,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 78911.42",
+        "bijdrage": -0.0258,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 78101.43-78334.21 wordt gevuld",
+        "bijdrage": -0.0144,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-17T00:25:28.901532",
+    "regime": "bear_trend",
+    "regime_strength": 0.94,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": 0.005,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 1,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 1,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": -1
+    },
+    "score": -0.1208,
+    "score_margin": 0.0208,
+    "lstm_conf": 0.0,
+    "lstm_actie": 0,
+    "num_agreeing": 4
+  },
+  {
+    "type": "cover",
+    "symbol": "BTC/USDT",
+    "price": 78185.99,
+    "pnl": 0.04644549843401391,
+    "pnl_pct": 0.0007906491639928916,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=78271.40",
+        "bijdrage": -0.0413,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.25",
+        "bijdrage": -0.037,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 8%)",
+        "bijdrage": 0.0351,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0341,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 78911.42",
+        "bijdrage": -0.0258,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 78101.43-78334.21 wordt gevuld",
+        "bijdrage": -0.0144,
+        "actie": -1
+      }
+    ],
+    "entry_price": 78247.91858,
+    "entry_timestamp": "2026-05-17T00:25:28.901507",
+    "invest": 58.74349906544009,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-17T01:03:20.432020"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2177.506552,
+    "invest": 58.746285795346125,
+    "stop_loss": 2198.6557457969725,
+    "take_profit": 2145.782761304541,
+    "confidence": 0.32545582936945794,
+    "entry_reasons": [
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2175.00-2192.01 wordt gevuld",
+        "bijdrage": -0.0376,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2178.16",
+        "bijdrage": -0.0245,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0048,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.51: ETH duur [inactief in trend-regime]",
+        "bijdrage": 0.0,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-17T03:00:26.732587",
+    "regime": "bear_trend",
+    "regime_strength": 0.98,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0028,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": 0
+    },
+    "score": -0.1117,
+    "score_margin": 0.0117,
+    "lstm_conf": 0.0,
+    "lstm_actie": 0,
+    "num_agreeing": 3
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2179.32,
+    "pnl": -0.0488755365860022,
+    "pnl_pct": -0.0008319766248363288,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2175.00-2192.01 wordt gevuld",
+        "bijdrage": -0.0376,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2178.16",
+        "bijdrage": -0.0245,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0048,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.51: ETH duur [inactief in trend-regime]",
+        "bijdrage": 0.0,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2177.506552,
+    "entry_timestamp": "2026-05-17T03:00:26.732562",
+    "invest": 58.746285795346125,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-17T03:07:22.732615"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2174.767374,
+    "invest": 58.743353263150965,
+    "stop_loss": 2197.887996368401,
+    "take_profit": 2140.086440447398,
+    "confidence": 0.46952552675875164,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2175.00-2192.01 wordt gevuld",
+        "bijdrage": -0.0586,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2175.42",
+        "bijdrage": -0.0463,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0114,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.81: ETH duur [inactief in trend-regime]",
+        "bijdrage": 0.0,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-17T03:38:19.126889",
+    "regime": "bear_trend",
+    "regime_strength": 0.99,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0036,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 0,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": 0
+    },
+    "score": -0.1612,
+    "score_margin": 0.0612,
+    "lstm_conf": 0.0,
+    "lstm_actie": 0,
+    "num_agreeing": 3
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2170.64,
+    "pnl": 0.11137436400690727,
+    "pnl_pct": 0.0018959483550254127,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2175.00-2192.01 wordt gevuld",
+        "bijdrage": -0.0586,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2175.42",
+        "bijdrage": -0.0463,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0114,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=-1.81: ETH duur [inactief in trend-regime]",
+        "bijdrage": 0.0,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2174.767374,
+    "entry_timestamp": "2026-05-17T03:38:19.126867",
+    "invest": 58.743353263150965,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-17T04:02:25.079867"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 85.78,
+    "pnl": 0.5180814393402148,
+    "pnl_pct": 0.008819383378488907,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 86.15-87.33 wordt gevuld",
+        "bijdrage": -0.0654,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0572,
+        "actie": 1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=86.57",
+        "bijdrage": -0.0413,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.25",
+        "bijdrage": -0.037,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 88.55",
+        "bijdrage": -0.0258,
+        "actie": -1
+      },
+      {
+        "naam": "EMA_Cross",
+        "reden": "Bearish trend",
+        "bijdrage": -0.0081,
+        "actie": -1
+      }
+    ],
+    "entry_price": 86.544029,
+    "entry_timestamp": "2026-05-17T00:14:04.477321",
+    "invest": 58.74349906544009,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-17T04:02:27.422685"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2144.45602433,
+    "invest": 78.3748274818024,
+    "stop_loss": 2178.154808059337,
+    "take_profit": 2093.907848735995,
+    "confidence": 0.30901657612219346,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0742,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0515,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.29",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.0423,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 2167.98",
+        "bijdrage": -0.0186,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2145.13",
+        "bijdrage": -0.0182,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-18T14:30:09.941606",
+    "regime": "bear_trend",
+    "regime_strength": 0.87,
+    "setup_grade": "B",
+    "agreeing_strategies": 4,
+    "quality_score": 2,
+    "edge_score": 0.0043,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 1,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": -1
+    },
+    "score": -0.1061,
+    "score_margin": 0.0061,
+    "lstm_conf": 0.619,
+    "lstm_actie": 1,
+    "num_agreeing": 4
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "ETH/USDT",
+    "price": 2093.52,
+    "pnl": 0.929865190077564,
+    "pnl_pct": 0.023728669515889644,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 2144.45602433,
+    "entry_timestamp": "2026-05-18T14:30:09.941580",
+    "invest": 78.3748274818024,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-18T18:30:55.650850"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 84.93148743,
+    "invest": 98.06152087126075,
+    "stop_loss": 86.8571159731641,
+    "take_profit": 82.04304461525386,
+    "confidence": 0.28173752784637585,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0807,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0495,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.29",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 85.12 (0.2% weg)",
+        "bijdrage": -0.0337,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 85.95",
+        "bijdrage": -0.0186,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=84.97",
+        "bijdrage": -0.0182,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-18T21:47:43.925709",
+    "regime": "bear_trend",
+    "regime_strength": 0.72,
+    "setup_grade": "A+",
+    "agreeing_strategies": 5,
+    "quality_score": 4,
+    "edge_score": 0.0044,
+    "last_signals": {
+      "EMA_Cross": -1,
+      "MACD": 1,
+      "Breakout": 0,
+      "SMC": -1,
+      "SR": -1,
+      "Ichimoku": -1,
+      "Wyckoff": 0,
+      "MarketStructure": -1
+    },
+    "score": -0.0967,
+    "score_margin": -0.0033,
+    "lstm_conf": 0.672,
+    "lstm_actie": 1,
+    "num_agreeing": 5
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2144.59,
+    "pnl": -0.0024457996769268187,
+    "pnl_pct": -6.241288829300638e-05,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0742,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0515,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.29",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.0423,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 2167.98",
+        "bijdrage": -0.0186,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=2145.13",
+        "bijdrage": -0.0182,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2144.45602433,
+    "entry_timestamp": "2026-05-18T14:30:09.941580",
+    "invest": 39.1874137409012,
+    "regime": "bear_trend",
+    "setup_grade": "B",
+    "timestamp": "2026-05-19T09:49:08.126596"
+  },
+  {
+    "type": "buy",
+    "symbol": "ETH/USDT",
+    "price": 2111.79458502,
+    "invest": 49.03063814564653,
+    "stop_loss": 2089.757034440158,
+    "take_profit": 2144.850910889763,
+    "confidence": 0.30194390267281057,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 20%)",
+        "bijdrage": 0.1094,
+        "actie": 1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.33",
+        "bijdrage": -0.0488,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2109.09 (0.1% weg)",
+        "bijdrage": 0.0454,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2261.45 — bearish breakdown",
+        "bijdrage": -0.0131,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2109.12-2115.01 wordt gevuld",
+        "bijdrage": 0.0108,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-19T14:00:18.277461",
+    "regime": "ranging",
+    "regime_strength": 0.05,
+    "setup_grade": "C",
+    "agreeing_strategies": 2,
+    "quality_score": 1,
+    "edge_score": 0.0034,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 1,
+      "SR": 1,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "Grid": 0
+    },
+    "score": 0.1037,
+    "score_margin": 0.0137,
+    "lstm_conf": 0.547,
+    "lstm_actie": 1,
+    "num_agreeing": 2
+  },
+  {
+    "type": "sell",
+    "symbol": "ETH/USDT",
+    "price": 2111.42,
+    "pnl": -0.10669179658172823,
+    "pnl_pct": -0.0021760230051062726,
+    "reason": "regime_exit",
+    "direction": 1,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 20%)",
+        "bijdrage": 0.1094,
+        "actie": 1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.33",
+        "bijdrage": -0.0488,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij support 2109.09 (0.1% weg)",
+        "bijdrage": 0.0454,
+        "actie": 1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2261.45 — bearish breakdown",
+        "bijdrage": -0.0131,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2109.12-2115.01 wordt gevuld",
+        "bijdrage": 0.0108,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2111.79458502,
+    "entry_timestamp": "2026-05-19T14:00:18.277439",
+    "invest": 49.03063814564653,
+    "regime": "ranging",
+    "setup_grade": "C",
+    "timestamp": "2026-05-19T18:02:40.933760"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 84.51,
+    "pnl": 0.486160880551354,
+    "pnl_pct": 0.004957713037512738,
+    "reason": "TIME-EXIT",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 12%)",
+        "bijdrage": 0.0807,
+        "actie": 1
+      },
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.0495,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.29",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 85.12 (0.2% weg)",
+        "bijdrage": -0.0337,
+        "actie": -1
+      },
+      {
+        "naam": "MarketStructure",
+        "reden": "Bearish BOS — prijs brak onder 85.95",
+        "bijdrage": -0.0186,
+        "actie": -1
+      },
+      {
+        "naam": "Ichimoku",
+        "reden": "Bearish TK cross onder wolk — prijs=84.97",
+        "bijdrage": -0.0182,
+        "actie": -1
+      }
+    ],
+    "entry_price": 84.93148743,
+    "entry_timestamp": "2026-05-18T21:47:43.925683",
+    "invest": 98.06152087126075,
+    "regime": "bear_trend",
+    "setup_grade": "A+",
+    "timestamp": "2026-05-19T22:16:52.008263"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2133.07817768,
+    "invest": 98.09922319969002,
+    "stop_loss": 2152.632847336069,
+    "take_profit": 2103.7461731958965,
+    "confidence": 0.5024810172114246,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.1,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0379,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2117.59-2133.90 wordt gevuld",
+        "bijdrage": 0.0248,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 2130.57",
+        "bijdrage": -0.0145,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-20T08:53:38.398688",
+    "regime": "ranging",
+    "regime_strength": 0.24,
+    "setup_grade": "A",
+    "agreeing_strategies": 2,
+    "quality_score": 3,
+    "edge_score": 0.0042,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 1,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "Grid": -1
+    },
+    "score": -0.1725,
+    "score_margin": 0.0825,
+    "lstm_conf": 0.572,
+    "lstm_actie": 0,
+    "num_agreeing": 2
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2132.45,
+    "pnl": 0.028860694999896415,
+    "pnl_pct": 0.00029419901662427865,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "OrderBook",
+        "reden": "Bid/Ask onbalans: -1",
+        "bijdrage": -0.1,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0379,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bullish FVG 2117.59-2133.90 wordt gevuld",
+        "bijdrage": 0.0248,
+        "actie": 1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 2130.57",
+        "bijdrage": -0.0145,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2133.07817768,
+    "entry_timestamp": "2026-05-20T08:53:38.398661",
+    "invest": 98.09922319969002,
+    "regime": "ranging",
+    "setup_grade": "A",
+    "timestamp": "2026-05-20T09:02:44.211498"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2135.639116,
+    "invest": 78.481687415352,
+    "stop_loss": 2158.2566050453343,
+    "take_profit": 2101.712882431998,
+    "confidence": 0.5004318209376681,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.1027,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0243,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-20T09:24:42.475788",
+    "regime": "accumulation",
+    "regime_strength": 0.52,
+    "setup_grade": "B",
+    "agreeing_strategies": 2,
+    "quality_score": 2,
+    "edge_score": 0.0014,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "MarketStructure": 0
+    },
+    "score": -0.1718,
+    "score_margin": 0.0818,
+    "lstm_conf": 0.587,
+    "lstm_actie": 0,
+    "num_agreeing": 2
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2135.36,
+    "pnl": 0.010246857255041736,
+    "pnl_pct": 0.000130563671490729,
+    "reason": "regime_exit",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.1027,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0243,
+        "actie": -1
+      }
+    ],
+    "entry_price": 2135.639116,
+    "entry_timestamp": "2026-05-20T09:24:42.475764",
+    "invest": 78.481687415352,
+    "regime": "accumulation",
+    "setup_grade": "B",
+    "timestamp": "2026-05-20T09:25:50.558290"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2135.889041,
+    "invest": 78.47826711842647,
+    "stop_loss": 2154.523092897325,
+    "take_profit": 2113.5281787232097,
+    "confidence": 0.5896438437572873,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.0594,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0407,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 2130.57",
+        "bijdrage": -0.0145,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-20T10:40:26.079136",
+    "regime": "ranging",
+    "regime_strength": 0.24,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0033,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "Grid": -1
+    },
+    "score": -0.2025,
+    "score_margin": 0.1125,
+    "lstm_conf": 0.435,
+    "lstm_actie": 1,
+    "num_agreeing": 3
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 85.084467,
+    "invest": 24.524458474508272,
+    "stop_loss": 85.83291289320385,
+    "take_profit": 84.18633192815538,
+    "confidence": 0.38425790309560975,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0472,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 85.12 (0.0% weg)",
+        "bijdrage": -0.0253,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 85.15",
+        "bijdrage": -0.0145,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-20T12:34:47.918232",
+    "regime": "ranging",
+    "regime_strength": 0.25,
+    "setup_grade": "C",
+    "agreeing_strategies": 2,
+    "quality_score": 1,
+    "edge_score": 0.0047,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": 0,
+      "SR": -1,
+      "Wyckoff": 0,
+      "VolumeProfile": 0,
+      "Grid": -1
+    },
+    "score": -0.1319,
+    "score_margin": 0.0419,
+    "lstm_conf": 0.44,
+    "lstm_actie": 1,
+    "num_agreeing": 2
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 85.1,
+    "pnl": -0.004472702109902439,
+    "pnl_pct": -0.00018237720163027357,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0472,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 85.12 (0.0% weg)",
+        "bijdrage": -0.0253,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 85.15",
+        "bijdrage": -0.0145,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "entry_price": 85.084467,
+    "entry_timestamp": "2026-05-20T12:34:47.918209",
+    "invest": 24.524458474508272,
+    "regime": "ranging",
+    "setup_grade": "C",
+    "timestamp": "2026-05-20T14:49:31.981664"
+  },
+  {
+    "type": "cover",
+    "symbol": "ETH/USDT",
+    "price": 2136.37,
+    "pnl": -0.017654046311544817,
+    "pnl_pct": -0.00022495458879914735,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.0594,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0429,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0407,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 5/6 @ 2130.57",
+        "bijdrage": -0.0145,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "entry_price": 2135.889041,
+    "entry_timestamp": "2026-05-20T10:40:26.079108",
+    "invest": 78.47826711842647,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-20T16:32:18.357521"
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 86.75493597,
+    "invest": 88.28605910087184,
+    "stop_loss": 87.80685693485677,
+    "take_profit": 85.4926308121719,
+    "confidence": 0.6846231430826356,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=4.71: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 86.82 (0.0% weg)",
+        "bijdrage": -0.0492,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 86.83",
+        "bijdrage": -0.034,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.22 RSI=70",
+        "bijdrage": -0.0334,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0329,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-20T18:50:09.423022",
+    "regime": "ranging",
+    "regime_strength": 0.2,
+    "setup_grade": "A",
+    "agreeing_strategies": 3,
+    "quality_score": 3,
+    "edge_score": 0.0048,
+    "last_signals": {
+      "Bollinger": -1,
+      "RSI": 0,
+      "SMC": 1,
+      "SR": -1,
+      "Wyckoff": 0,
+      "VolumeProfile": 0,
+      "Grid": -1
+    },
+    "score": -0.2351,
+    "score_margin": 0.1451,
+    "lstm_conf": 0.443,
+    "lstm_actie": 1,
+    "num_agreeing": 3
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 86.78,
+    "pnl": -0.025480874427896462,
+    "pnl_pct": -0.0002886171914854297,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=4.71: SOL duur",
+        "bijdrage": -0.12,
+        "actie": -1
+      },
+      {
+        "naam": "SR",
+        "reden": "Prijs bij resistance 86.82 (0.0% weg)",
+        "bijdrage": -0.0492,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.30",
+        "bijdrage": -0.0449,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 86.83",
+        "bijdrage": -0.034,
+        "actie": -1
+      },
+      {
+        "naam": "Bollinger",
+        "reden": "Overbought: BB=1.22 RSI=70",
+        "bijdrage": -0.0334,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": 0.0329,
+        "actie": 1
+      }
+    ],
+    "entry_price": 86.75493597,
+    "entry_timestamp": "2026-05-20T18:50:09.422996",
+    "invest": 88.28605910087184,
+    "regime": "ranging",
+    "setup_grade": "A",
+    "timestamp": "2026-05-21T02:53:51.757451"
+  },
+  {
+    "type": "short",
+    "symbol": "ETH/USDT",
+    "price": 2153.773674,
+    "invest": 39.23722925429926,
+    "stop_loss": 2172.9381058767976,
+    "take_profit": 2130.776355747843,
+    "confidence": 0.6537335060562621,
+    "entry_reasons": [
+      {
+        "naam": "SMC",
+        "reden": "Bearish FVG 2132.00-2174.01 wordt gevuld",
+        "bijdrage": -0.0843,
+        "actie": -1
+      },
+      {
+        "naam": "VolumeProfile",
+        "reden": "Prijs onder VAL 2254.95 — bearish breakdown",
+        "bijdrage": -0.0596,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 2154.42",
+        "bijdrage": -0.0508,
+        "actie": -1
+      },
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=1.70: ETH goedkoop",
+        "bijdrage": 0.0488,
+        "actie": 1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "RL_Agent",
+        "reden": "Reinforcement Learning (gewicht 10%)",
+        "bijdrage": -0.0375,
+        "actie": -1
+      }
+    ],
+    "timestamp": "2026-05-21T03:15:48.878730",
+    "regime": "ranging",
+    "regime_strength": 0.34,
+    "setup_grade": "B",
+    "agreeing_strategies": 3,
+    "quality_score": 2,
+    "edge_score": 0.0025,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": -1,
+      "Grid": -1
+    },
+    "score": -0.2245,
+    "score_margin": 0.1345,
+    "lstm_conf": 0.451,
+    "lstm_actie": 1,
+    "num_agreeing": 3
+  },
+  {
+    "type": "short",
+    "symbol": "SOL/USDT",
+    "price": 87.00897469,
+    "invest": 39.23722925429926,
+    "stop_loss": 87.93973401930853,
+    "take_profit": 85.89206349482977,
+    "confidence": 0.6079118340906778,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.28: SOL duur",
+        "bijdrage": -0.1013,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 87.22",
+        "bijdrage": -0.0508,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish liquidity sweep boven 87.09",
+        "bijdrage": -0.0157,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "timestamp": "2026-05-21T06:54:51.353180",
+    "regime": "ranging",
+    "regime_strength": 0.12,
+    "setup_grade": "B",
+    "agreeing_strategies": 2,
+    "quality_score": 2,
+    "edge_score": 0.0028,
+    "last_signals": {
+      "Bollinger": 0,
+      "RSI": 0,
+      "SMC": -1,
+      "SR": 0,
+      "Wyckoff": 0,
+      "VolumeProfile": 0,
+      "Grid": -1
+    },
+    "score": -0.2087,
+    "score_margin": 0.1187,
+    "lstm_conf": 0.447,
+    "lstm_actie": 1,
+    "num_agreeing": 2
+  },
+  {
+    "type": "partial_tp1",
+    "symbol": "ETH/USDT",
+    "price": 2130.54,
+    "pnl": 0.21121129526730684,
+    "pnl_pct": 0.01077663850865576,
+    "reason": "TP1",
+    "partial": true,
+    "entry_price": 2153.773674,
+    "entry_timestamp": "2026-05-21T03:15:48.878704",
+    "invest": 39.23722925429926,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-21T08:46:01.874555"
+  },
+  {
+    "type": "cover",
+    "symbol": "SOL/USDT",
+    "price": 87.07,
+    "pnl": -0.027464724801147224,
+    "pnl_pct": -0.0006999659587619385,
+    "reason": "STOP-LOSS",
+    "direction": -1,
+    "entry_reasons": [
+      {
+        "naam": "StatArb",
+        "reden": "StatArb SOL/ETH z=2.28: SOL duur",
+        "bijdrage": -0.1013,
+        "actie": -1
+      },
+      {
+        "naam": "Grid",
+        "reden": "Grid SELL op niveau 7/6 @ 87.22",
+        "bijdrage": -0.0508,
+        "actie": -1
+      },
+      {
+        "naam": "Sentiment",
+        "reden": "Fear & Greed + nieuws: -0.27",
+        "bijdrage": -0.041,
+        "actie": -1
+      },
+      {
+        "naam": "SMC",
+        "reden": "Bearish liquidity sweep boven 87.09",
+        "bijdrage": -0.0157,
+        "actie": -1
+      },
+      {
+        "naam": "LSTM",
+        "reden": "LSTM prijsrichting voorspelling (gewicht 0%)",
+        "bijdrage": 0.0,
+        "actie": 1
+      }
+    ],
+    "entry_price": 87.00897469,
+    "entry_timestamp": "2026-05-21T06:54:51.353157",
+    "invest": 39.23722925429926,
+    "regime": "ranging",
+    "setup_grade": "B",
+    "timestamp": "2026-05-21T10:08:44.943122"
   }
 ]

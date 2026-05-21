@@ -1,0 +1,33 @@
+╭───────────── Monster Bot ──────────────╮
+│ Monster Bot gestart                    │
+│ Symbolen: BTC/USDT, ETH/USDT, SOL/USDT │
+│ Modus: PAPER TRADING                   │
+│ RL Model: geladen                      │
+│ LSTM: geladen                          │
+╰────────────────────────────────────────╯
+
+Bot actief - analyse elke 60s
+Ctrl+C om te stoppen
+
+───────────────────────────── Cyclus #1 — 14:48:24 ─────────────────────────────
+Portfolio: $981.07  PnL: -1.89%  DD: 2.0%  Posities: 2  Trades: 49  WR: 
+42.5%(54.9%+TP)
+Sentiment: Angst (-0.30) | F&G: -0.46 | Nieuws: +0.00
+[BTC/USDT] Regime: ranging | Kracht: 24% | Zijwaartse markt — ADX=19
+[ETH/USDT] Regime: ranging | Kracht: 26% | Zijwaartse markt — ADX=19
+[SOL/USDT] Regime: ranging | Kracht: 30% | Zijwaartse markt — ADX=17
+
+2026-05-20 14:49:32,000 | INFO | TRADE | SOL/USDT | COVER @ 85.1000 | PnL: -0.02%
+2026-05-20 14:55:53,376 | INFO | Adaptieve gewichten hersteld — 92 samples geladen
+2026-05-20 14:55:53,381 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-20 14:55:53,381 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief | Daily SL vandaag: 1/3
+2026-05-20 14:55:53,390 | INFO | Equity curve hersteld — 1440 punten
+2026-05-20 14:55:53,392 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-20 16:32:18,378 | INFO | TRADE | ETH/USDT | COVER @ 2136.3700 | PnL: -0.02%
+2026-05-20 18:50:09,443 | INFO | TRADE | SOL/USDT | SHORT @ 86.7549 | PnL: +0.00%
+2026-05-20 23:44:57,531 | INFO | Adaptieve gewichten hersteld — 95 samples geladen
+2026-05-20 23:44:57,536 | INFO | Auto-hertraining gepland elke 84 uur
+2026-05-20 23:44:57,537 | INFO | Bot state hersteld — 3 SL cooldowns | Circuit breaker: inactief | Daily SL vandaag: 2/3
+2026-05-20 23:44:57,545 | INFO | Equity curve hersteld — 1440 punten
+2026-05-20 23:44:57,547 | INFO | Monster Bot gestart | PAPER TRADING | ['BTC/USDT', 'ETH/USDT', 'SOL/USDT']
+2026-05-20 23:59:02,607 | WARNING | ANOMALIE | BTC/USDT | squeeze | Bollinger squeeze — grote move op komst, wacht op bevestiging

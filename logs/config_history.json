@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "timestamp": "2026-05-12T23:21:54",
+    "label": "baseline: na tp1/tp2 fix + counter-trend filters + bear_trend confluence=2",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.2,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.35,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "lstm_threshold": 0.38,
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\", \"bear_trend\""
+    },
+    "performance": {
+      "win_rate": 52.6,
+      "profit_factor": 1.397,
+      "closed_trades": 38,
+      "open_positions": 1,
+      "portfolio_value": 980.28,
+      "pnl_pct": -1.97
+    }
+  },
+  {
+    "id": 42,
+    "timestamp": "2026-05-19T18:34:43",
+    "label": "baseline voor fix: LSTM val_acc 37.2% bijna random — gaan LSTM_WEIGHT disablen",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.05,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 37.8,
+      "profit_factor": 1.313,
+      "closed_trades": 37,
+      "open_positions": 1,
+      "portfolio_value": 980.97,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 52.1
+    }
+  },
+  {
+    "id": 43,
+    "timestamp": "2026-05-19T18:45:23",
+    "label": "na fix: LSTM_WEIGHT 0.05→0.00 (val_acc 37.2% bijna random), rolling WR monitoring toegevoegd",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 37.8,
+      "profit_factor": 1.313,
+      "closed_trades": 37,
+      "open_positions": 1,
+      "portfolio_value": 980.75,
+      "pnl_pct": -1.92,
+      "win_rate_combined": 52.1
+    }
+  },
+  {
+    "id": 44,
+    "timestamp": "2026-05-20T09:35:26",
+    "label": "voor: positiegrootte REGIME_CAP + 4h BOS reversal fix",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 42.5,
+      "profit_factor": 1.343,
+      "closed_trades": 40,
+      "open_positions": 0,
+      "portfolio_value": 981.03,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 54.9
+    }
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-05-20T09:35:35",
+    "label": "na: REGIME_CAP verhoogd (ranging 0.10→0.13, bull 0.15→0.18, bear 0.10→0.13, accum 0.12→0.15)",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 42.5,
+      "profit_factor": 1.343,
+      "closed_trades": 40,
+      "open_positions": 0,
+      "portfolio_value": 981.03,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 54.9
+    }
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-05-20T09:36:38",
+    "label": "na: 4h BOS reversal detectie toegevoegd aan filter 1b en 1c",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 42.5,
+      "profit_factor": 1.343,
+      "closed_trades": 40,
+      "open_positions": 0,
+      "portfolio_value": 981.03,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 54.9
+    }
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-05-20T09:53:20",
+    "label": "voor: TP1 multiplier + regime-exit minimum holdtijd",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 42.5,
+      "profit_factor": 1.343,
+      "closed_trades": 40,
+      "open_positions": 0,
+      "portfolio_value": 980.98,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 54.9
+    }
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-05-20T09:53:38",
+    "label": "na: TP1 1.5R→1.2R + regime-exit min 2u holdtijd",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 42.5,
+      "profit_factor": 1.343,
+      "closed_trades": 40,
+      "open_positions": 0,
+      "portfolio_value": 980.98,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 54.9
+    }
+  },
+  {
+    "id": 49,
+    "timestamp": "2026-05-20T14:53:07",
+    "label": "check baseline 2026-05-20: WR 46.3%, PF 1.348, confidence bucket 0.35-0.45 verliesgevend",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.28,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 41.5,
+      "profit_factor": 1.341,
+      "closed_trades": 41,
+      "open_positions": 1,
+      "portfolio_value": 981.04,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 53.8
+    }
+  },
+  {
+    "id": 50,
+    "timestamp": "2026-05-20T14:55:33",
+    "label": "na fix: MIN_CONFIDENCE 0.28→0.46 — elimineert verliesgevende bucket 0.35-0.45 (11 trades, 36% WR, -0.224% gem PnL)",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.46,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 41.5,
+      "profit_factor": 1.341,
+      "closed_trades": 41,
+      "open_positions": 1,
+      "portfolio_value": 981.0,
+      "pnl_pct": -1.9,
+      "win_rate_combined": 53.8
+    }
+  },
+  {
+    "id": 51,
+    "timestamp": "2026-05-20T15:12:39",
+    "label": "baseline voor MIN_INVEST + GRADE_PCT fix: posities te klein door throttle × C-grade",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.46,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 41.5,
+      "profit_factor": 1.341,
+      "closed_trades": 41,
+      "open_positions": 1,
+      "portfolio_value": 981.16,
+      "pnl_pct": -1.88,
+      "win_rate_combined": 53.8
+    }
+  },
+  {
+    "id": 52,
+    "timestamp": "2026-05-20T21:48:16",
+    "label": "regime bug fix: trades zonder regime=? kregen regime=ranging als fallback",
+    "env_params": {
+      "CAPITAL": 1000.0,
+      "RL_WEIGHT": 0.1,
+      "LSTM_WEIGHT": 0.0,
+      "MAX_DRAWDOWN": 0.15,
+      "MIN_CONFIDENCE": 0.46,
+      "ATR_SL_MULT": 2.5,
+      "ATR_TP_MULT": 5.0,
+      "RETRAIN_HOURS": 84.0
+    },
+    "code_params": {
+      "counter_trend_filter": true,
+      "confluence_min2_regimes": "\"accumulation\", \"ranging\""
+    },
+    "performance": {
+      "win_rate": 40.5,
+      "profit_factor": 1.34,
+      "closed_trades": 42,
+      "open_positions": 1,
+      "portfolio_value": 981.58,
+      "pnl_pct": -1.84,
+      "win_rate_combined": 52.8
+    }
+  }
+]

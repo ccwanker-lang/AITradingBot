@@ -25,6 +25,8 @@ class EMACrossStrategy:
         fc, sc = f"ema_{self.fast}", f"ema_{self.slow}"
         if fc not in df.columns or sc not in df.columns:
             return Signal(0, 0.0, "EMA_Cross", "kolommen ontbreken")
+        if len(df) < 2:
+            return Signal(0, 0.0, "EMA_Cross", "te weinig data")
 
         cur = df[fc].iloc[-1] - df[sc].iloc[-1]
         prv = df[fc].iloc[-2] - df[sc].iloc[-2]
@@ -114,7 +116,7 @@ class MACDStrategy:
 
 
 class BreakoutStrategy:
-    def __init__(self, lookback: int = 20):
+    def __init__(self, lookback: int = 100):
         self.lookback = lookback
 
     def signal(self, df: pd.DataFrame) -> Signal:
@@ -141,42 +143,21 @@ class BreakoutStrategy:
 
 class ConfidenceBrain:
     """
-    Het eigen brein van de bot — zorgt dat hij ALTIJD een beslissing neemt.
-    Hoe langer er niet gehandeld wordt, hoe meer risico hij durft te nemen.
-    Heeft altijd een mening: bullish, bearish, of neutraal — nooit bevroren.
+    Beslist op basis van gecombineerde score met vaste drempel.
+    Geen decay meer — inactiviteit is geen reden om slechte trades te nemen.
     """
 
-    def __init__(self, boldness: float = 0.65, max_idle_hours: float = 8.0):
-        self.boldness = boldness          # 0-1, hoe avontuurlijk
-        self.max_idle_hours = max_idle_hours
-        self._last_trade_time: float = 0
-        self._trade_count: int = 0
+    def __init__(self, boldness: float = 0.55):
+        self.boldness = boldness  # 0-1, hoe avontuurlijk (verlaagd van 0.65)
 
     def on_trade_executed(self):
-        import time
-        self._last_trade_time = time.time()
-        self._trade_count += 1
+        pass  # Niet meer nodig zonder idle-tracking
 
-    def adjust(self, score: float, regime_hint: int = 0) -> tuple[int, float, float]:
-        """
-        Geeft (actie, confidence, drempel) terug.
-        Verlaagt drempel naarmate er langer niet gehandeld is.
-        Heeft altijd een mening gebaseerd op het sterkste signaal.
-        """
-        import time
-        idle_hours = (time.time() - self._last_trade_time) / 3600 if self._last_trade_time else 0
-        idle_factor = min(idle_hours / self.max_idle_hours, 1.0)
+    def adjust(self, score: float, regime_hint: int = 0, threshold_override: float = 0.0) -> tuple[int, float, float]:
+        """Geeft (actie, confidence, drempel) terug. Drempel is regime-afhankelijk."""
+        threshold = threshold_override if threshold_override > 0 else 0.20
 
-        # Drempel daalt bij lang niets doen (0.12 → 0.05)
-        threshold = 0.12 * (1 - idle_factor * 0.60)
-
-        # Boldness verhoogt effectieve score
         effective_score = score * (1 + self.boldness * 0.3)
-
-        # Als score zwak maar er is al 6+ uur niet gehandeld:
-        # neem de richting van regime als hint
-        if abs(effective_score) < threshold * 1.5 and idle_hours > 6 and regime_hint != 0:
-            effective_score += regime_hint * threshold * 0.8
 
         if effective_score > threshold:
             action = 1
@@ -192,8 +173,9 @@ class ConfidenceBrain:
 class AdaptiveWeightTracker:
     """Volgt prestaties per strategie en past gewichten automatisch aan."""
 
-    def __init__(self, strategy_names: list[str], lookback: int = 40):
+    def __init__(self, strategy_names: list[str], lookback: int = 150, min_samples: int = 5):
         self.lookback = lookback
+        self.min_samples = min_samples  # was 10 — snellere aanpassing bij slechte prestaties
         self.history: dict[str, deque] = {
             name: deque(maxlen=lookback) for name in strategy_names
         }
@@ -206,12 +188,89 @@ class AdaptiveWeightTracker:
 
     def multiplier(self, name: str) -> float:
         hist = list(self.history.get(name, []))
-        if len(hist) < 10:
+        if len(hist) < self.min_samples:
             return 1.0
-        accuracy = sum(hist) / len(hist)
-        # 0.4 accuracy → 0.5x gewicht | 0.6 accuracy → 1.5x gewicht
+        # Exponentieel gewogen: recente prestaties wegen zwaarder (decay 0.94 per trade).
+        # Gemini/Copilot: na een regime-switch moet de tracker snel kunnen bijsturen.
+        n = len(hist)
+        weights = np.array([0.94 ** (n - 1 - i) for i in range(n)])
+        weights /= weights.sum()
+        accuracy = float(np.dot(hist, weights))
         mult = 0.5 + (accuracy - 0.4) / 0.2
         return max(0.3, min(2.0, mult))
+
+    def save(self) -> dict:
+        """Geeft de huidige history terug als serialiseerbaar dict."""
+        return {name: list(dq) for name, dq in self.history.items()}
+
+    def load(self, data: dict):
+        """Herstelt history uit eerder opgeslagen dict."""
+        for name, values in data.items():
+            if name in self.history:
+                self.history[name] = deque(values, maxlen=self.lookback)
+
+
+# Regime-specifieke gewichtsmultipliers per strategie (fijn-afstemming binnen actieve set)
+_REGIME_STRATEGY_WEIGHTS: dict[str, dict[str, float]] = {
+    "bull_trend": {
+        "EMA_Cross": 1.4, "MACD": 1.3, "Breakout": 1.3, "Ichimoku": 1.3,
+        "MarketStructure": 1.3, "SMC": 1.1, "Wyckoff": 1.0, "SR": 1.0,
+        "VolumeProfile": 1.0, "Bollinger": 1.0, "RSI": 1.0, "Grid": 1.0,
+    },
+    "bear_trend": {
+        "EMA_Cross": 1.4, "MACD": 1.3, "Breakout": 1.3, "Ichimoku": 1.3,
+        "MarketStructure": 1.3, "SMC": 1.1, "Wyckoff": 1.0, "SR": 1.0,
+        "VolumeProfile": 1.0, "Bollinger": 1.0, "RSI": 1.0, "Grid": 1.0,
+    },
+    "ranging": {
+        "Bollinger": 1.6, "RSI": 1.5, "Grid": 1.5, "SR": 1.4,
+        "VolumeProfile": 1.3, "Wyckoff": 1.2, "SMC": 1.0,
+        "EMA_Cross": 1.0, "MACD": 1.0, "Breakout": 1.0, "MarketStructure": 1.0, "Ichimoku": 1.0,
+    },
+    "high_vol": {
+        "SR": 1.2, "VolumeProfile": 1.2, "Wyckoff": 1.1, "SMC": 1.0, "MarketStructure": 1.0,
+        "Bollinger": 1.0, "RSI": 1.0, "EMA_Cross": 1.0, "MACD": 1.0, "Ichimoku": 1.0,
+        "Breakout": 1.0, "Grid": 1.0,
+    },
+    "accumulation": {
+        "Wyckoff": 1.6, "VolumeProfile": 1.4, "SMC": 1.3, "SR": 1.2,
+        "Bollinger": 1.1, "RSI": 1.1, "MarketStructure": 1.0,
+        "EMA_Cross": 1.0, "MACD": 1.0, "Breakout": 1.0, "Ichimoku": 1.0, "Grid": 1.0,
+    },
+}
+
+# Welke strategieën ACTIEF zijn per regime — inactieve worden volledig uitgeschakeld.
+# Gemini/ChatGPT/Copilot: trend-strategieën in ranging = ruis; mean-reversion in trend = verlies.
+_REGIME_ACTIVE_STRATEGIES: dict[str, set[str]] = {
+    "bull_trend":   {"EMA_Cross", "MACD", "Breakout", "MarketStructure", "SMC", "Ichimoku", "SR", "Wyckoff"},
+    "bear_trend":   {"EMA_Cross", "MACD", "Breakout", "MarketStructure", "SMC", "Ichimoku", "SR", "Wyckoff"},
+    "ranging":      {"Bollinger", "RSI", "SR", "Grid", "VolumeProfile", "Wyckoff", "SMC"},
+    "high_vol":     {"SMC", "Wyckoff", "MarketStructure", "SR", "VolumeProfile"},
+    "accumulation": {"Wyckoff", "VolumeProfile", "SMC", "SR", "Bollinger", "RSI", "MarketStructure"},
+}
+
+# Regime-specifieke AI-gewichten: in ranging werkt AI beter dan lagging indicatoren.
+# In trending domineren technische strategieën. In high_vol is AI onbetrouwbaar.
+_REGIME_AI_WEIGHTS: dict[str, tuple[float, float]] = {
+    # (rl_weight, lstm_weight)
+    "bull_trend":   (0.08, 0.12),   # Technisch domineert — indicatoren werken goed in trend
+    "bear_trend":   (0.08, 0.12),
+    "ranging":      (0.10, 0.20),   # AI heeft moeite in ranging — minder gewicht dan technische S/R
+    "high_vol":     (0.05, 0.08),   # AI faalt in chaos — minimale bijdrage
+    "accumulation": (0.12, 0.20),   # Gebalanceerd
+}
+
+# Dynamische confidence-drempel per regime
+# Bear_trend: position_mult=0.50 halveert de score, dus drempel moet lager zodat
+# shorts bij sterke bearish confluence (6 strategieën) alsnog getriggerd worden.
+# Berekening: raw=-0.326 → ×0.50 → -0.163 → ×1.165 = -0.190 → drempel 0.13 ✓
+_REGIME_THRESHOLD: dict[str, float] = {
+    "bull_trend":   0.15,   # Trend = duidelijk richting, iets soepeler
+    "bear_trend":   0.10,   # Counter-trend filter vergroot netto score; drempel omlaag
+    "ranging":      0.09,   # Squeeze/ranging = zwakke signalen; confluence bewaakt kwaliteit
+    "high_vol":     0.35,   # Chaos = alleen sterke confluence trades
+    "accumulation": 0.09,   # Squeeze = signalen structureel zwakker; confluence bewaakt kwaliteit
+}
 
 
 class SignalCombiner:
@@ -234,17 +293,18 @@ class SignalCombiner:
         from strategies.grid_trading import GridTradingStrategy
 
         self.strategies = [
-            (EMACrossStrategy(),               "EMA_Cross",      0.12),
-            (BollingerMeanReversionStrategy(), "Bollinger",      0.10),
-            (RSIMomentumStrategy(),            "RSI",            0.10),
+            (EMACrossStrategy(),               "EMA_Cross",      0.11),
+            (BollingerMeanReversionStrategy(), "Bollinger",      0.09),
+            (RSIMomentumStrategy(),            "RSI",            0.09),
             (MACDStrategy(),                   "MACD",           0.08),
             (BreakoutStrategy(),               "Breakout",       0.08),
-            (SmartMoneyStrategy(),             "SMC",            0.12),
+            (SmartMoneyStrategy(),             "SMC",            0.11),
             (SupportResistanceStrategy(),      "SR",             0.08),
             (IchimokuStrategy(),               "Ichimoku",       0.07),
-            (WyckoffStrategy(),                "Wyckoff",        0.10),
+            (WyckoffStrategy(),                "Wyckoff",        0.09),
             (VolumeProfileStrategy(),          "VolumeProfile",  0.08),
             (MarketStructureStrategy(),        "MarketStructure",0.07),
+            (GridTradingStrategy(),            "Grid",           0.05),
         ]
 
         strategy_names = [name for _, name, _ in self.strategies]
@@ -254,6 +314,21 @@ class SignalCombiner:
     def update_weights(self, last_signals: dict[str, int], actual_return: float):
         """Aanroepen na elke gesloten trade om gewichten bij te werken."""
         self.weight_tracker.update(last_signals, actual_return)
+
+    def get_strategy_stats(self) -> list[dict]:
+        """Geeft per strategie: naam, gewicht-multiplier, accuraatheid en sample-count."""
+        stats = []
+        for _, name, base_weight in self.strategies:
+            hist = list(self.weight_tracker.history.get(name, []))
+            accuracy = sum(hist) / len(hist) if hist else None
+            stats.append({
+                "naam": name,
+                "base_weight": base_weight,
+                "gewicht_mult": round(self.weight_tracker.multiplier(name), 2),
+                "accuracy": round(accuracy, 3) if accuracy is not None else None,
+                "samples": len(hist),
+            })
+        return stats
 
     def combine(
         self,
@@ -266,24 +341,55 @@ class SignalCombiner:
         ob_signal: int = 0,
         ob_confidence: float = 0.0,
         regime_mult: float = 1.0,
+        regime: str = "ranging",
+        stat_arb_action: int = 0,
+        stat_arb_confidence: float = 0.0,
+        stat_arb_reason: str = "",
     ) -> dict:
         total_score = 0.0
         details = []
         last_signals: dict[str, int] = {}
+        _regime_wts    = _REGIME_STRATEGY_WEIGHTS.get(regime, {})
+        _active_strats = _REGIME_ACTIVE_STRATEGIES.get(regime, None)  # None = alles actief
 
-        # ── Strategieën met adaptieve gewichten ────────────────────
+        # Regime-specifieke AI-gewichten — in ranging werkt AI beter dan indicatoren
+        rl_w, lstm_w = _REGIME_AI_WEIGHTS.get(regime, (self.rl_weight, self.lstm_weight))
+        # Als LSTM_WEIGHT=0.0 in config → volledig uitschakelen (ook regime-override)
+        if self.lstm_weight == 0.0:
+            lstm_w = 0.0
+        strat_w = 1.0 - rl_w - lstm_w
+
+        # ── Strategieën met adaptieve + regime-specifieke gewichten ─
         for strategy, name, base_weight in self.strategies:
+            adapt_mult = self.weight_tracker.multiplier(name)
+
+            # Inactieve strategieën worden volledig uitgeschakeld voor dit regime.
+            # Ze verschijnen wel in details zodat het dashboard ze toont.
+            if _active_strats is not None and name not in _active_strats:
+                details.append({
+                    "naam": name, "actie": 0, "confidence": 0.0,
+                    "bijdrage": 0.0, "reden": "inactief in dit regime",
+                    "gewicht_mult": round(adapt_mult, 2),
+                })
+                continue
+
             try:
                 sig = strategy.signal(df)
-                action = sig.action if hasattr(sig, "action") else getattr(sig, "action", 0)
+                action = sig.action if hasattr(sig, "action") else 0
                 confidence = sig.confidence if hasattr(sig, "confidence") else 0.0
                 reason = sig.reason if hasattr(sig, "reason") else ""
             except Exception:
                 action, confidence, reason = 0, 0.0, "fout"
 
-            adapt_mult = self.weight_tracker.multiplier(name)
-            weight = base_weight * adapt_mult
-            weighted = action * confidence * weight * self.strat_weight
+            regime_w = _regime_wts.get(name, 1.0)
+            weight = base_weight * adapt_mult * regime_w
+            weighted = action * confidence * weight * strat_w
+            # In trending regime: counter-trend bijdragen zijn ruis en worden gefilterd.
+            # MACD bullish crossover in bear_trend blokkeert anders legitieme short-scores.
+            if regime == "bear_trend" and action > 0:
+                weighted = 0.0
+            elif regime == "bull_trend" and action < 0:
+                weighted = 0.0
             total_score += weighted
             last_signals[name] = action
             details.append({
@@ -295,28 +401,41 @@ class SignalCombiner:
                 "gewicht_mult": round(adapt_mult, 2),
             })
 
-        # ── RL Agent (30%) ─────────────────────────────────────────
-        rl_score = rl_action * rl_confidence * self.rl_weight
+        # ── RL Agent ───────────────────────────────────────────────
+        rl_score = rl_action * rl_confidence * rl_w
         total_score += rl_score
         details.append({
             "naam": "RL_Agent", "actie": rl_action,
             "confidence": rl_confidence, "bijdrage": rl_score,
-            "reden": "Reinforcement Learning",
+            "reden": f"Reinforcement Learning (gewicht {rl_w:.0%})",
         })
 
-        # ── LSTM voorspeller (20%) ─────────────────────────────────
-        lstm_score = lstm_action * lstm_confidence * self.lstm_weight
+        # ── LSTM voorspeller ───────────────────────────────────────
+        # Alleen bijdragen als LSTM voldoende zeker is — anders ruis
+        # 3-klasse model: random baseline = 0.33, bruikbaar signaal vanaf ~0.42
+        # In squeeze (accumulation/ranging): max confidence ~0.35-0.38 door lage variantie →
+        # drempel verlaagd naar 0.35 zodat LSTM nog meepraat; bijdrage is max ±0.07, te klein om
+        # alleen een trade te triggeren maar helpt als tie-breaker bij confluente signalen.
+        _lstm_min_conf = 0.35 if regime in ("accumulation", "ranging") else 0.42
+        if lstm_confidence < _lstm_min_conf:
+            lstm_action = 0
+            lstm_confidence = 0.0
+        lstm_score = lstm_action * lstm_confidence * lstm_w
         total_score += lstm_score
         details.append({
             "naam": "LSTM", "actie": lstm_action,
             "confidence": lstm_confidence, "bijdrage": lstm_score,
-            "reden": "LSTM prijsrichting voorspelling",
+            "reden": f"LSTM prijsrichting voorspelling (gewicht {lstm_w:.0%})",
         })
 
         # ── Sentiment modifier (±15% aanpassing) ──────────────────
         # Sentiment versterkt het signaal maar beslist niet alleen
+        # In trending regime: counter-trend sentiment is ruis
         if abs(sentiment_score) > 0.15:
             sentiment_boost = sentiment_score * 0.15
+            if (regime == "bear_trend" and sentiment_score > 0) or \
+               (regime == "bull_trend" and sentiment_score < 0):
+                sentiment_boost = 0.0
             total_score += sentiment_boost
             details.append({
                 "naam": "Sentiment", "actie": int(np.sign(sentiment_score)),
@@ -325,8 +444,12 @@ class SignalCombiner:
             })
 
         # ── Order book modifier ────────────────────────────────────
+        # In trending regime: counter-trend order book ruis wordt gefilterd
         if ob_confidence > 0.2:
             ob_boost = ob_signal * ob_confidence * 0.10
+            if (regime == "bear_trend" and ob_signal > 0) or \
+               (regime == "bull_trend" and ob_signal < 0):
+                ob_boost = 0.0
             total_score += ob_boost
             details.append({
                 "naam": "OrderBook", "actie": ob_signal,
@@ -334,12 +457,37 @@ class SignalCombiner:
                 "reden": f"Bid/Ask onbalans: {ob_signal:+d}",
             })
 
-        # ── Regime aanpassing ──────────────────────────────────────
-        total_score *= regime_mult
+        # ── StatArb modifier ──────────────────────────────────────
+        # Alleen actief in ranging/accumulation/high_vol — niet in trending markten
+        # (z-score "duur" in trend = gewoon trending up, geen mean-reversion verwacht)
+        _stat_arb_active = regime in ("ranging", "accumulation", "high_vol")
+        if _stat_arb_active and stat_arb_confidence > 0.30 and stat_arb_action != 0:
+            sa_boost = stat_arb_action * stat_arb_confidence * 0.15
+            total_score += sa_boost
+            details.append({
+                "naam": "StatArb",
+                "actie": stat_arb_action,
+                "confidence": stat_arb_confidence,
+                "bijdrage": sa_boost,
+                "reden": stat_arb_reason or f"Stat arbitrage paar-divergentie",
+            })
+        elif stat_arb_action != 0:
+            details.append({
+                "naam": "StatArb",
+                "actie": stat_arb_action,
+                "confidence": stat_arb_confidence,
+                "bijdrage": 0.0,
+                "reden": (stat_arb_reason or "") + " [inactief in trend-regime]",
+            })
 
-        # ── Eigen brein — nooit bevriezen ──────────────────────────
+        # ── Eigen brein met regime-specifieke drempel ───────────────
+        # regime_mult wordt NIET meer op de score toegepast — het halveert
+        # de score vóór threshold-vergelijking terwijl het ook al positiebepaling halveert.
+        # Dubbel effect: in ranging (-0.12 score) → ×0.80 → -0.096 < drempel 0.22 → nooit trade.
+        # regime_mult gaat alleen nog naar risk/manager voor positiebepaling.
         regime_hint = 1 if regime_mult > 1.0 else (-1 if regime_mult < 0.7 else 0)
-        final_action, confidence, threshold = self.brain.adjust(total_score, regime_hint)
+        regime_threshold = _REGIME_THRESHOLD.get(regime, 0.20)
+        final_action, confidence, threshold = self.brain.adjust(total_score, regime_hint, regime_threshold)
 
         if final_action != 0:
             self.brain.on_trade_executed()

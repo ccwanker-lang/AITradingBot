@@ -42,6 +42,8 @@ class AnomalyDetector:
         recent_return = returns.iloc[-1]
         rolling_mean = returns.rolling(50).mean().iloc[-1]
         rolling_std = returns.rolling(50).std().iloc[-1]
+        if pd.isna(rolling_std) or pd.isna(rolling_mean):
+            return AnomalyResult(AnomalyType.NORMAL, 0.0, True, "te weinig data voor z-score")
         price_z = (recent_return - rolling_mean) / (rolling_std + 1e-8)
 
         # ── Volume spike ───────────────────────────────────────────
@@ -54,7 +56,7 @@ class AnomalyDetector:
 
         # ── Bollinger squeeze ──────────────────────────────────────
         bb_width = df.get("bb_width", pd.Series([0.05] * len(df))).iloc[-1]
-        is_squeeze = bb_width < 0.02  # Zeer smalle bands
+        is_squeeze = bb_width < 0.015  # Was 0.02 — te gevoelig, triggerde constant
 
         # ── Crash detectie (3 rode kaarsen + hoog volume) ──────────
         last_3 = close.iloc[-4:-1]
