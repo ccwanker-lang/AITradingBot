@@ -1,3 +1,11 @@
 venv/
 *.log
 __pycache__/
+.env
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
