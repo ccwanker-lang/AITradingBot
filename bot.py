@@ -135,6 +135,7 @@ class MonsterBot:
         self._rolling_wr_paused: bool = False   # auto-pause bij rolling WR < 30%
         self._rolling_wr_warned: bool = False   # éénmalige waarschuwing bij WR < 35%
         self._manual_paused: bool = False       # handmatige pauze via /pauze commando
+        self._rolling_wr_reset_at: float | None = None  # skip historische trades vóór fix
         # (symbol → (unix_time, direction)) — cooldown na stop-loss
         self._last_sl_hit: dict[str, tuple[float, int]] = {}
         # Regime hysteresis — telt opeenvolgende andersluidende detecties per symbool
@@ -149,6 +150,11 @@ class MonsterBot:
         # Persistente bot-state herstellen (SL cooldowns, circuit breaker, equity curve)
         self._load_bot_state()
         self._restore_equity_curve()
+
+        # Self-healer live config (wordt herladen als heal_config.json wijzigt)
+        self._heal_config: dict = {}
+        self._heal_config_mtime: float = 0.0
+        self._load_heal_config()
 
         self._start_daily_summary_thread()
         self._start_heartbeat_thread()
@@ -260,6 +266,9 @@ class MonsterBot:
         self.telegram.register("fix", self._cmd_fix)
         self.telegram.register("analyse", self._cmd_analyse)
         self.telegram.register("roadmap", self._cmd_roadmap)
+        self.telegram.register("approve_heal", self._cmd_approve_heal)
+        self.telegram.register("reject_heal",  self._cmd_reject_heal)
+        self.telegram.register("heal_status",  self._cmd_heal_status)
 
     def _cmd_bal(self) -> str:
         try:
@@ -318,13 +327,15 @@ class MonsterBot:
                     dir_label = "▼ SHORT"
                 sign = "+" if pnl >= 0 else ""
                 emoji = "🟢" if pnl >= 0 else "🔴"
+                partial_str = " (50% open na TP1)" if pos.partial_closed else ""
                 lines.append(
                     f"{emoji} <b>{sym}</b> — {dir_label}\n"
                     f"  Instap: ${pos.entry_price:,.4f}\n"
                     f"  Nu: ${price:,.4f}\n"
                     f"  PnL: <b>{sign}{pnl:.2%}</b>\n"
+                    f"  Ingezet: <b>${pos.capital_invested:,.2f}</b>{partial_str}\n"
                     f"  SL: ${pos.stop_loss:,.4f}\n"
-                    f"  TP: ${pos.take_profit:,.4f}"
+                    f"  TP1: ${pos.take_profit:,.4f} | TP2: ${pos.take_profit_2:,.4f}"
                 )
             return "\n".join(lines)
         except Exception as e:
@@ -759,6 +770,195 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         except Exception as e:
             return f"❌ Fout: {e}"
 
+    # ── Self-healer: live config herladen + Telegram commands ─────
+
+    def _load_heal_config(self) -> None:
+        """Herlaadt heal_config.json alleen als het bestand gewijzigd is."""
+        import json as _json
+        path = self.logger.log_dir / "heal_config.json"
+        try:
+            mtime = path.stat().st_mtime if path.exists() else 0.0
+            if mtime > self._heal_config_mtime:
+                self._heal_config = _json.loads(path.read_text()) if path.exists() else {}
+                self._heal_config_mtime = mtime
+        except Exception:
+            pass
+
+    def _cmd_approve_heal(self) -> str:
+        import json as _json
+        from datetime import date as _date
+        proposal_path = self.logger.log_dir / "heal_proposal.json"
+        heal_path     = self.logger.log_dir / "heal_config.json"
+        try:
+            # ── Activatiepoort — geblokkeerd tot 27 mei + 62 closed trades ──────
+            # Roadmap week 1: wacht op voldoende data vóór eerste parameter-aanpassing.
+            # /approve_heal werkt pas als BEIDE voorwaarden zijn bereikt.
+            _ACTIVATION_DATE   = _date(2026, 5, 27)
+            _ACTIVATION_TRADES = 62
+            _today             = _date.today()
+            _closed_count      = len([t for t in self.logger.trades
+                                      if t.get("type") in ("sell", "cover")
+                                      and "pnl_pct" in t])
+            _date_ok   = _today >= _ACTIVATION_DATE
+            _trades_ok = _closed_count >= _ACTIVATION_TRADES
+
+            if not _date_ok:
+                _days_left = (_ACTIVATION_DATE - _today).days
+                _dag_str   = "dag" if _days_left == 1 else "dagen"
+                return (
+                    f"⚕️ <b>Self-Healer — Geblokkeerd</b>\n\n"
+                    f"🔒 Activering gepland op <b>27 mei 2026</b> (nog {_days_left} {_dag_str}).\n\n"
+                    f"<b>Roadmap voortgang:</b>\n"
+                    f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m/%Y')} → doel 27/05\n"
+                    f"  📊 Trades: {'✅' if _trades_ok else '⏳'} {_closed_count}/{_ACTIVATION_TRADES} closed\n\n"
+                    f"Gebruik /heal_status om het voorstel te bekijken.\n"
+                    f"Na <b>27 mei + {_ACTIVATION_TRADES} trades</b> wordt /approve_heal actief."
+                )
+
+            if not _trades_ok:
+                _nog = _ACTIVATION_TRADES - _closed_count
+                return (
+                    f"⚕️ <b>Self-Healer — Bijna Actief</b>\n\n"
+                    f"📅 Datum: ✅  |  📊 Trades: ⏳ {_closed_count}/{_ACTIVATION_TRADES}\n\n"
+                    f"Nog <b>{_nog} trade{'s' if _nog != 1 else ''}</b> nodig voor activering.\n"
+                    f"De date-lock is opgeheven — je bent er bijna!"
+                )
+            # ── Poort open — beide voorwaarden voldaan ──────────────────────────
+
+            if not proposal_path.exists():
+                return "⚕️ <b>Approve Heal</b>\n\nGeen voorstel gevonden."
+            proposal = _json.loads(proposal_path.read_text())
+            if proposal.get("status") != "pending":
+                return f"⚕️ <b>Approve Heal</b>\n\nVoorstel heeft status <b>{proposal.get('status')}</b> — niets te doen."
+
+            # Config snapshot voor de wijziging
+            try:
+                import sys as _sys
+                _sys.path.insert(0, str(self.logger.log_dir.parent / "tools"))
+                from config_tracker import auto_snapshot
+                snap_result = auto_snapshot(f"self_healer voor: {proposal['param']} {proposal['current_value']}→{proposal['proposed_value']}")
+                snap_id = snap_result.get("id", "?") if isinstance(snap_result, dict) else "?"
+            except Exception:
+                snap_id = "?"
+
+            # Heal config ophalen en bijwerken
+            heal_cfg = {}
+            if heal_path.exists():
+                try:
+                    heal_cfg = _json.loads(heal_path.read_text())
+                except Exception:
+                    pass
+
+            meta = heal_cfg.get("_meta", {})
+            meta[proposal["param"]] = {
+                "previous_value":       proposal["current_value"],
+                "applied_at":           datetime.now().isoformat(),
+                "regime":               proposal.get("regime"),
+                "trades_at_application": len([t for t in self.logger.trades
+                                              if t.get("type") in ("sell", "cover")]),
+                "wr_at_application":    proposal["wr"],
+                "snapshot_id_before":   snap_id,
+            }
+            heal_cfg[proposal["param"]] = proposal["proposed_value"]
+            heal_cfg["_meta"] = meta
+            heal_path.write_text(_json.dumps(heal_cfg, indent=2, default=str))
+
+            # Proposal markeren
+            proposal["status"] = "approved"
+            proposal_path.write_text(_json.dumps(proposal, indent=2, default=str))
+
+            # Direct toepassen in runtime
+            self._load_heal_config()
+
+            param_label = proposal["param"].replace("_", " ")
+            return (
+                f"✅ <b>Heal Goedgekeurd</b>\n\n"
+                f"Parameter: <b>{param_label}</b>\n"
+                f"Waarde: {proposal['current_value']} → <b>{proposal['proposed_value']}</b>\n"
+                f"Van kracht: direct (zonder herstart)\n\n"
+                f"Rollback: automatisch na 20 trades als WR daalt ≥5pp.\n"
+                f"Status bekijken: /heal_status"
+            )
+        except Exception as e:
+            return f"❌ Fout bij approve_heal: {e}"
+
+    def _cmd_reject_heal(self) -> str:
+        import json as _json
+        proposal_path = self.logger.log_dir / "heal_proposal.json"
+        try:
+            if not proposal_path.exists():
+                return "⚕️ <b>Reject Heal</b>\n\nGeen voorstel gevonden."
+            proposal = _json.loads(proposal_path.read_text())
+            if proposal.get("status") != "pending":
+                return f"⚕️ <b>Reject Heal</b>\n\nVoorstel heeft al status <b>{proposal.get('status')}</b>."
+            proposal["status"] = "rejected"
+            proposal_path.write_text(_json.dumps(proposal, indent=2, default=str))
+            return (
+                f"❌ <b>Heal Verworpen</b>\n\n"
+                f"Voorstel voor <b>{proposal['param']}</b> afgewezen.\n"
+                f"Bot blijft draaien met huidige instellingen."
+            )
+        except Exception as e:
+            return f"❌ Fout bij reject_heal: {e}"
+
+    def _cmd_heal_status(self) -> str:
+        import json as _json
+        from datetime import date as _date
+        heal_path     = self.logger.log_dir / "heal_config.json"
+        proposal_path = self.logger.log_dir / "heal_proposal.json"
+        lines = ["⚕️ <b>Self-Healer Status</b>\n"]
+
+        # Poort-status
+        _today        = _date.today()
+        _act_date     = _date(2026, 5, 27)
+        _act_trades   = 62
+        _closed_count = len([t for t in self.logger.trades
+                              if t.get("type") in ("sell", "cover") and "pnl_pct" in t])
+        _date_ok   = _today >= _act_date
+        _trades_ok = _closed_count >= _act_trades
+        _poort     = "🔓 OPEN" if (_date_ok and _trades_ok) else "🔒 GEBLOKKEERD"
+        lines.append(f"<b>Activatiepoort:</b> {_poort}")
+        lines.append(f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m')} → doel 27/05")
+        lines.append(f"  📊 Trades: {'✅' if _trades_ok else '⏳'} {_closed_count}/{_act_trades} closed\n")
+
+        # Actieve overrides
+        heal_cfg = {}
+        if heal_path.exists():
+            try:
+                heal_cfg = _json.loads(heal_path.read_text())
+            except Exception:
+                pass
+        active = {k: v for k, v in heal_cfg.items() if not k.startswith("_")}
+        if active:
+            lines.append("<b>Actieve overrides:</b>")
+            meta = heal_cfg.get("_meta", {})
+            for param, val in active.items():
+                info = meta.get(param, {})
+                prev = info.get("previous_value", "?")
+                when = info.get("applied_at", "?")[:16].replace("T", " ")
+                lines.append(f"  • {param}: {prev} → <b>{val}</b> (sinds {when})")
+        else:
+            lines.append("Geen actieve overrides.")
+
+        # Pending proposal
+        lines.append("")
+        if proposal_path.exists():
+            try:
+                p = _json.loads(proposal_path.read_text())
+                status = p.get("status", "?")
+                emoji  = {"pending": "⏳", "approved": "✅", "rejected": "❌"}.get(status, "?")
+                lines.append(f"<b>Laatste voorstel:</b> {emoji} {status.upper()}")
+                lines.append(f"  {p.get('param')}: {p.get('current_value')} → {p.get('proposed_value')}")
+                lines.append(f"  {p.get('reason', '')}")
+                exp = p.get("expires_at", "")[:16].replace("T", " ") if p.get("expires_at") else "?"
+                lines.append(f"  Geldig tot: {exp}")
+            except Exception:
+                lines.append("Voorstel bestand onleesbaar.")
+        else:
+            lines.append("Geen voorstel opgeslagen.")
+
+        return "\n".join(lines)
+
     # ── Adaptieve gewichten persistentie ──────────────────────────
     def _load_weights(self):
         try:
@@ -794,6 +994,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 self._last_daily_reset = int(data.get("last_daily_reset", -1))
                 self._daily_sl_count = int(data.get("daily_sl_count", 0))
                 self._daily_sl_pause_until = float(data.get("daily_sl_pause_until", 0.0))
+                _rwr = data.get("rolling_wr_reset_at")
+                self._rolling_wr_reset_at = float(_rwr) if _rwr is not None else None
                 n_sl = len(self._last_sl_hit)
                 cb_active = self._circuit_breaker_until > time.time()
                 self.logger.info(
@@ -815,6 +1017,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 "last_daily_reset": self._last_daily_reset,
                 "daily_sl_count": self._daily_sl_count,
                 "daily_sl_pause_until": self._daily_sl_pause_until,
+                "rolling_wr_reset_at": self._rolling_wr_reset_at,
                 "saved_at": datetime.now().isoformat(),
             }
             self._bot_state_path.write_text(_json.dumps(data, indent=2), encoding="utf-8")
@@ -953,8 +1156,11 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
 
         # ── Rolling win rate check na gesloten trades ──────────────
         if closed:
-            rolling = self.logger.get_rolling_stats(n=20)
-            wr15 = self.logger.get_rolling_stats(n=15)
+            # Als een strategie-fix is toegepast, tel alleen trades ná de reset.
+            # Dit voorkomt dat historische ranging-verliezen de nieuwe fix blokkeren.
+            _wr_since = self._rolling_wr_reset_at
+            rolling = self.logger.get_rolling_stats(n=20, since=_wr_since)
+            wr15   = self.logger.get_rolling_stats(n=15, since=_wr_since)
             # Vroege waarschuwing bij WR < 35% (vóór de 30% pauze)
             if rolling["n"] >= 10 and rolling["win_rate"] < 0.35 and not self._rolling_wr_warned and not self._rolling_wr_paused:
                 self._rolling_wr_warned = True
@@ -1006,11 +1212,9 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             self._write_state(current_prices)
             return
 
-        # ── Daily SL limiet — geen nieuwe entries na 3 stops vandaag ─
-        _daily_sl_paused = self._daily_sl_count >= 3
+        # Daily SL limiet uitgeschakeld — Kelly-sizing houdt verliezen klein genoeg
+        _daily_sl_paused = False
         if _daily_sl_paused:
-            # Toon in dashboard maar blokkeer entries; bestaande posities SL/TP-checks
-            # lopen gewoon door (check_stops hierboven is al uitgevoerd)
             self._print_dashboard(current_prices)
             self._write_state(current_prices)
             return
@@ -1041,6 +1245,10 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 self._print_dashboard(current_prices)
                 self._write_state(current_prices)
                 return
+
+        # ── 1b. Heal config herladen (elke 5 cycli = ~5 min) ──────────
+        if self._cycle % 5 == 0:
+            self._load_heal_config()
 
         # ── 2. Sentiment (elke 10 cycli = ~10 min) ─────────────────
         if self._cycle % 10 == 1:
@@ -1091,6 +1299,75 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         self._save_weights()
         self._save_bot_state()
 
+    @staticmethod
+    def _calc_adx(df, period: int = 14) -> float:
+        """
+        Bereken de Average Directional Index (ADX) via Wilder smoothing.
+        Geen TA-Lib vereist — puur NumPy.
+
+        ADX > 20: trending markt → oscillators minder betrouwbaar
+        ADX < 20: ranging markt → trendstrategieën minder betrouwbaar
+        """
+        import numpy as np
+        n = period
+        if len(df) < n * 3:
+            return 20.0  # Standaard bij te weinig data (neutraal)
+
+        high  = df["high"].values.astype(float)
+        low   = df["low"].values.astype(float)
+        close = df["close"].values.astype(float)
+
+        # ── True Range ───────────────────────────────────────────────
+        tr1 = high[1:] - low[1:]
+        tr2 = np.abs(high[1:] - close[:-1])
+        tr3 = np.abs(low[1:]  - close[:-1])
+        tr  = np.maximum(tr1, np.maximum(tr2, tr3))
+
+        # ── Directional Movements ────────────────────────────────────
+        up   = high[1:] - high[:-1]
+        down = low[:-1] - low[1:]
+        plus_dm  = np.where((up > down) & (up > 0),   up,   0.0)
+        minus_dm = np.where((down > up) & (down > 0), down, 0.0)
+
+        # ── Wilder Smoothing ─────────────────────────────────────────
+        # Wilder's originele methode: beginwaarde = gewone som (TR, +DM, -DM).
+        # Voor ADX (smoothing van DX) gebruik je het GEMIDDELDE als beginwaarde —
+        # DX is al 0-100 genormaliseerd; de som zou ~14× te groot zijn.
+        def _wilder_sum(arr: np.ndarray, n: int) -> np.ndarray:
+            """Wilder smooth met som als beginwaarde (voor TR, +DM, -DM)."""
+            out = np.zeros(len(arr))
+            if n > len(arr):
+                return out
+            out[n - 1] = arr[:n].sum()
+            for i in range(n, len(arr)):
+                out[i] = out[i - 1] * (n - 1) / n + arr[i]
+            return out
+
+        def _wilder_avg(arr: np.ndarray, n: int) -> np.ndarray:
+            """Wilder smooth met gemiddelde als beginwaarde (voor ADX)."""
+            out = np.zeros(len(arr))
+            if n > len(arr):
+                return out
+            out[n - 1] = arr[:n].mean()  # Gemiddelde: DX is al 0-100 genormaliseerd
+            for i in range(n, len(arr)):
+                out[i] = (out[i - 1] * (n - 1) + arr[i]) / n
+            return out
+
+        sm_tr    = _wilder_sum(tr, n)
+        sm_plus  = _wilder_sum(plus_dm, n)
+        sm_minus = _wilder_sum(minus_dm, n)
+
+        # ── Directional Indices ──────────────────────────────────────
+        eps      = 1e-8
+        plus_di  = 100.0 * sm_plus  / (sm_tr + eps)
+        minus_di = 100.0 * sm_minus / (sm_tr + eps)
+
+        # ── DX → ADX ────────────────────────────────────────────────
+        dx   = 100.0 * np.abs(plus_di - minus_di) / (plus_di + minus_di + eps)
+        adx  = _wilder_avg(dx[n - 1:], n)  # ADX = Wilder smooth van DX (met gemiddelde init)
+
+        return float(adx[-1]) if len(adx) > 0 else 20.0
+
     def _analyze_symbol(self, symbol: str, cached_price: float | None,
                         momentum_boost: bool = False):
         # ── 1h data ophalen ────────────────────────────────────────
@@ -1102,6 +1379,26 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         current_price = float(df["close"].iloc[-1])
         atr = float(df.get("atr_14", df["close"] * 0.02).iloc[-1])
         # Regime detectie hier — sl_mult gebruikt in atr voor bredere stops bij HIGH_VOL
+
+        # ── Staleness check — 1h kaars niet te oud ────────────────
+        # Een 1h-kaars heeft open-timestamp T en sluit om T+3600.
+        # Als de recentste kaarsstamp + 3600 + 90s in het verleden ligt,
+        # is de data verouderd (bot mist de nieuwste kaars).
+        # In de praktijk heeft de CCXT-feed altijd de lopende kaars mee,
+        # dus triggert dit alleen als de dataprovider down is.
+        if "timestamp" in df.columns:
+            try:
+                _last_open_s    = float(df["timestamp"].iloc[-1]) / 1000
+                _candle_close_s = _last_open_s + 3600
+                _staleness_s    = time.time() - _candle_close_s
+                if _staleness_s > 90:
+                    self.logger.warning(
+                        f"{symbol}: 1h data verouderd — laatste kaars "
+                        f"{_staleness_s / 3600:.1f}u geleden gesloten. Analyse overgeslagen."
+                    )
+                    return
+            except Exception:
+                pass
 
         # ── 15m micro-trend (entry timing) ────────────────────────
         tf_15m = 0
@@ -1121,11 +1418,14 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             pass
 
         # ── 4h data voor trend filter (multi-timeframe) ────────────
+        adx_4h = 20.0  # Neutraal standaard als 4h data faalt
         try:
             df_4h = self.fetcher.fetch_ohlcv(symbol, "4h", limit=500)
             df_4h = add_all_features(df_4h)
             # EMA21/50 op 4h is stabieler dan EMA9/21 — minder vals signalen in zijwaartse markt
             tf_trend = 1 if df_4h["ema_21"].iloc[-1] > df_4h["ema_50"].iloc[-1] else -1
+            # ADX op 4h — meet trendsterkte voor oscillator/trend-strategie weging
+            adx_4h = self._calc_adx(df_4h, period=14)
         except Exception:
             tf_trend = 0  # Geen filter als 4h data niet beschikbaar
 
@@ -1146,7 +1446,17 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         try:
             df_1d = self.fetcher.fetch_ohlcv(symbol, "1d", limit=60)
             df_1d = add_all_features(df_1d)
-            trend_1d = 1 if df_1d["close"].iloc[-1] > df_1d["ema_50"].iloc[-1] else -1
+            _price_1d = float(df_1d["close"].iloc[-1])
+            _ema50_1d = float(df_1d["ema_50"].iloc[-1])
+            _dist_1d = (_price_1d - _ema50_1d) / _ema50_1d
+            # Drempel: pas bearish bij >3% onder EMA50.
+            # Was: elke negatieve afstand = bearish → blokkeerde longs bij SOL -0.5% terwijl markt steeg.
+            # Nu: -3% tot 0% = neutraal (trend_1d=0) → geen blokkade, bot kan beide kanten op.
+            if _dist_1d >= 0:
+                trend_1d = 1    # boven EMA50 → bullish
+            elif _dist_1d < -0.03:
+                trend_1d = -1   # >3% onder EMA50 → duidelijk bearish
+            # -3% tot 0%: trend_1d blijft 0 = neutraal → Filter 1b en 1c slaan niet aan
         except Exception:
             pass
 
@@ -1273,6 +1583,36 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 action = 0
                 _ntr = f"StatArb veto — sterke divergentie ({sa.reason})"
 
+        # ── ADX Confidence Modifier (4h) ──────────────────────────
+        # ADX > 25: trending → oscillator-driven signalen minder betrouwbaar (× 0.80)
+        # ADX < 18: ranging  → trend-driven signalen minder betrouwbaar (× 0.80)
+        # Zachte reducer — geen hard veto. Werkt samen met de bestaande filters.
+        # Drempel 25/18 (was 20 enkelvoudig): ruimte voor edge cases.
+        if action != 0:
+            try:
+                _osc_strats   = {"Bollinger", "RSI", "Wyckoff", "Grid"}
+                _trend_strats = {"EMA_Cross", "Breakout", "MACD", "MarketStructure", "Ichimoku"}
+                _agreeing_det = [d for d in signal.get("details", [])
+                                 if d.get("actie") == action and d.get("naam")]
+                _osc_agree    = sum(1 for d in _agreeing_det if d["naam"] in _osc_strats)
+                _trend_agree  = sum(1 for d in _agreeing_det if d["naam"] in _trend_strats)
+                if adx_4h > 25 and _osc_agree > _trend_agree:
+                    # Trending markt: oscillator-signalen gaan tegen de trend in
+                    confidence *= 0.80
+                    self.logger.debug(
+                        f"{symbol}: 4H ADX={adx_4h:.0f} (trending) — "
+                        f"oscillator-driven setup → conf ×0.80"
+                    )
+                elif adx_4h < 18 and _trend_agree > _osc_agree:
+                    # Ranging markt: trendstrategieën geven vals signaal in zijwaartse markt
+                    confidence *= 0.80
+                    self.logger.debug(
+                        f"{symbol}: 4H ADX={adx_4h:.0f} (ranging) — "
+                        f"trend-driven setup in ranging → conf ×0.80"
+                    )
+            except Exception:
+                pass
+
         # ── 15m micro-trend modifier ───────────────────────────────
         # Niet blokkeren — alleen bijsturen. 15m-bevestiging → +5% confidence.
         # 15m tegengesteld → −5% confidence (zachte penalty, geen veto).
@@ -1316,17 +1656,46 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             action = 0
             _ntr = "Long geblokkeerd — 1D én 4h beide bearish"
 
-        # ── Filter 1c: Macro bias in ranging ──────────────────────
-        # In ranging regime bepaalt de 1D trend de toegestane richting.
-        # Shorts in bullish macro = tegen de stroom in → WR 29-30% (BTC/ETH data).
-        # SOL bewijs: zodra bull_trend actief, WR sprong naar 44%.
-        if regime.regime.value == "ranging":
-            if trend_1d == 1 and action == -1 and not tf_bos_bearish:
+        # ── Filter 1c: Ranging skip ────────────────────────────────
+        # WR in ranging = 29% (n=45, 85% van alle trades) — geen aantoonbare edge.
+        # WR in trending/accumulation = 83–100% (n=8). Data: 26 mei 2026.
+        # Fix: sla ALLE nieuwe entries in ranging over. Beheer van bestaande
+        # posities (SL/TP/exit) gaat gewoon door — alleen nieuwe entries geblokkeerd.
+        # UITZONDERING: Bollinger squeeze → naderende explosie uit ranging →
+        # entry WEL toegestaan. Squeeze = bb_width < 0.015 (absoluut) of
+        # bb_width < 40% van 50-kaars gemiddelde (relatief).
+        if regime.regime.value == "ranging" and action != 0:
+            _is_bb_squeeze = False
+            try:
+                if "bb_width" in df.columns and len(df) >= 50:
+                    _bb_w = float(df["bb_width"].iloc[-1])
+                    _hist_bb = float(df["bb_width"].rolling(50).mean().iloc[-1])
+                    _is_bb_squeeze = _bb_w < 0.015 or (_hist_bb > 0 and _bb_w < _hist_bb * 0.40)
+            except Exception:
+                pass
+            if not _is_bb_squeeze:
                 action = 0
-                _ntr = "Short geblokkeerd in ranging — 1D macro is bullish"
-            elif trend_1d == -1 and action == 1 and not tf_bos_bullish:
-                action = 0
-                _ntr = "Long geblokkeerd in ranging — 1D macro is bearish"
+                _ntr = "Ranging skip — geen edge in ranging (WR=29%, n=45)"
+            else:
+                self.logger.debug(f"{symbol}: Ranging skip overruled — Bollinger squeeze actief (bb_width={_bb_w:.4f})")
+
+        # ── Filter 1d: Ranging RSI-zone filter ────────────────────
+        # In ranging oscilleert prijs tussen boven- en ondergrens.
+        # Long met RSI>45 = kopen aan BOVENKANT range (te laat, omslag aankomend).
+        # Short met RSI<55 = shorten aan ONDERKANT range (ook te laat).
+        # Bewijs: TP1 reach rate = 23% → prijs gaat in 77% direct de verkeerde kant op.
+        # Fix: alleen long als RSI in ONDERSTE helft (<45), short als RSI in BOVENSTE helft (>55).
+        if regime.regime.value == "ranging" and action != 0:
+            try:
+                _rsi_1d = float(df["rsi_14"].iloc[-1]) if "rsi_14" in df.columns else 50.0
+                if action == 1 and _rsi_1d > 45:
+                    action = 0
+                    _ntr = f"Ranging RSI-zone — long maar RSI={_rsi_1d:.0f} (>45 = bovenkant range, te laat)"
+                elif action == -1 and _rsi_1d < 55:
+                    action = 0
+                    _ntr = f"Ranging RSI-zone — short maar RSI={_rsi_1d:.0f} (<55 = onderkant range, te laat)"
+            except Exception:
+                pass
 
         # ── Filter 2: Stop-loss cooldown (4 uur) ──────────────────
         # Na een SL: geen herinstap in dezelfde richting voor 4 uur
@@ -1362,10 +1731,13 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 1 for d in signal.get("details", [])
                 if d.get("naam") in _tech and d.get("actie") == action
             )
+            _heal_conf = int(self._heal_config.get("confluence_ranging", 0))
             if action == -1:
-                _min_agreeing = 2 if regime.regime.value in ("accumulation", "ranging") else 3
+                _min_agreeing = _heal_conf if (_heal_conf and regime.regime.value == "ranging") \
+                    else (2 if regime.regime.value == "accumulation" else 3)
             else:
-                _min_agreeing = 2 if regime.regime.value in ("accumulation", "ranging", "bear_trend") else 3
+                _min_agreeing = _heal_conf if (_heal_conf and regime.regime.value == "ranging") \
+                    else (2 if regime.regime.value in ("accumulation", "bear_trend") else 3)
             if agreeing < _min_agreeing:
                 action = 0
                 _ntr = f"Confluence te laag — {agreeing}/{_min_agreeing} technische strategieën eens"
@@ -1376,7 +1748,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         if action != 0 and "rsi_14" in df.columns:
             rsi_now = float(df["rsi_14"].iloc[-1])
             _strong_bear = regime.regime.value == "bear_trend" and regime.strength >= 0.85
-            _rsi_short_block = 28 if _strong_bear else 35
+            _rsi_short_block = 28 if regime.regime.value == "bear_trend" else 35
             if action == -1 and rsi_now < _rsi_short_block:
                 action = 0
                 _ntr = f"RSI oversold ({rsi_now:.0f}) — geen shorts, bounce verwacht"
@@ -1439,8 +1811,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             if "bb_width" in df.columns and len(df) >= 50:
                 bb_w = float(df["bb_width"].iloc[-1])
                 hist_bb = float(df["bb_width"].rolling(50).mean().iloc[-1])
-                if bb_w < hist_bb * 0.20:
-                    noise_score += 1  # Alleen echte extreme squeeze (was 0.30 — blokkeerde BTC continu)
+                if bb_w < hist_bb * 0.20 and _regime_val_f8 not in ("ranging", "accumulation"):
+                    noise_score += 1  # Squeeze = normaal in ranging — niet als ruis tellen (was zonder regime-check)
             if noise_score >= 2:
                 action = 0
                 _ntr = f"Markt te noisy ({noise_score}/3) — volume/BB squeeze"
@@ -1483,6 +1855,20 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 _ntr = f"Al {same_dir} {'long' if action == 1 else 'short'} posities open (correlatie-limiet {corr_limit})"
                 action = 0
 
+        # ── Ranging correlatie-lock — max 1 positie per gecorreleerde groep ──────
+        # BTC/ETH/SOL zijn >90% gecorreleerd in ranging. Als 1 verliest, verliezen
+        # ze alle 3 gelijktijdig → verliesstreek van 12 (2026-05-25, 94% in ranging).
+        # Fix: in ranging max 1 open positie per groep, ongeacht richting.
+        if action != 0 and regime.regime.value == "ranging" and hasattr(self.engine, "positions"):
+            _CORR_GROUPS = [{"BTC/USDT", "ETH/USDT", "SOL/USDT"}]
+            for _grp in _CORR_GROUPS:
+                if symbol in _grp:
+                    _blocking = [s for s in self.engine.positions if s in _grp and s != symbol]
+                    if _blocking:
+                        _ntr = f"Ranging correlatie-lock: {_blocking[0]} al open — max 1 per groep (corr>90%)"
+                        action = 0
+                    break
+
         # ── Regime-specifieke SL/TP ratio's ────────────────────────
         # Verschillende R:R per marktomstandigheid — niet één maat voor alles.
         # high_vol: breed SL zodat we niet uitgestopt worden door ruis.
@@ -1490,11 +1876,16 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         _REGIME_SL_TP = {
             "bull_trend":   (2.0, 5.0),
             "bear_trend":   (2.5, 5.0),   # Was 2.0 — te strak voor shorts; bounces van 2-3% stopten valide setups
-            "ranging":      (1.5, 2.5),   # Was 2.0 → TP1-formule (1.5×sl=2.25ATR) > TP2 (2.0ATR) → altijd cap → 0.6R. Fix: TP2=2.5 zodat TP1=2.25<TP2=2.5, geen cap, proper 1.5R
+            "ranging":      (1.5, 2.0),   # Was 2.5 → TP2 te ver voor zijwaartse markt; TP1=1.8xATR < TP2=2.0xATR ✓
             "high_vol":     (3.0, 6.0),
             "accumulation": (1.8, 3.5),
         }
         sl_mult_r, tp_mult_r = _REGIME_SL_TP.get(regime.regime.value, (2.0, 4.0))
+
+        # Self-healer override voor ranging TP2 (zonder herstart)
+        heal_tp2 = self._heal_config.get("ranging_tp2_mult")
+        if heal_tp2 is not None and regime.regime.value == "ranging":
+            tp_mult_r = float(heal_tp2)
 
         # ── Confidence cap — voorkomt onrealistische posities ───────
         # Confidence > 0.75 is statistisch onwaarschijnlijk in 1h crypto.
@@ -1572,7 +1963,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             result = self.engine.buy(symbol, current_price, atr, confidence, prices,
                                      entry_reasons=entry_reasons, position_pct=position_pct,
                                      sl_mult=sl_mult_r, tp_mult=tp_mult_r,
-                                     regime=regime.regime.value, setup_grade=setup_grade)
+                                     regime=regime.regime.value, setup_grade=setup_grade,
+                                     throttle=throttle)
             if result:
                 self._last_no_trade_reasons.pop(symbol, None)
                 self.logger.log_trade({**result, "symbol": symbol, **_attribution,
@@ -1611,7 +2003,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 result = self.engine.short(symbol, current_price, atr, confidence, prices,
                                            entry_reasons=entry_reasons, position_pct=position_pct,
                                            sl_mult=sl_mult_r, tp_mult=tp_mult_r,
-                                           regime=regime.regime.value, setup_grade=setup_grade)
+                                           regime=regime.regime.value, setup_grade=setup_grade,
+                                           throttle=throttle)
                 if result:
                     self._last_no_trade_reasons.pop(symbol, None)
                     self.logger.log_trade({**result, "symbol": symbol, **_attribution,

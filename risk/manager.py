@@ -15,6 +15,7 @@ class RiskManager:
         atr_sl_mult: float = 2.0,
         atr_tp_mult: float = 4.0,
         trailing_pct: float = 0.05,
+        min_position_pct: float = 0.05,
     ):
         self.max_portfolio_risk = max_portfolio_risk
         self.max_drawdown_stop = max_drawdown_stop
@@ -24,6 +25,7 @@ class RiskManager:
         self.atr_sl_mult = atr_sl_mult
         self.atr_tp_mult = atr_tp_mult
         self.trailing_pct = trailing_pct
+        self.min_position_pct = min_position_pct
 
     def position_size(
         self,

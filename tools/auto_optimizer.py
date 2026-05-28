@@ -103,7 +103,9 @@ def analyse():
         })
 
     # 3 — TP1 reach rate laag
-    tp1_hits = len([t for t in closed if t.get("exit_reason") in ("TP1", "take_profit_1", "partial")])
+    # partial_tp1 records zijn aparte entries (type=="partial_tp1"), niet exit_reason in sell trades
+    all_entries = load_json(LOGS / "trades.json", [])
+    tp1_hits = len([t for t in all_entries if t.get("type") == "partial_tp1"])
     tp1_rate = tp1_hits / len(closed) if closed else 0
     if tp1_rate < 0.20 and len(closed) >= 20:
         problemen.append({

@@ -112,8 +112,8 @@ class ModelTrainer:
             else:
                 model = _new_ppo_model()
 
-            # Verhoogd van 200k naar 500k — PPO heeft meer stappen nodig voor crypto
-            model.learn(total_timesteps=500_000)
+            # 50k is max haalbaar op Raspberry Pi met 1200-dim observatieruimte (~15-20 min)
+            model.learn(total_timesteps=50_000)
             model_path.parent.mkdir(exist_ok=True)
             model.save(str(model_path))
             self.logger.info(f"RL model opgeslagen naar {model_path}")

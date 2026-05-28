@@ -7,11 +7,14 @@ Paper trading engine met:
 - Pyramiding (bijkopen op winnende positie)
 """
 import json
+import logging
 import time as _time
 from datetime import datetime
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from risk.manager import RiskManager
+
+_log = logging.getLogger("paper_engine")
 
 
 @dataclass
@@ -31,6 +34,8 @@ class Position:
     opened_at: float = 0.0   # Unix timestamp — voor time-based exit
     regime: str = "ranging"
     setup_grade: str = "?"
+    atr: float = 0.0             # ATR bij entry — voor ATR-gebaseerde trailing stop
+    atr_trail_mult: float = 1.5  # SL beweegt mee: 1.5× ATR achter de peak
 
 
 class PaperEngine:
@@ -57,6 +62,24 @@ class PaperEngine:
                 pos.peak_price = price
             elif pos.direction == -1 and price < pos.peak_price:
                 pos.peak_price = price
+
+            # ── ATR Trailing Stop — beweegt SL mee met de peak (nooit ongunstiger) ──
+            # Start pas als positie minstens 0.5× ATR in de winst zit (breakeven bereikt).
+            # Reden: direct na entry zou ATR-trail SL al hoger zetten dan de initiele SL
+            # bij een vlakke markt, waardoor je te vroeg uitgestopt wordt.
+            if pos.atr > 0:
+                if pos.direction == 1:
+                    # Long: trail hangt 1.5× ATR onder de peak
+                    atr_trail = pos.peak_price - pos.atr * pos.atr_trail_mult
+                    in_profit = pos.peak_price > pos.entry_price + pos.atr * 0.5
+                    if in_profit and atr_trail > pos.stop_loss:
+                        pos.stop_loss = atr_trail  # Alleen omhoog — nooit terug
+                else:
+                    # Short: trail hangt 1.5× ATR boven de peak (peak = laagste koers)
+                    atr_trail = pos.peak_price + pos.atr * pos.atr_trail_mult
+                    in_profit = pos.peak_price < pos.entry_price - pos.atr * 0.5
+                    if in_profit and atr_trail < pos.stop_loss:
+                        pos.stop_loss = atr_trail  # Alleen omlaag — nooit terug
 
             # ── Breakeven stop: SL naar entry zodra prijs halverwege TP1 ──
             if not pos.partial_closed and pos.opened_at > 0:
@@ -120,7 +143,8 @@ class PaperEngine:
             confidence: float, prices: dict,
             entry_reasons: list = None, position_pct: float = 0.10,
             sl_mult: float = None, tp_mult: float = None,
-            regime: str = "ranging", setup_grade: str = "?") -> dict | None:
+            regime: str = "ranging", setup_grade: str = "?",
+            throttle: float = 1.0) -> dict | None:
         if symbol in self.positions:
             return self._try_pyramid(symbol, price, confidence, atr)
 
@@ -131,6 +155,15 @@ class PaperEngine:
             return None
 
         invest = min(total * position_pct, self.capital * 0.95)
+        min_pct = 0.05 if throttle >= 0.50 else 0.02
+        min_invest = total * min_pct
+        min_label = f"5% (throttle={throttle:.0%} ≥ 50%)" if throttle >= 0.50 else f"2% (throttle={throttle:.0%} < 50%)"
+        if invest < min_invest:
+            _log.info(f"Minimum: {min_label} — verhoogd van €{invest:.2f} naar €{min_invest:.2f}")
+            invest = min_invest
+        else:
+            _log.info(f"Minimum: {min_label} — positie €{invest:.2f} al boven minimum €{min_invest:.2f}")
+        invest = min(invest, self.capital * 0.95)
         if invest < price * 0.0001:
             return None
 
@@ -157,6 +190,7 @@ class PaperEngine:
             entry_reasons=entry_reasons or [],
             opened_at=_time.time(),
             regime=regime, setup_grade=setup_grade,
+            atr=atr, atr_trail_mult=1.5,
         )
         return {"type": "buy", "symbol": symbol, "price": price,
                 "invest": invest, "stop_loss": sl,
@@ -169,7 +203,8 @@ class PaperEngine:
                confidence: float, prices: dict,
                entry_reasons: list = None, position_pct: float = 0.10,
                sl_mult: float = None, tp_mult: float = None,
-               regime: str = "ranging", setup_grade: str = "?") -> dict | None:
+               regime: str = "ranging", setup_grade: str = "?",
+               throttle: float = 1.0) -> dict | None:
         if symbol in self.positions:
             return None
 
@@ -180,6 +215,15 @@ class PaperEngine:
             return None
 
         invest = min(total * position_pct, self.capital * 0.95)
+        min_pct = 0.05 if throttle >= 0.50 else 0.02
+        min_invest = total * min_pct
+        min_label = f"5% (throttle={throttle:.0%} ≥ 50%)" if throttle >= 0.50 else f"2% (throttle={throttle:.0%} < 50%)"
+        if invest < min_invest:
+            _log.info(f"Minimum: {min_label} — verhoogd van €{invest:.2f} naar €{min_invest:.2f}")
+            invest = min_invest
+        else:
+            _log.info(f"Minimum: {min_label} — positie €{invest:.2f} al boven minimum €{min_invest:.2f}")
+        invest = min(invest, self.capital * 0.95)
         if invest < price * 0.0001:
             return None
 
@@ -197,7 +241,7 @@ class PaperEngine:
         if tp1 <= tp2:  # Fix: voor short moet TP1 > TP2 (TP1 dichter bij entry)
             tp1 = price - atr * (_tp_m * 0.45)
 
-        self.capital -= invest * 0.10  # Margin (10%)
+        self.capital -= invest
         self.positions[symbol] = Position(
             symbol=symbol, direction=-1, size=(invest * (1 - self.fee_rate)) / price,
             entry_price=price, stop_loss=sl, take_profit=tp1, take_profit_2=tp2,
@@ -205,6 +249,7 @@ class PaperEngine:
             entry_reasons=entry_reasons or [],
             opened_at=_time.time(),
             regime=regime, setup_grade=setup_grade,
+            atr=atr, atr_trail_mult=1.5,
         )
         return {"type": "short", "symbol": symbol, "price": price,
                 "invest": invest, "stop_loss": sl,
@@ -226,7 +271,7 @@ class PaperEngine:
             pnl = proceeds - pos.capital_invested
         else:  # Short
             pnl = (pos.entry_price - price) * pos.size * (1 - self.fee_rate)
-            proceeds = pos.capital_invested * 0.10 + pnl  # Margin terug + winst
+            proceeds = pos.capital_invested + pnl
 
         pnl_pct = pnl / (pos.capital_invested + 1e-8)
         self.capital += max(proceeds, 0)
@@ -316,7 +361,7 @@ class PaperEngine:
                 pos_value += pos.size * price
             else:
                 pnl = (pos.entry_price - price) * pos.size
-                pos_value += pos.capital_invested * 0.10 + pnl
+                pos_value += pos.capital_invested + pnl
         return self.capital + pos_value
 
     def _drawdown(self, total: float) -> float:
@@ -345,6 +390,7 @@ class PaperEngine:
             "initial_capital": self.initial_capital,
             "trade_history": self.trade_history,
             "positions": {sym: asdict(pos) for sym, pos in self.positions.items()},
+            "full_short_margin": True,
         }
         path.write_text(json.dumps(state, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
 
@@ -360,5 +406,12 @@ class PaperEngine:
             known = {f.name for f in Position.__dataclass_fields__.values()}
             for sym, p in state.get("positions", {}).items():
                 self.positions[sym] = Position(**{k: v for k, v in p.items() if k in known})
+            # Eenmalige migratie: shorts die geopend werden met 10% marge (oude code)
+            # hadden slechts 10% van capital_invested afgetrokken. Corrigeer dit zodat
+            # total_value (die nu volledig capital_invested gebruikt) klopt.
+            if not state.get("full_short_margin"):
+                for pos in self.positions.values():
+                    if pos.direction == -1:
+                        self.capital -= pos.capital_invested * 0.90
         except Exception:
             pass

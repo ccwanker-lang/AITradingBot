@@ -549,6 +549,13 @@ body { background:var(--bg); color:var(--text); font-family:var(--sans); font-si
     </div>
 
     <div class="card">
+      <div class="card-head">🛡️ Filter Shield — RSI Zone Bescherming</div>
+      <div class="card-body" id="filterShieldContainer">
+        <div class="no-data">Laden...</div>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-head">Sentiment</div>
       <div class="card-body">
         <div class="sent-row"><span class="sent-lbl">Fear &amp; Greed</span><span class="sent-val" id="ssFG">-</span></div>
@@ -831,13 +838,17 @@ async function loadChart() {
 }
 
 // ── Trade markers ─────────────────────────────────────────────────────
+const tfSeconds = { '1m':60, '5m':300, '15m':900, '1h':3600, '4h':14400, '1d':86400 };
+
 function addTradeMarkers() {
   if (!showTrades) { candleSeries.setMarkers([]); return; }
   const trades  = allTrades.filter(t => t.symbol === currentSymbol);
   const markers = [];
+  const tfSec   = tfSeconds[currentTF] || 3600;
   for (const t of trades) {
     if (!t.timestamp || !t.price) continue;
-    const ts  = Math.floor(new Date(t.timestamp).getTime() / 1000);
+    const rawTs = Math.floor(new Date(t.timestamp).getTime() / 1000);
+    const ts    = Math.floor(rawTs / tfSec) * tfSec;
     const pTxt = '$' + parseFloat(t.price).toLocaleString('nl-NL', { maximumFractionDigits:0 });
     const type = t.type || '';
     if (type === 'buy' || type === 'pyramid')
@@ -1247,6 +1258,79 @@ async function loadRegimeStats() {
   } catch(e) { document.getElementById('regimeStatsContainer').innerHTML = '<div class="no-data">Fout bij laden</div>'; }
 }
 
+// ── Filter Shield — RSI Zone Bescherming ──────────────────────────────
+async function loadFilterShield() {
+  const el = document.getElementById('filterShieldContainer');
+  if (!el) return;
+  try {
+    const d = await (await fetch('/api/vault')).json();
+    if (!d || Object.keys(d).length === 0) {
+      el.innerHTML = '<div class="no-data">Vault data niet beschikbaar</div>';
+      return;
+    }
+
+    // Per-symbool RSI zone status
+    const symbols = ['BTC/USDT','ETH/USDT','SOL/USDT'];
+    let symRows = '';
+    for (const sym of symbols) {
+      const info = d[sym];
+      if (!info) continue;
+      const status  = info.status || 'unknown';
+      const isRSI   = status === 'rsi_zone';
+      const icon    = isRSI ? '🛡️' : (info.icon || '⬜');
+      const label   = isRSI ? 'RSI ZONE FILTER' : (info.label || info.status || '?').toUpperCase();
+      const reason  = (info.reason || '').slice(0, 55);
+      const color   = isRSI ? 'var(--yellow)' : (status === 'ok' ? 'var(--green)' : 'var(--text2)');
+      const bg      = isRSI ? 'rgba(227,179,65,0.08)' : 'var(--bg3)';
+      symRows += `
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;
+                    background:${bg};border-radius:4px;border:1px solid var(--border);
+                    ${isRSI ? 'border-color:rgba(227,179,65,0.3)' : ''}">
+          <span style="font-size:14px">${icon}</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-family:var(--mono);font-size:9px;font-weight:700;color:${color}">${sym} — ${label}</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${reason}</div>
+          </div>
+        </div>`;
+    }
+
+    // RSI zone block statistieken
+    const log = d['_rsi_zone_log'] || {};
+    const total   = log.total   || 0;
+    const last24h = log.last_24h || 0;
+    const last1h  = log.last_1h  || 0;
+
+    // Filter 1d effectiviteit
+    const f1d = d['_filter1d_stats'] || {};
+    const f1d_n   = f1d.n_trades ?? 0;
+    const f1d_wr  = f1d.wr != null ? (f1d.wr * 100).toFixed(0) + '%' : '—';
+    const f1d_met = f1d.target_met;
+    const f1d_imp = f1d.improvement != null
+      ? (f1d.improvement >= 0 ? '+' : '') + (f1d.improvement * 100).toFixed(0) + '%'
+      : '—';
+    const f1d_col = f1d_met ? 'var(--green)' : (f1d_n === 0 ? 'var(--text3)' : 'var(--yellow)');
+
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:8px">${symRows}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:8px">
+        <div class="pf-cell"><div class="pf-lbl">Totaal blocks</div><div class="pf-val" style="color:var(--yellow)">${total}</div></div>
+        <div class="pf-cell"><div class="pf-lbl">Laatste 24u</div><div class="pf-val">${last24h}</div></div>
+        <div class="pf-cell"><div class="pf-lbl">Laatste uur</div><div class="pf-val">${last1h}</div></div>
+      </div>
+      <div style="padding:6px 8px;background:var(--bg3);border-radius:4px;border:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:8px;color:var(--text3);margin-bottom:3px">FILTER 1D EFFECTIVITEIT (baseline: 29% WR)</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="font-family:var(--mono);font-size:11px;font-weight:700;color:${f1d_col}">${f1d_wr}</span>
+          <span style="font-family:var(--mono);font-size:9px;color:var(--text2)">${f1d_n} ranging trades</span>
+          <span style="font-family:var(--mono);font-size:9px;color:${f1d_col}">${f1d_n > 0 ? f1d_imp + ' vs baseline' : 'wacht op trades'}</span>
+        </div>
+        ${f1d.status ? `<div style="font-family:var(--mono);font-size:8px;color:var(--text3);margin-top:3px">${f1d.status.slice(0,70)}</div>` : ''}
+      </div>`;
+  } catch(e) {
+    el.innerHTML = '<div class="no-data">Fout bij laden vault data</div>';
+  }
+}
+
 // ── Monte Carlo ────────────────────────────────────────────────────────
 async function loadMonteCarlo() {
   const el = document.getElementById('mcContainer');
@@ -1298,8 +1382,10 @@ loadState();
 loadOrderBook();
 loadRegimeStats();
 loadMonteCarlo();
+loadFilterShield();
 
 setInterval(() => Promise.all([loadState(), loadOrderBook()]), 5000);
+setInterval(loadFilterShield, 30000);  // Filter Shield elke 30s verversen
 setInterval(() => Promise.all([loadChart(), loadTrades(), loadEquity(), loadStats()]), 30000);
 setInterval(() => Promise.all([loadRegimeStats(), loadMonteCarlo()]), 120000);
 </script>

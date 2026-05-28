@@ -253,6 +253,18 @@ async def get_regime_stats():
         raise HTTPException(500, str(e))
 
 
+# ── Vault Diagnostics — per-symbool status + RSI zone log + Filter 1d stats ──
+@app.get("/api/vault")
+async def get_vault():
+    diag_file = LOG_DIR / "vault_diagnostics.json"
+    if diag_file.exists():
+        try:
+            return JSONResponse(json.loads(diag_file.read_text(encoding="utf-8")))
+        except Exception:
+            pass
+    return JSONResponse({})
+
+
 # ── Monte Carlo simulatie ──────────────────────────────────────────────
 @app.get("/api/monte_carlo")
 async def get_monte_carlo(n_simulations: int = 2000, n_trades: int = 100):

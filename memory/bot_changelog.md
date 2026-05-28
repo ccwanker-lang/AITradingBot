@@ -19,6 +19,8 @@ Irrelevante oude snapshots worden hier samengevat zodat ze uit config_history.js
 | SYMBOLS | BTC/USDT, ETH/USDT, SOL/USDT | vast |
 | CAPITAL | 1000 USDT | vast |
 | LIVE | false | altijd paper trading |
+| MIN_POSITION_PCT | throttle≥50%→5%, throttle<50%→2% | 2026-05-28 — adaptief; voorkomt dat minimum de throttle-bescherming overschrijft |
+| RSI_SHORT_BLOCK | 28 in bear_trend | 2026-05-28 — was 35 tenzij strength≥85%; blokkeerde shorts 13u |
 
 ---
 
@@ -42,6 +44,17 @@ Irrelevante oude snapshots worden hier samengevat zodat ze uit config_history.js
 | 2026-05-20 | TP1 1.5R→1.2R + regime-exit min 2u holdtijd | 42.5% | 1.34 | Meer TP1 hits verwacht |
 | 2026-05-20 | MIN_CONFIDENCE 0.28→0.46 | 41.5% | 1.34 | Verliesgevende bucket 0.35-0.45 geëlimineerd |
 | 2026-05-20 | Regime "?" bug fix | 40.5% | 1.34 | 42 trades: WR 40.5%, PF 1.34, PnL -1.84% |
+| 2026-05-25 | Ranging correlatie-lock (max 1 pos/groep BTC/ETH/SOL) | 32.7% | 1.047 | 52 trades; verliesstreek 12 in ranging door gecorreleerde posities |
+| 2026-05-25 | Ranging TP2 mult 2.0→1.75 (via heal_config.json) | 32.7% | 1.047 | TP1-rate 19% = targets te ver; self-healer poort geopend |
+| 2026-05-25 | Self-healer MIN_N 20→10 | 32.7% | 1.047 | Feedbackloop 7→3-4 dagen |
+| 2026-05-25 | UPGRADE: 4H ADX Confidence Modifier (>25 trending/< 18 ranging × 0.80) | 32.7% | 1.047 | Zachte reducer voor mismatch oscillator/trend in trending/ranging |
+| 2026-05-25 | UPGRADE: ATR Trailing Stop 1.5× (na 0.5× ATR winst) | 32.7% | 1.047 | SL beweegt mee met peak — lock-in profits |
+| 2026-05-25 | UPGRADE: Vault Diagnostics Agent (tools/vault_diagnostics.py) | 32.7% | 1.047 | Per-symbool status badges in dashboard |
+| 2026-05-25 | UPGRADE: Staleness Check 1h data (>90s na close → skip) | 32.7% | 1.047 | Dataprovider failure protection |
+| 2026-05-26 | Ranging skip Filter 1c (ALLE entries in ranging geblokkeerd) | 37.7% | 1.058 | WR ranging 29% n=45; 24u geen trades want alle 3 symbolen in ranging |
+| 2026-05-27 | Squeeze exception op ranging skip + Filter 8 ranging exemption | 37.7% | 1.058 | Bot handelt weer: ETH/SOL → accumulation+squeeze; SOL SHORT direct genomen |
+| 2026-05-27 | Monitor inactiviteitscheck: alert bij >8u (warning) en >24u (probleem) | 37.7% | 1.058 | Design gap gedicht: agents detecteerden geen handelsdroogte |
+| 2026-05-27 | Ranging RSI-zone filter (Filter 1d): long RSI<45, short RSI>55 | 37.7% | 1.058 | Voorkomt kopen aan top/shorten aan bodem van range; TP1 bereikt slechts 23% = te laat ingestapt |
 
 ---
 
@@ -175,4 +188,16 @@ maar hier bewaard als referentie.
 
 ---
 
-*Laatste update door bot-cleanup: 2026-05-20*
+*Laatste update door bot-cleanup: 2026-05-25*
+
+## 2026-05-25 — Noodingreep: correlatie-lock + TP2 fix + feedbackloop
+
+**Aanleiding:** Verliesstreek van 12 op rij, 94% verliezen in ranging regime door gelijktijdige gecorreleerde posities.
+
+### Wijzigingen:
+1. **Ranging correlatie-lock** (`bot.py` r.1698): Max 1 positie per gecorreleerde groep (BTC/ETH/SOL) in ranging regime. Blokkeert gelijktijdige verliezen door >90% correlatie.
+2. **ranging_tp2_mult 2.0→1.75** (`logs/heal_config.json`): Self-healer override handmatig toegepast. TP1-rate was 19% = targets te ver in ranging markt.
+3. **Self-healer MIN_N 20→10** (`tools/self_healer.py`): Feedbackloop versneld van ~7 naar ~3-4 dagen.
+4. **Dashboard vault.html**: Correlatie-Guard kamer (F-2½) toegevoegd, panic-mode animaties voor vault boys bij streak ≤-5, HEALER gate toont "ACTIEF".
+
+**Snapshots:** #29 (voor) / #30 (na)

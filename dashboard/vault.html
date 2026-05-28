@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAULT-TEC INTELLIGENCE CENTER · MONSTER BOT</title>
+  <style>
+/* ═══════════════════════════════════════════════════════════════
+   VAULT-TEC 2.5D — MONSTER BOT BUNKER
+   CSS Stap 1: Cave achtergrond + Game Levels + Data Tubes + Eyebot
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #040407;
+  --panel: #0b0d16;
+  --border: #1c2132;
+  --text: #c0d0e0;
+  --dim: #50606e;
+  --neon-blue: #00c8ff;
+  --neon-green: #39ff14;
+  --neon-amber: #ffb300;
+  --neon-red: #ff2244;
+  --neon-purple: #bf5fff;
+  --tungsten: #c8943f;
+  --room-r: 6px;
+  /* Level kleuren */
+  --core-c: #ffb300;
+  --watch-c: #00c8ff;
+  --med-c:   #39ff14;
+  --rec-c:   #bf5fff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   PARALLAX CAVE LAGEN (fixed, z=0)
+   ─────────────────────────────────────────────────────────────── */
+.cave-layer {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+}
+
+/* Achterste laag: diepe steenkleurige gradiënt */
+.cave-back {
+  background:
+    radial-gradient(ellipse 110% 35% at 50% 0%,   rgba(8,4,2,0.95) 0%, transparent 70%),
+    radial-gradient(ellipse 60%  22% at 5%  50%,   rgba(22,10,4,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse 50%  18% at 95% 65%,   rgba(16,8,3,0.4)  0%, transparent 50%),
+    radial-gradient(ellipse 80%  20% at 50% 100%,  rgba(60,12,5,0.5)  0%, transparent 55%),
+    linear-gradient(180deg,
+      #020104 0%,  #040209 10%, #060312 20%,
+      #080410 30%, #0a060f 42%, #0c0710 55%,
+      #09060e 65%, #060410 76%, #04030e 88%, #020210 100%
+    );
+}
+
+/* Middelste laag: groteske-rotspatronen via dunne herhalende lijnen */
+.cave-mid {
+  opacity: 0.55;
+  background:
+    radial-gradient(ellipse 55% 18% at 12% 28%, rgba(48,22,8,0.42) 0%, transparent 52%),
+    radial-gradient(ellipse 38% 14% at 88% 62%, rgba(38,18,6,0.36) 0%, transparent 48%),
+    radial-gradient(ellipse 70% 16% at 50% 96%, rgba(65,14,5,0.48) 0%, transparent 55%),
+    repeating-linear-gradient(
+      158deg,
+      transparent, transparent 34px,
+      rgba(255,155,55,0.014) 34px, rgba(255,155,55,0.014) 35px
+    ),
+    repeating-linear-gradient(
+      72deg,
+      transparent, transparent 52px,
+      rgba(55,95,155,0.016) 52px, rgba(55,95,155,0.016) 53px
+    );
+}
+
+/* Voorste laag: stalactieten boven + stalagmieten onder als SVG data-URI */
+.cave-front {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='95'%3E%3Cpolygon points='0,0 20,0 10,76' fill='%23030207'/%3E%3Cpolygon points='45,0 68,0 56,52' fill='%23020206'/%3E%3Cpolygon points='88,0 106,0 97,82' fill='%23030208'/%3E%3Cpolygon points='122,0 142,0 132,60' fill='%23020206'/%3E%3Cpolygon points='162,0 180,0 171,70' fill='%23030207'/%3E%3Cpolygon points='198,0 218,0 208,48' fill='%23020206'/%3E%3Cpolygon points='238,0 256,0 247,78' fill='%23030208'/%3E%3Cpolygon points='270,0 290,0 280,55' fill='%23020206'/%3E%3Cpolygon points='300,0 320,0 310,65' fill='%23030207'/%3E%3C/svg%3E") repeat-x top,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='88'%3E%3Cpolygon points='14,88 35,88 24,22' fill='%23030207'/%3E%3Cpolygon points='58,88 76,88 67,44' fill='%23020206'/%3E%3Cpolygon points='98,88 114,88 106,16' fill='%23030208'/%3E%3Cpolygon points='136,88 156,88 146,38' fill='%23020206'/%3E%3Cpolygon points='178,88 194,88 186,56' fill='%23030207'/%3E%3Cpolygon points='218,88 238,88 228,24' fill='%23020206'/%3E%3Cpolygon points='258,88 276,88 267,42' fill='%23030208'/%3E%3Cpolygon points='290,88 312,88 301,30' fill='%23020206'/%3E%3C/svg%3E") repeat-x bottom;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   WATERVAL — rechterrand (fixed)
+   ─────────────────────────────────────────────────────────────── */
+.waterfall {
+  position: fixed; right: 0; top: 0; bottom: 0;
+  width: 13px; z-index: 1; pointer-events: none; overflow: hidden;
+}
+.waterfall::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,           transparent           7px,
+    rgba(0,175,235,0.20)   7px, rgba(0,175,235,0.20)  12px,
+    transparent,           transparent           20px,
+    rgba(0,155,215,0.12)   20px, rgba(0,155,215,0.12) 24px
+  );
+  animation: wfScroll 0.9s linear infinite;
+}
+.waterfall::after {
+  content: '';
+  position: absolute; inset: 0; width: 3px;
+  background: linear-gradient(90deg, rgba(0,200,255,0.32), transparent);
+}
+@keyframes wfScroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 38px; }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   KLIMPLANTEN — linkerrand (fixed)
+   ─────────────────────────────────────────────────────────────── */
+.vines {
+  position: fixed; left: 0; top: 0; bottom: 0;
+  width: 46px; z-index: 1; pointer-events: none;
+}
+.vine {
+  position: absolute; left: 5px; width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(180deg,
+    rgba(14,36,10,0)    0%,
+    rgba(24,56,14,0.52) 18%,
+    rgba(18,46,10,0.44) 82%,
+    rgba(8,28,5,0)      100%
+  );
+  transform-origin: top center;
+}
+.vine::after {
+  content: '🌿'; position: absolute; bottom: -10px; left: -6px;
+  font-size: 9px; opacity: 0.42;
+}
+.vine.v1 { top:  4%; height: 33%; animation: vineSway 5.0s ease-in-out infinite; }
+.vine.v2 { top: 18%; height: 26%; left: 15px; animation: vineSway 6.2s ease-in-out infinite reverse; animation-delay: 1.1s; }
+.vine.v3 { top: 38%; height: 30%; left: 4px;  animation: vineSway 4.6s ease-in-out infinite; animation-delay: 2.3s; }
+.vine.v4 { top: 58%; height: 24%; left: 18px; animation: vineSway 5.5s ease-in-out infinite reverse; animation-delay: 0.7s; }
+.vine.v5 { top: 78%; height: 18%; left: 8px;  animation: vineSway 4.2s ease-in-out infinite; animation-delay: 1.8s; }
+@keyframes vineSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50%       { transform: rotate(5deg);  }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   DRUPPELS van het plafond
+   ─────────────────────────────────────────────────────────────── */
+.drip-container {
+  position: fixed; top: 0; left: 52px; right: 16px;
+  height: 0; pointer-events: none; z-index: 1; overflow: visible;
+}
+.drip {
+  position: absolute; top: 0; width: 2px;
+  background: linear-gradient(180deg, rgba(0,125,175,0.65), rgba(0,100,150,0));
+  border-radius: 0 0 50% 50%;
+  animation: dripFall linear infinite;
+}
+@keyframes dripFall {
+  0%   { height: 0;    opacity: 0; transform: translateY(0); }
+  14%  { opacity: 0.8; }
+  82%  { opacity: 0.4; }
+  100% { height: 44px; opacity: 0; transform: translateY(72px); }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   HOOFD-SHAFT
+   ─────────────────────────────────────────────────────────────── */
+.vault-shell {
+  position: relative; z-index: 2;
+  max-width: 1480px; margin: 0 auto;
+  padding: 0 58px 120px;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   HEADER
+   ─────────────────────────────────────────────────────────────── */
+.v-header {
+  text-align: center; padding: 22px 0 12px;
+  margin-bottom: 6px; position: relative;
+}
+.v-header::after {
+  content: ''; display: block; height: 1px; margin-top: 10px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,179,0,0.55), rgba(0,200,255,0.35), transparent
+  );
+}
+.v-header h1 {
+  font-size: 21px; letter-spacing: 8px; color: var(--neon-amber);
+  text-shadow: 0 0 28px rgba(255,179,0,0.52), 0 0 60px rgba(255,179,0,0.18);
+}
+.v-header .sub  { font-size: 8px; color: var(--dim); letter-spacing: 3px; margin-top: 3px; }
+.v-header .live-badge {
+  display: inline-block;
+  background: rgba(57,255,20,0.09); border: 1px solid rgba(57,255,20,0.42);
+  color: var(--neon-green); padding: 2px 14px; border-radius: 3px;
+  font-size: 7px; letter-spacing: 2px; margin-top: 7px;
+  animation: blinkAnim 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(57,255,20,0.18);
+}
+@keyframes blinkAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.38; } }
+
+/* ───────────────────────────────────────────────────────────────
+   GAME LEVELS
+   ─────────────────────────────────────────────────────────────── */
+.game-level {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(8,10,20,0.97), rgba(5,7,14,0.99));
+  box-shadow: 0 0 60px rgba(0,0,0,0.82), inset 0 1px 0 rgba(255,255,255,0.04);
+  overflow: visible;
+}
+/* Per-level randgloed */
+.level-core  { border-color: rgba(255,179,0,0.20);  box-shadow: 0 0 55px rgba(0,0,0,0.82), 0 0 28px rgba(255,179,0,0.07),  inset 0 1px 0 rgba(255,179,0,0.07); }
+.level-watch { border-color: rgba(0,200,255,0.17);  box-shadow: 0 0 55px rgba(0,0,0,0.82), 0 0 24px rgba(0,200,255,0.05),  inset 0 1px 0 rgba(0,200,255,0.06); }
+.level-med   { border-color: rgba(57,255,20,0.15);  box-shadow: 0 0 55px rgba(0,0,0,0.82), 0 0 22px rgba(57,255,20,0.05),  inset 0 1px 0 rgba(57,255,20,0.05); }
+.level-rec   { border-color: rgba(191,95,255,0.15); box-shadow: 0 0 55px rgba(0,0,0,0.82), 0 0 22px rgba(191,95,255,0.05), inset 0 1px 0 rgba(191,95,255,0.05); }
+
+/* Level header */
+.level-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative; overflow: hidden;
+}
+.level-header::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+}
+.level-core  .level-header::before { background: linear-gradient(90deg, rgba(255,179,0,0.07),  transparent 55%); }
+.level-watch .level-header::before { background: linear-gradient(90deg, rgba(0,200,255,0.06),  transparent 55%); }
+.level-med   .level-header::before { background: linear-gradient(90deg, rgba(57,255,20,0.05),  transparent 55%); }
+.level-rec   .level-header::before { background: linear-gradient(90deg, rgba(191,95,255,0.06), transparent 55%); }
+
+/* Level badge (CORE / WATCH / etc.) */
+.level-badge {
+  font-size: 7.5px; letter-spacing: 3px; font-weight: bold;
+  padding: 4px 10px; border-radius: 3px; flex-shrink: 0;
+}
+.level-core  .level-badge { background: rgba(255,179,0,0.10);  border: 1px solid rgba(255,179,0,0.32);  color: var(--neon-amber);  text-shadow: 0 0 8px rgba(255,179,0,0.5);  }
+.level-watch .level-badge { background: rgba(0,200,255,0.09);  border: 1px solid rgba(0,200,255,0.30);  color: var(--neon-blue);   text-shadow: 0 0 8px rgba(0,200,255,0.5);  }
+.level-med   .level-badge { background: rgba(57,255,20,0.08);  border: 1px solid rgba(57,255,20,0.28);  color: var(--neon-green);  text-shadow: 0 0 8px rgba(57,255,20,0.4);  }
+.level-rec   .level-badge { background: rgba(191,95,255,0.08); border: 1px solid rgba(191,95,255,0.28); color: var(--neon-purple); text-shadow: 0 0 8px rgba(191,95,255,0.4); }
+
+.level-info  { flex: 1; }
+.level-name  { font-size: 13px; letter-spacing: 5px; font-weight: bold; color: var(--text); }
+.level-desc  { font-size: 7px; color: var(--dim); letter-spacing: 2px; margin-top: 2px; }
+
+.level-status {
+  font-size: 7px; letter-spacing: 2px; padding: 3px 9px; border-radius: 3px;
+}
+.st-online { background: rgba(57,255,20,0.07);  border: 1px solid rgba(57,255,20,0.28);  color: var(--neon-green); }
+.st-warn   { background: rgba(255,179,0,0.07);  border: 1px solid rgba(255,179,0,0.28);  color: var(--neon-amber); }
+.st-off    { background: rgba(255,34,68,0.07);  border: 1px solid rgba(255,34,68,0.28);  color: var(--neon-red);   }
+
+/* Eyebot in header */
+.level-bot {
+  width: 38px; height: 46px; flex-shrink: 0;
+  animation: eyebotBob 3.5s ease-in-out infinite;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 7px currentColor);
+}
+.level-core  .level-bot { color: rgba(255,179,0,0.7); }
+.level-watch .level-bot { color: rgba(0,200,255,0.7); }
+.level-med   .level-bot { color: rgba(57,255,20,0.6); }
+.level-rec   .level-bot { color: rgba(191,95,255,0.6); }
+
+/* Level kamers grid */
+.level-body          { padding: 12px; display: grid; gap: 10px; }
+.level-body.cols-3   { grid-template-columns: repeat(3, 1fr); }
+.level-body.cols-4   { grid-template-columns: repeat(4, 1fr); }
+
+/* ───────────────────────────────────────────────────────────────
+   KAMERS
+   ─────────────────────────────────────────────────────────────── */
+.room {
+  background: rgba(7,9,18,0.97);
+  border: 1px solid var(--border);
+  border-radius: var(--room-r);
+  padding: 10px; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  min-height: 105px;
+}
+.room:hover {
+  border-color: rgba(255,179,0,0.44);
+  box-shadow: 0 0 18px rgba(255,179,0,0.07), inset 0 0 10px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+.room::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.018) 0%, transparent 60%);
+}
+.room-alarm {
+  position: absolute; inset: 0; border-radius: var(--room-r);
+  animation: alarmFlash 0.55s ease-in-out infinite;
+  display: none; z-index: 0; pointer-events: none;
+}
+.room-alarm.on { display: block; }
+@keyframes alarmFlash { 0%, 100% { background: transparent; } 50% { background: rgba(255,30,30,0.11); } }
+
+.room-header { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; position: relative; z-index: 1; }
+.room-icon {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.10);
+}
+.room-title { font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
+.room-sub   { font-size: 6.5px; color: var(--dim); letter-spacing: 1px; margin-top: 1px; }
+.room-body  { position: relative; z-index: 1; }
+.click-hint {
+  position: absolute; bottom: 4px; right: 6px;
+  font-size: 5.5px; color: rgba(255,179,0,0.20); letter-spacing: 1px;
+}
+.room:hover .click-hint { color: rgba(255,179,0,0.55); }
+
+/* Kamer icoon accenten */
+.r-overseer .room-icon { background: rgba(255,179,0,0.10); border-color: rgba(255,179,0,0.30); }
+.r-btc      .room-icon { background: rgba(247,147,26,0.10); border-color: rgba(247,147,26,0.30); }
+.r-eth      .room-icon { background: rgba(98,126,234,0.10); border-color: rgba(98,126,234,0.30); }
+.r-sol      .room-icon { background: rgba(0,255,163,0.10);  border-color: rgba(0,255,163,0.30);  }
+.r-risk     .room-icon { background: rgba(255,34,68,0.10);  border-color: rgba(255,34,68,0.30);  }
+.r-healer   .room-icon { background: rgba(57,255,20,0.08);  border-color: rgba(57,255,20,0.28);  }
+.r-corr     .room-icon { background: rgba(0,200,255,0.08);  border-color: rgba(0,200,255,0.28);  }
+.r-market   .room-icon { background: rgba(200,148,63,0.10); border-color: rgba(200,148,63,0.30); }
+.r-ai       .room-icon { background: rgba(191,95,255,0.08); border-color: rgba(191,95,255,0.28); }
+.r-shield   .room-icon { background: rgba(255,34,68,0.08);  border-color: rgba(255,34,68,0.28);  }
+
+/* ───────────────────────────────────────────────────────────────
+   DATA BUIZEN tussen levels
+   ─────────────────────────────────────────────────────────────── */
+.data-tube {
+  position: relative; height: 68px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Twee verticale pijpen links/rechts van het centrum */
+.tube-pipes {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  transform: translateX(-50%);
+  display: flex; gap: 48px;
+}
+.tube-pipe {
+  width: 9px; height: 100%;
+  background: linear-gradient(90deg, #0c1020, #161e38, #0c1020);
+  border-left:  1px solid rgba(255,255,255,0.035);
+  border-right: 1px solid rgba(0,0,0,0.55);
+}
+.tube-pipe::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 13px; height: 13px; border-radius: 50%;
+  background: rgba(255,179,0,0.07); border: 1px solid rgba(255,179,0,0.18);
+}
+
+/* Centraal kanaal voor deeltjes */
+.tube-channel {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  transform: translateX(-50%);
+  width: 28px;
+  background: rgba(0,200,255,0.028);
+  border-left:  1px solid rgba(0,200,255,0.10);
+  border-right: 1px solid rgba(0,200,255,0.10);
+  overflow: hidden;
+}
+
+/* Deeltjes die door het kanaal stromen */
+.tp {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 3px; border-radius: 50%;
+  box-shadow: 0 0 5px currentColor;
+  animation: tpFlow linear infinite; opacity: 0;
+}
+.tp.blue   { color: var(--neon-blue);   background: var(--neon-blue);   height: 10px; }
+.tp.green  { color: var(--neon-green);  background: var(--neon-green);  height: 8px;  }
+.tp.amber  { color: var(--neon-amber);  background: var(--neon-amber);  height: 7px;  }
+@keyframes tpFlow {
+  0%   { top: -12px; opacity: 0; }
+  10%  { opacity: 0.9; }
+  88%  { opacity: 0.6; }
+  100% { top: calc(100% + 12px); opacity: 0; }
+}
+
+/* Label in het midden van de buis */
+.tube-label {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6px; letter-spacing: 2px; color: rgba(0,200,255,0.30);
+  white-space: nowrap; background: rgba(4,4,12,0.82);
+  padding: 2px 8px; border-radius: 2px; pointer-events: none; z-index: 2;
+}
+.tube-depth {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  font-size: 6px; color: rgba(45,85,45,0.28); letter-spacing: 1px;
+}
+
+/* RSI Barrière — zit in de buis tussen CORE en WATCHTOWER */
+.rsi-barrier {
+  position: absolute; left: 50%; top: 10%; height: 80%;
+  width: 195px; transform: translateX(-50%);
+  border: 1px solid rgba(255,34,68,0.45);
+  border-radius: 4px; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 3px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.55s;
+  animation: barrierPulse 1.3s ease-in-out infinite;
+}
+.rsi-barrier.active { opacity: 1; }
+.rsi-barrier::before {
+  content: ''; position: absolute; inset: 0; border-radius: 3px;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(255,34,68,0.06) 3px, rgba(255,34,68,0.06) 4px
+  );
+}
+.rsi-barrier-lbl {
+  font-size: 8px; letter-spacing: 3px; font-weight: bold;
+  color: var(--neon-red); text-shadow: 0 0 14px rgba(255,34,68,0.9);
+  animation: rsiFlash 0.85s ease-in-out infinite; position: relative;
+}
+.rsi-barrier-sub {
+  font-size: 6px; letter-spacing: 2px; color: rgba(255,34,68,0.55);
+  position: relative;
+}
+@keyframes barrierPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,34,68,0.22),  inset 0 0 6px rgba(255,34,68,0.04); }
+  50%       { box-shadow: 0 0 22px rgba(255,34,68,0.55), inset 0 0 14px rgba(255,34,68,0.10); }
+}
+@keyframes rsiFlash { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+/* ───────────────────────────────────────────────────────────────
+   EYEBOT ANIMATIES
+   ─────────────────────────────────────────────────────────────── */
+@keyframes eyebotBob {
+  0%, 100% { transform: translateY(0)   rotate(-1.8deg); }
+  50%       { transform: translateY(-8px) rotate(1.8deg); }
+}
+@keyframes eyebotRun {
+  0%, 100% { transform: translateY(0); }
+  33%       { transform: translateY(-5px); }
+  66%       { transform: translateY(-3px); }
+}
+@keyframes eyebotBounce {
+  0%   { transform: translateX(0); }
+  22%  { transform: translateX(-20px); }
+  44%  { transform: translateX(14px); }
+  66%  { transform: translateX(-10px); }
+  82%  { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+@keyframes eyeCorePulse {
+  0%, 100% { opacity: 0.68; }
+  50%       { opacity: 1.00; }
+}
+@keyframes thrusterGlow {
+  0%, 100% { opacity: 0.32; transform: scaleX(1) scaleY(1); }
+  50%       { opacity: 0.82; transform: scaleX(1.28) scaleY(1.12); }
+}
+
+/* Actieve robot (fixed, bestuurd door JS) */
+#eyebot-active {
+  position: fixed; z-index: 650; pointer-events: none;
+  width: 46px; height: 56px;
+  opacity: 0;
+  filter: drop-shadow(0 0 14px rgba(0,200,255,0.65));
+  transition: top 1.0s cubic-bezier(0.25,0.46,0.45,0.94),
+              left 0.3s ease, opacity 0.4s;
+  animation: eyebotRun 0.42s ease-in-out infinite;
+}
+#eyebot-active.running { opacity: 1; }
+#eyebot-active.bounce  { animation: eyebotBounce 0.55s ease-in-out forwards; }
+
+/* .e-core en .t-glow klassen voor SVG-animaties */
+.e-core { animation: eyeCorePulse 2.6s ease-in-out infinite; }
+.t-glow { animation: thrusterGlow 2.0s ease-in-out infinite; }
+
+/* ───────────────────────────────────────────────────────────────
+   PANIC OVERLAY
+   ─────────────────────────────────────────────────────────────── */
+.panic-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  pointer-events: none; display: none;
+  animation: panicFlash 0.7s ease-in-out infinite;
+}
+.panic-overlay.on { display: block; }
+@keyframes panicFlash { 0%, 100% { background: rgba(255,0,30,0); } 50% { background: rgba(255,0,30,0.09); } }
+
+/* ───────────────────────────────────────────────────────────────
+   STATUS BAR (onderaan, fixed)
+   ─────────────────────────────────────────────────────────────── */
+.status-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
+  background: rgba(3,3,10,0.97); border-top: 1px solid rgba(255,179,0,0.17);
+  padding: 5px 18px; display: flex; align-items: center; gap: 16px;
+  font-size: 8px; backdrop-filter: blur(12px);
+}
+.sb-item { display: flex; align-items: center; gap: 4px; color: var(--dim); white-space: nowrap; }
+.sb-val  { color: var(--text); font-weight: bold; }
+.sb-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--neon-green); box-shadow: 0 0 6px var(--neon-green); animation: blinkAnim 1.5s infinite; }
+.sb-dot.red   { background: var(--neon-red);   box-shadow: 0 0 6px var(--neon-red);   }
+.sb-dot.amber { background: var(--neon-amber); box-shadow: 0 0 6px var(--neon-amber); }
+.panic-text { color: var(--neon-red); display: none; animation: blinkAnim 0.45s infinite; font-weight: bold; letter-spacing: 2px; font-size: 9px; margin-left: auto; }
+.panic-text.on { display: block; }
+
+/* ───────────────────────────────────────────────────────────────
+   MINIMAP (rechts, fixed)
+   ─────────────────────────────────────────────────────────────── */
+.minimap {
+  position: fixed; top: 68px; right: 16px; z-index: 300;
+  background: rgba(5,5,14,0.97); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px; width: 110px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.88);
+}
+.minimap h4 { font-size: 7px; letter-spacing: 2px; color: var(--dim); margin-bottom: 7px; text-align: center; }
+.mm-floor {
+  display: flex; gap: 3px; margin-bottom: 3px;
+  cursor: pointer; padding: 3px; border-radius: 3px;
+  border: 1px solid transparent; transition: all 0.2s; align-items: center;
+}
+.mm-floor:hover { background: rgba(255,179,0,0.06); border-color: rgba(255,179,0,0.18); }
+.mm-label { font-size: 6px; color: var(--dim); width: 28px; flex-shrink: 0; }
+.mm-bar   { flex: 1; height: 8px; border-radius: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06); transition: background 0.4s; }
+
+/* ───────────────────────────────────────────────────────────────
+   PILLS / STAT ROWS / MINI BAR / DWELLER (ongewijzigd van origineel)
+   ─────────────────────────────────────────────────────────────── */
+.pill       { display: inline-block; padding: 2px 6px; border-radius: 9px; font-size: 7px; letter-spacing: 1px; }
+.pill-green { background: rgba(57,255,20,0.12);  color: var(--neon-green);  border: 1px solid rgba(57,255,20,0.28);  }
+.pill-red   { background: rgba(255,34,68,0.12);  color: var(--neon-red);    border: 1px solid rgba(255,34,68,0.28);  }
+.pill-amber { background: rgba(255,179,0,0.12);  color: var(--neon-amber);  border: 1px solid rgba(255,179,0,0.28);  }
+.pill-blue  { background: rgba(0,200,255,0.12);  color: var(--neon-blue);   border: 1px solid rgba(0,200,255,0.28);  }
+.pill-dim   { background: rgba(100,120,140,0.08); color: var(--dim);        border: 1px solid rgba(100,120,140,0.18); }
+
+.stat-row       { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.030); }
+.stat-row:last-child { border: none; }
+.stat-label     { color: var(--dim); font-size: 7.5px; }
+.stat-val       { font-size: 8.5px; font-weight: bold; }
+.val-green  { color: var(--neon-green); }
+.val-red    { color: var(--neon-red);   }
+.val-amber  { color: var(--neon-amber); }
+.val-blue   { color: var(--neon-blue);  }
+.val-purple { color: var(--neon-purple); }
+.val-dim    { color: var(--dim); }
+
+.mini-bar       { height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; margin: 3px 0; }
+.mini-bar-fill  { height: 100%; border-radius: 2px; transition: width 1s ease; }
+.fill-green  { background: linear-gradient(90deg, #39ff14, #00d4ff); }
+.fill-amber  { background: linear-gradient(90deg, #ffb300, #ff7700); }
+.fill-red    { background: linear-gradient(90deg, #ff2244, #ff7700); }
+.fill-blue   { background: linear-gradient(90deg, #00d4ff, #bf5fff); }
+.fill-purple { background: linear-gradient(90deg, #bf5fff, #ff2244); }
+
+.dweller         { width: 26px; height: 34px; display: inline-block; overflow: visible; }
+.dweller.working { animation: dwWork 2.2s ease-in-out infinite; }
+.dweller.panic   { animation: dwPanic 0.28s ease-in-out infinite !important; }
+@keyframes dwWork  { 0%, 100% { transform: translateY(0); }  50% { transform: translateY(-2px); } }
+@keyframes dwPanic {
+  0%   { transform: rotate(-9deg) translateX(-2px); }
+  25%  { transform: rotate(9deg)  translateX(2px) scaleY(0.94); }
+  50%  { transform: rotate(-7deg) translateX(-3px); }
+  75%  { transform: rotate(7deg)  translateX(3px); }
+  100% { transform: rotate(-9deg) translateX(-2px); }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   DIAGNOSE BADGES
+   ─────────────────────────────────────────────────────────────── */
+.diag-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 7px; font-weight: bold; letter-spacing: 0.5px;
+  padding: 2px 6px; border-radius: 3px; margin-top: 3px;
+  border: 1px solid transparent; transition: all 0.3s;
+}
+.diag-ok       { background: rgba(57,255,20,0.08);  border-color: rgba(57,255,20,0.24);  color: var(--neon-green);  }
+.diag-position { background: rgba(0,200,255,0.08);  border-color: rgba(0,200,255,0.24);  color: var(--neon-blue);   }
+.diag-warning  { background: rgba(255,179,0,0.08);  border-color: rgba(255,179,0,0.24);  color: var(--neon-amber);  }
+.diag-blocked  { background: rgba(255,34,68,0.10);  border-color: rgba(255,34,68,0.28);  color: var(--neon-red);    }
+.diag-stale    { background: rgba(191,95,255,0.08); border-color: rgba(191,95,255,0.24); color: var(--neon-purple); }
+
+/* ───────────────────────────────────────────────────────────────
+   MODAL (volledig bewaard van origineel)
+   ─────────────────────────────────────────────────────────────── */
+.modal-bg {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.80); backdrop-filter: blur(6px);
+  display: none; align-items: flex-end; cursor: pointer;
+}
+.modal-bg.open { display: flex; }
+.modal-panel {
+  width: 100%; height: 87vh;
+  background: linear-gradient(180deg, #0b0d1e, #08090f);
+  border-top: 2px solid var(--neon-amber);
+  border-radius: 12px 12px 0 0;
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+  display: flex; flex-direction: column; cursor: default; overflow: hidden;
+  box-shadow: 0 -18px 55px rgba(255,179,0,0.07);
+}
+.modal-bg.open .modal-panel { transform: translateY(0); }
+.modal-header {
+  padding: 12px 18px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; background: rgba(0,0,0,0.30);
+}
+.modal-title { font-size: 13px; letter-spacing: 3px; color: var(--neon-amber); }
+.modal-sub   { font-size: 8px; color: var(--dim); letter-spacing: 2px; margin-top: 2px; }
+.modal-close {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(255,34,68,0.12); border: 1px solid rgba(255,34,68,0.35);
+  color: var(--neon-red); cursor: pointer; font-size: 13px;
+  display: flex; align-items: center; justify-content: center; transition: background 0.18s;
+}
+.modal-close:hover { background: rgba(255,34,68,0.26); }
+.modal-body {
+  flex: 1; overflow: hidden;
+  display: grid; grid-template-columns: 270px 1fr 300px; gap: 0;
+}
+.modal-col       { padding: 14px; overflow-y: auto; border-right: 1px solid var(--border); }
+.modal-col:last-child { border: none; }
+.modal-col-title {
+  font-size: 7px; letter-spacing: 3px; color: var(--dim);
+  margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border);
+}
+.log-terminal {
+  background: rgba(0,0,0,0.60); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 4px; padding: 8px; font-size: 8px;
+  height: calc(100% - 48px); overflow-y: auto; scroll-behavior: smooth;
+}
+.log-line        { padding: 1px 0; line-height: 1.55; word-break: break-all; }
+.log-line.err    { color: #ff4466; }
+.log-line.warn   { color: #ffb300; }
+.log-line.ok     { color: #39ff14; }
+.log-line.info   { color: #00d4ff; }
+.log-line.dim    { color: #45606a; }
+.log-filter      { display: flex; gap: 3px; margin-bottom: 6px; flex-wrap: wrap; }
+.log-filter-btn {
+  padding: 2px 7px; border-radius: 3px; cursor: pointer; font-size: 7px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  color: var(--dim); transition: all 0.18s; font-family: 'Courier New', monospace;
+}
+.log-filter-btn.active { background: rgba(0,200,255,0.10); border-color: rgba(0,200,255,0.35); color: var(--neon-blue); }
+.signal-item     { padding: 5px 7px; border-radius: 4px; margin-bottom: 3px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); }
+.signal-name     { font-size: 8px; color: var(--dim); margin-bottom: 2px; }
+.signal-conf     { font-size: 10px; font-weight: bold; }
+.conf-long       { color: var(--neon-green); }
+.conf-short      { color: var(--neon-red);   }
+.conf-neutral    { color: var(--dim);        }
+.pos-card        { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 7px; margin-bottom: 7px; }
+.pos-card.long-card  { border-color: rgba(57,255,20,0.18); }
+.pos-card.short-card { border-color: rgba(255,34,68,0.18); }
+.pos-header      { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.pos-dir         { font-size: 8px; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+.dir-long        { background: rgba(57,255,20,0.12); color: var(--neon-green); }
+.dir-short       { background: rgba(255,34,68,0.12); color: var(--neon-red);   }
+.healer-param      { background: rgba(57,255,20,0.04); border: 1px solid rgba(57,255,20,0.16); border-radius: 4px; padding: 8px; margin-bottom: 6px; }
+.healer-param-name { font-size: 7px; color: var(--dim); margin-bottom: 3px; }
+.healer-param-val  { font-size: 15px; font-weight: bold; color: var(--neon-green); }
+.healer-param-prev { font-size: 7px; color: var(--dim); margin-top: 2px; }
+.corr-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 8px; border-radius: 4px; margin-bottom: 3px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); }
+
+/* ───────────────────────────────────────────────────────────────
+   INFO BUTTON + TOOLTIP
+   ─────────────────────────────────────────────────────────────── */
+.info-btn {
+  position: absolute; bottom: 6px; left: 7px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: rgba(0,200,255,0.07); border: 1px solid rgba(0,200,255,0.22);
+  color: var(--neon-blue); font-size: 7px; font-weight: bold; font-style: italic;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10; transition: all 0.2s;
+  font-family: 'Courier New', monospace;
+}
+.info-btn:hover { background: rgba(0,200,255,0.20); box-shadow: 0 0 10px rgba(0,200,255,0.35); border-color: rgba(0,200,255,0.60); transform: scale(1.15); }
+#infoTooltip {
+  position: fixed; z-index: 900;
+  background: rgba(3,5,16,0.98); border: 1px solid var(--neon-blue);
+  border-radius: 6px; padding: 13px 16px; max-width: 285px; min-width: 210px;
+  font-size: 8px; line-height: 1.68; color: var(--text);
+  box-shadow: 0 10px 45px rgba(0,0,0,0.90), 0 0 25px rgba(0,200,255,0.12);
+  display: none; pointer-events: none;
+}
+#infoTooltip.visible { display: block; }
+.itt-badge { display: inline-block; background: rgba(0,200,255,0.08); border: 1px solid rgba(0,200,255,0.25); color: var(--neon-blue); font-size: 6px; letter-spacing: 2px; padding: 2px 7px; border-radius: 2px; margin-bottom: 7px; }
+.itt-title { font-size: 9px; letter-spacing: 2px; color: var(--neon-blue); margin-bottom: 6px; font-weight: bold; line-height: 1.3; }
+.itt-sep   { height: 1px; background: rgba(0,200,255,0.16); margin: 7px 0; }
+.itt-body  { color: rgba(200,216,232,0.85); font-size: 7.5px; line-height: 1.68; }
+
+/* ───────────────────────────────────────────────────────────────
+   ROADMAP BUTTON + OVERLAY (volledig bewaard)
+   ─────────────────────────────────────────────────────────────── */
+.roadmap-btn {
+  position: fixed; top: 28px; right: 145px; z-index: 310;
+  background: rgba(255,179,0,0.07); border: 1px solid rgba(255,179,0,0.25);
+  color: var(--neon-amber); padding: 5px 13px; border-radius: 4px;
+  font-size: 7px; letter-spacing: 2px; cursor: pointer;
+  font-family: 'Courier New', monospace; transition: all 0.2s; text-transform: uppercase;
+}
+.roadmap-btn:hover { background: rgba(255,179,0,0.16); box-shadow: 0 0 16px rgba(255,179,0,0.20); border-color: rgba(255,179,0,0.48); }
+.roadmap-overlay { position: fixed; inset: 0; z-index: 800; background: rgba(2,3,12,0.97); backdrop-filter: blur(10px); overflow-y: auto; display: none; }
+.roadmap-overlay.open { display: block; }
+.roadmap-wrap  { max-width: 750px; margin: 0 auto; padding: 30px 20px 60px; }
+.rm-close {
+  position: fixed; top: 16px; right: 22px; z-index: 810;
+  background: rgba(255,179,0,0.08); border: 1px solid rgba(255,179,0,0.28);
+  color: var(--neon-amber); width: 30px; height: 30px; border-radius: 50%;
+  font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.rm-close:hover { background: rgba(255,179,0,0.22); }
+.rm-header     { text-align: center; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,179,0,0.10); }
+.rm-title      { font-size: 17px; letter-spacing: 5px; color: var(--neon-amber); text-shadow: 0 0 20px rgba(255,179,0,0.30); }
+.rm-sub        { font-size: 8px; color: var(--dim); letter-spacing: 2px; margin-top: 5px; }
+.rm-legend     { display: flex; gap: 12px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.rm-badge      { font-size: 8px; padding: 2px 8px; border-radius: 3px; letter-spacing: 1px; }
+.rm-badge-done { background: rgba(57,255,20,0.10);  border: 1px solid rgba(57,255,20,0.28);  color: var(--neon-green); }
+.rm-badge-wip  { background: rgba(255,179,0,0.10);  border: 1px solid rgba(255,179,0,0.28);  color: var(--neon-amber); }
+.rm-badge-plan { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10); color: var(--dim); }
+.tl-wrap         { display: flex; flex-direction: column; gap: 5px; }
+.tl-section      { margin-bottom: 18px; }
+.tl-section-hdr  { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.tl-phase        { font-size: 11px; letter-spacing: 2px; font-weight: bold; }
+.tl-item         { display: flex; flex-direction: column; gap: 3px; padding: 10px 12px; border-radius: 5px; margin-bottom: 5px; border: 1px solid rgba(255,255,255,0.04); }
+.tl-done         { background: rgba(57,255,20,0.04);  border-color: rgba(57,255,20,0.10);  }
+.tl-wip          { background: rgba(255,179,0,0.04);  border-color: rgba(255,179,0,0.13);  }
+.tl-plan         { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.05); }
+.tl-row          { display: flex; align-items: center; gap: 8px; }
+.tl-icon         { font-size: 11px; flex-shrink: 0; }
+.tl-label        { font-size: 10px; font-weight: bold; color: var(--text); }
+.tl-done .tl-label { color: rgba(180,220,180,0.90); }
+.tl-wip  .tl-label { color: rgba(255,210,100,0.90); }
+.tl-plan .tl-label { color: rgba(140,160,180,0.70); }
+.tl-meta         { display: flex; align-items: center; gap: 8px; }
+.tl-date         { font-size: 7px; color: var(--dim); letter-spacing: 1px; }
+.tl-desc         { font-size: 7.5px; line-height: 1.62; }
+.tl-done .tl-desc { color: rgba(160,200,160,0.65); }
+.tl-wip  .tl-desc { color: rgba(220,190,120,0.70); }
+.tl-plan .tl-desc { color: rgba(100,120,140,0.55); }
+
+/* Scrollbar */
+::-webkit-scrollbar         { width: 3px; height: 3px; }
+::-webkit-scrollbar-track   { background: rgba(0,0,0,0.20); }
+::-webkit-scrollbar-thumb   { background: rgba(255,179,0,0.25); border-radius: 2px; }
+  </style>
+</head>
+<!-- ═══════════════════════════════════════════════════════════════
+     STAP 2 — BODY START: cave lagen + vaste UI + LEVEL 1 THE CORE
+     ═══════════════════════════════════════════════════════════════ -->
+<body>
+
+<!-- ── CAVE ACHTERGROND LAGEN (fixed z=0) ── -->
+<div class="cave-layer cave-back"></div>
+<div class="cave-layer cave-mid"></div>
+<div class="cave-layer cave-front"></div>
+
+<!-- ── WATERVAL (rechts, fixed) ── -->
+<div class="waterfall"></div>
+
+<!-- ── KLIMPLANTEN (links, fixed) ── -->
+<div class="vines">
+  <div class="vine v1"><span class="vine::after"></span></div>
+  <div class="vine v2"></div>
+  <div class="vine v3"></div>
+  <div class="vine v4"></div>
+  <div class="vine v5"></div>
+</div>
+
+<!-- ── DRUPPELCONTAINER (plafond, fixed) ── -->
+<div class="drip-container" id="dripContainer"></div>
+
+<!-- ── PANIC OVERLAY ── -->
+<div class="panic-overlay" id="panicOverlay"></div>
+
+<!-- ── ACTIEVE EYEBOT ROBOT (fixed, aangestuurd door JS) ── -->
+<div id="eyebot-active">
+  <svg viewBox="0 0 46 56" width="46" height="56" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="23" cy="24" r="18" fill="#0c1828" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.75"/>
+    <circle cx="23" cy="24" r="14" fill="none" stroke="#00d4ff" stroke-width="0.5" stroke-opacity="0.22"/>
+    <line x1="9"  y1="22" x2="37" y2="22" stroke="#00d4ff" stroke-width="0.4" stroke-opacity="0.22"/>
+    <line x1="23" y1="8"  x2="23" y2="40" stroke="#00d4ff" stroke-width="0.4" stroke-opacity="0.22"/>
+    <circle cx="23" cy="22" r="10" fill="#00d4ff" fill-opacity="0.12"/>
+    <circle cx="23" cy="22" r="7"  fill="#00d4ff" fill-opacity="0.22" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.6"/>
+    <circle cx="23" cy="22" r="4"  fill="#00d4ff" fill-opacity="0.80"/>
+    <circle cx="23" cy="22" r="2"  fill="white"/>
+    <circle cx="26" cy="19" r="1.4" fill="white" opacity="0.72"/>
+    <line x1="23" y1="6" x2="23" y2="0" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="23" cy="0" r="2.5" fill="#00d4ff"/>
+    <rect x="2"  y="30" width="10" height="7" rx="2.5" fill="#040c18" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.65"/>
+    <rect x="34" y="30" width="10" height="7" rx="2.5" fill="#040c18" stroke="#00d4ff" stroke-width="1" stroke-opacity="0.65"/>
+    <ellipse cx="7"  cy="39" rx="5" ry="2.5" fill="#00d4ff" opacity="0.62"/>
+    <ellipse cx="39" cy="39" rx="5" ry="2.5" fill="#00d4ff" opacity="0.62"/>
+    <circle cx="13" cy="14" r="1.3" fill="none" stroke="#00d4ff" stroke-width="0.6" stroke-opacity="0.35"/>
+    <circle cx="33" cy="14" r="1.3" fill="none" stroke="#00d4ff" stroke-width="0.6" stroke-opacity="0.35"/>
+    <circle cx="13" cy="34" r="1.3" fill="none" stroke="#00d4ff" stroke-width="0.6" stroke-opacity="0.35"/>
+    <circle cx="33" cy="34" r="1.3" fill="none" stroke="#00d4ff" stroke-width="0.6" stroke-opacity="0.35"/>
+  </svg>
+</div>
+
+<!-- ── ROADMAP KNOP ── -->
+<button class="roadmap-btn" onclick="openRoadmap()">📋 ROADMAP</button>
+
+<!-- ── INFO TOOLTIP (singleton) ── -->
+<div id="infoTooltip">
+  <div class="itt-badge">⊙ VAULT-TEC DATA PIPELINE</div>
+  <div class="itt-title" id="infoTooltipTitle">ROOM</div>
+  <div class="itt-sep"></div>
+  <div class="itt-body"  id="infoTooltipText">—</div>
+</div>
+
+<!-- ── MINIMAP (rechts, fixed) ── -->
+<nav class="minimap">
+  <h4>▣ BUNKERKAART</h4>
+  <div class="mm-floor" onclick="scrollToFloor('f0')">
+    <span class="mm-label">CORE</span>
+    <div class="mm-bar" style="background:rgba(255,179,0,0.30)"></div>
+  </div>
+  <div class="mm-floor" onclick="scrollToFloor('f1')">
+    <span class="mm-label">WATCH</span>
+    <div class="mm-bar" style="background:rgba(0,200,255,0.28)"></div>
+  </div>
+  <div class="mm-floor" onclick="scrollToFloor('f2')">
+    <span class="mm-label">MED</span>
+    <div class="mm-bar" style="background:rgba(57,255,20,0.25)"></div>
+  </div>
+  <div class="mm-floor" onclick="scrollToFloor('f3')">
+    <span class="mm-label">REC</span>
+    <div class="mm-bar" style="background:rgba(191,95,255,0.25)"></div>
+  </div>
+</nav>
+
+<!-- ── MODAL ── -->
+<div class="modal-bg" id="modalBg" onclick="handleModalBgClick(event)">
+  <div class="modal-panel" id="modalPanel">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">ROOM</div>
+        <div class="modal-sub"   id="modalSub">LIVE DATA</div>
+      </div>
+      <div class="modal-close" onclick="closeModal()">✕</div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ── STATUS BAR (onderaan, fixed) ── -->
+<div class="status-bar">
+  <div class="sb-item"><div class="sb-dot" id="sb-dot"></div><span id="sb-status">LADEN…</span></div>
+  <div class="sb-item">PORTFOLIO: <span class="sb-val" id="sb-portfolio">—</span></div>
+  <div class="sb-item">PnL: <span class="sb-val" id="sb-pnl">—</span></div>
+  <div class="sb-item">WR: <span class="sb-val" id="sb-wr">—</span></div>
+  <div class="sb-item">STREAK: <span class="sb-val" id="sb-streak">—</span></div>
+  <div class="sb-item">DD: <span class="sb-val" id="sb-dd">—</span></div>
+  <div class="sb-item">CYCLE: <span class="sb-val" id="sb-cycle">—</span></div>
+  <div class="sb-item">POSITIES: <span class="sb-val" id="sb-pos">—</span></div>
+  <span class="panic-text" id="panicText">⚠ ALARM — VERLIESSTREEK ⚠</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOOFD VAULT SHELL
+     ══════════════════════════════════════════════════════════════ -->
+<div class="vault-shell">
+
+<!-- ── HEADER ── -->
+<div class="v-header">
+  <h1>VAULT-TEC TRADING COMMAND</h1>
+  <div class="sub">MONSTER BOT ∙ RASPBERRY PI ∙ UNDERGROUND AI DIVISION</div>
+  <div class="live-badge">● LIVE FEED</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LEVEL 1 — THE CORE   (cryptobot.service)
+     id="f0" voor minimap navigatie
+     ══════════════════════════════════════════════════════════════ -->
+<div class="game-level level-core" id="f0">
+
+  <!-- Level header -->
+  <div class="level-header">
+    <span class="level-badge">LVL-01</span>
+    <div class="level-info">
+      <div class="level-name">THE CORE</div>
+      <div class="level-desc">cryptobot.service · OVERSEER COMMAND · MARKTREGIME · LIVE PRIJZEN</div>
+    </div>
+    <span class="level-status st-online" id="core-status">● ACTIEF</span>
+
+    <!-- Eyebot idle — amber -->
+    <svg class="level-bot" viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="23" r="17" fill="#0e0c06" stroke="#ffb300" stroke-width="1.2" stroke-opacity="0.45"/>
+      <circle cx="22" cy="23" r="13" fill="none" stroke="#ffb300" stroke-width="0.5" stroke-opacity="0.18"/>
+      <line x1="8"  y1="21" x2="36" y2="21" stroke="#ffb300" stroke-width="0.4" stroke-opacity="0.20"/>
+      <line x1="22" y1="8"  x2="22" y2="38" stroke="#ffb300" stroke-width="0.4" stroke-opacity="0.20"/>
+      <circle cx="22" cy="21" r="9"  fill="#ffb300" fill-opacity="0.09"/>
+      <circle cx="22" cy="21" r="6.5" fill="#ffb300" fill-opacity="0.18" stroke="#ffb300" stroke-width="0.9" stroke-opacity="0.50"/>
+      <circle class="e-core" cx="22" cy="21" r="3.8" fill="#ffb300" fill-opacity="0.75"/>
+      <circle cx="22" cy="21" r="1.8" fill="#ffb300"/>
+      <circle cx="25" cy="18" r="1.1" fill="white" opacity="0.60"/>
+      <line x1="22" y1="6" x2="22" y2="0" stroke="#ffb300" stroke-width="1.6" stroke-opacity="0.50" stroke-linecap="round"/>
+      <circle cx="22" cy="0" r="2" fill="#ffb300" opacity="0.72"/>
+      <rect x="2"  y="28" width="9" height="7" rx="2" fill="#080600" stroke="#ffb300" stroke-width="0.7" stroke-opacity="0.38"/>
+      <rect x="33" y="28" width="9" height="7" rx="2" fill="#080600" stroke="#ffb300" stroke-width="0.7" stroke-opacity="0.38"/>
+      <ellipse class="t-glow" cx="6.5"  cy="37" rx="4" ry="2" fill="#ffb300" opacity="0.38"/>
+      <ellipse class="t-glow" cx="37.5" cy="37" rx="4" ry="2" fill="#ffb300" opacity="0.38"/>
+    </svg>
+  </div>
+
+  <!-- Level kamers — 3 kolommen -->
+  <div class="level-body cols-3">
+
+    <!-- ── KAMER 1: OVERSEER COMMAND ── -->
+    <div class="room r-overseer" onclick="openRoom('overseer')">
+      <div class="room-alarm" id="alarm-overseer"></div>
+      <div class="room-header">
+        <div class="room-icon">🏛</div>
+        <div style="flex:1">
+          <div class="room-title">OVERSEER COMMAND</div>
+          <div class="room-sub" id="ov-sub">VAULT INTELLIGENCE CENTER</div>
+        </div>
+        <!-- Vault dweller -->
+        <svg class="dweller working" id="dw-overseer" viewBox="0 0 26 34">
+          <rect x="9"  y="1"  width="8"  height="8"  rx="2" fill="#f7c97e"/>
+          <rect x="7"  y="9"  width="12" height="13" rx="1" fill="#3d5a8a"/>
+          <rect x="5"  y="10" width="4"  height="10" rx="1" fill="#2d4a7a"/>
+          <rect x="17" y="10" width="4"  height="10" rx="1" fill="#2d4a7a"/>
+          <rect x="9"  y="22" width="4"  height="8"  rx="1" fill="#3d5a8a"/>
+          <rect x="13" y="22" width="4"  height="8"  rx="1" fill="#3d5a8a"/>
+          <rect x="12" y="3"  width="2"  height="3"       fill="#d4a843"/>
+        </svg>
+      </div>
+      <div class="room-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+          <div>
+            <div class="stat-row"><span class="stat-label">Portfolio</span><span class="stat-val val-amber"  id="ov-portfolio">—</span></div>
+            <div class="stat-row"><span class="stat-label">PnL</span>      <span class="stat-val"            id="ov-pnl">—</span></div>
+            <div class="stat-row"><span class="stat-label">Win Rate</span> <span class="stat-val"            id="ov-wr">—</span></div>
+            <div class="stat-row"><span class="stat-label">PF</span>       <span class="stat-val"            id="ov-pf">—</span></div>
+          </div>
+          <div>
+            <div class="stat-row"><span class="stat-label">Streak</span>   <span class="stat-val"            id="ov-streak">—</span></div>
+            <div class="stat-row"><span class="stat-label">Drawdown</span> <span class="stat-val"            id="ov-dd">—</span></div>
+            <div class="stat-row"><span class="stat-label">Trades</span>   <span class="stat-val"            id="ov-trades">—</span></div>
+            <div class="stat-row"><span class="stat-label">Throttle</span> <span class="stat-val"            id="ov-throttle">—</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 2: MARKT REGIME ── -->
+    <div class="room r-market" onclick="openRoom('market')">
+      <div class="room-header">
+        <div class="room-icon">🌐</div>
+        <div>
+          <div class="room-title">MARKT REGIME</div>
+          <div class="room-sub">REGIME DETECTOR · 4H ADX</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">BTC</span>
+          <span class="stat-val" id="regime-btc">—</span>
+        </div>
+        <div style="font-size:6.5px;color:var(--dim);padding:1px 0 3px" id="btc-sub">—</div>
+        <div class="stat-row">
+          <span class="stat-label">ETH</span>
+          <span class="stat-val" id="regime-eth">—</span>
+        </div>
+        <div style="font-size:6.5px;color:var(--dim);padding:1px 0 3px" id="eth-sub">—</div>
+        <div class="stat-row">
+          <span class="stat-label">SOL</span>
+          <span class="stat-val" id="regime-sol">—</span>
+        </div>
+        <div style="font-size:6.5px;color:var(--dim);padding:1px 0 4px" id="sol-sub">—</div>
+        <div class="stat-row" style="margin-top:2px">
+          <span class="stat-label">Sentiment</span>
+          <span class="stat-val" id="mkt-sentiment">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Fear &amp; Greed</span>
+          <span class="stat-val val-amber" id="mkt-fg">—</span>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 3: LIVE PRIJZEN ── -->
+    <div class="room r-btc" onclick="openRoom('prices')">
+      <div class="room-header">
+        <div class="room-icon">💹</div>
+        <div>
+          <div class="room-title">LIVE PRIJZEN</div>
+          <div class="room-sub">REAL-TIME BINANCE FEED</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">BTC/USDT</span>
+          <span class="stat-val val-amber" id="price-btc">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ETH/USDT</span>
+          <span class="stat-val val-blue"  id="price-eth">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SOL/USDT</span>
+          <span class="stat-val val-green" id="price-sol">—</span>
+        </div>
+        <div style="margin-top:6px;font-size:7px;color:var(--dim)" id="prices-ts">—</div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+  </div><!-- /level-body -->
+</div><!-- /level-core -->
+
+<!-- einde stap 2 — hier volgt stap 3 (tube + WATCHTOWER) -->
+<!-- ═══════════════════════════════════════════════════════════════
+     STAP 3 — DATA TUBE (Core→Watch) + LEVEL 2 THE WATCHTOWER
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- ── DATA TUBE: CORE → WATCHTOWER (RSI barrière zit hier) ── -->
+<div class="data-tube">
+
+  <!-- Twee verticale pijpen links/rechts -->
+  <div class="tube-pipes">
+    <div class="tube-pipe"></div>
+    <div class="tube-pipe"></div>
+  </div>
+
+  <!-- Centraal deeltjeskanaal -->
+  <div class="tube-channel">
+    <div class="tp blue"  style="animation-duration:1.55s; animation-delay:0.00s"></div>
+    <div class="tp green" style="animation-duration:2.00s; animation-delay:0.65s"></div>
+    <div class="tp amber" style="animation-duration:1.38s; animation-delay:1.20s"></div>
+    <div class="tp blue"  style="animation-duration:1.80s; animation-delay:0.40s"></div>
+    <div class="tp green" style="animation-duration:2.20s; animation-delay:0.95s"></div>
+  </div>
+
+  <!-- RSI BARRIÈRE — wordt zichtbaar door JS als Filter 1d blokkeert -->
+  <div class="rsi-barrier" id="rsi-barrier">
+    <span class="rsi-barrier-lbl">🛡️ RSI BLOCK!</span>
+    <span class="rsi-barrier-sub">FILTER 1D ACTIEF</span>
+  </div>
+
+  <div class="tube-label">▼ SIGNAALSTROOM — WATCHTOWER → CORE</div>
+  <div class="tube-depth">−22m</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LEVEL 2 — THE WATCHTOWER   (auto_watcher + Filter Shield)
+     id="f1" voor minimap navigatie
+     ══════════════════════════════════════════════════════════════ -->
+<div class="game-level level-watch" id="f1">
+
+  <!-- Level header -->
+  <div class="level-header">
+    <span class="level-badge">LVL-02</span>
+    <div class="level-info">
+      <div class="level-name">THE WATCHTOWER</div>
+      <div class="level-desc">auto_watcher.py · BTC · ETH · SOL TRADING DESKS · 🛡️ FILTER SHIELD</div>
+    </div>
+    <span class="level-status st-online" id="watch-status">● SCANNER ACTIEF</span>
+
+    <!-- Eyebot idle — blauw -->
+    <svg class="level-bot" viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="23" r="17" fill="#060e1c" stroke="#00c8ff" stroke-width="1.2" stroke-opacity="0.45"/>
+      <circle cx="22" cy="23" r="13" fill="none"   stroke="#00c8ff" stroke-width="0.5" stroke-opacity="0.18"/>
+      <line x1="8"  y1="21" x2="36" y2="21" stroke="#00c8ff" stroke-width="0.4" stroke-opacity="0.20"/>
+      <line x1="22" y1="8"  x2="22" y2="38" stroke="#00c8ff" stroke-width="0.4" stroke-opacity="0.20"/>
+      <circle cx="22" cy="21" r="9"   fill="#00c8ff" fill-opacity="0.09"/>
+      <circle cx="22" cy="21" r="6.5" fill="#00c8ff" fill-opacity="0.18" stroke="#00c8ff" stroke-width="0.9" stroke-opacity="0.50"/>
+      <circle class="e-core" cx="22" cy="21" r="3.8" fill="#00c8ff" fill-opacity="0.75"/>
+      <circle cx="22" cy="21" r="1.8" fill="#00c8ff"/>
+      <circle cx="25" cy="18" r="1.1" fill="white"   opacity="0.60"/>
+      <line x1="22" y1="6" x2="22" y2="0" stroke="#00c8ff" stroke-width="1.6" stroke-opacity="0.50" stroke-linecap="round"/>
+      <circle cx="22" cy="0" r="2" fill="#00c8ff" opacity="0.72"/>
+      <rect x="2"  y="28" width="9" height="7" rx="2" fill="#040810" stroke="#00c8ff" stroke-width="0.7" stroke-opacity="0.38"/>
+      <rect x="33" y="28" width="9" height="7" rx="2" fill="#040810" stroke="#00c8ff" stroke-width="0.7" stroke-opacity="0.38"/>
+      <ellipse class="t-glow" cx="6.5"  cy="37" rx="4" ry="2" fill="#00c8ff" opacity="0.38"/>
+      <ellipse class="t-glow" cx="37.5" cy="37" rx="4" ry="2" fill="#00c8ff" opacity="0.38"/>
+    </svg>
+  </div>
+
+  <!-- Level kamers — 4 kolommen -->
+  <div class="level-body cols-4">
+
+    <!-- ── KAMER 1: BTC/USDT TRADING DESK ── -->
+    <div class="room r-btc" onclick="openRoom('btc')">
+      <div class="room-alarm" id="alarm-btc"></div>
+      <div class="room-header">
+        <div class="room-icon">₿</div>
+        <div style="flex:1">
+          <div class="room-title">BTC/USDT</div>
+          <div class="room-sub">TRADING DESK</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Prijs</span>
+          <span class="stat-val val-amber" id="btc-price">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Positie</span>
+          <span class="stat-val" id="btc-pos">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Signaal</span>
+          <span class="stat-val" id="btc-signal">—</span>
+        </div>
+        <div style="margin-top:5px">
+          <div style="font-size:6px;color:var(--dim);margin-bottom:2px">BLOKKADE REDEN</div>
+          <div style="font-size:7px;color:rgba(180,200,220,0.65);line-height:1.45" id="btc-reason">—</div>
+        </div>
+        <div id="btc-diag" class="diag-badge diag-warning">⊙ —</div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 2: ETH/USDT TRADING DESK ── -->
+    <div class="room r-eth" onclick="openRoom('eth')">
+      <div class="room-alarm" id="alarm-eth"></div>
+      <div class="room-header">
+        <div class="room-icon">Ξ</div>
+        <div style="flex:1">
+          <div class="room-title">ETH/USDT</div>
+          <div class="room-sub">TRADING DESK</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Prijs</span>
+          <span class="stat-val val-blue" id="eth-price">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Positie</span>
+          <span class="stat-val" id="eth-pos">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Signaal</span>
+          <span class="stat-val" id="eth-signal">—</span>
+        </div>
+        <div style="margin-top:5px">
+          <div style="font-size:6px;color:var(--dim);margin-bottom:2px">BLOKKADE REDEN</div>
+          <div style="font-size:7px;color:rgba(180,200,220,0.65);line-height:1.45" id="eth-reason">—</div>
+        </div>
+        <div id="eth-diag" class="diag-badge diag-warning">⊙ —</div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 3: SOL/USDT TRADING DESK ── -->
+    <div class="room r-sol" onclick="openRoom('sol')">
+      <div class="room-alarm" id="alarm-sol"></div>
+      <div class="room-header">
+        <div class="room-icon">◎</div>
+        <div style="flex:1">
+          <div class="room-title">SOL/USDT</div>
+          <div class="room-sub">TRADING DESK</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Prijs</span>
+          <span class="stat-val val-green" id="sol-price">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Positie</span>
+          <span class="stat-val" id="sol-pos">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Signaal</span>
+          <span class="stat-val" id="sol-signal">—</span>
+        </div>
+        <div style="margin-top:5px">
+          <div style="font-size:6px;color:var(--dim);margin-bottom:2px">BLOKKADE REDEN</div>
+          <div style="font-size:7px;color:rgba(180,200,220,0.65);line-height:1.45" id="sol-reason">—</div>
+        </div>
+        <div id="sol-diag" class="diag-badge diag-warning">⊙ —</div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 4: FILTER SHIELD — RSI Zone bescherming ── -->
+    <div class="room r-shield" onclick="openRoom('shield')">
+      <div class="room-header">
+        <div class="room-icon" style="background:rgba(255,34,68,0.10);border-color:rgba(255,34,68,0.30)">🛡️</div>
+        <div style="flex:1">
+          <div class="room-title">FILTER SHIELD</div>
+          <div class="room-sub">RSI-ZONE · FILTER 1D</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <!-- Per-symbool RSI zone status -->
+        <div class="stat-row">
+          <span class="stat-label">BTC zone</span>
+          <span class="stat-val" id="shield-btc">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ETH zone</span>
+          <span class="stat-val" id="shield-eth">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SOL zone</span>
+          <span class="stat-val" id="shield-sol">—</span>
+        </div>
+        <div style="margin-top:5px;padding-top:4px;border-top:1px solid rgba(255,255,255,0.04)">
+          <div class="stat-row">
+            <span class="stat-label">Blokken (1u)</span>
+            <span class="stat-val val-red" id="shield-1h">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Blokken (24u)</span>
+            <span class="stat-val val-amber" id="shield-24h">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">WR na filter</span>
+            <span class="stat-val" id="shield-wr">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Baseline WR</span>
+            <span class="stat-val val-dim">29.0%</span>
+          </div>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+  </div><!-- /level-body -->
+</div><!-- /level-watch -->
+
+<!-- einde stap 3 — hier volgt stap 4 (tube + MEDBAY + RECOVERY VAULT) -->
+<!-- ═══════════════════════════════════════════════════════════════
+     STAP 4 — TUBE + LEVEL 3 MEDBAY + TUBE + LEVEL 4 RECOVERY VAULT
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- ── DATA TUBE: WATCHTOWER → MEDBAY ── -->
+<div class="data-tube">
+  <div class="tube-pipes">
+    <div class="tube-pipe"></div>
+    <div class="tube-pipe"></div>
+  </div>
+  <div class="tube-channel">
+    <div class="tp green" style="animation-duration:1.70s; animation-delay:0.00s"></div>
+    <div class="tp blue"  style="animation-duration:2.10s; animation-delay:0.80s"></div>
+    <div class="tp amber" style="animation-duration:1.45s; animation-delay:1.40s"></div>
+    <div class="tp green" style="animation-duration:1.90s; animation-delay:0.35s"></div>
+    <div class="tp blue"  style="animation-duration:2.30s; animation-delay:1.05s"></div>
+  </div>
+  <div class="tube-label">▼ GEZONDHEIDSDATA — WATCH → MEDBAY</div>
+  <div class="tube-depth">−38m</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     LEVEL 3 — MEDBAY   (self_healer + risk + performance + AI)
+     id="f2" voor minimap navigatie
+     ══════════════════════════════════════════════════════════════ -->
+<div class="game-level level-med" id="f2">
+
+  <!-- Level header -->
+  <div class="level-header">
+    <span class="level-badge">LVL-03</span>
+    <div class="level-info">
+      <div class="level-name">MEDBAY</div>
+      <div class="level-desc">self_healer.py · RISICO · PERFORMANCE · LSTM · RL AGENT</div>
+    </div>
+    <span class="level-status st-online" id="med-status">● SYSTEMEN OK</span>
+
+    <!-- Eyebot idle — groen -->
+    <svg class="level-bot" viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="23" r="17" fill="#060e08" stroke="#39ff14" stroke-width="1.2" stroke-opacity="0.42"/>
+      <circle cx="22" cy="23" r="13" fill="none"   stroke="#39ff14" stroke-width="0.5" stroke-opacity="0.16"/>
+      <line x1="8"  y1="21" x2="36" y2="21" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.18"/>
+      <line x1="22" y1="8"  x2="22" y2="38" stroke="#39ff14" stroke-width="0.4" stroke-opacity="0.18"/>
+      <circle cx="22" cy="21" r="9"   fill="#39ff14" fill-opacity="0.07"/>
+      <circle cx="22" cy="21" r="6.5" fill="#39ff14" fill-opacity="0.16" stroke="#39ff14" stroke-width="0.9" stroke-opacity="0.45"/>
+      <circle class="e-core" cx="22" cy="21" r="3.8" fill="#39ff14" fill-opacity="0.72"/>
+      <circle cx="22" cy="21" r="1.8" fill="#39ff14"/>
+      <circle cx="25" cy="18" r="1.1" fill="white"   opacity="0.58"/>
+      <line x1="22" y1="6" x2="22" y2="0" stroke="#39ff14" stroke-width="1.6" stroke-opacity="0.45" stroke-linecap="round"/>
+      <circle cx="22" cy="0" r="2" fill="#39ff14" opacity="0.70"/>
+      <rect x="2"  y="28" width="9" height="7" rx="2" fill="#040806" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.35"/>
+      <rect x="33" y="28" width="9" height="7" rx="2" fill="#040806" stroke="#39ff14" stroke-width="0.7" stroke-opacity="0.35"/>
+      <ellipse class="t-glow" cx="6.5"  cy="37" rx="4" ry="2" fill="#39ff14" opacity="0.35"/>
+      <ellipse class="t-glow" cx="37.5" cy="37" rx="4" ry="2" fill="#39ff14" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- Level kamers — 4 kolommen -->
+  <div class="level-body cols-4">
+
+    <!-- ── KAMER 1: RISK CONTROL ── -->
+    <div class="room r-risk" onclick="openRoom('risk')">
+      <div class="room-alarm" id="alarm-risk"></div>
+      <div class="room-header">
+        <div class="room-icon">⚠</div>
+        <div>
+          <div class="room-title">RISK CONTROL</div>
+          <div class="room-sub">KELLY · ATR · CIRCUIT BREAKER</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Drawdown</span>
+          <span class="stat-val" id="risk-dd">—</span>
+        </div>
+        <div class="mini-bar"><div class="mini-bar-fill fill-red" id="risk-dd-bar" style="width:0%"></div></div>
+        <div class="stat-row">
+          <span class="stat-label">Circuit Breaker</span>
+          <span class="stat-val" id="risk-cb">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SL vandaag</span>
+          <span class="stat-val val-amber" id="risk-sl">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Throttle</span>
+          <span class="stat-val val-amber" id="risk-throttle">—</span>
+        </div>
+        <div style="margin-top:5px;font-size:6.5px;color:var(--dim)">
+          SL=2.5×ATR · TP=5.0×ATR · Max DD=15%
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 2: PERFORMANCE LAB ── -->
+    <div class="room" onclick="openRoom('performance')">
+      <div class="room-header">
+        <div class="room-icon" style="background:rgba(0,200,255,0.08);border-color:rgba(0,200,255,0.28)">📊</div>
+        <div>
+          <div class="room-title">PERFORMANCE LAB</div>
+          <div class="room-sub">WIN RATE · PF · R/R</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Win Rate</span>
+          <span class="stat-val" id="perf-wr">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Profit Factor</span>
+          <span class="stat-val" id="perf-pf">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">TP1 bereikt</span>
+          <span class="stat-val val-amber" id="perf-tp1">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Gem. win</span>
+          <span class="stat-val val-green" id="perf-avgwin">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Gem. verlies</span>
+          <span class="stat-val val-red" id="perf-avgloss">—</span>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 3: SELF-HEALER GATE ── -->
+    <div class="room r-healer" onclick="openRoom('healer')">
+      <div class="room-header">
+        <div class="room-icon">💉</div>
+        <div>
+          <div class="room-title">SELF-HEALER</div>
+          <div class="room-sub">AUTO-PARAMETER OPTIMIZER</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div style="background:rgba(57,255,20,0.05);border:1px solid rgba(57,255,20,0.18);border-radius:4px;padding:6px;margin-bottom:6px">
+          <div style="font-size:6.5px;color:var(--dim);margin-bottom:2px">ACTIEVE HEAL</div>
+          <div style="font-size:11px;font-weight:bold;color:var(--neon-green)" id="heal-val">1.75×ATR</div>
+          <div style="font-size:6.5px;color:var(--dim);margin-top:1px" id="heal-param">ranging_tp2_mult</div>
+        </div>
+        <div style="font-size:7px;color:rgba(180,200,180,0.60);line-height:1.45" id="heal-reason">
+          TP1-rate 19% → targets te ver in ranging
+        </div>
+        <div class="stat-row" style="margin-top:5px">
+          <span class="stat-label">MIN_N</span>
+          <span class="stat-val val-green">10 trades</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Poort</span>
+          <span class="stat-val val-green">🔓 OPEN</span>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 4: LSTM + RL NEURAL LAB ── -->
+    <div class="room r-ai" onclick="openRoom('lstm')">
+      <div class="room-header">
+        <div class="room-icon">🧠</div>
+        <div>
+          <div class="room-title">LSTM + RL AGENT</div>
+          <div class="room-sub">NEURAL PREDICTOR · PPO</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">LSTM val_acc</span>
+          <span class="stat-val val-amber">37.8%</span>
+        </div>
+        <div class="mini-bar"><div class="mini-bar-fill fill-amber" style="width:37.8%"></div></div>
+        <div class="stat-row" style="margin-top:3px">
+          <span class="stat-label">LSTM gewicht</span>
+          <span class="stat-val val-red">0% — UIT</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">RL gewicht</span>
+          <span class="stat-val val-amber">10%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Target val_acc</span>
+          <span class="stat-val val-dim">≥ 45%</span>
+        </div>
+        <div style="margin-top:5px;font-size:6.5px;color:rgba(100,120,140,0.65)">
+          Auto-retrain: ma 03:00 (cron)
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+  </div><!-- /level-body -->
+</div><!-- /level-med -->
+
+
+<!-- ── DATA TUBE: MEDBAY → RECOVERY VAULT ── -->
+<div class="data-tube">
+  <div class="tube-pipes">
+    <div class="tube-pipe"></div>
+    <div class="tube-pipe"></div>
+  </div>
+  <div class="tube-channel">
+    <div class="tp amber"  style="animation-duration:1.60s; animation-delay:0.00s"></div>
+    <div class="tp blue"   style="animation-duration:2.05s; animation-delay:0.55s"></div>
+    <div class="tp green"  style="animation-duration:1.35s; animation-delay:1.10s"></div>
+    <div class="tp amber"  style="animation-duration:1.85s; animation-delay:0.30s"></div>
+    <div class="tp blue"   style="animation-duration:2.25s; animation-delay:0.90s"></div>
+  </div>
+  <div class="tube-label">▼ ANALYSEDATA — MEDBAY → RECOVERY VAULT</div>
+  <div class="tube-depth">−55m</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     LEVEL 4 — RECOVERY VAULT   (auto_cleanup + correlatie + analyse)
+     id="f3" voor minimap navigatie
+     ══════════════════════════════════════════════════════════════ -->
+<div class="game-level level-rec" id="f3">
+
+  <!-- Level header -->
+  <div class="level-header">
+    <span class="level-badge">LVL-04</span>
+    <div class="level-info">
+      <div class="level-name">RECOVERY VAULT</div>
+      <div class="level-desc">auto_cleanup.py · CORRELATIE GUARD · RANGING · STRATEGIES · POSITIES</div>
+    </div>
+    <span class="level-status st-online" id="rec-status">● VAULT BEVEILIGD</span>
+
+    <!-- Eyebot idle — paars -->
+    <svg class="level-bot" viewBox="0 0 44 54" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="22" cy="23" r="17" fill="#0c0814" stroke="#bf5fff" stroke-width="1.2" stroke-opacity="0.42"/>
+      <circle cx="22" cy="23" r="13" fill="none"   stroke="#bf5fff" stroke-width="0.5" stroke-opacity="0.16"/>
+      <line x1="8"  y1="21" x2="36" y2="21" stroke="#bf5fff" stroke-width="0.4" stroke-opacity="0.18"/>
+      <line x1="22" y1="8"  x2="22" y2="38" stroke="#bf5fff" stroke-width="0.4" stroke-opacity="0.18"/>
+      <circle cx="22" cy="21" r="9"   fill="#bf5fff" fill-opacity="0.07"/>
+      <circle cx="22" cy="21" r="6.5" fill="#bf5fff" fill-opacity="0.16" stroke="#bf5fff" stroke-width="0.9" stroke-opacity="0.45"/>
+      <circle class="e-core" cx="22" cy="21" r="3.8" fill="#bf5fff" fill-opacity="0.72"/>
+      <circle cx="22" cy="21" r="1.8" fill="#bf5fff"/>
+      <circle cx="25" cy="18" r="1.1" fill="white"   opacity="0.55"/>
+      <line x1="22" y1="6" x2="22" y2="0" stroke="#bf5fff" stroke-width="1.6" stroke-opacity="0.45" stroke-linecap="round"/>
+      <circle cx="22" cy="0" r="2" fill="#bf5fff" opacity="0.68"/>
+      <rect x="2"  y="28" width="9" height="7" rx="2" fill="#070410" stroke="#bf5fff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <rect x="33" y="28" width="9" height="7" rx="2" fill="#070410" stroke="#bf5fff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <ellipse class="t-glow" cx="6.5"  cy="37" rx="4" ry="2" fill="#bf5fff" opacity="0.35"/>
+      <ellipse class="t-glow" cx="37.5" cy="37" rx="4" ry="2" fill="#bf5fff" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- Level kamers — 4 kolommen -->
+  <div class="level-body cols-4">
+
+    <!-- ── KAMER 1: CORRELATIE GUARD ── -->
+    <div class="room r-corr" onclick="openRoom('corr')">
+      <div class="room-header">
+        <div class="room-icon">🔗</div>
+        <div>
+          <div class="room-title">CORRELATIE GUARD</div>
+          <div class="room-sub">MAX 1 POS/GROEP IN RANGING</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div id="corr-msg" style="margin-bottom:6px">—</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:8px;padding:2px 0">
+            <span style="font-weight:bold">BTC</span>
+            <span id="corr-btc-lock" style="font-size:12px">🔓</span>
+            <span id="corr-btc-st" class="val-green">VRIJ</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:8px;padding:2px 0">
+            <span style="font-weight:bold">ETH</span>
+            <span id="corr-eth-lock" style="font-size:12px">🔓</span>
+            <span id="corr-eth-st" class="val-green">VRIJ</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:8px;padding:2px 0">
+            <span style="font-weight:bold">SOL</span>
+            <span id="corr-sol-lock" style="font-size:12px">🔓</span>
+            <span id="corr-sol-st" class="val-green">VRIJ</span>
+          </div>
+        </div>
+        <div style="margin-top:5px;font-size:6.5px;color:var(--dim)">
+          Correlatie &gt;90% — fix 25 mei 2026
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 2: RANGING ANALYSE ── -->
+    <div class="room" onclick="openRoom('ranging')">
+      <div class="room-header">
+        <div class="room-icon" style="background:rgba(255,179,0,0.10);border-color:rgba(255,179,0,0.30)">📉</div>
+        <div>
+          <div class="room-title">RANGING ANALYSE</div>
+          <div class="room-sub">REGIME WIN RATES</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">ranging WR</span>
+          <span class="stat-val val-red" id="rng-wr">—</span>
+        </div>
+        <div class="mini-bar"><div class="mini-bar-fill fill-red" id="rng-wr-bar" style="width:29%"></div></div>
+        <div class="stat-row" style="margin-top:3px">
+          <span class="stat-label">bear_trend WR</span>
+          <span class="stat-val val-green" id="bear-wr">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">bull_trend WR</span>
+          <span class="stat-val val-green" id="bull-wr">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">accumulation WR</span>
+          <span class="stat-val val-blue" id="accum-wr">—</span>
+        </div>
+        <div style="margin-top:5px;font-size:6.5px;color:var(--dim)">
+          Baseline ranging: 29% (n=45)
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 3: STRATEGIE GEWICHTEN ── -->
+    <div class="room" onclick="openRoom('strategies')">
+      <div class="room-header">
+        <div class="room-icon" style="background:rgba(191,95,255,0.08);border-color:rgba(191,95,255,0.28)">⚡</div>
+        <div>
+          <div class="room-title">STRATEGIE LAB</div>
+          <div class="room-sub">12 ADAPTIEVE GEWICHTEN</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div id="strat-mini-grid">
+          <div style="color:var(--dim);font-size:7.5px">Laden…</div>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+    <!-- ── KAMER 4: OPEN POSITIES ── -->
+    <div class="room" onclick="openRoom('positions')">
+      <div class="room-header">
+        <div class="room-icon" style="background:rgba(191,95,255,0.08);border-color:rgba(191,95,255,0.28)">📋</div>
+        <div>
+          <div class="room-title">OPEN POSITIES</div>
+          <div class="room-sub">LIVE PORTFOLIO STATUS</div>
+        </div>
+      </div>
+      <div class="room-body">
+        <div class="stat-row">
+          <span class="stat-label">Open posities</span>
+          <span class="stat-val val-blue" id="pos-count">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Vrij kapitaal</span>
+          <span class="stat-val val-green" id="pos-free">—</span>
+        </div>
+        <div style="margin-top:6px" id="pos-mini-list">
+          <span style="color:var(--dim);font-size:7.5px">Geen posities open</span>
+        </div>
+      </div>
+      <span class="click-hint">KLIK VOOR DETAILS</span>
+    </div>
+
+  </div><!-- /level-body -->
+</div><!-- /level-rec -->
+
+</div><!-- /vault-shell  ← gesloten hier, roadmap overlay volgt buiten -->
+
+<!-- einde stap 4 — hier volgt stap 5 (roadmap overlay) -->
+<!-- ═══════════════════════════════════════════════════════════════
+     STAP 5 — ROADMAP OVERLAY (bewaard uit origineel) + body sluiting
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════════════════
+     STRATEGIC ROADMAP OVERLAY
+     ══════════════════════════════════════════════════════════════ -->
+<div class="roadmap-overlay" id="roadmapOverlay" onclick="handleRoadmapBgClick(event)">
+  <button class="rm-close" onclick="closeRoadmap()">✕</button>
+  <div class="roadmap-wrap">
+
+    <!-- HEADER -->
+    <div class="rm-header">
+      <div class="rm-title">VAULT-TEC STRATEGIC ROADMAP</div>
+      <div class="rm-sub">MONSTER BOT · UNDERGROUND AI DIVISION · PROJECT TIMELINE 2026</div>
+      <div class="rm-legend">
+        <span class="rm-badge rm-badge-done">✓ COMPLETED</span>
+        <span class="rm-badge rm-badge-wip">➔ IN PROGRESS</span>
+        <span class="rm-badge rm-badge-plan">○ PLANNED</span>
+      </div>
+    </div>
+
+    <!-- TIJDLIJN -->
+    <div class="tl-wrap">
+
+      <!-- ── FASE 1: COMPLETED ── -->
+      <div class="tl-section">
+        <div class="tl-section-hdr">
+          <span class="rm-badge rm-badge-done">✓ COMPLETED</span>
+          <span class="tl-phase" style="color:var(--neon-green)">FASE 1 — FUNDAMENT &amp; EERSTE UPGRADES</span>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Basis bot-architectuur op de Raspberry Pi</span></div>
+          <div class="tl-meta"><span class="tl-date">April 2026</span><span class="rm-badge rm-badge-done" style="font-size:6px">LIVE</span></div>
+          <div class="tl-desc">12 strategieën, LSTM + RL PPO agent, paper engine, Telegram two-way interface, systemd 24/7 watchdog service, CCXT multi-exchange support</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Fallout Shelter Dashboard UI — 2.5D Game Bunker</span></div>
+          <div class="tl-meta"><span class="tl-date">Mei 2026</span><span class="rm-badge rm-badge-done" style="font-size:6px">LIVE</span></div>
+          <div class="tl-desc">4 game levels (THE CORE / WATCHTOWER / MEDBAY / RECOVERY VAULT), cave parallax achtergrond met stalactieten, waterval en klimplanten, animerende eyebot robots, data tubes met deeltjesflow, RSI barrière animatie — pure HTML/CSS/JS</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Handmatige Self-Healer override — Ranging TP2: 2.0 → 1.75× ATR</span></div>
+          <div class="tl-meta"><span class="tl-date">25 Mei 2026</span></div>
+          <div class="tl-desc">Ranging TP1-rate 19% → targets te ver geïdentificeerd. heal_config.json live overschreven zonder herstart. MIN_N verlaagd van 20 naar 10 trades voor snellere feedbackloop (7 → 3-4 dagen)</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">4H ADX Regime-Switch &amp; Hard Ranging Skip (Filter 1c)</span></div>
+          <div class="tl-meta"><span class="tl-date">26 Mei 2026</span><span class="rm-badge rm-badge-done" style="font-size:6px">LIVE</span></div>
+          <div class="tl-desc">Trendstrategieën (EMA/MACD/Breakout/MarketStructure) worden volledig geblokkeerd via een harde skip zodra ADX &lt; 18. Uitzondering: Bollinger Squeeze aktief (naderende uitbraak uit ranging) bypast de skip. Basis: WR ranging 29% (n=45) vs WR trending 83–100% (n=8)</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Correlatie-Lock Guard voor BTC/ETH/SOL in ranging</span></div>
+          <div class="tl-meta"><span class="tl-date">25 Mei 2026</span></div>
+          <div class="tl-desc">Max 1 positie per gecorreleerde groep in ranging regime (correlatie &gt;90%). Directe fix voor het mei 2026 incident: verliesstreek-12 door 3 gelijktijdige gecorreleerde ranging-posities (94% verliezen)</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Smart ATR Trailing Stop-Loss — 1.5× ATR achter de peak</span></div>
+          <div class="tl-meta"><span class="tl-date">25 Mei 2026</span></div>
+          <div class="tl-desc">Activeert pas na 0.5× ATR winst (geen vroegtijdige uitstops). Long: SL = peak − 1.5×ATR. Short: SL = peak + 1.5×ATR. Beweegt alleen in de gunstige richting — winsten vergrendeld automatisch</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">RSI-Zone Anti-Top/Bottom Filter (Filter 1d)</span></div>
+          <div class="tl-meta"><span class="tl-date">27 Mei 2026</span><span class="rm-badge rm-badge-done" style="font-size:6px">LIVE</span></div>
+          <div class="tl-desc">Harde wiskundige noodrem tegen te laat instappen. Ranging Long alleen bij RSI &lt; 45 (onderkant range) — Ranging Short alleen bij RSI &gt; 55 (bovenkant range). Diagnose: 77% van ranging-trades gingen direct de verkeerde kant op (TP1-rate 23%). Baseline ranging WR: 29% — target na 20 trades: ≥40%</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Vault Diagnostics Agent — The Overseer's Eye (v2)</span></div>
+          <div class="tl-meta"><span class="tl-date">27 Mei 2026</span><span class="rm-badge rm-badge-done" style="font-size:6px">LIVE</span></div>
+          <div class="tl-desc">Schoonmaak: 755 regels dode code gewist (vault_inspector.py, check_analysis.py, telegram_check.py). Nieuwe status RSI_ZONE_BLOCK: elk geblokkeerd ranging-signaal wordt live gelogd met tijdstip + symbool + RSI-waarde. Persistente block-teller (totaal / 24u / 1u) zichtbaar op dashboard. Filter 1d effectiviteits-tracker vergelijkt lopende WR vs 29% baseline automatisch. Inactiviteitsnoodrem: Telegram-waarschuwing bij &gt;8u geen trades</div>
+        </div>
+
+        <div class="tl-item tl-done">
+          <div class="tl-row"><span class="tl-icon">✓</span><span class="tl-label">Contextuele Info-knoppen &amp; Strategic Roadmap Visualisatie</span></div>
+          <div class="tl-meta"><span class="tl-date">25 Mei 2026</span></div>
+          <div class="tl-desc">Elke kamer heeft een [i] knop met uitleg over de data pipeline en departementfunctie. Interactieve Vault-Tec tijdlijn met voortgang per milestone — je leest hem nu</div>
+        </div>
+
+      </div><!-- /fase 1 -->
+
+      <!-- ── FASE 2: IN PROGRESS ── -->
+      <div class="tl-section">
+        <div class="tl-section-hdr">
+          <span class="rm-badge rm-badge-wip">➔ IN PROGRESS</span>
+          <span class="tl-phase" style="color:var(--neon-amber)">FASE 2 — FILTER 1D VALIDATIE &amp; WIN RATE HERSTEL</span>
+        </div>
+
+        <div class="tl-item tl-wip">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--neon-amber)">➔</span><span class="tl-label">20-Trades Test — Filter 1d RSI-Zone Effectiviteit</span></div>
+          <div class="tl-meta"><span class="tl-date">Actief vanaf 27 Mei 2026</span><span class="rm-badge rm-badge-wip" style="font-size:6px">LOPEND</span></div>
+          <div class="tl-desc">Automatische meting via vault_diagnostics.py: hoeveel ranging trades passeren Filter 1d en wat is hun WR? Baseline: 29% (n=45). Target: ≥40% WR na 20 nieuwe ranging trades. Dashboard toont lopende score live onder 🛡️ Filter Shield. Geen parameterwijzigingen tot 20 trades binnen zijn — data bepaalt de volgende stap</div>
+        </div>
+
+        <div class="tl-item tl-wip">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--neon-amber)">➔</span><span class="tl-label">LSTM Hertraining — val_acc 37.8% → target ≥45%</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: volgende maandag 03:00</span></div>
+          <div class="tl-desc">LSTM is momenteel uitgeschakeld (LSTM_WEIGHT=0.00) omdat val_acc 37.8% ≈ random (33.3%). Auto-trainer draait elke maandag. Heractivering alleen als val_acc ≥45% bereikt wordt. Per-symbool LSTM (BTC/ETH/SOL apart) staat klaar als volgende stap na generiek model</div>
+        </div>
+
+      </div><!-- /fase 2 -->
+
+      <!-- ── FASE 3: PLANNED ── -->
+      <div class="tl-section">
+        <div class="tl-section-hdr">
+          <span class="rm-badge rm-badge-plan">○ PLANNED</span>
+          <span class="tl-phase" style="color:var(--dim)">FASE 3 — INSTITUTIONEEL NIVEAU</span>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">Latency &amp; Execution Protection — Volledige integratie</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: Juni 2026</span></div>
+          <div class="tl-desc">Bid/ask spread check vóór entry. Gefaalde order detectie met exponentiële backoff retry. Exchange timeout handling. Slippage monitoring per trade</div>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">Post-Only Limit Orders via CCXT (Maker fees, 0% slippage)</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: Juni 2026</span></div>
+          <div class="tl-desc">Limit orders vervangen market orders in live_engine.py. Maker fee rebate + nul slippage. 3-minuten auto-cancel bij non-fill. Alleen relevant voor live trading modus</div>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">Per-symbool LSTM modellen (val_acc target &gt;43%)</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: Juni 2026 — week 3 roadmap</span></div>
+          <div class="tl-desc">Aparte LSTM per BTC/ETH/SOL → specialisatie elimineert cross-asset ruis. Ensemble van 3 modellen gemiddeld. Huidig: val_acc 37.8%, target ≥45% voor heractivering</div>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">ML Pattern Recognition Agent voor macro-trends</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: Juli 2026</span></div>
+          <div class="tl-desc">XGBoost meta-learner bovenop de 12 strategieën. Herkent welke strategie-combinaties werken in welk macro-klimaat. Presets: "Range Killer" / "Trend Rider" modus</div>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">Live trading activering — eerste echte euro's</span></div>
+          <div class="tl-meta"><span class="tl-date">Gepland: Q3 2026 — na WR ≥45% + PF ≥1.5</span></div>
+          <div class="tl-desc">Overstap van paper naar live modus. Voorwaarden: 3 weken stabiele WR ≥45%, max drawdown &lt;8%, Profit Factor ≥1.5, win rate niet dalend over laatste 30 trades</div>
+        </div>
+
+        <div class="tl-item tl-plan">
+          <div class="tl-row"><span class="tl-icon" style="color:var(--dim)">○</span><span class="tl-label">Einddoel — €2M–€10M in 15–25 jaar</span></div>
+          <div class="tl-meta"><span class="tl-date">2041–2051</span></div>
+          <div class="tl-desc">Compound groei via consistente bot-prestaties. Start: €1000 + €50/maand. Langetermijnstrategie via paper → live → schalen. Geduld is de edge</div>
+        </div>
+
+      </div><!-- /fase 3 -->
+
+    </div><!-- /tl-wrap -->
+
+    <!-- FOOTER -->
+    <div style="text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,179,0,0.10)">
+      <div style="font-size:7px;color:var(--dim);letter-spacing:2px;margin-bottom:6px">
+        VAULT-TEC CORPORATION · TRADING INTELLIGENCE DIVISION · EST. APRIL 2026
+      </div>
+      <div style="font-size:7px;color:rgba(57,255,20,0.42);letter-spacing:1px">
+        ● PAPER TRADING ACTIEF · €1000 STARTKAPITAAL · RASPBERRY PI · 24/7 AUTONOMOUS
+      </div>
+      <div style="margin-top:14px;font-size:8px;color:rgba(255,179,0,0.38);letter-spacing:1px;font-style:italic">
+        "War. War never changes. But trading bots do."
+      </div>
+    </div>
+
+  </div><!-- /roadmap-wrap -->
+</div><!-- /roadmap-overlay -->
+
+<!-- einde stap 5 — hier volgt stap 6 (JavaScript) -->
+<!-- ═══════════════════════════════════════════════════════════════
+     STAP 6 — VOLLEDIG JAVASCRIPT BLOK
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ─────────────────────────────────────────────────────────────────
+   GLOBALS
+   ───────────────────────────────────────────────────────────────── */
+let vaultData  = {};
+let logsData   = [];
+let activeRoom = null;
+let logFilter  = '';
+let lastCycle  = null;
+const REFRESH  = 15000;
+
+/* ─────────────────────────────────────────────────────────────────
+   MODAL CONTROLS
+   ───────────────────────────────────────────────────────────────── */
+function openRoom(r){ activeRoom=r; document.getElementById('modalBg').classList.add('open'); renderModal(r); }
+function closeModal(){ document.getElementById('modalBg').classList.remove('open'); activeRoom=null; }
+function handleModalBgClick(e){ if(e.target===document.getElementById('modalBg')) closeModal(); }
+
+const ROOM_META = {
+  overseer:    ['OVERSEER COMMAND CENTER',    'VAULT INTELLIGENCE HQ'],
+  market:      ['MARKTREGIME DETECTOR',       '4H ADX · BULL / BEAR / RANGING'],
+  prices:      ['LIVE PRIJZEN',               'BTC · ETH · SOL'],
+  btc:         ['BTC/USDT TRADING DESK',      'BINANCE · 1H + 4H'],
+  eth:         ['ETH/USDT TRADING DESK',      'BINANCE · 1H + 4H'],
+  sol:         ['SOL/USDT TRADING DESK',      'BINANCE · 1H + 4H'],
+  shield:      ['🛡️ FILTER SHIELD',          'RSI-ZONE FILTER 1D · STATS'],
+  risk:        ['RISICOBEHEER',               'KELLY + ATR · DRAWDOWN · CB'],
+  performance: ['PERFORMANCE LAB',            'WR · PF · TP1 · REGIME SPLITS'],
+  healer:      ['SELF-HEALER GATE',           'AUTOMATISCHE PARAMETER FIX'],
+  lstm:        ['LSTM PREDICTOR',             'PYTORCH · ATTENTION · val_acc'],
+  rl:          ['RL PPO AGENT',               'STABLE-BASELINES3 · SORTINO'],
+  corr:        ['CORRELATIE-GUARD',           'BTC/ETH/SOL SLOT LOCK'],
+  ranging:     ['RANGING MARKT PROTOCOLS',    'REGIME WR · FILTER ANALYSE'],
+  strategies:  ['STRATEGIE GEWICHTEN (12)',   'ADAPTIEVE MULTIPLIERS · ACCURACY'],
+  positions:   ['OPEN POSITIES',              'LIVE TRADES · PnL · SL / TP'],
+};
+
+function renderModal(room){
+  const [title,sub] = ROOM_META[room]||[room.toUpperCase(),'LIVE DATA'];
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSub').textContent   = sub;
+  document.getElementById('modalBody').innerHTML    = buildContent(room);
+  renderLogLines();
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BUILD CONTENT — alle kamers
+   ───────────────────────────────────────────────────────────────── */
+function buildContent(room){
+  const d  = vaultData;
+  const p  = d.portfolio||{};
+  if(p.balance==null && p.total_value!=null) p.balance = p.total_value;
+  const su = d.summary||{};
+  const sm = d.meta||{};
+  const ps = d.positions||{};
+  const rg = d.regimes||{};
+  const sg = d.current_signals||{};
+  const nr = d.no_trade_reasons||{};
+  const st = d.strategy_stats||[];
+  const hp = d.heal_proposal||{};
+  const bs = d.bot_state||{};
+  const pr = d.prices||{};
+  const diag = d.diagnostics||{};
+
+  const logCol = buildLogCol(room);
+
+  /* ── OVERSEER ── */
+  if(room==='overseer'){
+    const rwd  = su.regime_wr||{};
+    return col(`
+      ${sRow('Portfolio','$'+f(p.balance),'val-amber')}
+      ${sRow('PnL totaal',pct(p.pnl_pct),'val-'+(p.pnl_pct>=0?'green':'red'))}
+      ${sRow('Win Rate',pct(su.win_rate),'val-'+(su.win_rate>0.5?'green':'red'))}
+      ${sRow('Profit Factor',f(su.profit_factor),'val-'+(su.profit_factor>1.5?'green':su.profit_factor>1?'amber':'red'))}
+      ${sRow('Streak',su.streak||'—','val-'+(su.streak<0?'red':'green'))}
+      ${sRow('Drawdown',pct(p.drawdown),'val-red')}
+      ${sRow('Wins/Losses',(su.wins||0)+'W/'+(su.losses||0)+'L','val-dim')}
+      ${sRow('Throttle',pct(sm.throttle),'val-amber')}
+      ${sRow('Throttle reden',sm.reason||'—','val-dim')}
+      ${sRow('Cycle',d.cycle||'—','val-dim')}
+      <div class="modal-col-title" style="margin-top:12px">REGIME OVERZICHT</div>
+      ${['BTC/USDT','ETH/USDT','SOL/USDT'].map(s=>{
+        const r=rg[s];
+        return sRow(s,r?.regime||'—',regCls(r?.regime));
+      }).join('')}
+    `) + col(`
+      <div class="modal-col-title">GEEN-TRADE REDENEN</div>
+      ${['BTC/USDT','ETH/USDT','SOL/USDT'].map(s=>`
+        <div style="margin-bottom:8px">
+          <div style="font-size:8px;color:var(--dim);margin-bottom:3px;letter-spacing:1px">${s}</div>
+          <div style="font-size:8px;color:var(--text);background:rgba(0,0,0,0.3);padding:6px;border-radius:3px;line-height:1.55">${nr[s]||'—'}</div>
+        </div>`).join('')}
+      <div class="modal-col-title" style="margin-top:10px">REGIME WINRATES</div>
+      ${sRow('ranging',pct(rwd.ranging||su.ranging_wr),'val-red')}
+      ${sRow('bear_trend',pct(rwd.bear_trend||su.bear_wr),'val-green')}
+      ${sRow('bull_trend',pct(rwd.bull_trend||su.bull_wr),'val-green')}
+      ${sRow('accumulation',pct(rwd.accumulation||su.accum_wr),'val-blue')}
+    `) + logCol;
+  }
+
+  /* ── SYMBOL ROOMS ── */
+  if(room==='btc'||room==='eth'||room==='sol'){
+    const SYM = room==='btc'?'BTC/USDT':room==='eth'?'ETH/USDT':'SOL/USDT';
+    const pos = ps[SYM];
+    const ri  = rg[SYM]||{};
+    const sigs = (sg[SYM]||[]);
+    const dInfo = diag[SYM]||{};
+    const statusCls={'ok':'diag-ok','position':'diag-position','warning':'diag-warning','blocked':'diag-blocked','stale':'diag-stale'};
+    const diagBadgeCls = statusCls[dInfo.status]||'diag-warning';
+    return col(`
+      ${sRow('Prijs','$'+f(pr[SYM]),'val-amber')}
+      ${sRow('Regime',ri.regime||'—',regCls(ri.regime))}
+      ${sRow('Kracht',pct(ri.strength),'val-dim')}
+      <div class="modal-col-title" style="margin-top:10px">⊙ OVERSEER DIAGNOSE</div>
+      <div class="diag-badge ${diagBadgeCls}" style="font-size:9px;padding:4px 10px;margin-bottom:4px">${dInfo.badge||'—'}</div>
+      <div style="font-size:7.5px;color:var(--dim);line-height:1.5;margin-bottom:2px">${dInfo.reason||'Geen diagnose beschikbaar'}</div>
+      ${dInfo.detail?`<div style="font-size:7px;color:var(--dim);opacity:0.7">${dInfo.detail}</div>`:''}
+      <div class="modal-col-title" style="margin-top:10px">POSITIE</div>
+      ${pos?`
+        ${sRow('Richting',pos.side?.toUpperCase(),'val-'+(pos.side==='long'?'green':'red'))}
+        ${sRow('Entry','$'+f(pos.entry_price),'val-dim')}
+        ${sRow('Grootte','$'+f((pos.size||0)*(pos.entry_price||0)),'val-blue')}
+        ${sRow('Stop Loss','$'+f(pos.sl),'val-red')}
+        ${sRow('TP1','$'+f(pos.tp1),'val-green')}
+        ${sRow('TP2','$'+f(pos.tp2),'val-green')}
+        ${sRow('Ongerealiseerd PnL',pct(pos.unrealized_pnl_pct),'val-'+(pos.unrealized_pnl_pct>0?'green':'red'))}
+      `:sRow('Positie','GEEN OPEN POSITIE','val-dim')}
+      <div class="modal-col-title" style="margin-top:10px">GEEN-TRADE REDEN</div>
+      <div style="font-size:8px;color:var(--text);background:rgba(0,0,0,0.3);padding:7px;border-radius:3px;line-height:1.55">${nr[SYM]||'Geen blokkade actief'}</div>
+    `) + col(`
+      <div class="modal-col-title">SIGNALEN</div>
+      ${sigs.length?sigs.map(s=>`
+        <div class="signal-item">
+          <div class="signal-name">${s.naam||'?'} <span style="font-size:7px">${f(s.gewicht_mult)}×</span></div>
+          <div class="signal-conf ${s.actie>0?'conf-long':s.actie<0?'conf-short':'conf-neutral'}">
+            ${s.actie>0?'▲ LONG':s.actie<0?'▼ SHORT':'● HOLD'} ${pct(s.confidence)}
+          </div>
+          <div style="font-size:7px;color:var(--dim);margin-top:1px">${s.reden||''}</div>
+        </div>`).join(''):'<div style="color:var(--dim);font-size:8px">Geen signalen beschikbaar</div>'}
+    `) + logCol;
+  }
+
+  /* ── FILTER SHIELD ── */
+  if(room==='shield'){
+    const rsl = diag._rsi_zone_log||{};
+    const f1s = diag._filter1d_stats||{};
+    const bySymbol = rsl.by_symbol||{};
+    const wr1d = f1s.wr!=null ? pct(f1s.wr) : '—';
+    const nTrades = f1s.n_trades||0;
+    const baseWR = pct(f1s.baseline_wr||0.29);
+    return col(`
+      <div class="modal-col-title">RSI ZONE STATUS PER SYMBOOL</div>
+      ${['BTC/USDT','ETH/USDT','SOL/USDT'].map(s=>{
+        const key=s.replace('/USDT','').toLowerCase();
+        const dInfo = diag[s]||{};
+        const regime = dInfo.regime||'?';
+        const rsi = dInfo.rsi;
+        const isRanging = regime.includes('ranging');
+        let zoneOk = '—';
+        if(isRanging && rsi!=null){
+          const blocked = (/* zou geblokt worden */ false);
+          zoneOk = rsi < 45 ? '✓ ONDERKANT (<45)' : rsi > 55 ? '✓ BOVENKANT (>55)' : '⚠ MIDDEN — GEBLOKT';
+        }
+        return `<div style="margin-bottom:5px;padding:4px;background:rgba(255,255,255,0.03);border-radius:3px">
+          <div style="font-size:8px;color:var(--amber);margin-bottom:2px">${s}</div>
+          <div style="font-size:7px;color:var(--dim)">Regime: <span style="color:var(--text)">${regime}</span></div>
+          ${rsi!=null?`<div style="font-size:7px;color:var(--dim)">RSI: <span style="color:var(--text)">${f(rsi,1)}</span></div>`:''}
+          <div style="font-size:7px;color:var(--dim)">Blokken: <span style="color:var(--neon-red)">${bySymbol[s]||0}</span></div>
+        </div>`;
+      }).join('')}
+      <div class="modal-col-title" style="margin-top:10px">BLOKKADE TELLERS</div>
+      ${sRow('Blokken (1u)',rsl.last_1h||0,'val-red')}
+      ${sRow('Blokken (24u)',rsl.last_24h||0,'val-amber')}
+      ${sRow('Totaal blokken',rsl.total||0,'val-dim')}
+    `) + col(`
+      <div class="modal-col-title">FILTER 1D EFFECTIVITEIT</div>
+      ${sRow('Trades na filter',nTrades,'val-blue')}
+      ${sRow('WR na filter',wr1d,'val-'+(f1s.wr>0.40?'green':f1s.wr!=null?'amber':'dim'))}
+      ${sRow('Baseline WR (voor)',baseWR,'val-red')}
+      ${sRow('Target WR','≥40%','val-dim')}
+      ${sRow('Actief sinds',f1s.active_since||'27 Mei 2026','val-dim')}
+      <div class="mini-bar" style="margin-top:4px;margin-bottom:8px">
+        <div class="mini-bar-fill ${(f1s.wr||0)>0.40?'fill-green':(f1s.wr||0)>0.29?'fill-amber':'fill-red'}" style="width:${Math.min(100,((f1s.wr||0.29)*100))}%"></div>
+      </div>
+      <div class="modal-col-title" style="margin-top:6px">WAT IS FILTER 1D?</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        Ranging Long: alleen bij RSI &lt; 45<br>
+        Ranging Short: alleen bij RSI &gt; 55<br>
+        Basis: 77% trades gingen direct fout<br>
+        Baseline WR ranging: 29% (n=45)<br>
+        Target: ≥40% WR na 20 nieuwe trades
+      </div>
+      <div style="font-size:7px;color:var(--dim);margin-top:8px;background:rgba(0,0,0,0.3);padding:6px;border-radius:3px">
+        ${f1s.status||'Nog geen ranging trades na activatie'}
+      </div>
+    `) + logCol;
+  }
+
+  /* ── POSITIONS ── */
+  if(room==='positions'){
+    const entries = Object.entries(ps);
+    return col(`
+      ${sRow('Open posities',entries.length,'val-blue')}
+      ${sRow('Portfolio','$'+f(p.balance),'val-amber')}
+      ${sRow('Vrij kapitaal','$'+f(p.free_capital),'val-green')}
+      ${sRow('In posities','$'+f((p.balance||0)-(p.free_capital||0)),'val-blue')}
+      <div class="modal-col-title" style="margin-top:10px">OPEN POSITIES</div>
+      ${entries.length?entries.map(([sym,pos])=>`
+        <div class="pos-card ${pos.side==='long'?'long-card':'short-card'}">
+          <div class="pos-header">
+            <span style="font-weight:bold">${sym}</span>
+            <span class="pos-dir ${pos.side==='long'?'dir-long':'dir-short'}">${pos.side?.toUpperCase()}</span>
+          </div>
+          ${sRow('Entry','$'+f(pos.entry_price),'val-dim')}
+          ${sRow('Grootte','$'+f((pos.size||0)*(pos.entry_price||0)),'val-blue')}
+          ${sRow('SL','$'+f(pos.sl),'val-red')}
+          ${sRow('TP1','$'+f(pos.tp1),'val-green')}
+          ${sRow('TP2','$'+f(pos.tp2),'val-green')}
+          ${sRow('PnL',pct(pos.unrealized_pnl_pct),'val-'+(pos.unrealized_pnl_pct>0?'green':'red'))}
+        </div>`).join(''):'<div style="color:var(--dim);padding:16px;text-align:center">Geen open posities</div>'}
+    `) + col(`
+      <div class="modal-col-title">RISICO SPREIDING</div>
+      ${entries.map(([sym,pos])=>`
+        <div style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:2px">
+            <span>${sym}</span><span class="${pos.side==='long'?'val-green':'val-red'}">${pos.side?.toUpperCase()}</span>
+          </div>
+          <div class="mini-bar"><div class="mini-bar-fill ${pos.side==='long'?'fill-green':'fill-red'}" style="width:${Math.min(100,((pos.size||0)*(pos.entry_price||0))/(p.balance||1)*100)}%"></div></div>
+        </div>`).join('')||'<div style="color:var(--dim)">—</div>'}
+    `) + logCol;
+  }
+
+  /* ── RISK ── */
+  if(room==='risk'){
+    const dd = parseFloat(p.drawdown||0);
+    const cbUntil = bs.circuit_breaker_until||0;
+    const cbActive = cbUntil>Date.now()/1000;
+    return col(`
+      ${sRow('Drawdown',pct(p.drawdown),'val-'+(dd>0.1?'red':dd>0.05?'amber':'green'))}
+      ${sRow('Max Drawdown','15%','val-dim')}
+      <div class="mini-bar"><div class="mini-bar-fill fill-red" style="width:${Math.min(100,dd/0.15*100)}%"></div></div>
+      ${sRow('Circuit Breaker',cbActive?'ACTIEF':'INACTIEF','val-'+(cbActive?'red':'green'))}
+      ${cbActive?sRow('CB verloopt',new Date(cbUntil*1000).toLocaleTimeString('nl-NL'),'val-amber'):''}
+      ${sRow('SL vandaag',bs.daily_sl_count||0,'val-amber')}
+      ${sRow('Streak',su.streak||'—','val-'+(su.streak<0?'red':'green'))}
+      ${sRow('Throttle',pct(sm.throttle),'val-amber')}
+      ${sRow('Throttle reden',sm.reason||'—','val-dim')}
+      <div class="modal-col-title" style="margin-top:10px">CONFIG</div>
+      ${sRow('ATR SL mult','2.5×','val-dim')}
+      ${sRow('ATR TP mult','5.0×','val-dim')}
+      ${sRow('Max positie','90%','val-dim')}
+      ${sRow('Kelly frac','0.25×','val-dim')}
+    `) + col(`
+      <div class="modal-col-title">VERLIES ANALYSE</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        Verliesstreek voor fix: <span style="color:var(--neon-red)">-12</span><br>
+        94% verliezen in ranging regime<br>
+        Oorzaak: gelijktijdige BTC/ETH/SOL SL<br>
+        Fix: Correlatie Guard (25 mei 2026)<br><br>
+        Exit verdeling (54 trades):<br>
+        STOP-LOSS: 23×<br>
+        regime_exit: 8×<br>
+        omgekeerd_signaal: 2×
+      </div>
+    `) + logCol;
+  }
+
+  /* ── PERFORMANCE ── */
+  if(room==='performance'){
+    const rwd = su.regime_wr||{};
+    return col(`
+      ${sRow('Win Rate (totaal)',pct(su.win_rate),'val-'+(su.win_rate>0.5?'green':'red'))}
+      ${sRow('Profit Factor',f(su.profit_factor),'val-'+(su.profit_factor>1.5?'green':su.profit_factor>1?'amber':'red'))}
+      ${sRow('TP1 bereikt',pct(su.tp1_rate),'val-amber')}
+      ${sRow('Gem. win','+'+pct(su.avg_win_pct),'val-green')}
+      ${sRow('Gem. verlies',pct(su.avg_loss_pct),'val-red')}
+      ${sRow('R/R ratio',f(su.rr_ratio),'val-dim')}
+      ${sRow('Wins',su.wins||0,'val-green')}
+      ${sRow('Losses',su.losses||0,'val-red')}
+      <div class="modal-col-title" style="margin-top:10px">PER REGIME</div>
+      ${sRow('ranging',pct(rwd.ranging||su.ranging_wr),'val-red')}
+      ${sRow('bear_trend',pct(rwd.bear_trend||su.bear_wr),'val-green')}
+      ${sRow('bull_trend',pct(rwd.bull_trend||su.bull_wr),'val-green')}
+      ${sRow('accumulation',pct(rwd.accumulation||su.accum_wr),'val-blue')}
+    `) + col(`
+      <div class="modal-col-title">PER SYMBOOL</div>
+      ${['BTC/USDT','ETH/USDT','SOL/USDT'].map(s=>{
+        const sw = su.symbol_wr?.[s]||su.symbol_stats?.[s];
+        return sw?sRow(s,pct(sw),'val-'+(sw>0.5?'green':'red')):sRow(s,'—','val-dim');
+      }).join('')}
+      <div class="modal-col-title" style="margin-top:10px">CONFIDENCE BUCKETS</div>
+      ${(su.conf_buckets||[]).map(b=>`
+        <div class="stat-row">
+          <span class="stat-label">${b.label||'?'}</span>
+          <span class="stat-val ${b.wr>0.5?'val-green':b.wr>0.35?'val-amber':'val-red'}">${pct(b.wr)} (${b.n})</span>
+        </div>`).join('')||sRow('Data','Zie check-rapport','val-dim')}
+    `) + logCol;
+  }
+
+  /* ── HEALER ── */
+  if(room==='healer'){
+    return col(`
+      <div class="healer-param">
+        <div class="healer-param-name">ranging_tp2_mult</div>
+        <div class="healer-param-val">1.75×ATR</div>
+        <div class="healer-param-prev">Was: 2.0×ATR — toegepast 25-05-2026 19:15</div>
+      </div>
+      ${sRow('Poort status','🔓 GEOPEND — 25 MEI 2026','val-green')}
+      ${sRow('MIN_N','10 (was 20)','val-amber')}
+      ${sRow('Voorstel param',hp.param||'ranging_tp2_mult','val-dim')}
+      ${sRow('Voorgestelde waarde',hp.proposed_value!=null?hp.proposed_value+'×':'1.75×','val-amber')}
+      ${sRow('Status',hp.status||'applied','val-green')}
+      ${sRow('WR bij aanvraag',pct(hp.wr||0.30),'val-red')}
+      ${sRow('TP1-rate','19%','val-red')}
+      <div class="modal-col-title" style="margin-top:10px">REDEN</div>
+      <div style="font-size:8px;color:var(--text);background:rgba(0,0,0,0.3);padding:7px;border-radius:3px;line-height:1.55">${hp.reason||'TP1-rate 19% = targets te ver. Ranging WR 31%. Verliesstreek -12 door gelijktijdige correlatie.'}</div>
+    `) + col(`
+      <div class="modal-col-title">BOUNDS CONFIG</div>
+      ${sRow('ranging_tp2_mult min','1.5×','val-dim')}
+      ${sRow('ranging_tp2_mult max','2.5×','val-dim')}
+      ${sRow('ranging_tp2_mult step','0.25','val-dim')}
+      ${sRow('Fix richting','omlaag (−)','val-dim')}
+      <div class="modal-col-title" style="margin-top:10px">TERUGDRAAIEN</div>
+      <div style="font-size:8px;color:var(--dim);background:rgba(0,0,0,0.3);padding:8px;border-radius:3px;font-family:monospace;line-height:1.8">
+        logs/heal_config.json:<br>
+        {"ranging_tp2_mult": 2.0}
+      </div>
+      <div class="modal-col-title" style="margin-top:10px">FEEDBACKLOOP</div>
+      ${sRow('MIN_N verlaagd','20 → 10','val-amber')}
+      ${sRow('Feedback cyclus','3-4 dagen','val-green')}
+      ${sRow('Bestand','tools/self_healer.py r.69','val-dim')}
+    `) + logCol;
+  }
+
+  /* ── CORRELATIE GUARD ── */
+  if(room==='corr'){
+    const openSyms = Object.keys(ps);
+    const grp = ['BTC/USDT','ETH/USDT','SOL/USDT'];
+    const openInGrp = grp.filter(s=>openSyms.includes(s));
+    return col(`
+      <div style="text-align:center;padding:10px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);border-radius:4px;margin-bottom:10px">
+        <div style="font-size:22px;font-weight:bold;color:var(--neon-blue)">${openInGrp.length}/1</div>
+        <div style="font-size:8px;color:var(--dim)">SLOTS IN GEBRUIK</div>
+      </div>
+      ${grp.map(s=>{
+        const open=openSyms.includes(s);
+        const pos=ps[s];
+        return `<div class="corr-row">
+          <span style="font-weight:bold;font-size:10px">${s.replace('/USDT','')}</span>
+          <span style="font-size:12px">${open?'🔒':'🔓'}</span>
+          <span class="${open?'val-amber':'val-green'}" style="font-size:8px">${open?`${pos?.side?.toUpperCase()} @ $${f(pos?.entry_price)}`:'VRIJ'}</span>
+        </div>`;
+      }).join('')}
+      <div class="modal-col-title" style="margin-top:10px">STATISTIEKEN</div>
+      ${sRow('Verliesstreek voor fix','-12','val-red')}
+      ${sRow('Verliezen in ranging','94%','val-red')}
+      ${sRow('Oorzaak','BTC/ETH/SOL corr. >90%','val-dim')}
+      ${sRow('Toegepast','25-05-2026','val-green')}
+      ${sRow('Status','ACTIEF','val-green')}
+    `) + col(`
+      <div class="modal-col-title">CODE LOCATIE</div>
+      <div style="font-size:8px;color:var(--dim);font-family:monospace;background:rgba(0,0,0,0.3);padding:8px;border-radius:4px;line-height:1.85">
+        bot.py r.1698-1712<br><br>
+        if regime == "ranging":<br>
+        &nbsp;&nbsp;_CORR_GROUPS = [{<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;"BTC/USDT",<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;"ETH/USDT",<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;"SOL/USDT"<br>
+        &nbsp;&nbsp;}]<br>
+        &nbsp;&nbsp;for _grp in _CORR_GROUPS:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if sym in _grp:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if any open in _grp:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action = 0
+      </div>
+      <div class="modal-col-title" style="margin-top:10px">TERUGDRAAIEN</div>
+      <div style="font-size:8px;color:var(--dim);background:rgba(0,0,0,0.3);padding:7px;border-radius:4px">
+        Verwijder _CORR_GROUPS block in bot.py r.1698-1712
+      </div>
+    `) + logCol;
+  }
+
+  /* ── RANGING ANALYSE ── */
+  if(room==='ranging'){
+    const rwd = su.regime_wr||{};
+    return col(`
+      <div class="modal-col-title">REGIME WINRATES</div>
+      ${sRow('ranging',pct(rwd.ranging||su.ranging_wr),'val-red')}
+      <div class="mini-bar"><div class="mini-bar-fill fill-red" style="width:${((rwd.ranging||su.ranging_wr||0.30)*100)}%"></div></div>
+      ${sRow('bear_trend',pct(rwd.bear_trend||su.bear_wr),'val-green')}
+      <div class="mini-bar"><div class="mini-bar-fill fill-green" style="width:${((rwd.bear_trend||su.bear_wr||0.83)*100)}%"></div></div>
+      ${sRow('bull_trend',pct(rwd.bull_trend||su.bull_wr),'val-green')}
+      <div class="mini-bar"><div class="mini-bar-fill fill-green" style="width:${((rwd.bull_trend||su.bull_wr||1.0)*100)}%"></div></div>
+      ${sRow('accumulation',pct(rwd.accumulation||su.accum_wr),'val-blue')}
+      <div class="modal-col-title" style="margin-top:10px">RANGING FIXES ACTIEF</div>
+      ${sRow('TP2 mult','2.0 → 1.75×ATR','val-green')}
+      ${sRow('Correlatie Guard','ACTIEF','val-green')}
+      ${sRow('Min confluence','3 (was 2)','val-dim')}
+      ${sRow('Filter 1c ADX skip','ACTIEF (ADX<18)','val-green')}
+      ${sRow('Filter 1d RSI-Zone','ACTIEF (27 mei)','val-green')}
+    `) + col(`
+      <div class="modal-col-title">WAAROM RANGING SLECHT?</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        45 van 54 trades in ranging regime<br>
+        WR ranging: ~29% (baseline)<br><br>
+        Oorzaken geïdentificeerd:<br>
+        1. TP2 te ver (2.0×ATR) → laag TP1 rate 19%<br>
+        2. BTC/ETH/SOL gelijktijdig open → corr. verlies<br>
+        3. 77% trades gingen direct de verkeerde kant op<br>
+        4. Filter 1d: RSI in het midden = te laat ingestapt<br><br>
+        Fixes toegepast:<br>
+        ✓ TP2 → 1.75×ATR (25 mei)<br>
+        ✓ Correlatie Guard (25 mei)<br>
+        ✓ ADX ranging skip — Filter 1c (26 mei)<br>
+        ✓ RSI-Zone filter 1d (27 mei)
+      </div>
+    `) + logCol;
+  }
+
+  /* ── LSTM ── */
+  if(room==='lstm'){
+    return col(`
+      ${sRow('val_acc','37.8%','val-amber')}
+      ${sRow('Random baseline','33.3%','val-dim')}
+      ${sRow('Target','≥45% voor herinschakelen','val-dim')}
+      <div class="mini-bar"><div class="mini-bar-fill fill-amber" style="width:37.8%"></div></div>
+      ${sRow('LSTM Weight','0.00 (uitgeschakeld)','val-red')}
+      ${sRow('Reden uitzetten','val_acc ≈ random, voegt ruis toe','val-dim')}
+      ${sRow('Status','UITGESCHAKELD','val-red')}
+      ${sRow('Laatste training','test_202 05:21','val-dim')}
+      ${sRow('Auto-retrain','ma 03:00 (cron)','val-dim')}
+      <div class="modal-col-title" style="margin-top:10px">ARCHITECTUUR</div>
+      <div style="font-size:8px;color:var(--dim);background:rgba(0,0,0,0.3);padding:7px;border-radius:4px;line-height:1.7">
+        LSTM → Attention → Dense → Sigmoid<br>
+        Input: 60+ features, window 60 kaarsen<br>
+        Output: 0.0–1.0 (kans op stijging)<br>
+        Drempel: >0.55 bullish / &lt;0.45 bearish
+      </div>
+    `) + col(`
+      <div class="modal-col-title">HERINSCHAKELEN WANNEER</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        val_acc ≥ 45% na hertraining<br>
+        Hertrainen: <span style="font-family:monospace;color:var(--text)">python bot.py --train</span><br>
+        Of: <span style="font-family:monospace;color:var(--text)">bot-trainer agent</span><br><br>
+        Dan: LSTM_WEIGHT=0.20 in .env
+      </div>
+      <div class="modal-col-title" style="margin-top:10px">GESCHIEDENIS</div>
+      ${sRow('Was','0.20 (april)','val-dim')}
+      ${sRow('→','0.10 (15 mei)','val-dim')}
+      ${sRow('→','0.05 (15 mei)','val-dim')}
+      ${sRow('→','0.00 (19 mei)','val-red')}
+    `) + logCol;
+  }
+
+  /* ── RL ── */
+  if(room==='rl'){
+    return col(`
+      ${sRow('RL Weight','10%','val-amber')}
+      ${sRow('Algoritme','PPO (Proximal Policy Opt.)','val-dim')}
+      ${sRow('Acties','0=hold  1=buy  2=sell','val-dim')}
+      ${sRow('Reward','Sortino Ratio','val-dim')}
+      ${sRow('Training stappen','~100k','val-dim')}
+      ${sRow('Model','models/crypto_ppo.zip','val-green')}
+      ${sRow('Hertraind','25 mei 2026 00:43','val-green')}
+      <div class="modal-col-title" style="margin-top:10px">GEWICHTEN VERDELING</div>
+      <div style="font-size:8px;color:var(--dim);margin-bottom:3px">Strategieën 90%</div>
+      <div class="mini-bar"><div class="mini-bar-fill fill-blue" style="width:90%"></div></div>
+      <div style="font-size:8px;color:var(--dim);margin-bottom:3px">RL Agent 10%</div>
+      <div class="mini-bar"><div class="mini-bar-fill fill-purple" style="width:10%"></div></div>
+      <div style="font-size:8px;color:var(--dim);margin-bottom:3px">LSTM 0% (uitgeschakeld)</div>
+      <div class="mini-bar"><div class="mini-bar-fill fill-red" style="width:0%"></div></div>
+    `) + col(`
+      <div class="modal-col-title">SORTINO VS SHARPE</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        Sortino ratio bestraft alleen negatieve volatiliteit (downside), niet positieve. Beter voor crypto trading waar upside volatiliteit gewenst is.
+      </div>
+      <div class="modal-col-title" style="margin-top:10px">GESCHIEDENIS</div>
+      ${sRow('Was','0.30 (april)','val-dim')}
+      ${sRow('→','0.10 (1 mei)','val-amber')}
+      ${sRow('Reden','RL voegde ruis toe','val-dim')}
+    `) + logCol;
+  }
+
+  /* ── STRATEGIES ── */
+  if(room==='strategies'){
+    const sorted = st.slice().sort((a,b)=>(b.gewicht_mult||1)-(a.gewicht_mult||1));
+    return col(`
+      <div class="modal-col-title">ALLE STRATEGIEËN (gesorteerd)</div>
+      ${sorted.map(s=>`
+        <div style="margin-bottom:7px">
+          <div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:2px">
+            <span>${s.naam||'?'}</span>
+            <span class="${s.gewicht_mult>1.4?'val-green':s.gewicht_mult<0.6?'val-red':'val-amber'}">${f(s.gewicht_mult)}× · ${pct(s.accuracy||0)} · n=${s.samples||0}</span>
+          </div>
+          <div class="mini-bar"><div class="mini-bar-fill ${s.gewicht_mult>1.4?'fill-green':s.gewicht_mult<0.6?'fill-red':'fill-amber'}" style="width:${(s.gewicht_mult||1)/2*100}%"></div></div>
+        </div>`).join('')||'<div style="color:var(--dim)">Geen data</div>'}
+    `) + col(`
+      <div class="modal-col-title">HOE ADAPTIEVE GEWICHTEN WERKEN</div>
+      <div style="font-size:8px;color:var(--dim);line-height:1.7">
+        Na elke trade: was de strategie correct?<br>
+        accuracy = wins / totaal (laatste 40)<br><br>
+        multiplier = 0.5 + (acc - 0.40) / 0.20<br>
+        40% acc → 0.5× | 60% acc → 1.5×<br>
+        Min: 0.3× | Max: 2.0×<br><br>
+        Min. 10 samples nodig voor aanpassing.
+      </div>
+      <div class="modal-col-title" style="margin-top:10px">TOP 3 STERKSTE</div>
+      ${sorted.slice(0,3).map((s,i)=>sRow(`${i+1}. ${s.naam}`,f(s.gewicht_mult)+'×','val-green')).join('')}
+      <div class="modal-col-title" style="margin-top:8px">BOTTOM 3</div>
+      ${sorted.slice(-3).reverse().map((s,i)=>sRow(`${i+1}. ${s.naam}`,f(s.gewicht_mult)+'×','val-red')).join('')}
+    `) + logCol;
+  }
+
+  /* ── MARKET / PRICES ── */
+  if(room==='market'||room==='prices'){
+    return col(`
+      <div class="modal-col-title">LIVE PRIJZEN</div>
+      ${sRow('BTC/USDT','$'+f(pr['BTC/USDT']),'val-amber')}
+      ${sRow('ETH/USDT','$'+f(pr['ETH/USDT']),'val-blue')}
+      ${sRow('SOL/USDT','$'+f(pr['SOL/USDT']),'val-green')}
+      <div class="modal-col-title" style="margin-top:10px">REGIME DETAILS</div>
+      ${['BTC/USDT','ETH/USDT','SOL/USDT'].map(s=>{
+        const r=rg[s]||{};
+        return `<div style="margin-bottom:6px">
+          ${sRow(s,r.regime||'—',regCls(r.regime))}
+          ${sRow('Kracht',pct(r.strength),'val-dim')}
+        </div>`;
+      }).join('')}
+    `) + col(`
+      <div class="modal-col-title">SENTIMENT</div>
+      ${sRow('Label',(d.sentiment?.label)||'—','val-dim')}
+      ${sRow('Score',pct(d.sentiment?.score),'val-dim')}
+      ${sRow('Fear & Greed',d.sentiment?.fear_greed||'—','val-amber')}
+      <div style="font-size:8px;color:var(--dim);margin-top:8px;line-height:1.6">
+        0-25: Extreme Fear → contrarian buy<br>
+        25-45: Fear → voorzichtig bullish<br>
+        55-75: Greed → voorzichtig bearish<br>
+        75-100: Extreme Greed → contrarian sell
+      </div>
+    `) + logCol;
+  }
+
+  /* FALLBACK */
+  return col(`<div style="color:var(--dim)">Geen gedetailleerde data beschikbaar.</div>`) + col('') + logCol;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   LOG COLUMN BUILDER
+   ───────────────────────────────────────────────────────────────── */
+function buildLogCol(room){
+  const filterMap = {
+    btc:'[BTC/USDT]',eth:'[ETH/USDT]',sol:'[SOL/USDT]',
+    risk:'stop-loss|SL|circuit|DD:',positions:'LONG|SHORT|entry|positie',
+    shield:'RSI_ZONE|Filter 1d|rsi_zone',
+  };
+  const kw = filterMap[room]||'';
+  return `<div class="modal-col">
+    <div class="modal-col-title">VAULT LOGS</div>
+    <div style="margin-bottom:6px;display:flex;gap:4px;flex-wrap:wrap">
+      <button class="log-filter-btn${logFilter===''?' active':''}" onclick="setLF('')">ALLE</button>
+      <button class="log-filter-btn${logFilter==='ERROR'?' active':''}" onclick="setLF('ERROR')">ERR</button>
+      <button class="log-filter-btn${logFilter==='TRADE'?' active':''}" onclick="setLF('TRADE')">TRADE</button>
+      ${kw?`<button class="log-filter-btn${logFilter===kw?' active':''}" onclick="setLF('${kw}')">FILTER</button>`:''}
+    </div>
+    <div id="modal-log" class="log-terminal" style="height:280px;overflow-y:auto;font-size:7px;line-height:1.6"></div>
+  </div>`;
+}
+
+function setLF(f){
+  logFilter=f;
+  document.querySelectorAll('.log-filter-btn').forEach(b=>{
+    const t=b.textContent.trim();
+    b.classList.toggle('active',
+      (f===''&&t==='ALLE')||(f==='ERROR'&&t==='ERR')||(f==='TRADE'&&t==='TRADE')||(f!==''&&f!=='ERROR'&&f!=='TRADE'&&t==='FILTER')
+    );
+  });
+  renderLogLines();
+}
+
+function renderLogLines(){
+  const el=document.getElementById('modal-log');
+  if(!el) return;
+  let lines=logsData;
+  if(logFilter){
+    const pats=logFilter.split('|');
+    lines=lines.filter(l=>pats.some(p=>l.includes(p)));
+  }
+  el.innerHTML=lines.slice(-200).map(l=>`<div class="log-line ${cls(l)}">${esc(l)}</div>`).join('');
+  el.scrollTop=el.scrollHeight;
+}
+
+function cls(l){
+  if(l.includes('ERROR')||l.includes('CRITICAL')) return 'log-error';
+  if(l.includes('WARNING')) return 'log-warn';
+  if(l.includes('TRADE')||l.includes('LONG')||l.includes('SHORT')) return 'log-trade';
+  return '';
+}
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ─────────────────────────────────────────────────────────────────
+   TEMPLATE HELPERS
+   ───────────────────────────────────────────────────────────────── */
+function col(html){ return `<div class="modal-col">${html}</div>`; }
+function sRow(label,val,c){ return `<div class="stat-row"><span class="stat-label">${label}</span><span class="stat-val ${c||''}">${val}</span></div>`; }
+function f(v,d=2){ if(v===undefined||v===null||v==='') return '—'; const n=parseFloat(v); if(isNaN(n)) return String(v); return n.toLocaleString('nl-NL',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function pct(v){ if(v===undefined||v===null) return '—'; const n=parseFloat(v); if(isNaN(n)) return '—'; return (n*100).toFixed(1)+'%'; }
+function regCls(r){ if(!r) return 'val-dim'; if(r.includes('bull')) return 'val-green'; if(r.includes('bear')) return 'val-red'; if(r.includes('ranging')) return 'val-amber'; if(r.includes('high')) return 'val-red'; if(r.includes('accum')) return 'val-blue'; return 'val-dim'; }
+function regPill(r){ if(!r) return '<span class="pill pill-dim">—</span>'; if(r.includes('bull')) return `<span class="pill pill-green">${r}</span>`; if(r.includes('bear')) return `<span class="pill pill-red">${r}</span>`; if(r.includes('ranging')) return `<span class="pill pill-amber">${r}</span>`; if(r.includes('high')) return `<span class="pill pill-red">${r}</span>`; return `<span class="pill pill-blue">${r}</span>`; }
+function set(id,v){ const e=document.getElementById(id); if(e) e.textContent=String(v); }
+function html(id,v){ const e=document.getElementById(id); if(e) e.innerHTML=v; }
+
+/* ─────────────────────────────────────────────────────────────────
+   MINIMAP NAVIGATIE
+   ───────────────────────────────────────────────────────────────── */
+function scrollToFloor(id){ const e=document.getElementById(id); if(e) e.scrollIntoView({behavior:'smooth',block:'start'}); }
+
+/* ─────────────────────────────────────────────────────────────────
+   PANIC OVERLAY
+   ───────────────────────────────────────────────────────────────── */
+let panicOn=false;
+function setPanic(on){
+  if(on===panicOn) return;
+  panicOn=on;
+  document.getElementById('panicOverlay').classList.toggle('on',on);
+  document.getElementById('panicText').classList.toggle('on',on);
+  document.querySelectorAll('.dweller').forEach(e=>e.classList.toggle('panic',on));
+  ['overseer','risk','btc','eth','sol'].forEach(r=>{
+    const a=document.getElementById('alarm-'+r);
+    if(a) a.classList.toggle('on',on);
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RSI BARRIÈRE ANIMATIE
+   ───────────────────────────────────────────────────────────────── */
+function updateRsiBarrier(diag){
+  const rsl = diag._rsi_zone_log||{};
+  const blocked = (rsl.last_1h||0) > 0;
+  const barrier = document.getElementById('rsi-barrier');
+  if(barrier) barrier.classList.toggle('active', blocked);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FILTER SHIELD ROOM UPDATE
+   ───────────────────────────────────────────────────────────────── */
+function updateShieldRoom(diag){
+  const rsl = diag._rsi_zone_log||{};
+  const f1s = diag._filter1d_stats||{};
+  const bySymbol = rsl.by_symbol||{};
+
+  // Per-symbool RSI zone status
+  ['btc','eth','sol'].forEach(sym=>{
+    const SYM = sym.toUpperCase()+'/USDT';
+    const dInfo = diag[SYM]||{};
+    const regime = dInfo.regime||'';
+    const isRanging = regime.includes('ranging');
+    const count = bySymbol[SYM]||0;
+    let zoneText = '—';
+    let zoneCls  = '';
+    if(isRanging){
+      if(count>0){
+        zoneText = `⚠ ${count}× GEBLOKT`;
+        zoneCls  = 'val-red';
+      } else {
+        zoneText = '✓ VRIJ DOOR';
+        zoneCls  = 'val-green';
+      }
+    } else {
+      zoneText = 'NIET RANGING';
+      zoneCls  = 'val-dim';
+    }
+    const el = document.getElementById('shield-'+sym);
+    if(el){ el.textContent=zoneText; el.className='stat-val '+zoneCls; }
+  });
+
+  // Tellers
+  set('shield-1h',  rsl.last_1h  || 0);
+  set('shield-24h', rsl.last_24h || 0);
+
+  // WR na filter
+  const wrEl = document.getElementById('shield-wr');
+  if(wrEl){
+    if(f1s.wr!=null){
+      wrEl.textContent = pct(f1s.wr)+' (n='+f1s.n_trades+')';
+      wrEl.className   = 'stat-val '+(f1s.wr>0.40?'val-green':f1s.wr>0.29?'val-amber':'val-red');
+    } else {
+      wrEl.textContent = '—  (0 trades)';
+      wrEl.className   = 'stat-val val-dim';
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   EYEBOT ROBOT ANIMATIE
+   ───────────────────────────────────────────────────────────────── */
+function animateRobot(d){
+  const robot = document.getElementById('eyebot-active');
+  if(!robot) return;
+
+  // Bepaal target-floor op basis van lopende cyclus-activiteit
+  // Als er een positie is → naar CORE (f0), anders WATCHTOWER (f1)
+  const hasPosition = Object.keys(d.positions||{}).length > 0;
+  const targetFloorId = hasPosition ? 'f0' : 'f1';
+  const targetFloor   = document.getElementById(targetFloorId);
+  if(!targetFloor) return;
+
+  const rect = targetFloor.getBoundingClientRect();
+  const scrollY = window.scrollY || window.pageYOffset;
+
+  // Beweeg robot naar de header van het target floor
+  const targetTop  = rect.top  + scrollY + 20;
+  const targetLeft = rect.right - 80;
+
+  robot.style.transition = 'top 1.2s cubic-bezier(0.25,0.8,0.25,1), left 0.8s ease';
+  robot.style.top  = targetTop  + 'px';
+  robot.style.left = targetLeft + 'px';
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   DRIP GENERATOR — cave plafond druppels
+   ───────────────────────────────────────────────────────────────── */
+function initDrips(){
+  const container = document.querySelector('.drip-container');
+  if(!container) return;
+  // Al aangemaakt? Skip
+  if(container.children.length > 0) return;
+
+  const count = 10;
+  for(let i=0; i<count; i++){
+    const drip = document.createElement('div');
+    drip.className = 'drip';
+    drip.style.left             = (5 + Math.random() * 90) + '%';
+    drip.style.animationDuration= (2.5 + Math.random() * 4.5) + 's';
+    drip.style.animationDelay   = (Math.random() * 6) + 's';
+    drip.style.width            = (1.5 + Math.random() * 2) + 'px';
+    drip.style.height           = (8  + Math.random() * 18) + 'px';
+    drip.style.opacity          = (0.25 + Math.random() * 0.45).toFixed(2);
+    container.appendChild(drip);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FETCH + UPDATE UI
+   ───────────────────────────────────────────────────────────────── */
+async function fetchAll(){
+  try{
+    const [vr,lr]=await Promise.all([
+      fetch('/api/vault_state').then(r=>r.json()),
+      fetch('/api/logs?n=300').then(r=>r.json()),
+    ]);
+    vaultData=vr; logsData=lr.lines||[];
+    updateUI();
+    if(activeRoom) renderModal(activeRoom);
+  }catch(e){ console.warn('fetch error',e); }
+}
+
+function updateUI(){
+  const d=vaultData, p=d.portfolio||{}, su=d.summary||{}, sm=d.meta||{};
+  const ps=d.positions||{}, rg=d.regimes||{}, sg=d.current_signals||{};
+  const nr=d.no_trade_reasons||{}, st=d.strategy_stats||[];
+  const hp=d.heal_proposal||{}, bs=d.bot_state||{}, pr=d.prices||{};
+  const diag=d.diagnostics||{};
+
+  /* Normaliseer veldnamen (API geeft total_value, JS verwacht balance) */
+  if(p.balance==null && p.total_value!=null) p.balance = p.total_value;
+
+  /* PANIC */
+  setPanic(parseInt(su.streak||0)<=-5);
+
+  /* STATUS BAR */
+  const running=d.running;
+  const dot=document.getElementById('sb-dot');
+  if(dot) dot.className='sb-dot'+(running?'':' red');
+  set('sb-status',running?'BOT ACTIEF':'BOT GESTOPT');
+  set('sb-portfolio','$'+f(p.balance));
+  const pnl=parseFloat(p.pnl_pct||0);
+  html('sb-pnl',`<span style="color:${pnl>=0?'var(--neon-green)':'var(--neon-red)'}">${pnl>=0?'+':''}${pct(p.pnl_pct)}</span>`);
+  set('sb-wr',pct(su.win_rate));
+  const sk=parseInt(su.streak||0);
+  html('sb-streak',`<span style="color:${sk<0?'var(--neon-red)':'var(--neon-green)'}">${sk>=0?'+':''}${sk}</span>`);
+  set('sb-dd',pct(p.drawdown));
+  set('sb-cycle',d.cycle||'—');
+  set('sb-pos',Object.keys(ps).length);
+
+  /* OVERSEER */
+  set('ov-portfolio','$'+f(p.balance));
+  html('ov-pnl',`<span style="color:${pnl>=0?'var(--neon-green)':'var(--neon-red)'}">${pnl>=0?'+':''}${pct(p.pnl_pct)}</span>`);
+  html('ov-wr',`<span class="${su.win_rate>0.5?'val-green':'val-red'}">${pct(su.win_rate)}</span>`);
+  html('ov-pf',`<span class="${su.profit_factor>1.5?'val-green':su.profit_factor>1?'val-amber':'val-red'}">${f(su.profit_factor)}</span>`);
+  html('ov-streak',`<span class="${sk<0?'val-red':'val-green'}">${sk>=0?'+':''}${sk}</span>`);
+  html('ov-dd',`<span class="${parseFloat(p.drawdown||0)>0.1?'val-red':'val-amber'}">${pct(p.drawdown)}</span>`);
+  set('ov-trades',(su.wins||0)+'W/'+(su.losses||0)+'L');
+  set('ov-throttle',pct(sm.throttle));
+  set('ov-sub',sm.reason||'VAULT INTELLIGENCE CENTER');
+
+  /* REGIME */
+  ['btc','eth','sol'].forEach(sym=>{
+    const SYM=sym.toUpperCase()+'/USDT';
+    const r=rg[SYM];
+    html('regime-'+sym,regPill(r?.regime));
+    set(sym+'-sub',(r?.regime||'?').toUpperCase()+' · '+pct(r?.strength));
+  });
+  html('mkt-sentiment',`<span class="pill ${(d.sentiment?.score||0)>0.5?'pill-red':(d.sentiment?.score||0)<-0.5?'pill-green':'pill-amber'}">${d.sentiment?.label||'—'}</span>`);
+  set('mkt-fg',d.sentiment?.fear_greed||'—');
+
+  /* PRICES */
+  set('price-btc','$'+f(pr['BTC/USDT']));
+  set('price-eth','$'+f(pr['ETH/USDT']));
+  set('price-sol','$'+f(pr['SOL/USDT']));
+  set('prices-ts','Update: '+new Date().toLocaleTimeString('nl-NL'));
+
+  /* BTC/ETH/SOL TRADING DESKS */
+  ['btc','eth','sol'].forEach(sym=>{
+    const SYM=sym.toUpperCase()+'/USDT';
+    const pos=ps[SYM], sigs=sg[SYM]||[], ntr=nr[SYM]||'';
+    set(sym+'-price','$'+f(pr[SYM]));
+    if(pos){ html(sym+'-pos',`<span class="pill ${pos.side==='long'?'pill-green':'pill-red'}">${pos.side?.toUpperCase()}</span>`); }
+    else { set(sym+'-pos','—'); }
+    const top=sigs.reduce((b,s)=>(!b||s.confidence>b.confidence)?s:b,null);
+    if(top){ const c=top.actie>0?'val-green':top.actie<0?'val-red':'val-dim'; html(sym+'-signal',`<span class="${c}">${top.actie>0?'▲':top.actie<0?'▼':'●'} ${top.naam} ${pct(top.confidence)}</span>`); }
+    else { set(sym+'-signal','—'); }
+    set(sym+'-reason',ntr.length>90?ntr.slice(0,90)+'…':ntr||'—');
+
+    // Diagnostic badge
+    const dInfo=diag[SYM];
+    const diagEl=document.getElementById(sym+'-diag');
+    if(diagEl && dInfo){
+      const statusCls={'ok':'diag-ok','position':'diag-position','warning':'diag-warning','blocked':'diag-blocked','stale':'diag-stale'};
+      diagEl.className='diag-badge '+(statusCls[dInfo.status]||'diag-warning');
+      diagEl.textContent=dInfo.badge||'—';
+      diagEl.title=dInfo.reason||'';
+    }
+
+    // Alarm bij geblokkeerde status
+    const alarmEl=document.getElementById('alarm-'+sym);
+    if(alarmEl) alarmEl.classList.toggle('on', dInfo?.status==='blocked'||dInfo?.status==='stale');
+  });
+
+  /* POSITIONS */
+  set('pos-count',Object.keys(ps).length);
+  set('pos-free','$'+f(p.free_capital));
+  const posMini=Object.entries(ps).map(([sym,pos])=>`
+    <div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid rgba(255,255,255,0.035)">
+      <span>${sym}</span>
+      <span class="${pos.side==='long'?'val-green':'val-red'}">${pos.side?.toUpperCase()}</span>
+      <span class="${(pos.unrealized_pnl_pct||0)>=0?'val-green':'val-red'}">${pct(pos.unrealized_pnl_pct)}</span>
+    </div>`).join('')||'<span style="color:var(--dim)">Geen posities open</span>';
+  html('pos-mini-list',posMini);
+
+  /* RISK */
+  const dd=parseFloat(p.drawdown||0);
+  html('risk-dd',`<span class="${dd>0.1?'val-red':dd>0.05?'val-amber':'val-green'}">${pct(p.drawdown)}</span>`);
+  const cbUntil=bs.circuit_breaker_until||0, cbOn=cbUntil>Date.now()/1000;
+  html('risk-cb',`<span class="${cbOn?'val-red':'val-green'}">${cbOn?'ACTIEF':'INACTIEF'}</span>`);
+  set('risk-sl',bs.daily_sl_count||0);
+  set('risk-throttle',pct(sm.throttle));
+  if(cbOn||dd>0.10) document.getElementById('alarm-risk')?.classList.add('on');
+  else document.getElementById('alarm-risk')?.classList.remove('on');
+  // drawdown bar
+  const ddBar=document.getElementById('risk-dd-bar');
+  if(ddBar) ddBar.style.width=Math.min(100,dd/0.15*100)+'%';
+
+  /* PERFORMANCE */
+  html('perf-wr',`<span class="${su.win_rate>0.5?'val-green':'val-red'}">${pct(su.win_rate)}</span>`);
+  html('perf-pf',`<span class="${su.profit_factor>1.5?'val-green':su.profit_factor>1?'val-amber':'val-red'}">${f(su.profit_factor)}</span>`);
+  set('perf-tp1',pct(su.tp1_rate)||'—');
+  set('perf-avgwin','+'+pct(su.avg_win_pct));
+  set('perf-avgloss',pct(su.avg_loss_pct));
+
+  /* SELF-HEALER */
+  set('heal-param',hp.param||'ranging_tp2_mult');
+  set('heal-val',hp.proposed_value!=null?hp.proposed_value+'×ATR':'1.75×ATR');
+  set('heal-reason',hp.reason||'TP1-rate 19% → targets te ver in ranging');
+
+  /* CORRELATIE GUARD */
+  const corrGrp=['BTC/USDT','ETH/USDT','SOL/USDT'];
+  corrGrp.forEach(sym=>{
+    const key=sym.replace('/USDT','').toLowerCase();
+    const isOpen=Object.keys(ps).includes(sym);
+    const pos=ps[sym];
+    set('corr-'+key+'-lock',isOpen?'🔒':'🔓');
+    html('corr-'+key+'-st',isOpen?`<span class="val-amber">${pos?.side?.toUpperCase()} OPEN</span>`:`<span class="val-green">VRIJ</span>`);
+  });
+  const openInGrp=corrGrp.filter(s=>Object.keys(ps).includes(s));
+  html('corr-msg',openInGrp.length>0?
+    `<span class="pill pill-amber">⚠ LOCKED — ${openInGrp[0]?.replace('/USDT','')} OPEN</span>`:
+    `<span class="pill pill-green">● GUARD ACTIEF — ALLE SLOTS VRIJ</span>`
+  );
+
+  /* RANGING WR */
+  const rwd=su.regime_wr||{};
+  set('rng-wr',pct(rwd.ranging||su.ranging_wr));
+  set('bear-wr',pct(rwd.bear_trend||su.bear_wr));
+  set('bull-wr',pct(rwd.bull_trend||su.bull_wr));
+  set('accum-wr',pct(rwd.accumulation||su.accum_wr));
+  // ranging WR bar
+  const rngBar=document.getElementById('rng-wr-bar');
+  if(rngBar) rngBar.style.width=Math.min(100,((rwd.ranging||su.ranging_wr||0.29)*100))+'%';
+
+  /* STRATEGY MINI */
+  const topSt=st.slice().sort((a,b)=>(b.gewicht_mult||1)-(a.gewicht_mult||1)).slice(0,6);
+  html('strat-mini-grid',topSt.map(s=>`
+    <div class="stat-row">
+      <span class="stat-label" style="font-size:7px">${s.naam||'?'}</span>
+      <span class="stat-val ${s.gewicht_mult>1.3?'val-green':s.gewicht_mult<0.7?'val-red':'val-amber'}" style="font-size:8px">${f(s.gewicht_mult)}×</span>
+    </div>`).join('')||'<div style="color:var(--dim)">—</div>');
+
+  /* ── NIEUWE FEATURES ── */
+  // RSI Barrière in data tube
+  updateRsiBarrier(diag);
+  // Filter Shield kamer
+  updateShieldRoom(diag);
+  // Robot animatie bij cyclus-change
+  const currentCycle = d.cycle;
+  if(currentCycle !== lastCycle){
+    lastCycle = currentCycle;
+    animateRobot(d);
+  }
+
+  /* WATCH STATUS */
+  const watchStatus=document.getElementById('watch-status');
+  if(watchStatus){
+    const anySignal=Object.values(sg).some(arr=>arr&&arr.length>0);
+    watchStatus.textContent=anySignal?'● SCANNER ACTIEF':'○ WACHTEN';
+    watchStatus.className='level-status '+(anySignal?'st-online':'st-offline');
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   INFO BUTTON SYSTEEM
+   ───────────────────────────────────────────────────────────────── */
+const INFO_TEXTS = {
+  overseer: {
+    title: 'OVERSEER COMMAND CENTER',
+    text:  'Portaal naar de bot-controls. Toont portfolio-waarde, drawdown, open posities en het live equity-chart. Data afkomstig van logs/state.json (elke 60s bijgewerkt). De equity-curve is gecumuleerd PnL over alle gesloten trades.'
+  },
+  market: {
+    title: 'MARKTREGIME DETECTOR',
+    text:  'Analyseert 4h OHLCV via RegimeDetector. Bepaalt bull_trend / bear_trend / ranging / high_vol / accumulation. Beïnvloedt ALLE strategiegewichten via een regime-multiplier (bear=0.5×, high_vol=0.4×, bull=1.2×). De 4H ADX Confidence Modifier (>25 trending / <18 ranging) verfijnt dit verder per signaal-type.'
+  },
+  confidence: {
+    title: 'CONFIDENCE BRAIN',
+    text:  'Combineert 12 strategieën (50%) + RL-agent (10%) + LSTM (0%). Elke strategie heeft een adaptief gewicht dat bijgewerkt wordt na elke gesloten trade. Anti-paralysis systeem: drempel daalt naarmate de bot langer inactief is. MIN_CONFIDENCE=0.46 is de absolute ondergrens.'
+  },
+  signals: {
+    title: 'SIGNAAL COMBINER',
+    text:  'Aggregeert de raw signals van alle 12 strategieën (strategies/signals.py). Elke strategie geeft een actie (+1 long, -1 short, 0 hold) + confidence. Gewichten worden adaptief bijgesteld via AdaptiveWeightTracker op basis van de afgelopen 40 trades.'
+  },
+  risk: {
+    title: 'RISICOBEHEER (KELLY + ATR)',
+    text:  'Positiebepaling via fractional Kelly (0.25×) gecombineerd met ATR-stop. SL = entry ± 2.5×ATR. TP1 = partial close (50%), TP2 = 5.0×ATR. ATR Trailing Stop beweegt mee met de peak na 0.5×ATR winst (1.5×ATR achter de peak). Max risico per trade: 2% portfolio.'
+  },
+  execution: {
+    title: 'PAPER ENGINE',
+    text:  'Simuleert alle orders (execution/paper_engine.py). Voert long + short uit via market price. Houdt peak_price bij per positie voor trailing stop berekening. Bij TP1 wordt 50% van de positie gesloten (partial close). Alle trades gelogd naar logs/trades.json.'
+  },
+  healer: {
+    title: 'SELF-HEALER GATE',
+    text:  'tools/self_healer.py analyseert elke N=10 trades op systematische problemen. Schrijft een heal_proposal.json als een parameter aanpassing aanbevolen wordt. De gate vergt handmatige goedkeuring. Actieve heal: ranging_tp2_mult=1.75×ATR (was 2.0×).'
+  },
+  lstm: {
+    title: 'LSTM PREDICTOR',
+    text:  'PyTorch LSTM met Attention (agent/lstm_predictor.py). Input: 60+ features over een 60-kaars window. Output: kans op prijsstijging (0.0-1.0). Huidig gewicht: 0% (val_acc 37.8% ≈ random). Wordt heractiveerd zodra val_acc >43% na hertraining. Auto-retrain elke 84 uur (maandag 03:00).'
+  },
+  rl: {
+    title: 'RL PPO AGENT',
+    text:  'Proximal Policy Optimization agent (stable-baselines3). Traint op historisch OHLCV met Sortino-ratio als reward. Observatievenster: 20 kaarsen. Huidig gewicht: 10%. Elke trade levert feedback terug naar het adaptieve gewichtssysteem. Hertraining gestart op 25 mei.'
+  },
+  btc: {
+    title: 'BTC/USDT TRADING DESK',
+    text:  'Analyseert BTC/USDT op 1h + 4h timeframes. Data opgehaald via CCXT (Binance). 60+ features berekend door data/features.py. Alle 12 strategieën draaien parallel. Huidige status en laatste blokkade-reden via Vault Diagnostics (logs/vault_diagnostics.json).'
+  },
+  eth: {
+    title: 'ETH/USDT TRADING DESK',
+    text:  'Analyseert ETH/USDT op 1h + 4h timeframes. Hoogste trade-volume van de 3 symbolen (25 trades). ETH en BTC zijn >90% gecorreleerd — de ranging correlatie-lock voorkomt gelijktijdige posities in beide. Regime bepaald onafhankelijk van BTC.'
+  },
+  sol: {
+    title: 'SOL/USDT TRADING DESK',
+    text:  'Analyseert SOL/USDT op 1h + 4h timeframes. Hogere volatiliteit dan BTC/ETH — ATR gemiddeld 1.5-2× groter. SOL heeft de hoogste WR van de drie (43%). Staleness check: analyse overgeslagen als 1h data >90s oud na kaarssluit.'
+  },
+  shield: {
+    title: '🛡️ FILTER SHIELD — RSI-ZONE (Filter 1d)',
+    text:  'Harde wiskundige noodrem tegen te late entries in ranging markt. Ranging Long: alleen bij RSI < 45 (onderkant range). Ranging Short: alleen bij RSI > 55 (bovenkant range). Diagnose: 77% van ranging-trades gingen direct de verkeerde kant op (WR 29%, n=45). RSI in het midden = midden-range instappen = coin toss. Actief vanaf 27 mei 2026.'
+  },
+  corr: {
+    title: 'CORRELATIE-GUARD (F-2½)',
+    text:  'Ranging correlatie-lock (bot.py r.1698): In ranging-regime max 1 positie per gecorreleerde groep (BTC/ETH/SOL). BTC/ETH/SOL zijn >90% gecorreleerd — gelijktijdige posities in ranging leiden tot gecorreleerde verliezen. Actief sinds 25 mei na verliesstreek van 12.'
+  },
+  positions: {
+    title: 'OPEN POSITIES',
+    text:  'Alle actieve trades met entry-prijs, huidige prijs, PnL%, SL-niveau, TP1 en TP2. Trailing stop beweegt mee zodra winst ≥0.5×ATR. Partial close: 50% van de positie sluit op TP1. Resterende 50% loopt door naar TP2 of trailing stop. Max 1 positie per symbool tegelijk.'
+  },
+  performance: {
+    title: 'PERFORMANCE METRICS',
+    text:  'Win rate, Profit Factor, R/R-ratio en equity-curve van alle gesloten trades. Profit Factor = totale winst / totale verlies (doel ≥1.5). R/R ratio = gem. win / gem. verlies. Per-regime en per-symbool uitsplitsing via tools/check_report.py. Strategie-gewichten worden elke 40 trades herberekend.'
+  },
+  ranging: {
+    title: 'RANGING MARKT PROTOCOLS',
+    text:  'Specifieke instellingen voor sideways markten: TP2=1.75×ATR (via self-healer), confluence-drempel 3, ADX skip (Filter 1c), RSI-Zone (Filter 1d). In ranging blokkeert de correlatie-lock gelijktijdige BTC/ETH/SOL-posities. Grid en Bollinger krijgen verhoogde weging bij lage ADX (<18).'
+  },
+  strategies: {
+    title: 'STRATEGIE GEWICHTEN (12)',
+    text:  'Grid (61% WR), VolumeProfile (56%), SMC (56%), SR (53%), Bollinger (44%), Ichimoku (40%), EMA_Cross (33%), MarketStructure (31%). Gewichten adaptief bijgesteld via AdaptiveWeightTracker: 40% accuracy=0.5× tot 60% accuracy=1.5×. Min 10 samples vereist voor aanpassing.'
+  },
+  prices: {
+    title: 'LIVE PRIJZEN & VOLUMES',
+    text:  'Real-time prijsdata via CCXT (Binance API). OHLCV opgehaald op 1h én 4h timeframes. Volume-ratio: huidige volume t.o.v. 3-kaars gemiddelde (filter: >0.30 in bear_trend). Staleness check: analyse overgeslagen als laatste 1h kaars >90s geleden gesloten.'
+  }
+};
+
+function showInfo(roomId, btnEl, event) {
+  event.stopPropagation();
+  const info = INFO_TEXTS[roomId];
+  if (!info) return;
+  const tooltip = document.getElementById('infoTooltip');
+  const title   = document.getElementById('infoTooltipTitle');
+  const text    = document.getElementById('infoTooltipText');
+  title.textContent = info.title;
+  text.textContent  = info.text;
+  tooltip.classList.add('visible');
+  const btn  = btnEl.getBoundingClientRect();
+  const tip  = tooltip.getBoundingClientRect();
+  const vw   = window.innerWidth;
+  let left   = btn.left + btn.width / 2 - tip.width / 2;
+  let top    = btn.top - tip.height - 8;
+  if (left < 6) left = 6;
+  if (left + tip.width > vw - 6) left = vw - tip.width - 6;
+  if (top < 6) top = btn.bottom + 8;
+  tooltip.style.left = left + 'px';
+  tooltip.style.top  = top  + 'px';
+}
+function hideInfo() {
+  document.getElementById('infoTooltip').classList.remove('visible');
+}
+function initInfoButtons() {
+  document.querySelectorAll('.room[onclick]').forEach(room => {
+    const m = (room.getAttribute('onclick') || '').match(/openRoom\('(\w+)'\)/);
+    if (!m) return;
+    const roomId = m[1];
+    if (!INFO_TEXTS[roomId]) return;
+    const btn = document.createElement('button');
+    btn.className   = 'info-btn';
+    btn.textContent = 'i';
+    btn.title       = 'Info';
+    btn.addEventListener('click', e => showInfo(roomId, btn, e));
+    room.appendChild(btn);
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('info-btn')) hideInfo();
+  });
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ROADMAP OVERLAY
+   ───────────────────────────────────────────────────────────────── */
+function openRoadmap() {
+  document.getElementById('roadmapOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeRoadmap() {
+  document.getElementById('roadmapOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleRoadmapBgClick(e) {
+  if (e.target === document.getElementById('roadmapOverlay')) closeRoadmap();
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   INIT
+   ───────────────────────────────────────────────────────────────── */
+fetchAll();
+setInterval(fetchAll, REFRESH);
+setInterval(()=>{ if(activeRoom) renderLogLines(); }, 5000);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeRoadmap(); hideInfo(); }
+});
+// Drips aanmaken zodra DOM klaar is
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', ()=>{ initInfoButtons(); initDrips(); });
+} else {
+  initInfoButtons();
+  initDrips();
+}
+</script>
+</body>
+</html>
+<!-- einde stap 6 — JavaScript compleet -->

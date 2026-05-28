@@ -116,6 +116,55 @@ def check_bot():
     except Exception:
         pass
 
+    # 8 — Inactiviteitscheck: laatste trade > 8 uur geleden?
+    # Detecteert wanneer filters (ranging_skip etc.) de bot stilleggen.
+    try:
+        perf_list = load_json(LOGS / "performance.json", [])
+        trades_raw = load_json(LOGS / "trades.json", [])
+        # Zoek de meest recente trade (entry of exit)
+        last_trade_time = None
+        for t in trades_raw:
+            for ts_key in ("open_time", "close_time", "timestamp"):
+                ts = t.get(ts_key)
+                if ts:
+                    try:
+                        import re
+                        ts_clean = re.sub(r"\.\d+$", "", str(ts).replace("Z", ""))
+                        from datetime import datetime as _dt
+                        dt = _dt.fromisoformat(ts_clean)
+                        if last_trade_time is None or dt > last_trade_time:
+                            last_trade_time = dt
+                    except Exception:
+                        pass
+        # Ook uit engine_state kijken
+        engine_raw = load_json(LOGS / "engine_state.json", {})
+        for ts_key in ("last_trade_time", "last_entry_time"):
+            ts = engine_raw.get(ts_key)
+            if ts:
+                try:
+                    import re
+                    ts_clean = re.sub(r"\.\d+$", "", str(ts).replace("Z", ""))
+                    from datetime import datetime as _dt
+                    dt = _dt.fromisoformat(ts_clean)
+                    if last_trade_time is None or dt > last_trade_time:
+                        last_trade_time = dt
+                except Exception:
+                    pass
+        if last_trade_time:
+            from datetime import datetime as _dt
+            inactief_uur = (_dt.now() - last_trade_time).total_seconds() / 3600
+            if inactief_uur > 24:
+                problemen.append(
+                    f"😴 <b>Bot inactief: {inactief_uur:.0f}u geen trades</b> — "
+                    f"filters blokkeren mogelijk alle entries (ranging_skip?)"
+                )
+            elif inactief_uur > 8:
+                info.append(
+                    f"⚠️ Geen trade in {inactief_uur:.0f}u — mogelijke filter-blokkade"
+                )
+    except Exception:
+        pass
+
     return problemen, info
 
 

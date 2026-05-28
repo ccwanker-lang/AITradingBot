@@ -47,13 +47,14 @@ Elke potentiële trade passeert deze filters voordat hij uitgevoerd wordt:
 |---|--------|--------------|
 | 1 | Regime richting | Geen shorts in bull_trend, geen longs in bear_trend |
 | 1b | 1D macro filter | Blokkeert longs als zowel 1D als 4h bearish zijn |
-| 1c | Ranging macro bias | In ranging: richting moet overeenkomen met 1D trend |
+| 1c | Ranging skip | Slaat alle entries in ranging over (WR=29%) — uitzondering: Bollinger squeeze |
+| 1d | Ranging RSI-zone | In ranging: only long bij RSI <45, only short bij RSI >55 |
 | 2 | SL cooldown | 4u na stop-loss geen herinstap in dezelfde richting |
 | 3 | BOS veto | MarketStructure BOS blokkeert tegendraadse trade |
 | 4 | Minimale confluence | Shorts: altijd 3 strategieën eens; longs: 2 in zwakke regimes |
-| 5 | RSI extremen | Geen shorts bij RSI <35, geen longs bij RSI >72 |
-| 5b | Lokaal extreme | Geen trade binnen 1.5% van lokaal hoog/laag (10 kaarsen) |
-| 6 | Volume bevestiging | Minimaal 0.50× gemiddeld volume |
+| 5 | RSI extremen | Geen shorts bij RSI <28 (bear_trend) of <35 (overig); geen longs bij RSI >72 |
+| 5b | Lokaal extreme | Geen short binnen 1.5% van lokaal dieptepunt, geen long bij hoogtepunt |
+| 6 | Volume bevestiging | Minimaal 0.50× gemiddeld volume (0.30× in sterke bear_trend) |
 | 7 | Verliesstreak | Na 3 verliezen op rij: hogere confidence drempel vereist |
 | 8 | Noise index | Bij 2+ ruis-indicatoren (ADX/volume/BB squeeze): geen trade |
 
@@ -96,11 +97,12 @@ De bot detecteert het regime met **hysteresis** (3 opeenvolgende detecties voor 
 
 ## AI Modellen
 
-### LSTM Predictor (20% gewicht in ranging, 12% in trend)
+### LSTM Predictor (0% gewicht — momenteel uitgeschakeld)
 - **Architectuur:** LSTM → Attention → Dense → 3-klasse output (omlaag/neutraal/omhoog)
 - **Input:** 60+ features over venster van 60 kaarsen
 - **Drempel:** confidence < 0.38 → LSTM genegeerd (anders ruis)
 - **Auto-retrain:** elke 84 uur (2× per week)
+- **Status:** uitgeschakeld (val_acc 35.1% ≈ random — hertrainen aanbevolen voor re-activatie)
 
 ### RL PPO Agent (10% gewicht in ranging, 8% in trend)
 - **Algoritme:** Proximal Policy Optimization (stable-baselines3)
@@ -121,17 +123,20 @@ De bot detecteert het regime met **hysteresis** (3 opeenvolgende detecties voor 
 
 | Mechanisme | Waarde | Uitleg |
 |------------|--------|--------|
-| Min confidence | 0.55 | Trades onder deze drempel worden geblokkeerd |
-| Kelly fraction | 0.25× | Conservatieve positiebepaling |
-| Max portfolio risico | 2% per trade | Kelly wordt begrensd door ATR-risico |
+| Min confidence | 0.46 | Trades onder deze drempel worden geblokkeerd |
+| Positiebepaling | Grade-gebaseerd (A+/A/B/C) | SetupClassifier bepaalt positiegrootte, niet de Kelly-formule |
+| Meta-throttle | 25–100% | Schaalt positie automatisch terug bij slechte WR of verliesstreak |
+| **Minimum positie (throttle ≥50%)** | **5% van portfolio** | Vloer tijdens normale markt (~$49 bij $980) |
+| **Minimum positie (throttle <50%)** | **2% van portfolio** | Lagere vloer tijdens verliesstreak — throttle-bescherming blijft intact |
+| Max portfolio risico | 2% per trade | Positie begrensd door ATR-risico |
 | Confidence cap | 0.75 | Onrealistische hoge confidence wordt afgekapt |
-| Partial close TP1 | 50% op 1.5R | Helft sluiten → breakeven stop zetten |
-| Trailing stop | 5% | Volgt prijs omhoog, nooit omlaag |
+| Partial close TP1 | 50% op 1.2R | Helft sluiten → breakeven stop zetten |
+| ATR trailing stop | 1.5× ATR | Beweegt mee met peak, start pas na 0.5× ATR winst |
 | SL cooldown | 4 uur | Na SL: geen herinstap in dezelfde richting |
-| Circuit breaker | 5% dagverlies | 24u pauze na dagverlies boven 5% |
 | Max drawdown stop | 15% | Bot stopt volledig bij 15% portefeuille verlies |
 | Time-based exit | 24u + <0.5% | Stale trades gesloten na 24 uur stilstand |
 | Correlatie limiet | max 2 | Nooit meer dan 2 posities in dezelfde richting |
+| Ranging correlatie-lock | max 1 | BTC/ETH/SOL zijn >90% gecorreleerd — max 1 positie in ranging |
 | Pyramiding | max 2× | Bijkopen op winnende positie, minimaal 2× ATR winst |
 
 ---
@@ -162,17 +167,19 @@ C-grade met negatieve edge score wordt volledig overgeslagen.
 
 | Metric | Waarde | Status |
 |--------|--------|--------|
-| Win Rate | 38.7% | Stijgend (recente 10: 50%) |
-| Profit Factor | 1.21 | Positief |
-| Portfolio PnL | -2.09% | Stabiel |
-| Max Drawdown | 2.23% | Laag |
-| Gesloten trades | 31 | Opbouwend |
-| Best regime | bull_trend | 83% WR |
+| Win Rate | 38.9% | Stijgend na ranging-skip fix |
+| Profit Factor | 1.116 | Positief |
+| Portfolio PnL | -1.98% | Stabiel |
+| Max Drawdown | 2.12% | Laag |
+| Gesloten trades | 54 | Opbouwend |
+| Beste regime | bear_trend | 83% WR (n=6) |
+| Slechtste regime | ranging | 29% WR (n=45) → overgeslagen |
 
 **Actieve config:**
 ```
-MIN_CONFIDENCE=0.55  ATR_SL=2.5×  ATR_TP=5.0×
-RL_WEIGHT=0.10  LSTM_WEIGHT=0.20  SHORT_CONFLUENCE=3
+MIN_CONFIDENCE=0.46  ATR_SL=2.5×  ATR_TP=5.0×
+RL_WEIGHT=0.10  LSTM_WEIGHT=0.00  SHORT_CONFLUENCE=3
+RANGING=skip (WR te laag)  RSI_SHORT_BLOCK=28 in bear_trend
 ```
 
 ---
@@ -225,10 +232,10 @@ MULTI_ASSET=true
 
 # AI gewichten
 RL_WEIGHT=0.10
-LSTM_WEIGHT=0.20
+LSTM_WEIGHT=0.00  # uitgeschakeld — heractiveren na hertraining (val_acc target >43%)
 
 # Risico
-MIN_CONFIDENCE=0.55
+MIN_CONFIDENCE=0.46
 MAX_DRAWDOWN=0.15
 ATR_SL_MULT=2.5
 ATR_TP_MULT=5.0
@@ -251,9 +258,11 @@ TELEGRAM_CHAT_ID=...
 |----------|---------|
 | `/bal` | Portfolio, PnL, drawdown, vrij kapitaal, regime |
 | `/stats` | Win rate, avg PnL, beste/slechtste trade |
-| `/posities` | Alle open posities met entry, prijs, PnL, SL, TP |
+| `/posities` | Open posities met entry, prijs, PnL, **ingezet bedrag**, SL, TP1 + TP2 |
 | `/regime` | Huidig marktregime per symbool met kracht |
 | `/signalen` | Laatste signalen per strategie met bijdrage |
+| `/rolling` | Rolling win rate over laatste 10/20 trades |
+| `/trades` | Laatste 8 gesloten trades |
 | `/health` | CPU temp, RAM, schijfruimte, uptime |
 | `/log` | Laatste fouten en waarschuwingen |
 | `/stop` | Bot stoppen (posities blijven open) |
@@ -312,8 +321,36 @@ crypto_bot/
 │   └── app.py                # Flask web dashboard (real-time)
 └── tools/
     ├── check_report.py       # Volledige bot diagnose (gebruik: python tools/check_report.py)
-    ├── check_analysis.py     # Losse analyse-scripts voor confidence/regime/shorts
-    └── config_tracker.py     # Config snapshot systeem (voor/na elke parameterwijziging)
+    ├── config_tracker.py     # Config snapshot systeem (voor/na elke parameterwijziging)
+    ├── filter_monitor.py     # Monitort actieve filters elke 15 min → Telegram bij verandering
+    ├── btc_diagnose.py       # Diagnoseert waarom een symbool niet tradt (filter-voor-filter)
+    ├── auto_optimizer.py     # Automatische parameter-optimalisatie (*/6 uur via cron)
+    ├── auto_watcher.py       # Setup alerts bij 4+ confluences (*/15 min via cron)
+    ├── monitor_alert.py      # Dagelijkse gezondheidscheck + Telegram (08:00 via cron)
+    └── self_healer.py        # Detecteert en herstelt configuratieproblemen (07:00/19:00)
+```
+
+---
+
+## Automatisering (Cron Jobs)
+
+De bot draait volledig autonoom via systemd en cron:
+
+| Tijdstip | Script | Functie |
+|----------|--------|---------|
+| `*/15 min` | `auto_watcher.py` | Setup alert als 4+ confluences actief zijn |
+| `*/15 min` | `filter_monitor.py` | Telegram alert als filter-situatie verandert |
+| `*/6 uur` | `auto_optimizer.py` | Controleert parameters en stelt aanpassingen voor |
+| `08:00` dagelijks | `monitor_alert.py` | Gezondheidscheck + dagrapport naar Telegram |
+| `09:00` zondag | `monitor_alert.py --weekly` | Weekrapport |
+| `03:00` maandag | `auto_trainer.py` | LSTM + RL hertraining |
+| `04:00` maandag | `auto_cleanup.py` | Log-archivering + opruimen |
+| `07:00 + 19:00` | `self_healer.py` | Detecteert configuratieproblemen + herstelt |
+
+De bot zelf draait als **systemd service** met automatische herstart:
+```bash
+sudo systemctl status cryptobot.service
+sudo systemctl restart cryptobot.service
 ```
 
 ---

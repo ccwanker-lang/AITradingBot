@@ -152,12 +152,26 @@ class BotLogger:
             "grade_stats": grade_stats,
         }
 
-    def get_rolling_stats(self, n: int = 20) -> dict:
-        """Win rate en gemiddeld PnL van de laatste N finale exits."""
+    def get_rolling_stats(self, n: int = 20, since: float | None = None) -> dict:
+        """Win rate en gemiddeld PnL van de laatste N finale exits.
+
+        Args:
+            n:     Aantal trades voor het rollend venster.
+            since: Optioneel Unix-timestamp — tel alleen trades ná dit tijdstip.
+                   Wordt gebruikt na een strategie-fix om historische verliezen uit
+                   het pauzeer-venster te filteren.
+        """
         full_closed = [
             t for t in self.trades
             if t.get("type") in ("sell", "cover") and "pnl_pct" in t
         ]
+        if since is not None:
+            from datetime import datetime, timezone
+            dt_since = datetime.fromtimestamp(since)
+            full_closed = [
+                t for t in full_closed
+                if t.get("timestamp", "") >= dt_since.strftime("%Y-%m-%dT%H:%M")
+            ]
         if not full_closed:
             return {"n": 0, "win_rate": 0.0, "avg_pnl": 0.0, "is_paused": False}
         recent = full_closed[-n:]
