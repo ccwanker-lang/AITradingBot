@@ -342,9 +342,8 @@ class SignalCombiner:
         ob_confidence: float = 0.0,
         regime_mult: float = 1.0,
         regime: str = "ranging",
-        stat_arb_action: int = 0,
-        stat_arb_confidence: float = 0.0,
-        stat_arb_reason: str = "",
+        lhm_modifier: float = 0.0,
+        lhm_reason: str = "",
     ) -> dict:
         total_score = 0.0
         details = []
@@ -457,27 +456,17 @@ class SignalCombiner:
                 "reden": f"Bid/Ask onbalans: {ob_signal:+d}",
             })
 
-        # ── StatArb modifier ──────────────────────────────────────
-        # Alleen actief in ranging/accumulation/high_vol — niet in trending markten
-        # (z-score "duur" in trend = gewoon trending up, geen mean-reversion verwacht)
-        _stat_arb_active = regime in ("ranging", "accumulation", "high_vol")
-        if _stat_arb_active and stat_arb_confidence > 0.30 and stat_arb_action != 0:
-            sa_boost = stat_arb_action * stat_arb_confidence * 0.15
-            total_score += sa_boost
+        # ── Liquidity Heatmap modifier ────────────────────────────────
+        # Alleen toepassen als er een duidelijk signaal is (score niet neutraal)
+        # en de modifier bevestigt of versterkt de richting
+        if abs(lhm_modifier) > 0.01:
+            total_score += lhm_modifier
             details.append({
-                "naam": "StatArb",
-                "actie": stat_arb_action,
-                "confidence": stat_arb_confidence,
-                "bijdrage": sa_boost,
-                "reden": stat_arb_reason or f"Stat arbitrage paar-divergentie",
-            })
-        elif stat_arb_action != 0:
-            details.append({
-                "naam": "StatArb",
-                "actie": stat_arb_action,
-                "confidence": stat_arb_confidence,
-                "bijdrage": 0.0,
-                "reden": (stat_arb_reason or "") + " [inactief in trend-regime]",
+                "naam": "LiqHeatmap",
+                "actie": int(np.sign(lhm_modifier)),
+                "confidence": abs(lhm_modifier) / 0.12,
+                "bijdrage": lhm_modifier,
+                "reden": lhm_reason or "Liquidity heatmap modifier",
             })
 
         # ── Eigen brein met regime-specifieke drempel ───────────────

@@ -20,15 +20,23 @@ Beide zijn system-level services (geen `--user` flag nodig).
 - **Week 2 (~2026-05-27)**: Correlatie-filter bouwen — BTC/ETH/SOL zijn 90% gecorreleerd, max 1 positie tegelijk.
 - **Week 3 (~2026-06-03)**: LSTM per-symbool (alleen als 50+ closed trades, val_acc target >43%).
 
-### Huidige config (2026-05-20)
+### Huidige config (2026-06-11 — na Fase 1)
 | Parameter | Waarde |
 |-----------|--------|
 | MIN_CONFIDENCE | 0.46 |
 | ATR_SL_MULT | 2.5 |
 | ATR_TP_MULT | 5.0 |
 | RL_WEIGHT | 0.10 |
-| LSTM_WEIGHT | 0.00 (val_acc 37.2% ≈ random, uitgeschakeld) |
+| LSTM_WEIGHT | 0.10 (heringeschakeld 11 juni — val_acc 65.6%) |
+| CONFIDENCE_CAP | 0.68 (was 0.75 — ≥0.70 bucket had 36% WR) |
 | LIVE | false (altijd paper trading) |
+
+### Fase 1 (11 juni 2026 — uitgevoerd)
+- StatArb volledig verwijderd uit code
+- Confidence cap verlaagd: 0.75 → 0.68
+- Auto-optimizer cron: 4×/dag → 1×/dag (06:00)
+- LSTM_WEIGHT heringeschakeld: 0.00 → 0.10
+- Volgende deadline: **~25 juni — Fase 2** (Bollinger evalueren)
 
 ### Geïnstalleerde agents (.claude/agents/)
 `bot-monitor`, `bot-optimizer`, `bot-trainer`, `bot-cleanup`, `bot-reporter`, `bot-debugger`, `bot-backtest`, `bot-analyst`, `bot-watcher`
@@ -38,7 +46,7 @@ Beide zijn system-level services (geen `--user` flag nodig).
 - `09:00` zondag — weekrapport
 - `03:00` maandag — `auto_trainer.py`
 - `04:00` maandag — `auto_cleanup.py`
-- `*/6 uur` — `auto_optimizer.py`
+- `06:00` dagelijks — `auto_optimizer.py` (was */6 uur)
 - `*/15 min` — `auto_watcher.py` (setup alerts bij 4+ confluences)
 
 ---

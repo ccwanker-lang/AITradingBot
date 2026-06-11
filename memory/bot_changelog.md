@@ -55,6 +55,8 @@ Irrelevante oude snapshots worden hier samengevat zodat ze uit config_history.js
 | 2026-05-27 | Squeeze exception op ranging skip + Filter 8 ranging exemption | 37.7% | 1.058 | Bot handelt weer: ETH/SOL → accumulation+squeeze; SOL SHORT direct genomen |
 | 2026-05-27 | Monitor inactiviteitscheck: alert bij >8u (warning) en >24u (probleem) | 37.7% | 1.058 | Design gap gedicht: agents detecteerden geen handelsdroogte |
 | 2026-05-27 | Ranging RSI-zone filter (Filter 1d): long RSI<45, short RSI>55 | 37.7% | 1.058 | Voorkomt kopen aan top/shorten aan bodem van range; TP1 bereikt slechts 23% = te laat ingestapt |
+| 2026-06-11 | **FASE 1:** StatArb verwijderd (import/init/update/veto), conf cap 0.75→0.68, optimizer cron */6→1×dag | 45.1% | 2.025 | Cooldown voorbij; Grid (61% WR) en Wyckoff (67% WR) NIET verwijderd — plan herzien op basis van actuele data |
+| 2026-06-11 | **FASE 1b:** LSTM_WEIGHT 0.00→0.10 heringeschakeld (val_acc 65.6%, drempel 45%) | 45.1% | 2.025 | Was geparkeerd mei vanwege val_acc 37.2%; nieuw model op desktop getraind |
 
 ---
 
@@ -188,7 +190,7 @@ maar hier bewaard als referentie.
 
 ---
 
-*Laatste update door bot-cleanup: 2026-05-25*
+*Laatste update door bot-cleanup: 2026-06-08*
 
 ## 2026-05-25 — Noodingreep: correlatie-lock + TP2 fix + feedbackloop
 

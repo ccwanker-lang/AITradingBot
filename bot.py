@@ -16,6 +16,7 @@ import sys
 import time
 import argparse
 import threading
+import concurrent.futures
 from datetime import datetime
 
 import numpy as np
@@ -32,6 +33,7 @@ from config import Config
 from data.fetcher import DataFetcher
 from data.features import add_all_features, get_feature_columns
 from data.orderbook import OrderBookAnalyzer
+from data.liquidity_heatmap import LiquidityHeatmap
 from data.sentiment import SentimentAnalyzer
 from strategies.signals import SignalCombiner
 from strategies.anomaly import AnomalyDetector, AnomalyType
@@ -46,7 +48,7 @@ from monitoring.telegram_bot import TelegramBot
 from analytics.setup_classifier import SetupClassifier
 from risk.meta_controller import MetaController
 from execution.microstructure import MicrostructureFilter
-from strategies.stat_arb import StatArbAnalyzer
+
 
 console = Console()
 
@@ -63,6 +65,8 @@ class MonsterBot:
 
         # Analyse modules
         self.order_book = OrderBookAnalyzer(self.fetcher.exchange)
+        self.liquidity_heatmap = LiquidityHeatmap()
+        self.liquidity_heatmap.load_state()
         self.sentiment = SentimentAnalyzer()
         self.anomaly = AnomalyDetector()
         self.regime_detector = RegimeDetector()
@@ -84,8 +88,6 @@ class MonsterBot:
         from strategies.market_structure import MarketStructureStrategy as _MS
         self._ms4h = _MS()
         self.microstructure = MicrostructureFilter()
-        self.stat_arb = StatArbAnalyzer()
-        self._stat_arb_signals: dict = {}
         self.risk = RiskManager(
             max_drawdown_stop=config.max_drawdown_stop,
             max_position_pct=config.max_position_pct,
@@ -651,7 +653,7 @@ class MonsterBot:
                 emoji = "🟢" if wr >= 0.5 else ("🟡" if wr >= 0.4 else "🔴")
                 lines.append(f"  {emoji} {sym}: WR {wr:.0%} | {len(pnls)} trades | {sum(pnls):+.2%}")
 
-            lines.append(f"\n<b>Roadmap:</b> Week 1 t/m 27 mei — wachten op 62 closed trades (nu: {len(closed)})")
+            lines.append(f"\n<b>Fase 1 actief:</b> StatArb verwijderd, confidence cap 0.68 | {len(closed)} closed trades")
             lines.append(f"<i>{datetime.now().strftime('%H:%M:%S')}</i>")
             return "\n".join(lines)
         except Exception as e:
@@ -747,24 +749,28 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             wins = [p for p in pnls if p > 0]
             wr = len(wins)/len(pnls) if pnls else 0
             wr_emoji = "🟢" if wr >= 0.50 else ("🟡" if wr >= 0.40 else "🔴")
-            week1_done = n >= 62
-            w1 = "✅" if week1_done else "🔄"
+            from datetime import date as _date
+            _today = _date.today()
+            _cooldown_end = _date(2026, 6, 11)
+            _days_left = max(0, (_cooldown_end - _today).days)
+            _lock_str = f"🔒 ACTIEF — nog {_days_left} dagen (tot 11 juni)" if _days_left > 0 else "✅ OPGEHEVEN"
             return (
                 f"🗺 <b>Roadmap status</b>\n\n"
-                f"{w1} <b>Week 1 — t/m 27 mei</b>\n"
-                f"  Trades: {n}/62 ({max(0,62-n)} nog nodig)\n"
-                f"  WR: {wr_emoji} {wr:.1%} (doel: richting 50%)\n"
-                f"  Status: {'KLAAR — klaar voor week 2' if week1_done else 'bezig — niets aanpassen'}\n\n"
-                f"⏳ <b>Week 2 — ~27 mei</b>\n"
-                f"  Correlatie-filter bouwen\n"
-                f"  BTC/ETH/SOL max 1 positie als >90% gecorreleerd\n\n"
-                f"⏳ <b>Week 3 — ~3 juni</b>\n"
-                f"  LSTM per symbool (alleen als 50+ trades)\n"
-                f"  Nu: {n} trades — {'✅ genoeg' if n >= 50 else f'nog {50-n} nodig'}\n\n"
+                f"<b>Cooldown-lock:</b> {_lock_str}\n"
+                f"WR: {wr_emoji} {wr:.1%}  |  Trades: {n} closed\n\n"
+                f"✅ <b>Fase 1 — 11 juni</b>\n"
+                f"  StatArb verwijderd + confidence cap 0.68\n"
+                f"  Wacht op 10 nieuwe trades voor meting\n\n"
+                f"⏳ <b>Fase 2 — ~25 juni</b>\n"
+                f"  Wyckoff + Bollinger evalueren (nu 67%/40% WR)\n"
+                f"  C-grade trades filteren (slechtste 20%)\n\n"
+                f"⏳ <b>Fase 3 — ~25 juni</b>\n"
+                f"  LSTM per symbool trainen\n"
+                f"  Nu: {n} trades — {'✅ genoeg data' if n >= 50 else f'nog {50-n} nodig'}\n\n"
                 f"📋 <b>Backlog</b>\n"
                 f"  • Ranging WR verbeteren (nu ~32%)\n"
-                f"  • TP1 reach rate verhogen\n"
-                f"  • Slechte uren blokkeren (02u/12u/23u UTC)\n\n"
+                f"  • TP1 reach rate verhogen (nu 28%)\n"
+                f"  • LSTM_WEIGHT herinschakelen na hertraining\n\n"
                 f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
             )
         except Exception as e:
@@ -790,10 +796,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         proposal_path = self.logger.log_dir / "heal_proposal.json"
         heal_path     = self.logger.log_dir / "heal_config.json"
         try:
-            # ── Activatiepoort — geblokkeerd tot 27 mei + 62 closed trades ──────
-            # Roadmap week 1: wacht op voldoende data vóór eerste parameter-aanpassing.
-            # /approve_heal werkt pas als BEIDE voorwaarden zijn bereikt.
-            _ACTIVATION_DATE   = _date(2026, 5, 27)
+            # ── Activatiepoort — geblokkeerd tot 11 juni (cooldown) ──────────────
+            _ACTIVATION_DATE   = _date(2026, 6, 11)
             _ACTIVATION_TRADES = 62
             _today             = _date.today()
             _closed_count      = len([t for t in self.logger.trades
@@ -807,12 +811,12 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 _dag_str   = "dag" if _days_left == 1 else "dagen"
                 return (
                     f"⚕️ <b>Self-Healer — Geblokkeerd</b>\n\n"
-                    f"🔒 Activering gepland op <b>27 mei 2026</b> (nog {_days_left} {_dag_str}).\n\n"
-                    f"<b>Roadmap voortgang:</b>\n"
-                    f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m/%Y')} → doel 27/05\n"
+                    f"🔒 Cooldown actief — nog {_days_left} {_dag_str} (tot 11 juni 2026).\n\n"
+                    f"<b>Voortgang:</b>\n"
+                    f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m/%Y')} → doel 11/06\n"
                     f"  📊 Trades: {'✅' if _trades_ok else '⏳'} {_closed_count}/{_ACTIVATION_TRADES} closed\n\n"
                     f"Gebruik /heal_status om het voorstel te bekijken.\n"
-                    f"Na <b>27 mei + {_ACTIVATION_TRADES} trades</b> wordt /approve_heal actief."
+                    f"Na <b>11 juni + {_ACTIVATION_TRADES} trades</b> wordt /approve_heal actief."
                 )
 
             if not _trades_ok:
@@ -1149,9 +1153,19 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                         }
                     if entry_sigs:
                         self.signal_combiner.update_weights(entry_sigs, pnl)
-                self.telegram.trade_alert(
-                    trade["symbol"], "SELL (auto)", trade["price"],
-                    trade.get("pnl_pct"), None
+                _reason = trade.get("reason", trade.get("type", "EXIT"))
+                _pnl = trade.get("pnl_pct")
+                _partial_str = " (50%)" if trade.get("partial", False) else ""
+                _reason_emojis = {
+                    "STOP-LOSS": "🛑", "TAKE-PROFIT-2": "✅",
+                    "TRAILING-STOP": "✅", "TP1": "💰",
+                }
+                _emoji = _reason_emojis.get(_reason, "✅" if (_pnl and _pnl > 0) else "❌")
+                _pnl_str = f"\nPnL: <b>{_pnl:+.2%}</b>" if _pnl is not None else ""
+                self.telegram.send(
+                    f"{_emoji} <b>{_reason}{_partial_str} — {trade['symbol']}</b>\n"
+                    f"Prijs: ${trade['price']:,.4f}{_pnl_str}\n"
+                    f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
                 )
 
         # ── Rolling win rate check na gesloten trades ──────────────
@@ -1275,17 +1289,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             _momentum_best = getattr(self, "_cached_momentum_best", None)
         self._cached_momentum_best = _momentum_best
 
-        # ── 4. Stat Arb — update prijsgeschiedenis + bereken z-scores ─
-        for symbol in symbols:
-            try:
-                df_sa = self.fetcher.fetch_ohlcv(symbol, self.config.timeframe, limit=100)
-                if df_sa is not None and len(df_sa) > 0:
-                    self.stat_arb.update(symbol, df_sa["close"])
-            except Exception:
-                pass
-        self._stat_arb_signals = self.stat_arb.compute_signals()
-
-        # ── 5. Per symbool analyseren ──────────────────────────────
+        # ── 4. Per symbool analyseren ──────────────────────────────
         for symbol in symbols:
             try:
                 self._analyze_symbol(symbol, current_prices.get(symbol),
@@ -1401,21 +1405,53 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 pass
 
         # ── 15m micro-trend (entry timing) ────────────────────────
-        tf_15m = 0
+        # Harde 3s timeout — een API-vertraging mag de 1H flow NOOIT blokkeren.
+        # Bij timeout of fout: tf_15m = 0 (geen filter, doorgaan).
+        tf_15m    = 0
+        df_15m    = None
+        _15m_ok   = False
         try:
-            df_15m = self.fetcher.fetch_ohlcv(symbol, "15m", limit=200)
-            df_15m = add_all_features(df_15m)
-            ema9_15m  = df_15m["ema_9"].iloc[-1]
-            ema21_15m = df_15m["ema_21"].iloc[-1]
-            rsi_15m   = df_15m.get("rsi_14", df_15m["close"]).iloc[-1]
-            # Bullish micro: EMA9 > EMA21 + RSI niet overbought
-            # Bearish micro: EMA9 < EMA21 + RSI niet oversold
-            if ema9_15m > ema21_15m and rsi_15m < 70:
-                tf_15m = 1
-            elif ema9_15m < ema21_15m and rsi_15m > 30:
-                tf_15m = -1
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as _ex:
+                _fut = _ex.submit(self.fetcher.fetch_ohlcv, symbol, "15m", 200)
+                try:
+                    df_15m  = _fut.result(timeout=3.0)
+                    df_15m  = add_all_features(df_15m)
+                    _15m_ok = True
+                except concurrent.futures.TimeoutError:
+                    pass  # timeout → graceful skip, 1H flow gaat door
         except Exception:
             pass
+
+        if _15m_ok and df_15m is not None:
+            try:
+                ema9_15m  = df_15m["ema_9"].iloc[-1]
+                ema21_15m = df_15m["ema_21"].iloc[-1]
+                rsi_15m   = df_15m.get("rsi_14", df_15m["close"]).iloc[-1]
+                if ema9_15m > ema21_15m and rsi_15m < 70:
+                    tf_15m = 1
+                elif ema9_15m < ema21_15m and rsi_15m > 30:
+                    tf_15m = -1
+            except Exception:
+                pass
+
+        # ── 15m LSTM filter (FASE 4a — activeren na 2 juli 2026) ──────
+        # Hiërarchie: 4H trend → 1H tactiek → 15m LSTM executie
+        # Wanneer actief: blokkeert entry als 15m LSTM de 1H richting tegenspreekt
+        # met hoge confidence (>0.60). Neutraal of lage confidence = altijd doorgaan.
+        # ACTIVATIE: verwijder de False en laad self.lstm_15m in __init__:
+        #   self.lstm_15m = LSTMPredictor(model_path="models/lstm_15m.pt")
+        #   self.lstm_15m_active = Path("models/lstm_15m.pt").exists()
+        _lstm_15m_active = False  # ← op True zetten in Fase 4a
+        _lstm_15m_blocks = False
+        if _lstm_15m_active and _15m_ok and df_15m is not None:
+            try:
+                _feat_15m = get_feature_columns(df_15m)
+                _act_15m, _conf_15m = self.lstm_15m.predict(df_15m, _feat_15m)
+                if _act_15m != 0 and _conf_15m > 0.60:
+                    # Blokkeert alleen als LSTM expliciet tégen de richting zit
+                    _lstm_15m_blocks = True
+            except Exception:
+                pass
 
         # ── 4h data voor trend filter (multi-timeframe) ────────────
         adx_4h = 20.0  # Neutraal standaard als 4h data faalt
@@ -1539,12 +1575,17 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             except Exception:
                 pass
 
+        # Liquidity heatmap — vernieuw periodiek, gebruik RL-actie als richting-proxy
+        try:
+            self.liquidity_heatmap.update(symbol, self.fetcher.exchange, df)
+        except Exception:
+            pass
+        # rl_action is de beste schatting van richting die we nu al hebben (30% gewicht)
+        lhm_dir = rl_action if rl_action != 0 else 0
+        lhm_mod, lhm_reason = self.liquidity_heatmap.get_modifier(symbol, current_price, lhm_dir)
+
         # Regime aanpassing — gebruik berekende multipliers vanuit RegimeDetector
         regime_mult = regime.position_mult
-
-        # StatArb ophalen vóór combine() zodat het de score beïnvloedt
-        sa = self._stat_arb_signals.get(symbol)
-        _stat_arb_active = regime.regime.value in ("ranging", "accumulation", "high_vol")
 
         signal = self.signal_combiner.combine(
             df,
@@ -1554,9 +1595,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             ob_signal=ob.get("signal", 0), ob_confidence=ob.get("confidence", 0.0),
             regime_mult=regime_mult,
             regime=regime.regime.value,
-            stat_arb_action=sa.action if sa else 0,
-            stat_arb_confidence=sa.confidence if sa else 0.0,
-            stat_arb_reason=sa.reason if sa else "",
+            lhm_modifier=lhm_mod,
+            lhm_reason=lhm_reason,
         )
 
         action = signal["actie"]
@@ -1575,13 +1615,6 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 "accumulation": "accumulatie",
             }.get(regime.regime.value, regime.regime.value)
             _ntr = f"Score {_score:+.3f} vs drempel {_thr:.2f} ({_regime_nl})"
-
-        # StatArb is nu geïntegreerd in combine() — alleen het hard veto blijft hier.
-        # Hard veto: StatArb conf > 0.65 en tegengestelde richting → trade blokkeren.
-        if _stat_arb_active and sa and sa.action != 0 and action != 0:
-            if sa.action != action and sa.confidence > 0.65:
-                action = 0
-                _ntr = f"StatArb veto — sterke divergentie ({sa.reason})"
 
         # ── ADX Confidence Modifier (4h) ──────────────────────────
         # ADX > 25: trending → oscillator-driven signalen minder betrouwbaar (× 0.80)
@@ -1612,6 +1645,13 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                     )
             except Exception:
                 pass
+
+        # ── 15m LSTM filter veto (Fase 4a) ────────────────────────────
+        # ALLEEN actief als _lstm_15m_active=True (ingesteld op 2 juli 2026).
+        # Blokkeert entry als 15m LSTM met >60% conf de 1H richting tegenspreekt.
+        if _lstm_15m_blocks and action != 0 and _act_15m != action:
+            action = 0
+            self.logger.debug(f"{symbol}: 15m LSTM filter veto (conf={_conf_15m:.2f})")
 
         # ── 15m micro-trend modifier ───────────────────────────────
         # Niet blokkeren — alleen bijsturen. 15m-bevestiging → +5% confidence.
@@ -1763,7 +1803,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         if action != 0 and len(df) >= 10:
             local_high = float(df["high"].iloc[-10:].max())
             local_low  = float(df["low"].iloc[-10:].min())
-            _local_pct = 0.0 if (regime.regime.value == "bear_trend" and regime.strength >= 0.95) else (0.005 if _strong_bear else 0.015)
+            _local_pct = 0.0 if (regime.regime.value == "bear_trend" and regime.strength >= 0.95) else (0.005 if (regime.regime.value == "bear_trend") else 0.015)
             if action == -1 and current_price < local_low * (1 + _local_pct):
                 action = 0
                 _ntr = f"Short geblokkeerd — prijs {current_price:.2f} binnen {_local_pct:.1%} van lokaal dieptepunt {local_low:.2f}"
@@ -1855,17 +1895,17 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 _ntr = f"Al {same_dir} {'long' if action == 1 else 'short'} posities open (correlatie-limiet {corr_limit})"
                 action = 0
 
-        # ── Ranging correlatie-lock — max 1 positie per gecorreleerde groep ──────
-        # BTC/ETH/SOL zijn >90% gecorreleerd in ranging. Als 1 verliest, verliezen
-        # ze alle 3 gelijktijdig → verliesstreek van 12 (2026-05-25, 94% in ranging).
-        # Fix: in ranging max 1 open positie per groep, ongeacht richting.
-        if action != 0 and regime.regime.value == "ranging" and hasattr(self.engine, "positions"):
+        # ── Correlatie-lock — max 1 positie per gecorreleerde groep (ALLE regimes) ──
+        # BTC/ETH/SOL zijn >90% gecorreleerd. Gelijktijdige posities verdrievoudigen
+        # verlies bij fout signaal — geldt nu in ranging én trending (Week 2 roadmap).
+        # Was: alleen ranging. Nu: alle regimes — triple-verlies ongeacht marktfase.
+        if action != 0 and hasattr(self.engine, "positions"):
             _CORR_GROUPS = [{"BTC/USDT", "ETH/USDT", "SOL/USDT"}]
             for _grp in _CORR_GROUPS:
                 if symbol in _grp:
                     _blocking = [s for s in self.engine.positions if s in _grp and s != symbol]
                     if _blocking:
-                        _ntr = f"Ranging correlatie-lock: {_blocking[0]} al open — max 1 per groep (corr>90%)"
+                        _ntr = f"Correlatie-lock: {_blocking[0]} al open — max 1 per groep (corr>90%)"
                         action = 0
                     break
 
@@ -1888,9 +1928,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             tp_mult_r = float(heal_tp2)
 
         # ── Confidence cap — voorkomt onrealistische posities ───────
-        # Confidence > 0.75 is statistisch onwaarschijnlijk in 1h crypto.
-        # Een A+ setup met conf=0.955 leidde tot een $111 positie (May 4 incident).
-        confidence = min(confidence, 0.75)
+        # Confidence > 0.68 heeft 36% WR (n=11) — overfit-zone, slechter dan lager conf.
+        confidence = min(confidence, 0.68)
 
         # ── Setup kwaliteit: A+/A/B/C scoring via SetupClassifier ───
         vol_ratio_cur = float(df["volume_ratio"].iloc[-1]) if "volume_ratio" in df.columns else 1.0
@@ -1974,7 +2013,19 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 self._equity_curve.append(total)
                 self._equity_curve = self._equity_curve[-5000:]
                 self._last_trade_time = time.time()
-                self.telegram.trade_alert(symbol, "LONG", current_price, portfolio_value=total)
+                _sl = result.get("stop_loss", 0)
+                _tp1 = result.get("take_profit", 0)
+                _tp2 = result.get("take_profit_2", 0)
+                _conf = result.get("confidence", 0)
+                _grade = setup_grade or "?"
+                self.telegram.send(
+                    f"🟢 <b>LONG — {symbol}</b>\n"
+                    f"Entry: <b>${current_price:,.4f}</b>\n"
+                    f"SL: ${_sl:,.4f}  |  TP1: ${_tp1:,.4f}  |  TP2: ${_tp2:,.4f}\n"
+                    f"Conf: {_conf:.0%}  |  Regime: {regime.regime.value}  |  Grade: {_grade}\n"
+                    f"Portfolio: ${total:,.2f}\n"
+                    f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
+                )
                 edge_str = f" Edge:{clf['edge_score']:+.3f}" if clf["edge_score"] != 0 else ""
                 console.print(f"[bold green]^ LONG {symbol}[/bold green] @ {current_price:,.4f} "
                                f"| Regime: {regime.regime.value} [{setup_grade}]{edge_str} "
@@ -2014,7 +2065,19 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                     self._equity_curve.append(total)
                     self._equity_curve = self._equity_curve[-5000:]
                     self._last_trade_time = time.time()
-                    self.telegram.trade_alert(symbol, "SHORT", current_price, portfolio_value=total)
+                    _sl = result.get("stop_loss", 0)
+                    _tp1 = result.get("take_profit", 0)
+                    _tp2 = result.get("take_profit_2", 0)
+                    _conf = result.get("confidence", 0)
+                    _grade = setup_grade or "?"
+                    self.telegram.send(
+                        f"🔴 <b>SHORT — {symbol}</b>\n"
+                        f"Entry: <b>${current_price:,.4f}</b>\n"
+                        f"SL: ${_sl:,.4f}  |  TP1: ${_tp1:,.4f}  |  TP2: ${_tp2:,.4f}\n"
+                        f"Conf: {_conf:.0%}  |  Regime: {regime.regime.value}  |  Grade: {_grade}\n"
+                        f"Portfolio: ${total:,.2f}\n"
+                        f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
+                    )
                     edge_str = f" Edge:{clf['edge_score']:+.3f}" if clf["edge_score"] != 0 else ""
                     console.print(f"[bold magenta]v SHORT {symbol}[/bold magenta] @ {current_price:,.4f} "
                                   f"| Regime: {regime.regime.value} [{setup_grade}]{edge_str} "
@@ -2149,6 +2212,11 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             # Engine state opslaan zodat herstart posities + balans behoudt
             if hasattr(self.engine, "save_state"):
                 self.engine.save_state(self.logger.log_dir / "engine_state.json")
+            # Liquidity heatmap state bewaren zodat walls niet opnieuw opgebouwd hoeven
+            try:
+                self.liquidity_heatmap.save_state()
+            except Exception:
+                pass
             # Equity curve opslaan voor dashboard grafiek
             self.logger.log_performance({
                 "total_value": status.get("total_value", self.config.initial_capital),
