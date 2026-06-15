@@ -80,6 +80,8 @@ class MonsterBot:
 
         # AI modellen
         self.lstm = LSTMPredictor(config.lstm_path)
+        self.lstm_15m        = LSTMPredictor(model_path="models/lstm_15m.pt")
+        self.lstm_15m_active = os.path.exists("models/lstm_15m.pt")
         self.rl_model = self._load_rl_model()
 
         # Risico
@@ -912,9 +914,9 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         proposal_path = self.logger.log_dir / "heal_proposal.json"
         lines = ["⚕️ <b>Self-Healer Status</b>\n"]
 
-        # Poort-status
+        # Poort-status — zelfde datum als _cmd_approve_heal (was 27/05, inconsistent)
         _today        = _date.today()
-        _act_date     = _date(2026, 5, 27)
+        _act_date     = _date(2026, 6, 11)
         _act_trades   = 62
         _closed_count = len([t for t in self.logger.trades
                               if t.get("type") in ("sell", "cover") and "pnl_pct" in t])
@@ -922,7 +924,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         _trades_ok = _closed_count >= _act_trades
         _poort     = "🔓 OPEN" if (_date_ok and _trades_ok) else "🔒 GEBLOKKEERD"
         lines.append(f"<b>Activatiepoort:</b> {_poort}")
-        lines.append(f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m')} → doel 27/05")
+        lines.append(f"  📅 Datum:  {'✅' if _date_ok  else '⏳'} {_today.strftime('%d/%m')} → doel {_act_date.strftime('%d/%m')}")
         lines.append(f"  📊 Trades: {'✅' if _trades_ok else '⏳'} {_closed_count}/{_act_trades} closed\n")
 
         # Actieve overrides
@@ -1132,13 +1134,13 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                     )
                     self._daily_sl_count += 1
                     if self._daily_sl_count >= 3:
-                        self._daily_sl_pause_until = time.time() + 86400  # tot morgen reset
+                        # Pauze staat UIT (zie _daily_sl_paused) — alleen waarschuwen, niet blokkeren
                         self.logger.warning(
-                            f"Daily SL limiet bereikt ({self._daily_sl_count} stops vandaag) — geen nieuwe entries tot dagswitch"
+                            f"Daily SL waarschuwing: {self._daily_sl_count} stops vandaag (pauze uitgeschakeld — Kelly houdt verliezen klein)"
                         )
                         self.telegram.send(
-                            f"⚠️ <b>Daily SL limiet</b>\n{self._daily_sl_count} stop-losses vandaag.\n"
-                            f"Geen nieuwe trades tot morgen (bestaande posities blijven open)."
+                            f"⚠️ <b>Daily SL waarschuwing</b>\n{self._daily_sl_count} stop-losses vandaag.\n"
+                            f"Bot handelt gewoon door — let op de rolling WR."
                         )
                 # Adaptieve gewichten bijwerken — gebruik last_signals (alle strategieën)
                 # of fallback naar entry_reasons (top-6) voor oude trades
@@ -1158,7 +1160,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 _partial_str = " (50%)" if trade.get("partial", False) else ""
                 _reason_emojis = {
                     "STOP-LOSS": "🛑", "TAKE-PROFIT-2": "✅",
-                    "TRAILING-STOP": "✅", "TP1": "💰",
+                    "TRAILING-STOP": "✅", "TP1": "💰", "BREAKEVEN": "⚖️",
                 }
                 _emoji = _reason_emojis.get(_reason, "✅" if (_pnl and _pnl > 0) else "❌")
                 _pnl_str = f"\nPnL: <b>{_pnl:+.2%}</b>" if _pnl is not None else ""
@@ -1234,10 +1236,12 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             return
 
         # ── Drawdown alert (8% drempel, max 1x per niveau) ─────────
+        _tick_status = {}
         if hasattr(self.engine, "get_status") and current_prices:
             try:
-                _dd = self.engine.get_status(current_prices).get("drawdown", 0)
-                _tv = self.engine.get_status(current_prices).get("total_value", 0)
+                _tick_status = self.engine.get_status(current_prices)
+                _dd = _tick_status.get("drawdown", 0)
+                _tv = _tick_status.get("total_value", 0)
                 if _dd >= 0.08 and _dd > self._last_drawdown_alert + 0.02:
                     self._last_drawdown_alert = _dd
                     self.telegram.drawdown_alert(_dd, _tv)
@@ -1246,8 +1250,8 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             except Exception:
                 pass
 
-        if hasattr(self.engine, "get_status") and self._daily_start_value > 0:
-            current_total = self.engine.get_status(current_prices).get("total_value", 0)
+        if _tick_status and self._daily_start_value > 0:
+            current_total = _tick_status.get("total_value", 0)
             daily_pnl = (current_total - self._daily_start_value) / self._daily_start_value
             if daily_pnl < -0.05:  # Meer dan 5% dagverlies → 24u pauze
                 self._circuit_breaker_until = time.time() + 86400
@@ -1434,14 +1438,12 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             except Exception:
                 pass
 
-        # ── 15m LSTM filter (FASE 4a — activeren na 2 juli 2026) ──────
+        # ── 15m LSTM filter (Fase 4a — ACTIEF sinds 11 juni 2026) ──────
         # Hiërarchie: 4H trend → 1H tactiek → 15m LSTM executie
-        # Wanneer actief: blokkeert entry als 15m LSTM de 1H richting tegenspreekt
-        # met hoge confidence (>0.60). Neutraal of lage confidence = altijd doorgaan.
-        # ACTIVATIE: verwijder de False en laad self.lstm_15m in __init__:
-        #   self.lstm_15m = LSTMPredictor(model_path="models/lstm_15m.pt")
-        #   self.lstm_15m_active = Path("models/lstm_15m.pt").exists()
-        _lstm_15m_active = False  # ← op True zetten in Fase 4a
+        # Blokkeert entry ALLEEN als 15m LSTM met >60% conf tégen de 1H richting zit.
+        # Neutraal of lage confidence = altijd doorgaan (nooit blokkeren).
+        # Graceful degradation: timeout/fout → _lstm_15m_blocks = False → 1H flow door.
+        _lstm_15m_active = getattr(self, "lstm_15m_active", False)
         _lstm_15m_blocks = False
         if _lstm_15m_active and _15m_ok and df_15m is not None:
             try:
@@ -1651,6 +1653,7 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         # Blokkeert entry als 15m LSTM met >60% conf de 1H richting tegenspreekt.
         if _lstm_15m_blocks and action != 0 and _act_15m != action:
             action = 0
+            _ntr = f"15m LSTM veto — conf={_conf_15m:.2f} tegenstrijdig met 1H signaal"
             self.logger.debug(f"{symbol}: 15m LSTM filter veto (conf={_conf_15m:.2f})")
 
         # ── 15m micro-trend modifier ───────────────────────────────
@@ -1785,14 +1788,19 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         # ── Filter 5: RSI extremen — niet shorten bij oversold, niet longen bij overbought ──
         # Drempel 72 (was 65) — 65 blokkeerde ook A+-setups in sterke trends
         # In sterke bear_trend (≥85%) kan RSI weken lang onder 35 blijven → verlaag drempel naar 28
+        # _strong_bear buiten de if — Filter 6 gebruikt dit ook (NameError als rsi_14 ontbreekt)
+        _strong_bear = regime.regime.value == "bear_trend" and regime.strength >= 0.85
         if action != 0 and "rsi_14" in df.columns:
             rsi_now = float(df["rsi_14"].iloc[-1])
-            _strong_bear = regime.regime.value == "bear_trend" and regime.strength >= 0.85
             _rsi_short_block = 28 if regime.regime.value == "bear_trend" else 35
+            # Symmetrisch aan _rsi_short_block: in sterke bull_trend kan RSI lang
+            # boven 72 blijven terwijl de koers doorstijgt → verhoog drempel naar 82,
+            # anders mist de bot longs in precies de sterkste trends.
+            _rsi_long_block = 82 if regime.regime.value == "bull_trend" else 72
             if action == -1 and rsi_now < _rsi_short_block:
                 action = 0
                 _ntr = f"RSI oversold ({rsi_now:.0f}) — geen shorts, bounce verwacht"
-            elif action == 1 and rsi_now > 72:
+            elif action == 1 and rsi_now > _rsi_long_block:
                 action = 0
                 _ntr = f"RSI overbought ({rsi_now:.0f}) — geen longs, pullback verwacht"
 
@@ -1931,6 +1939,14 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
         # Confidence > 0.68 heeft 36% WR (n=11) — overfit-zone, slechter dan lager conf.
         confidence = min(confidence, 0.68)
 
+        # ── BTC confidence guardrail ─────────────────────────────────
+        # BTC/USDT WR 33% (n=18) — negatieve edge bevestigd (vault badge).
+        # Twijfelachtige BTC-setups (conf 0.46–0.55) worden geblokkeerd.
+        # ETH en SOL lopen ongewijzigd door op MIN_CONFIDENCE=0.46.
+        if "BTC" in symbol and action != 0 and confidence < 0.55:
+            action = 0
+            _ntr = f"BTC guardrail — conf {confidence:.2f} < 0.55 (WR 33%, negatieve edge)"
+
         # ── Setup kwaliteit: A+/A/B/C scoring via SetupClassifier ───
         vol_ratio_cur = float(df["volume_ratio"].iloc[-1]) if "volume_ratio" in df.columns else 1.0
         clf = self.setup_classifier.classify(
@@ -2013,23 +2029,35 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
                 self._equity_curve.append(total)
                 self._equity_curve = self._equity_curve[-5000:]
                 self._last_trade_time = time.time()
-                _sl = result.get("stop_loss", 0)
-                _tp1 = result.get("take_profit", 0)
-                _tp2 = result.get("take_profit_2", 0)
-                _conf = result.get("confidence", 0)
-                _grade = setup_grade or "?"
-                self.telegram.send(
-                    f"🟢 <b>LONG — {symbol}</b>\n"
-                    f"Entry: <b>${current_price:,.4f}</b>\n"
-                    f"SL: ${_sl:,.4f}  |  TP1: ${_tp1:,.4f}  |  TP2: ${_tp2:,.4f}\n"
-                    f"Conf: {_conf:.0%}  |  Regime: {regime.regime.value}  |  Grade: {_grade}\n"
-                    f"Portfolio: ${total:,.2f}\n"
-                    f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
-                )
-                edge_str = f" Edge:{clf['edge_score']:+.3f}" if clf["edge_score"] != 0 else ""
-                console.print(f"[bold green]^ LONG {symbol}[/bold green] @ {current_price:,.4f} "
-                               f"| Regime: {regime.regime.value} [{setup_grade}]{edge_str} "
-                               f"| SL={result['stop_loss']:,.4f} TP={result['take_profit']:,.4f}")
+                if result.get("type") == "pyramid":
+                    # Pyramid-record heeft geen SL/TP velden — eigen melding
+                    self.telegram.send(
+                        f"🔺 <b>PYRAMID — {symbol}</b>\n"
+                        f"Bijgekocht: <b>${result.get('add_invest', 0):,.2f}</b> @ ${current_price:,.4f}\n"
+                        f"Pyramid #{result.get('pyramid_count', '?')}/2\n"
+                        f"Portfolio: ${total:,.2f}\n"
+                        f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
+                    )
+                    console.print(f"[bold cyan]+ PYRAMID {symbol}[/bold cyan] @ {current_price:,.4f} "
+                                  f"| +${result.get('add_invest', 0):,.2f} (#{result.get('pyramid_count', '?')})")
+                else:
+                    _sl = result.get("stop_loss", 0)
+                    _tp1 = result.get("take_profit", 0)
+                    _tp2 = result.get("take_profit_2", 0)
+                    _conf = result.get("confidence", 0)
+                    _grade = setup_grade or "?"
+                    self.telegram.send(
+                        f"🟢 <b>LONG — {symbol}</b>\n"
+                        f"Entry: <b>${current_price:,.4f}</b>\n"
+                        f"SL: ${_sl:,.4f}  |  TP1: ${_tp1:,.4f}  |  TP2: ${_tp2:,.4f}\n"
+                        f"Conf: {_conf:.0%}  |  Regime: {regime.regime.value}  |  Grade: {_grade}\n"
+                        f"Portfolio: ${total:,.2f}\n"
+                        f"<i>{datetime.now().strftime('%H:%M:%S')}</i>"
+                    )
+                    edge_str = f" Edge:{clf['edge_score']:+.3f}" if clf["edge_score"] != 0 else ""
+                    console.print(f"[bold green]^ LONG {symbol}[/bold green] @ {current_price:,.4f} "
+                                   f"| Regime: {regime.regime.value} [{setup_grade}]{edge_str} "
+                                   f"| SL={result.get('stop_loss', 0):,.4f} TP={result.get('take_profit', 0):,.4f}")
 
         elif action == -1:
             existing_pos = self.engine.positions.get(symbol)
