@@ -1815,9 +1815,13 @@ print(f'na_verlies_wr={wr_al:.0%} n={len(after_loss)}')
             if action == -1 and current_price < local_low * (1 + _local_pct):
                 action = 0
                 _ntr = f"Short geblokkeerd — prijs {current_price:.2f} binnen {_local_pct:.1%} van lokaal dieptepunt {local_low:.2f}"
-            elif action == 1 and current_price > local_high * 0.985:
+            # Symmetrisch aan de short-kant (_local_pct): in sterke bull_trend zit de
+            # prijs per definitie vlak bij het lokale hoogtepunt → platte 1.5% blokkeerde
+            # structureel álle longs in bull-trends (deadlock 11-15 juni). Nu regime-bewust.
+            _long_high_pct = 0.0 if (regime.regime.value == "bull_trend" and regime.strength >= 0.95) else (0.005 if regime.regime.value == "bull_trend" else 0.015)
+            if action == 1 and current_price > local_high * (1 - _long_high_pct):
                 action = 0
-                _ntr = f"Long geblokkeerd — prijs {current_price:.2f} binnen 1.5% van lokaal hoogtepunt {local_high:.2f}"
+                _ntr = f"Long geblokkeerd — prijs {current_price:.2f} binnen {_long_high_pct:.1%} van lokaal hoogtepunt {local_high:.2f}"
 
         # ── Filter 6: Volume bevestiging — trades alleen bij actieve markt ──
         # Was 0.7 → 0.5 (weekend). In sterke bear_trend (≥85%): 0.30 — volume daalt na dump.

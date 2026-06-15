@@ -1,4 +1,15 @@
 
+## 2026-06-15 — Filter 5b lokaal-hoogtepunt regime-fix (snapshot #42→#43)
+
+- **Wat**: `bot.py:1818` Filter 5b — long-blokkade "binnen 1,5% van lokaal hoogtepunt" regime-bewust gemaakt
+- **Oud**: `elif action == 1 and current_price > local_high * 0.985:` → platte 1,5% ongeacht regime
+- **Nieuw**: `_long_high_pct = 0.0 if (bull_trend & strength≥0.95) else (0.005 if bull_trend else 0.015)` en `if action == 1 and current_price > local_high * (1 - _long_high_pct):` (elif→if omdat de _long_high_pct-assignment tussen de short- en long-branch staat)
+- **Reden**: check-rapport 15 juni toonde deadlock van 110u (4,6 dagen) géén trade tijdens bull_trend 89-97%. Na de RSI-fix (#40→#41) was BTC vrij van Filter 5, maar Filter 5b blokkeerde 'm alsnog: in een uptrend zit de prijs per definitie vlak bij het lokale hoogtepunt → platte 1,5% legde structureel álle longs in bull-trends lam. Spiegelbeeldig aan de short-kant (_local_pct, regel 1814) die al regime-bewust was.
+- **Drempel-effect**: bull_trend ≥95% strength → 0% (geen blokkade), bull_trend <95% → 0,5%, overig → 1,5% (ongewijzigd). BTC bull_trend ~90% → 0,5%-drempel → vrijgegeven.
+- **Risico**: bot kan dichter bij lokale top instappen in bull-trends. Bewust geaccepteerd om deadlock op te heffen. Meten: long-WR in bull_trend (nu n=1).
+- **Wijziging**: 1 parameter (long-kant lokaal-hoogtepunt drempel). Geen andere wijziging.
+- **Resultaat**: TBD — meten bij volgende check (komt BTC/longs in bull_trend nu door, WR-effect)
+
 ## 2026-06-15 — RSI-overbought regime-fix (snapshot #40→#41)
 
 - **Wat**: `bot.py:1788-1801` Filter 5 — RSI-overbought long-blokkade regime-bewust gemaakt
